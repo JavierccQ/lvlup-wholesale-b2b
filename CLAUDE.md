@@ -5,12 +5,13 @@ Este archivo proporciona orientación a Claude Code (claude.ai/code) al trabajar
 ## Idioma
 
 - Mis inputs y nuestras conversaciones serán en español; responde y explica en español.
-- El código, los comentarios en código, los nombres de variables/clases y la documentación técnica (READMEs, ApexDoc) van en inglés, siguiendo la convención del ecosistema Salesforce.
-- Los mensajes de commit van en inglés.
+- **Español** para documentación de contexto, negocio, arquitectura, UX, agentes, análisis funcional, ADRs y evaluaciones.
+- **Inglés** para código, nombres de clases/métodos/variables, comentarios técnicos dentro del código, contratos de API y mensajes de commit.
+- No mezclar idiomas dentro del mismo archivo, salvo términos técnicos propios del ecosistema Salesforce (p. ej. B2B Commerce, Experience Cloud, Buyer Group, Price Book, LWC, Apex, Flow).
 
 ## Descripción del Proyecto
 
-Este es un proyecto de Salesforce DX que implementa un portal de B2B Commerce (Commerce Cloud) para "LevelUp Wholesale". La org utiliza páginas de Digital Experience como UI principal, respaldadas por controladores Apex, con páginas Visualforce para flujos legacy del portal de comunidad. Versión de API: 66.0.
+Este es un proyecto de Salesforce DX que implementa un portal de B2B Commerce (Commerce Cloud) para "LvlUp WholeSale". La org utiliza páginas de Digital Experience como UI principal, respaldadas por controladores Apex, con páginas Visualforce para flujos legacy del portal de comunidad. Versión de API: 66.0.
 
 El proyecto es personal, con fines de práctica y construcción de requerimientos de B2B Commerce. La org es Developer Edition, con alias `commerce-b2b-dev`.
 
