@@ -119,13 +119,15 @@ Vivirá bajo `docs/development/`. Describe guías y convenciones de desarrollo.
 
 | Archivo | Propósito esperado | Estado |
 | --- | --- | --- |
-| `docs/development/apex-guidelines.md` | Guías de desarrollo Apex | Pendiente |
-| `docs/development/lwc-guidelines.md` | Guías de desarrollo LWC | Pendiente |
-| `docs/development/flow-guidelines.md` | Guías de diseño de Flows | Pendiente |
-| `docs/development/naming-conventions.md` | Convenciones de nombres | Pendiente |
-| `docs/development/error-handling-guidelines.md` | Guías de manejo de errores | Pendiente |
-| `docs/development/logging-guidelines.md` | Guías de logging | Pendiente |
-| `docs/development/deployment-guidelines.md` | Guías de despliegue | Pendiente |
+| `docs/development/apex-guidelines.md` | Guías de desarrollo Apex | Creado |
+| `docs/development/lwc-guidelines.md` | Guías de desarrollo LWC | Creado |
+| `docs/development/flow-guidelines.md` | Guías de diseño de Flows | Creado |
+| `docs/development/integration-guidelines.md` | Guías de desarrollo de integraciones (REST, mocks, callouts) | Creado |
+| `docs/development/code-review-checklist.md` | Checklist transversal de code review | Creado |
+| `docs/development/naming-conventions.md` | Convenciones de nombres | Creado |
+| `docs/development/error-handling-guidelines.md` | Guías de manejo de errores | Creado |
+| `docs/development/logging-guidelines.md` | Guías de logging | Creado |
+| `docs/development/deployment-guidelines.md` | Guías de despliegue | Creado |
 
 ---
 
@@ -140,8 +142,11 @@ Dos ámbitos distintos y complementarios:
 
 | Archivo | Propósito esperado | Estado |
 | --- | --- | --- |
-| `docs/testing/testing-strategy.md` | Estrategia de testing funcional y técnico | Pendiente |
-| `docs/testing/qa-scenarios.md` | Escenarios de QA derivados de flujos y reglas | Pendiente |
+| `docs/testing/test-strategy.md` | Estrategia general de testing del MVP | Creado |
+| `docs/testing/functional-test-cases.md` | Catálogo de casos de prueba funcionales (FTC-*) | Creado |
+| `docs/testing/security-test-cases.md` | Catálogo de casos de prueba de seguridad (STC-*) | Creado |
+| `docs/testing/integration-test-cases.md` | Catálogo de casos de prueba de integración futura | Creado |
+| `docs/testing/regression-checklist.md` | Checklist de regresión (smoke/core/extended/targeted) | Creado |
 | `evals/catalog-evals.md` | Evaluación de respuestas sobre catálogo | Pendiente |
 | `evals/pricing-evals.md` | Evaluación de respuestas sobre pricing | Pendiente |
 | `evals/checkout-evals.md` | Evaluación de respuestas sobre checkout | Pendiente |
