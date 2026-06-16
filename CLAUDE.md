@@ -15,6 +15,17 @@ Este es un proyecto de Salesforce DX que implementa un portal de B2B Commerce (C
 
 El proyecto es personal, con fines de práctica y construcción de requerimientos de B2B Commerce. La org es Developer Edition, con alias `commerce-b2b-dev`.
 
+## Documentación y Configuración Multiagente
+
+Este repositorio incluye documentación estructurada y una configuración multiagente que deben usarse como guía de trabajo (no duplicar su contenido aquí):
+
+- **Índice maestro**: `docs/DOCUMENTATION_INDEX.md` es el punto de entrada a toda la documentación (`docs/business/`, `docs/ux/`, `docs/architecture/`, `docs/salesforce/`, `docs/development/`, `docs/testing/`).
+- **Decisiones de arquitectura**: `adr/` registra las decisiones vigentes (scope/MVP, standard-first, data vs metadata, pricing/visibility, checkout, integración REST mock futura); ver `adr/README.md`. Un ADR `Accepted` es la fuente de verdad de su área.
+- **Agentes IA**: `agents/` contiene la taxonomía oficial de 8 agentes (`orchestrator-agent`, `business-analyst-agent`, `b2b-commerce-specialist-agent`, `salesforce-architect-agent`, `ux-specialist-agent`, `salesforce-developer-agent`, `qa-specialist-agent`, `documentation-agent`) para enrutar tareas especializadas.
+- **Evaluaciones**: `evals/` define los criterios de comportamiento de cada agente (escala 0-4), basados en `evals/agent-evaluation-framework.md`.
+
+**Principio rector**: `Configuration first, customization only when justified`. Priorizar B2B Commerce estándar, Experience Builder, configuración y datos antes de Flow/LWC/Apex/integración (ver `adr/0002-standard-first-b2b-commerce-approach.md`). Antes de crear documentación nueva, consultar el índice y preferir **actualizar** a crear.
+
 ## Comandos Comunes
 
 ### Desplegar y Recuperar Metadata

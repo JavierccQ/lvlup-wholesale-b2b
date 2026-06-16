@@ -280,15 +280,19 @@ Estado: Propuesto | Aceptado | Reemplazado
 
 ## 18. Agentes IA y Evaluaciones
 
-- **Agentes** en `agents/` con archivo **kebab-case en inglés** por rol:
-  `orchestrator.md`, `b2b-commerce-specialist.md`, `salesforce-architect.md`,
-  `apex-specialist.md`, `lwc-specialist.md`, `flow-specialist.md`,
-  `integration-specialist.md`, `qa-specialist.md`, `documentation-specialist.md`.
+- **Agentes** en `agents/` con archivo **kebab-case en inglés** y sufijo `-agent.md`
+  por rol: `orchestrator-agent.md`, `business-analyst-agent.md`,
+  `b2b-commerce-specialist-agent.md`, `salesforce-architect-agent.md`,
+  `ux-specialist-agent.md`, `salesforce-developer-agent.md`,
+  `qa-specialist-agent.md`, `documentation-agent.md`.
 - El **nombre del rol** en inglés; el **contenido** del agente, en español (salvo
   términos técnicos).
-- **Evaluaciones** en `evals/` con patrón **`<domain>-evals.md`**:
-  `catalog-evals.md`, `pricing-evals.md`, `checkout-evals.md`,
-  `integration-evals.md`, `ux-evals.md`, y `eval-results.md`.
+- **Evaluaciones** en `evals/` con patrón **`<agent>-agent-evals.md`** (un eval por
+  agente), más el framework base `agent-evaluation-framework.md`:
+  `orchestrator-agent-evals.md`, `business-analyst-agent-evals.md`,
+  `b2b-commerce-specialist-agent-evals.md`, `salesforce-architect-agent-evals.md`,
+  `ux-specialist-agent-evals.md`, `salesforce-developer-agent-evals.md`,
+  `qa-specialist-agent-evals.md`, `documentation-agent-evals.md`.
 - **No** incluir prompts dentro de este documento; viven en `agents/`.
 
 ---
@@ -312,10 +316,10 @@ Estado: Propuesto | Aceptado | Reemplazado
 | JSON field | camelCase | Inglés | `creditStatus` |
 | Test data code | UPPER_SNAKE_CASE | Inglés | `GAMING_STORE_MADRID` |
 | SKU | `LVL-<CAT>-NNN` | Inglés | `LVL-CON-001` |
-| ADR file | `NNNN-kebab-case.md` | Inglés (slug) | `0001-project-scope.md` |
+| ADR file | `NNNN-kebab-case.md` | Inglés (slug) | `0001-project-scope-and-mvp-boundaries.md` |
 | Commit | `type: subject` | Inglés | `docs: add naming conventions` |
-| Agent file | kebab-case | Inglés | `apex-specialist.md` |
-| Eval file | `<domain>-evals.md` | Inglés | `pricing-evals.md` |
+| Agent file | kebab-case + `-agent` | Inglés | `documentation-agent.md` |
+| Eval file | `<agent>-agent-evals.md` | Inglés | `qa-specialist-agent-evals.md` |
 
 ---
 
