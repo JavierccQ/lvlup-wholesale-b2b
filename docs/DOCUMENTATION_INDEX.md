@@ -147,12 +147,15 @@ Dos ámbitos distintos y complementarios:
 | `docs/testing/security-test-cases.md` | Catálogo de casos de prueba de seguridad (STC-*) | Creado |
 | `docs/testing/integration-test-cases.md` | Catálogo de casos de prueba de integración futura | Creado |
 | `docs/testing/regression-checklist.md` | Checklist de regresión (smoke/core/extended/targeted) | Creado |
-| `evals/catalog-evals.md` | Evaluación de respuestas sobre catálogo | Pendiente |
-| `evals/pricing-evals.md` | Evaluación de respuestas sobre pricing | Pendiente |
-| `evals/checkout-evals.md` | Evaluación de respuestas sobre checkout | Pendiente |
-| `evals/integration-evals.md` | Evaluación de respuestas sobre integraciones | Pendiente |
-| `evals/ux-evals.md` | Evaluación de respuestas sobre UX | Pendiente |
-| `evals/eval-results.md` | Resultados consolidados de las evaluaciones | Pendiente |
+| `evals/agent-evaluation-framework.md` | Framework base de evaluación de agentes | Creado |
+| `evals/orchestrator-agent-evals.md` | Casos de evaluación del Orchestrator Agent | Creado |
+| `evals/business-analyst-agent-evals.md` | Casos de evaluación del Business Analyst Agent | Creado |
+| `evals/b2b-commerce-specialist-agent-evals.md` | Casos de evaluación del B2B Commerce Specialist Agent | Creado |
+| `evals/salesforce-architect-agent-evals.md` | Casos de evaluación del Salesforce Architect Agent | Creado |
+| `evals/ux-specialist-agent-evals.md` | Casos de evaluación del UX Specialist Agent | Creado |
+| `evals/salesforce-developer-agent-evals.md` | Casos de evaluación del Salesforce Developer Agent | Creado |
+| `evals/qa-specialist-agent-evals.md` | Casos de evaluación del QA Specialist Agent | Creado |
+| `evals/documentation-agent-evals.md` | Casos de evaluación del Documentation Agent | Creado |
 
 ---
 
@@ -165,18 +168,14 @@ explica su propósito.
 
 | Archivo | Propósito esperado | Estado |
 | --- | --- | --- |
-| `agents/orchestrator.md` | Coordinación y enrutamiento entre agentes | Pendiente |
-| `agents/b2b-commerce-specialist.md` | Especialista en estrategia de B2B Commerce | Pendiente |
-| `agents/salesforce-architect.md` | Arquitectura de Salesforce | Pendiente |
-| `agents/functional-analyst.md` | Análisis funcional | Pendiente |
-| `agents/ecommerce-business-specialist.md` | Análisis de negocio de e-commerce | Pendiente |
-| `agents/ux-specialist.md` | UX y customer journey | Pendiente |
-| `agents/lwc-specialist.md` | Desarrollo LWC | Pendiente |
-| `agents/apex-specialist.md` | Desarrollo Apex | Pendiente |
-| `agents/flow-specialist.md` | Diseño de Flows | Pendiente |
-| `agents/integration-specialist.md` | Integraciones REST/SOAP | Pendiente |
-| `agents/qa-specialist.md` | QA y testing | Pendiente |
-| `agents/documentation-specialist.md` | Documentación técnica | Pendiente |
+| `agents/orchestrator-agent.md` | Agente orquestador / coordinación entre agentes | Creado |
+| `agents/business-analyst-agent.md` | Análisis de negocio, reglas y alcance funcional | Creado |
+| `agents/b2b-commerce-specialist-agent.md` | B2B Commerce estándar: catálogo, pricing, Buyer Groups, storefront | Creado |
+| `agents/salesforce-architect-agent.md` | Arquitectura, seguridad, estándar vs custom, integración | Creado |
+| `agents/ux-specialist-agent.md` | UX, storefront journey y estados | Creado |
+| `agents/salesforce-developer-agent.md` | Apex, LWC, Flow, integración técnica, error handling, logging | Creado |
+| `agents/qa-specialist-agent.md` | Testing y regresión | Creado |
+| `agents/documentation-agent.md` | Documentación, índice, consistencia y trazabilidad | Creado |
 
 ---
 
@@ -187,12 +186,13 @@ contexto, decisión tomada, consecuencias y alternativas consideradas.
 
 | Archivo | Propósito esperado | Estado |
 | --- | --- | --- |
-| `adr/0001-project-scope.md` | Decisión sobre el alcance del proyecto | Pendiente |
-| `adr/0002-standard-vs-custom-strategy.md` | Estrategia estándar vs custom | Pendiente |
-| `adr/0003-integration-strategy.md` | Estrategia de integración | Pendiente |
-| `adr/0004-flow-vs-apex-strategy.md` | Criterio Flow vs Apex | Pendiente |
-| `adr/0005-lwc-customization-strategy.md` | Estrategia de customización con LWC | Pendiente |
-| `adr/0006-testing-strategy.md` | Estrategia de testing | Pendiente |
+| `adr/README.md` | Índice y guía base de la carpeta `adr/` (qué es un ADR, cuándo crearlo, naming, estructura) | Creado |
+| `adr/0001-project-scope-and-mvp-boundaries.md` | Alcance del proyecto y límites del MVP | Creado |
+| `adr/0002-standard-first-b2b-commerce-approach.md` | Enfoque estándar primero en B2B Commerce | Creado |
+| `adr/0003-commerce-data-vs-metadata-strategy.md` | Estrategia de data vs metadata en Commerce | Creado |
+| `adr/0004-pricing-and-visibility-strategy.md` | Estrategia de pricing y visibility | Creado |
+| `adr/0005-checkout-approval-credit-and-stock-strategy.md` | Estrategia de checkout: approval, credit y stock | Creado |
+| `adr/0006-future-rest-mock-integration-strategy.md` | Estrategia futura de integración REST/mock | Creado |
 
 ---
 

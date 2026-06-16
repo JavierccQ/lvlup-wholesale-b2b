@@ -348,17 +348,14 @@ Cada término se documenta en una **tabla** con estos campos:
 | Término | Definición | Uso en LvlUp WholeSale / Relación | Estado |
 | --- | --- | --- | --- |
 | AI Agent | Agente de IA especializado | Infraestructura de agentes (`agents/`) | Futuro |
-| Orchestrator Agent | Agente coordinador | Enruta entre agentes | Futuro |
-| Functional Analyst Agent | Agente de análisis funcional | Requisitos/flujos | Futuro |
-| Salesforce Architect Agent | Agente de arquitectura | Decisiones técnicas | Futuro |
-| B2B Commerce Specialist Agent | Agente de B2B Commerce | Estrategia de commerce | Futuro |
-| UX Specialist Agent | Agente de UX | Experiencia/journey | Futuro |
-| Apex Specialist Agent | Agente de Apex | Código Apex | Futuro |
-| LWC Specialist Agent | Agente de LWC | Componentes UI | Futuro |
-| Flow Specialist Agent | Agente de Flow | Automatización declarativa | Futuro |
-| Integration Specialist Agent | Agente de integración | REST/mocks | Futuro |
-| QA Specialist Agent | Agente de QA | Testing | Futuro |
-| Documentation Specialist Agent | Agente de documentación | Documentación técnica | Futuro |
+| Orchestrator Agent | Agente coordinador | Enruta entre agentes (`orchestrator-agent.md`) | Futuro |
+| Business Analyst Agent | Agente de análisis funcional | Requisitos/reglas/flujos (`business-analyst-agent.md`) | Futuro |
+| B2B Commerce Specialist Agent | Agente de B2B Commerce | Estándar/configuración/datos Commerce (`b2b-commerce-specialist-agent.md`) | Futuro |
+| Salesforce Architect Agent | Agente de arquitectura | Decisiones técnicas/ADRs (`salesforce-architect-agent.md`) | Futuro |
+| UX Specialist Agent | Agente de UX | Experiencia/journey/mobile (`ux-specialist-agent.md`) | Futuro |
+| Salesforce Developer Agent | Agente de desarrollo | Apex, LWC, Flow e integración con gap validado (`salesforce-developer-agent.md`) | Futuro |
+| QA Specialist Agent | Agente de QA | Testing y regresión (`qa-specialist-agent.md`) | Futuro |
+| Documentation Agent | Agente de documentación | Coherencia documental e índice (`documentation-agent.md`) | Futuro |
 | Evaluation | Evaluación de calidad | Calidad de respuestas de agentes | Futuro |
 | Eval | Caso/suite de evaluación | Vive en `evals/` | Futuro |
 | Guardrail | Límite/restricción del agente | Comportamiento seguro | Futuro |
