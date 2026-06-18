@@ -26,6 +26,17 @@ Este repositorio incluye documentación estructurada y una configuración multia
 
 **Principio rector**: `Configuration first, customization only when justified`. Priorizar B2B Commerce estándar, Experience Builder, configuración y datos antes de Flow/LWC/Apex/integración (ver `adr/0002-standard-first-b2b-commerce-approach.md`). Antes de crear documentación nueva, consultar el índice y preferir **actualizar** a crear.
 
+## Memoria Operativa y Lectura Previa
+
+Antes de ejecutar cualquier tarea del repositorio, leer en este orden: `PROJECT_CONTEXT.md` (contexto), `CLAUDE.md` (operación) y `MEMORY.md` (memoria operativa ligera con reglas y preferencias recurrentes del usuario). No duplicar aquí el contenido de `MEMORY.md`.
+
+Captura de reglas nuevas en `MEMORY.md`:
+
+- Si el usuario corrige a Claude con una instrucción que parece reutilizable, **primero** verificar si ya está documentada (p. ej. `docs/development/naming-conventions.md` u otro `.md` relevante).
+- Si **ya existe**, indicar dónde está definida y aplicarla; no duplicarla en `MEMORY.md`.
+- Si **no existe**, preguntar explícitamente si se desea añadirla a `MEMORY.md`.
+- **Nunca** añadir reglas a `MEMORY.md` sin confirmación explícita del usuario.
+
 ## Comandos Comunes
 
 ### Desplegar y Recuperar Metadata

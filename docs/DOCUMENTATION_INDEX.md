@@ -40,7 +40,14 @@ Debe ayudar a:
 | --- | --- | --- | --- |
 | `PROJECT_CONTEXT.md` | Fuente de verdad del contexto de negocio y proyecto: qué es, qué simula, alcance del MVP, principios y restricciones | Para entender el proyecto en su conjunto o al iniciar cualquier trabajo | Contexto de proyecto |
 | `CLAUDE.md` | Instrucciones operativas para Claude Code: idioma, comandos, workflow, arquitectura del repo y convenciones | Al operar sobre el repositorio o definir comportamiento del asistente | Operación del repositorio |
+| `MEMORY.md` | Memoria operativa **ligera**: reglas, preferencias e instrucciones recurrentes del usuario que aún no están en la documentación formal | Antes de ejecutar cualquier tarea, junto a `PROJECT_CONTEXT.md` y `CLAUDE.md` | Memoria operativa del repositorio |
 | `README.md` | Actualmente es el README genérico de Salesforce DX ("Next Steps"); pendiente de personalizar como presentación del proyecto | Como punto de entrada del repositorio | Onboarding del repositorio |
+
+> Nota: `MEMORY.md` es una memoria operativa ligera. **No** reemplaza ADRs,
+> documentación de negocio/funcional, arquitectura ni guías técnicas: solo captura
+> reglas recurrentes del usuario que aún no tienen lugar en la documentación
+> formal, y siempre tras confirmación explícita. Si una regla ya vive en otro
+> `.md`, esa es la fuente de verdad y no se duplica aquí.
 
 > Nota: `README.md` existe pero conserva el contenido boilerplate de Salesforce DX.
 > Su personalización para LvlUp WholeSale queda como tarea futura.
@@ -208,7 +215,7 @@ contexto, decisión tomada, consecuencias y alternativas consideradas.
 | ¿Cómo se estructura el catálogo? | `docs/business/product-catalog-strategy.md` | `docs/business/pricing-and-visibility-strategy.md` |
 | ¿Quién ve qué producto y a qué precio? | `docs/business/pricing-and-visibility-strategy.md` | `docs/business/buyer-personas.md` |
 | ¿Qué estándar vs custom aplica? | `docs/architecture/standard-vs-custom-framework.md` *(cuando exista)* | `PROJECT_CONTEXT.md` |
-| ¿Cómo debe comportarse Claude? | `CLAUDE.md` | `PROJECT_CONTEXT.md` |
+| ¿Cómo debe comportarse Claude? | `CLAUDE.md` + `MEMORY.md` | `PROJECT_CONTEXT.md` |
 
 ---
 

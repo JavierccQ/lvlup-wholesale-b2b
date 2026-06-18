@@ -1,0 +1,182 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1690" viewBox="0 0 1200 1690" font-family="Segoe UI, Arial, sans-serif">
+  <style>
+    .band   { fill:#F4F5F7; stroke:#C9CED6; stroke-width:1.5; }
+    .ph     { fill:#DBE0E8; }
+    .card   { fill:#FFFFFF; stroke:#C9CED6; stroke-width:1.2; }
+    .lbl    { fill:#2D6BE3; }
+    .lblt   { fill:#FFFFFF; font-family:Consolas, monospace; font-size:11px; }
+    .h      { fill:#1B1B1F; font-weight:700; }
+    .t      { fill:#1B1B1F; }
+    .m      { fill:#6B7280; }
+    .btnP   { fill:#2D6BE3; }
+    .btnPt  { fill:#FFFFFF; font-size:13px; font-weight:600; }
+    .btnS   { fill:#FFFFFF; stroke:#2D6BE3; stroke-width:1.4; }
+    .btnSt  { fill:#2D6BE3; font-size:13px; font-weight:600; }
+    .warn   { fill:#B54708; }
+    .dash   { stroke:#9AA3AF; stroke-width:1.2; stroke-dasharray:5 4; fill:none; }
+  </style>
+
+  <rect x="0" y="0" width="1200" height="1690" fill="#FFFFFF"/>
+
+  <!-- Title -->
+  <text x="40" y="34" class="h" font-size="22">LvlUp WholeSale — HomePage actual del storefront</text>
+  <text x="40" y="54" class="m" font-size="12">Wireframe vectorial fiel al metadata real · sfdc_cms__view/home/content.json · Experience Builder (LWR) · vista desktop</text>
+
+  <!-- ===================== HEADER ===================== -->
+  <g>
+    <rect x="40" y="72" width="1120" height="64" class="band"/>
+    <rect x="44" y="76" width="300" height="17" rx="3" class="lbl"/>
+    <text x="50" y="89" class="lblt">theme layout: commerceLayout (estandar)</text>
+    <rect x="62" y="100" width="120" height="28" class="ph"/>
+    <text x="122" y="118" class="m" font-size="12" text-anchor="middle">LOGO</text>
+    <text x="210" y="118" class="t" font-size="13">Productos    Categorias    Quick Order</text>
+    <rect x="560" y="99" width="330" height="30" class="card"/>
+    <text x="572" y="118" class="m" font-size="12">Buscar productos o SKU…</text>
+    <text x="915" y="118" class="t" font-size="13">Mi cuenta</text>
+    <rect x="1020" y="99" width="118" height="30" class="card"/>
+    <text x="1079" y="118" class="t" font-size="13" text-anchor="middle">Carrito</text>
+  </g>
+
+  <!-- ===================== HERO BANNER ===================== -->
+  <g>
+    <rect x="40" y="150" width="1120" height="300" class="ph"/>
+    <rect x="44" y="154" width="470" height="17" rx="3" class="lbl"/>
+    <text x="50" y="167" class="lblt">dxp_content_layout:banner · brandingSet B2B_Home_Banner · height 600</text>
+    <!-- content left (contentPosition: center left, width 33%) -->
+    <text x="80" y="270" class="h" font-size="26">Unleash Your Inner Power:</text>
+    <text x="80" y="304" class="h" font-size="26">Fuel Your Day with Alpine Energy!</text>
+    <rect x="80" y="330" width="140" height="42" rx="4" class="btnP"/>
+    <text x="150" y="356" class="btnPt" text-anchor="middle">Shop Now</text>
+    <rect x="236" y="330" width="140" height="42" rx="4" class="btnS"/>
+    <text x="306" y="356" class="btnSt" text-anchor="middle">Contact Us</text>
+    <text x="80" y="408" class="warn" font-size="12">⚠ copy + imagen de plantilla demo "Alpine" (assets/images/home-banner-2.jpg) — no refleja tech/gaming</text>
+  </g>
+
+  <!-- ===================== RECOMMENDED FOR YOU ===================== -->
+  <g>
+    <rect x="40" y="468" width="1120" height="252" class="band"/>
+    <rect x="44" y="472" width="430" height="17" rx="3" class="lbl"/>
+    <text x="50" y="485" class="lblt">b2c_lite_commerce:topSellers · "Recommended For You" · pageSize 6</text>
+    <text x="62" y="516" class="h" font-size="18">Recommended For You</text>
+    <!-- 6 product cards -->
+    <g>
+      <rect x="62"  y="532" width="170" height="170" class="card"/>
+      <rect x="252" y="532" width="170" height="170" class="card"/>
+      <rect x="442" y="532" width="170" height="170" class="card"/>
+      <rect x="632" y="532" width="170" height="170" class="card"/>
+      <rect x="822" y="532" width="170" height="170" class="card"/>
+      <rect x="1012" y="532" width="120" height="170" class="card"/>
+    </g>
+    <!-- card 1 detail as representative -->
+    <rect x="74" y="544" width="146" height="84" class="ph"/>
+    <rect x="74" y="636" width="120" height="9" class="ph"/>
+    <rect x="74" y="652" width="70" height="9" class="ph"/>
+    <text x="74" y="684" class="t" font-size="12" font-weight="700">€ —,—</text>
+    <rect x="150" y="668" width="70" height="22" rx="3" class="btnP"/>
+    <text x="185" y="683" class="btnPt" font-size="10" text-anchor="middle">Add to cart</text>
+    <text x="640" y="700" class="m" font-size="11" text-anchor="middle">(cards 2–6: mismo patrón — imagen, nombre, precio, add to cart)</text>
+  </g>
+
+  <!-- ===================== QUICK ORDER + BANNER ===================== -->
+  <g>
+    <!-- left: quick order -->
+    <rect x="40" y="738" width="545" height="322" class="band"/>
+    <rect x="44" y="742" width="230" height="17" rx="3" class="lbl"/>
+    <text x="50" y="755" class="lblt">commerce_builder:quickOrder</text>
+    <text x="62" y="788" class="h" font-size="18">Quick Order</text>
+    <!-- table header -->
+    <text x="62"  y="824" class="t" font-size="12" font-weight="700">Product</text>
+    <text x="410" y="824" class="t" font-size="12" font-weight="700">Quantity</text>
+    <line x1="62" y1="832" x2="565" y2="832" stroke="#C9CED6"/>
+    <!-- rows -->
+    <g>
+      <rect x="62" y="844" width="320" height="26" class="card"/>
+      <text x="72" y="861" class="m" font-size="11">Enter Sku</text>
+      <rect x="402" y="844" width="80" height="26" class="card"/>
+      <rect x="62" y="878" width="320" height="26" class="card"/>
+      <text x="72" y="895" class="m" font-size="11">Enter Sku</text>
+      <rect x="402" y="878" width="80" height="26" class="card"/>
+      <rect x="62" y="912" width="320" height="26" class="card"/>
+      <text x="72" y="929" class="m" font-size="11">Enter Sku</text>
+      <rect x="402" y="912" width="80" height="26" class="card"/>
+    </g>
+    <text x="62" y="968" class="btnSt" font-size="13">+ Add Product</text>
+    <rect x="402" y="1006" width="160" height="38" rx="4" class="btnP"/>
+    <text x="482" y="1030" class="btnPt" text-anchor="middle">Add To Cart</text>
+    <text x="62" y="1030" class="m" font-size="11">SKU# {0} · "Sold in increments of {0}"</text>
+
+    <!-- right: secondary banner -->
+    <rect x="605" y="738" width="555" height="322" class="ph"/>
+    <rect x="609" y="742" width="330" height="17" rx="3" class="lbl"/>
+    <text x="615" y="755" class="lblt">dxp_content_layout:banner · height 450</text>
+    <!-- content right (contentPosition: center right, width 50%) -->
+    <text x="1140" y="858" class="h" font-size="22" text-anchor="end">Unleash Your Potential</text>
+    <text x="1140" y="888" class="h" font-size="22" text-anchor="end">with Alpine Snack Bars</text>
+    <rect x="980" y="912" width="140" height="40" rx="4" class="btnP"/>
+    <text x="1050" y="937" class="btnPt" text-anchor="middle">Shop Now</text>
+    <rect x="826" y="912" width="140" height="40" rx="4" class="btnS"/>
+    <text x="896" y="937" class="btnSt" text-anchor="middle">Contact Us</text>
+    <text x="1140" y="1024" class="warn" font-size="12" text-anchor="end">⚠ copy demo "Alpine Snack Bars" — reemplazar por contenido tech/gaming</text>
+  </g>
+
+  <!-- ===================== FOOTER ===================== -->
+  <g>
+    <rect x="40" y="1078" width="1120" height="104" class="band"/>
+    <rect x="44" y="1082" width="280" height="17" rx="3" class="lbl"/>
+    <text x="50" y="1095" class="lblt">brandingSet: B2B_Footer (estandar)</text>
+    <text x="62"  y="1124" class="t" font-size="12" font-weight="700">Tienda</text>
+    <text x="332" y="1124" class="t" font-size="12" font-weight="700">Cuenta</text>
+    <text x="602" y="1124" class="t" font-size="12" font-weight="700">Soporte</text>
+    <text x="872" y="1124" class="t" font-size="12" font-weight="700">Legal</text>
+    <rect x="62"  y="1136" width="160" height="8" class="ph"/>
+    <rect x="332" y="1136" width="160" height="8" class="ph"/>
+    <rect x="602" y="1136" width="160" height="8" class="ph"/>
+    <rect x="872" y="1136" width="160" height="8" class="ph"/>
+    <text x="62" y="1168" class="m" font-size="11">© LvlUp WholeSale — branding/footer pendiente de definir</text>
+  </g>
+
+  <!-- ===================== NOTES PANEL ===================== -->
+  <g>
+    <rect x="40" y="1210" width="1120" height="440" rx="6" fill="#FFF8F0" stroke="#F0B27A" stroke-width="1.5"/>
+    <text x="62" y="1244" class="h" font-size="16">Lectura para branding y estructura</text>
+
+    <rect x="62" y="1262" width="12" height="12" fill="#B54708"/>
+    <text x="84" y="1273" class="t" font-size="13" font-weight="700">1 · Contenido = plantilla demo "Alpine / Pods / Snack Bars".</text>
+    <text x="84" y="1292" class="m" font-size="12">No refleja tech/gaming. Acción: reemplazar copy + imágenes (tarea de contenido/CMS y datos, NO código).</text>
+
+    <rect x="62" y="1312" width="12" height="12" fill="#2D6BE3"/>
+    <text x="84" y="1323" class="t" font-size="13" font-weight="700">2 · Estructura = componentes estándar (banner, topSellers, quickOrder).</text>
+    <text x="84" y="1342" class="m" font-size="12">Alineado con standard-first (ADR-0002). Recomendación: mantener la estructura, cambiar contenido y branding.</text>
+
+    <rect x="62" y="1362" width="12" height="12" fill="#2D6BE3"/>
+    <text x="84" y="1373" class="t" font-size="13" font-weight="700">3 · Branding aún sin definir (logo, paleta, tipografía).</text>
+    <text x="84" y="1392" class="m" font-size="12">Vive en theme B2B_Commerce + branding sets. Aplicar vía Experience Builder. Valores: pendiente de validación en org.</text>
+
+    <rect x="62" y="1412" width="12" height="12" fill="#2D6BE3"/>
+    <text x="84" y="1423" class="t" font-size="13" font-weight="700">4 · Responsive: secciones pasan a 1 columna en mobile.</text>
+    <text x="84" y="1442" class="m" font-size="12">layoutDirectionMobile = "column" en el metadata → coherente con principio mobile-first.</text>
+
+    <text x="62" y="1486" class="m" font-size="12" font-style="italic">Fuente: force-app/.../sfdc_cms__view/home/content.json · No se inventaron componentes; lo no verificable queda como "pendiente de validación en org".</text>
+
+    <!-- mobile mini frame -->
+    <rect x="858" y="1262" width="200" height="368" rx="14" fill="#FFFFFF" stroke="#9AA3AF" stroke-width="1.5"/>
+    <text x="958" y="1283" class="m" font-size="11" text-anchor="middle">Mobile (1 columna)</text>
+    <rect x="874" y="1294" width="168" height="22" class="band"/>
+    <text x="880" y="1309" class="m" font-size="9">Header · search · carrito</text>
+    <rect x="874" y="1322" width="168" height="60" class="ph"/>
+    <text x="880" y="1356" class="lblt" fill="#1B1B1F">Hero banner</text>
+    <rect x="874" y="1388" width="168" height="70" class="band"/>
+    <text x="880" y="1400" class="m" font-size="9">Recommended For You</text>
+    <rect x="884" y="1408" width="40" height="42" class="card"/>
+    <rect x="930" y="1408" width="40" height="42" class="card"/>
+    <rect x="976" y="1408" width="40" height="42" class="card"/>
+    <rect x="874" y="1464" width="168" height="60" class="band"/>
+    <text x="880" y="1476" class="m" font-size="9">Quick Order</text>
+    <rect x="884" y="1484" width="148" height="14" class="card"/>
+    <rect x="884" y="1502" width="148" height="14" class="card"/>
+    <rect x="874" y="1530" width="168" height="50" class="ph"/>
+    <text x="880" y="1556" class="lblt" fill="#1B1B1F">Banner 2</text>
+    <rect x="874" y="1586" width="168" height="30" class="band"/>
+    <text x="880" y="1605" class="m" font-size="9">Footer</text>
+  </g>
+</svg>

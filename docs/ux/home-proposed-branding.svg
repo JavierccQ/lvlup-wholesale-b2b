@@ -1,0 +1,203 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1700" viewBox="0 0 1200 1700" font-family="Space Grotesk, Segoe UI, Arial, sans-serif">
+  <defs>
+    <linearGradient id="heroGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2A1259"/>
+      <stop offset="0.6" stop-color="#160B36"/>
+      <stop offset="1" stop-color="#0E1030"/>
+    </linearGradient>
+    <linearGradient id="bannerGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#4C1D95"/>
+      <stop offset="1" stop-color="#0E1030"/>
+    </linearGradient>
+    <linearGradient id="logoGrad" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#6D28D9"/>
+      <stop offset="1" stop-color="#22D3EE"/>
+    </linearGradient>
+  </defs>
+  <style>
+    .ink   { fill:#15172A; }
+    .m     { fill:#6B7280; }
+    .lm    { fill:#B9BECC; }
+    .h     { font-weight:700; }
+    .card  { fill:#FFFFFF; stroke:#E2E5EC; stroke-width:1.2; }
+    .phl   { fill:#ECEEF4; }
+    .badge { fill:#EDE9FE; }
+    .bt    { fill:#6D28D9; font-size:10px; font-weight:700; }
+    .cta   { fill:#19E08B; }
+    .ctat  { fill:#06281C; font-weight:700; }
+    .ghost { fill:none; stroke:#22D3EE; stroke-width:1.4; }
+    .ghostt{ fill:#22D3EE; font-weight:600; }
+    .neon  { fill:#19E08B; }
+    .cyan  { fill:#22D3EE; }
+  </style>
+
+  <rect x="0" y="0" width="1200" height="1700" fill="#FFFFFF"/>
+
+  <!-- Title -->
+  <text x="40" y="34" class="ink h" font-size="22">LvlUp WholeSale — HomePage propuesta (rebrand tech / gaming)</text>
+  <text x="40" y="54" class="m" font-size="12">Misma estructura estándar (sin cambios de layout ni código) · branding aplicado vía theme + branding sets · contenido tech/gaming</text>
+
+  <!-- ===================== HEADER (dark) ===================== -->
+  <g>
+    <rect x="40" y="72" width="1120" height="64" fill="#0E1030"/>
+    <rect x="40" y="136" width="1120" height="3" fill="#19E08B"/>
+    <!-- logo -->
+    <rect x="62" y="90" width="30" height="30" rx="7" fill="url(#logoGrad)"/>
+    <rect x="68" y="106" width="4" height="8" fill="#FFFFFF"/>
+    <rect x="75" y="101" width="4" height="13" fill="#FFFFFF"/>
+    <rect x="82" y="96" width="4" height="18" fill="#FFFFFF"/>
+    <text x="102" y="110" font-size="16" class="h" fill="#FFFFFF">LvlUp</text>
+    <text x="102" y="124" font-size="9" class="lm" letter-spacing="1">WHOLESALE</text>
+    <!-- nav -->
+    <text x="240" y="113" font-size="13" class="lm">Catálogo    Categorías    Pedido rápido    Bundles</text>
+    <!-- search -->
+    <rect x="640" y="99" width="280" height="30" rx="6" fill="#1B1E3A" stroke="#2E3358"/>
+    <text x="654" y="118" font-size="12" class="lm">Buscar producto o SKU…</text>
+    <text x="950" y="118" font-size="13" class="lm">Mi cuenta</text>
+    <rect x="1040" y="99" width="98" height="30" rx="6" fill="#6D28D9"/>
+    <text x="1089" y="118" font-size="13" class="h" fill="#FFFFFF" text-anchor="middle">Carrito</text>
+  </g>
+
+  <!-- ===================== HERO (dark gaming) ===================== -->
+  <g>
+    <rect x="40" y="152" width="1120" height="300" rx="2" fill="url(#heroGrad)"/>
+    <!-- decorative neon accents -->
+    <circle cx="1010" cy="250" r="120" fill="#6D28D9" opacity="0.35"/>
+    <circle cx="1080" cy="360" r="70" fill="#22D3EE" opacity="0.25"/>
+    <text x="80" y="212" font-size="12" class="cyan h" letter-spacing="3">DISTRIBUCIÓN MAYORISTA B2B</text>
+    <text x="80" y="258" font-size="34" class="h" fill="#FFFFFF">Sube de nivel tu catálogo.</text>
+    <text x="80" y="300" font-size="30" class="h" fill="#FFFFFF">Tecnología y <tspan class="neon">gaming</tspan> al por mayor.</text>
+    <text x="80" y="334" font-size="14" class="lm">Consolas, PC, componentes y accesorios con precio por volumen para tu negocio.</text>
+    <rect x="80" y="356" width="180" height="44" rx="6" class="cta"/>
+    <text x="170" y="383" font-size="14" class="ctat" text-anchor="middle">Explorar catálogo</text>
+    <rect x="276" y="356" width="180" height="44" rx="6" class="ghost"/>
+    <text x="366" y="383" font-size="14" class="ghostt" text-anchor="middle">Solicitar alta B2B</text>
+    <text x="80" y="430" font-size="11" class="lm" opacity="0.8">Componente: dxp_content_layout:banner (sin cambios) · solo imagen + copy + overlay de marca</text>
+  </g>
+
+  <!-- ===================== DESTACADOS (light) ===================== -->
+  <g>
+    <rect x="40" y="470" width="1120" height="252" rx="2" fill="#F7F8FB" stroke="#E2E5EC"/>
+    <text x="62" y="508" class="ink h" font-size="18">Destacados para tu cuenta</text>
+    <text x="62" y="528" class="m" font-size="11">b2c_lite_commerce:topSellers (sin cambios) · 6 productos</text>
+    <g>
+      <rect x="62"  y="540" width="170" height="166" rx="8" class="card"/>
+      <rect x="252" y="540" width="170" height="166" rx="8" class="card"/>
+      <rect x="442" y="540" width="170" height="166" rx="8" class="card"/>
+      <rect x="632" y="540" width="170" height="166" rx="8" class="card"/>
+      <rect x="822" y="540" width="170" height="166" rx="8" class="card"/>
+      <rect x="1012" y="540" width="120" height="166" rx="8" class="card"/>
+    </g>
+    <!-- representative card 1 -->
+    <rect x="74" y="552" width="146" height="78" rx="4" class="phl"/>
+    <rect x="80" y="560" width="58" height="16" rx="8" class="badge"/>
+    <text x="90" y="572" class="bt">CONSOLAS</text>
+    <rect x="74" y="640" width="120" height="9" class="phl"/>
+    <text x="74" y="678" class="ink" font-size="12" font-weight="700">desde € —,—</text>
+    <rect x="150" y="664" width="70" height="24" rx="5" class="cta"/>
+    <text x="185" y="680" class="ctat" font-size="10" text-anchor="middle">Añadir</text>
+    <text x="640" y="700" class="m" font-size="11" text-anchor="middle">cards 2–6: badges Laptops · Monitores · Periféricos · Networking · Componentes</text>
+  </g>
+
+  <!-- ===================== PEDIDO RÁPIDO + BANNER ===================== -->
+  <g>
+    <!-- left: quick order (light) -->
+    <rect x="40" y="740" width="545" height="322" rx="2" fill="#F7F8FB" stroke="#E2E5EC"/>
+    <text x="62" y="780" class="ink h" font-size="18">Pedido rápido por SKU</text>
+    <text x="62" y="800" class="m" font-size="11">commerce_builder:quickOrder (sin cambios) · ideal para revendedores</text>
+    <text x="62"  y="832" class="ink" font-size="12" font-weight="700">Producto</text>
+    <text x="410" y="832" class="ink" font-size="12" font-weight="700">Cantidad</text>
+    <line x1="62" y1="840" x2="565" y2="840" stroke="#E2E5EC"/>
+    <g>
+      <rect x="62" y="852" width="320" height="26" rx="5" class="card"/>
+      <text x="72" y="869" class="m" font-size="11">Introduce SKU</text>
+      <rect x="402" y="852" width="80" height="26" rx="5" class="card"/>
+      <rect x="62" y="886" width="320" height="26" rx="5" class="card"/>
+      <text x="72" y="903" class="m" font-size="11">Introduce SKU</text>
+      <rect x="402" y="886" width="80" height="26" rx="5" class="card"/>
+      <rect x="62" y="920" width="320" height="26" rx="5" class="card"/>
+      <text x="72" y="937" class="m" font-size="11">Introduce SKU</text>
+      <rect x="402" y="920" width="80" height="26" rx="5" class="card"/>
+    </g>
+    <text x="62" y="976" class="ghostt" fill="#6D28D9" font-size="13" font-weight="700">+ Añadir producto</text>
+    <rect x="402" y="1008" width="160" height="38" rx="6" class="cta"/>
+    <text x="482" y="1032" class="ctat" text-anchor="middle">Añadir al carrito</text>
+
+    <!-- right: banner (dark violet) -->
+    <rect x="605" y="740" width="555" height="322" rx="2" fill="url(#bannerGrad)"/>
+    <circle cx="690" cy="820" r="80" fill="#22D3EE" opacity="0.18"/>
+    <text x="1140" y="828" font-size="12" class="cyan h" letter-spacing="2" text-anchor="end">PARA TU TIENDA</text>
+    <text x="1140" y="866" font-size="24" class="h" fill="#FFFFFF" text-anchor="end">Monta el setup gaming</text>
+    <text x="1140" y="896" font-size="24" class="h" fill="#FFFFFF" text-anchor="end">de tu negocio</text>
+    <text x="1140" y="924" font-size="13" class="lm" text-anchor="end">Bundles para revendedores con margen optimizado.</text>
+    <rect x="980" y="940" width="140" height="40" rx="6" class="cta"/>
+    <text x="1050" y="965" class="ctat" text-anchor="middle">Ver bundles</text>
+    <rect x="826" y="940" width="140" height="40" rx="6" class="ghost"/>
+    <text x="896" y="965" class="ghostt" text-anchor="middle">Hablar con ventas</text>
+  </g>
+
+  <!-- ===================== FOOTER (dark) ===================== -->
+  <g>
+    <rect x="40" y="1080" width="1120" height="104" fill="#0E1030"/>
+    <rect x="62" y="1100" width="24" height="24" rx="6" fill="url(#logoGrad)"/>
+    <text x="96" y="1117" font-size="14" class="h" fill="#FFFFFF">LvlUp <tspan class="lm" font-weight="400">WholeSale</tspan></text>
+    <text x="300" y="1112" class="lm" font-size="12" font-weight="700">Tienda</text>
+    <text x="500" y="1112" class="lm" font-size="12" font-weight="700">Cuenta</text>
+    <text x="700" y="1112" class="lm" font-size="12" font-weight="700">Soporte</text>
+    <text x="900" y="1112" class="lm" font-size="12" font-weight="700">Legal</text>
+    <text x="300" y="1134" fill="#5A6080" font-size="11">Catálogo · Bundles</text>
+    <text x="500" y="1134" fill="#5A6080" font-size="11">Pedidos · Reorder</text>
+    <text x="700" y="1134" fill="#5A6080" font-size="11">Contacto · FAQ</text>
+    <text x="900" y="1134" fill="#5A6080" font-size="11">Términos · Privacidad</text>
+    <text x="96" y="1164" fill="#5A6080" font-size="11">© LvlUp WholeSale · Distribución mayorista B2B — tecnología y gaming</text>
+  </g>
+
+  <!-- ===================== PALETA + TIPOGRAFÍA ===================== -->
+  <g>
+    <rect x="40" y="1212" width="1120" height="450" rx="6" fill="#FBFAFF" stroke="#D9CFF5" stroke-width="1.5"/>
+    <text x="62" y="1246" class="ink h" font-size="16">Branding propuesto — tech / gaming</text>
+
+    <!-- swatches -->
+    <text x="62" y="1278" class="m" font-size="12" font-weight="700">Paleta</text>
+    <g>
+      <rect x="62"  y="1290" width="150" height="54" rx="6" fill="#6D28D9"/>
+      <text x="70" y="1364" class="ink" font-size="11" font-weight="700">#6D28D9</text>
+      <text x="70" y="1380" class="m" font-size="10">Violeta · marca</text>
+
+      <rect x="226" y="1290" width="150" height="54" rx="6" fill="#0E1030"/>
+      <text x="234" y="1364" class="ink" font-size="11" font-weight="700">#0E1030</text>
+      <text x="234" y="1380" class="m" font-size="10">Índigo · superficie dark</text>
+
+      <rect x="390" y="1290" width="150" height="54" rx="6" fill="#19E08B"/>
+      <text x="398" y="1364" class="ink" font-size="11" font-weight="700">#19E08B</text>
+      <text x="398" y="1380" class="m" font-size="10">Verde "Power-Up" · CTA</text>
+
+      <rect x="554" y="1290" width="150" height="54" rx="6" fill="#22D3EE"/>
+      <text x="562" y="1364" class="ink" font-size="11" font-weight="700">#22D3EE</text>
+      <text x="562" y="1380" class="m" font-size="10">Cian · acento / enlaces</text>
+
+      <rect x="718" y="1290" width="150" height="54" rx="6" fill="#FF4D9D"/>
+      <text x="726" y="1364" class="ink" font-size="11" font-weight="700">#FF4D9D</text>
+      <text x="726" y="1380" class="m" font-size="10">Magenta · highlight (opcional)</text>
+
+      <rect x="882" y="1290" width="73" height="54" rx="6" fill="#15172A"/>
+      <rect x="959" y="1290" width="73" height="54" rx="6" fill="#F5F6FA" stroke="#E2E5EC"/>
+      <text x="890" y="1364" class="ink" font-size="11" font-weight="700">#15172A / #F5F6FA</text>
+      <text x="890" y="1380" class="m" font-size="10">Tinta / fondo claro</text>
+    </g>
+
+    <!-- typography -->
+    <text x="62" y="1424" class="m" font-size="12" font-weight="700">Tipografía</text>
+    <text x="62" y="1456" class="ink h" font-size="26">Space Grotesk — titulares</text>
+    <text x="62" y="1480" class="m" font-size="11">Display geométrica, carácter tech/gaming. Pesos 600–700 para headings y CTAs.</text>
+    <text x="62" y="1512" class="ink" font-size="18">Inter — texto y catálogo</text>
+    <text x="62" y="1532" class="m" font-size="11">Alta legibilidad para precios, SKUs, tablas y fichas de producto. Peso 400–600.</text>
+
+    <!-- application notes -->
+    <line x1="62" y1="1556" x2="1138" y2="1556" stroke="#E2E5EC"/>
+    <text x="62" y="1582" class="ink" font-size="12" font-weight="700">Cómo se aplica (sin código):</text>
+    <text x="62" y="1602" class="m" font-size="12">• Tema y colores → theme "B2B_Commerce" + branding sets (B2B_Commerce, B2B_Home_Banner, B2B_Footer, B2B_Right_Panel) en Experience Builder.</text>
+    <text x="62" y="1620" class="m" font-size="12">• Copy e imágenes → contenido / CMS y datos (no metadata de código). Estructura y componentes estándar: intactos (alineado con ADR-0002).</text>
+    <text x="62" y="1638" class="m" font-size="12">• Disponibilidad de fuentes custom (Space Grotesk / Inter) en el theme: PENDIENTE DE VALIDACIÓN EN ORG. Esto es decisión de negocio/UX, no un ADR.</text>
+  </g>
+</svg>
