@@ -64,7 +64,7 @@
                     "linkAssistiveText" : "",
                     "paddingHorizontal" : "none",
                     "paddingVertical" : "none",
-                    "text" : "Unleash Your Inner Power: Fuel Your Day with Alpine Energy!",
+                    "text" : "Sube de nivel tu catálogo. Tecnología y gaming al por mayor.",
                     "textAlign" : "left",
                     "textDecoration" : "{\"bold\": false}",
                     "textDisplayInfo" : "{\"textStyle\": \"heading-xlarge\"}"
@@ -83,8 +83,8 @@
                     "alignment" : "left",
                     "size" : "large",
                     "stretch" : "standard",
-                    "text" : "Shop Now",
-                    "type" : "secondary",
+                    "text" : "Explorar catálogo",
+                    "type" : "primary",
                     "url" : "javascript:void(0)"
                   },
                   "definition" : "dxp_base:button",
@@ -101,7 +101,7 @@
                     "alignment" : "center",
                     "size" : "standard",
                     "stretch" : "standard",
-                    "text" : "Contact Us",
+                    "text" : "Solicitar alta B2B",
                     "type" : "secondary"
                   },
                   "definition" : "dxp_base:button",
@@ -155,7 +155,7 @@
             "children" : [ {
               "attributes" : {
                 "browseStep" : 3,
-                "headerText" : "Recommended For You",
+                "headerText" : "Destacados para tu cuenta",
                 "pageSize" : 6
               },
               "definition" : "b2c_lite_commerce:topSellers",
@@ -187,16 +187,16 @@
           "children" : [ {
             "children" : [ {
               "attributes" : {
-                "addEntryButtonText" : "+ Add Product",
-                "addToCartButtonProcessingText" : "Adding...",
-                "addToCartButtonText" : "Add To Cart",
-                "incrementValueGuideText" : "Sold in increments of {0}",
-                "maximumValueGuideText" : "Maximum quantity is {0}",
-                "minimumValueGuideText" : "Minimum quantity is {0}",
+                "addEntryButtonText" : "+ Añadir producto",
+                "addToCartButtonProcessingText" : "Añadiendo…",
+                "addToCartButtonText" : "Añadir al carrito",
+                "incrementValueGuideText" : "Se vende en múltiplos de {0}",
+                "maximumValueGuideText" : "Cantidad máxima: {0}",
+                "minimumValueGuideText" : "Cantidad mínima: {0}",
                 "numberOfLineItemsToAddEachTime" : "3",
                 "numberOfLineItemsToStart" : "5",
-                "searchInputPlaceHolderText" : "Enter Sku",
-                "skuLabelText" : "SKU# {0}"
+                "searchInputPlaceHolderText" : "Introduce SKU",
+                "skuLabelText" : "SKU {0}"
               },
               "children" : [ {
                 "children" : [ {
@@ -206,7 +206,7 @@
                     "linkAssistiveText" : "",
                     "paddingHorizontal" : "none",
                     "paddingVertical" : "none",
-                    "text" : "Quick Order",
+                    "text" : "Pedido rápido por SKU",
                     "textAlign" : "left",
                     "textDecoration" : "{\"bold\": true}",
                     "textDisplayInfo" : "{\"headingTag\": \"h2\", \"textStyle\": \"heading-large\"}"
@@ -227,7 +227,7 @@
                     "linkAssistiveText" : "",
                     "paddingHorizontal" : "none",
                     "paddingVertical" : "none",
-                    "text" : "Product",
+                    "text" : "Producto",
                     "textAlign" : "left",
                     "textDecoration" : "{\"bold\": true}",
                     "textDisplayInfo" : "{\"headingTag\": \"p\", \"textStyle\": \"body-regular\"}"
@@ -248,7 +248,7 @@
                     "linkAssistiveText" : "",
                     "paddingHorizontal" : "none",
                     "paddingVertical" : "none",
-                    "text" : "Quantity",
+                    "text" : "Cantidad",
                     "textAlign" : "left",
                     "textDecoration" : "{\"bold\": true}",
                     "textDisplayInfo" : "{\"headingTag\": \"p\", \"textStyle\": \"body-regular\"}"
@@ -291,10 +291,10 @@
                 "contentWidth" : 50,
                 "height" : 450,
                 "imageFit" : "cover",
-                "imageInfo" : "{\"imageInfoV1\":{\"url\":\"assets/images/homeBanner-right.png\",\"altText\":\"Quick Order Pods Banner\",\"contentKey\":\"\"}}",
+                "imageInfo" : "{\"imageInfoV1\":{\"url\":\"assets/images/homeBanner-right.png\",\"altText\":\"Bundles gaming para revendedores LvlUp WholeSale\",\"contentKey\":\"\"}}",
                 "imagePosition" : "center center",
                 "isBannerLink" : false,
-                "overlayColor" : "",
+                "overlayColor" : "rgba(14, 16, 48, 0.6)",
                 "showButtons" : true,
                 "showSecondaryButton" : false,
                 "singleButtonAlignment" : "left",
@@ -308,9 +308,9 @@
                     "linkAssistiveText" : "",
                     "paddingHorizontal" : "none",
                     "paddingVertical" : "none",
-                    "text" : "Unleash Your Potential with Alpine Snack Bars",
+                    "text" : "Monta el setup gaming de tu negocio",
                     "textAlign" : "left",
-                    "textColor" : "rgb(0, 0, 0)",
+                    "textColor" : "rgb(255, 255, 255)",
                     "textDecoration" : "{\"bold\": true}",
                     "textDisplayInfo" : "{\"textStyle\": \"heading-xlarge\"}"
                   },
@@ -328,7 +328,7 @@
                     "alignment" : "left",
                     "size" : "standard",
                     "stretch" : "standard",
-                    "text" : "Shop Now",
+                    "text" : "Ver bundles",
                     "type" : "primary",
                     "url" : "javascript:void(0)"
                   },
@@ -346,7 +346,7 @@
                     "alignment" : "center",
                     "size" : "standard",
                     "stretch" : "standard",
-                    "text" : "Contact Us",
+                    "text" : "Hablar con ventas",
                     "type" : "secondary"
                   },
                   "definition" : "dxp_base:button",

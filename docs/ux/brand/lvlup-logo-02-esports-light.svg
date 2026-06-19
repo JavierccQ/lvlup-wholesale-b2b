@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">LVLUP Wholesale Logo Proposal 02 — variante para fondos oscuros</title>
+  <desc id="desc">Light/reverse variant of the gaming and technology logo for dark surfaces (footer, dark header): angular shield monogram in purple and cyan with light wordmark.</desc>
+  <defs>
+    <linearGradient id="purpleCyan" x1="382" y1="116" x2="818" y2="532" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#8B2CFF"/>
+      <stop offset="0.48" stop-color="#6D28D9"/>
+      <stop offset="1" stop-color="#22D3EE"/>
+    </linearGradient>
+    <linearGradient id="cyanGrad" x1="650" y1="135" x2="815" y2="465" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#22D3EE"/>
+      <stop offset="1" stop-color="#0284C7"/>
+    </linearGradient>
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="0" stdDeviation="14" flood-color="#22D3EE" flood-opacity="0.22"/>
+    </filter>
+  </defs>
+
+  <!-- Shield icon -->
+  <g filter="url(#softGlow)">
+    <path d="M600 70 L815 155 L775 438 L600 555 L425 438 L385 155 Z" fill="#191D40" stroke="#3A3F6B" stroke-width="2.5"/>
+    <path d="M600 107 L774 174 L741 413 L600 506 L459 413 L426 174 Z" fill="#0E1030"/>
+
+    <!-- Left angular L/V shape -->
+    <path d="M470 190 L590 150 L590 440 L520 402 L520 265 L470 295 Z" fill="url(#purpleCyan)"/>
+    <path d="M520 402 L590 440 L590 342 L645 376 L645 477 L560 432 Z" fill="#7C3AED"/>
+
+    <!-- Right U shape -->
+    <path d="M650 150 L735 183 L735 403 L650 448 Z" fill="url(#cyanGrad)"/>
+    <path d="M690 205 L710 214 L710 374 L690 385 Z" fill="#0E1030"/>
+
+    <!-- Lower chevron -->
+    <path d="M445 425 L600 535 L755 425 L728 475 L600 565 L472 475 Z" fill="url(#purpleCyan)"/>
+    <path d="M482 448 L600 528 L718 448 L704 474 L600 545 L496 474 Z" fill="#22D3EE" opacity="0.85"/>
+  </g>
+
+  <!-- Wordmark -->
+  <g text-anchor="middle">
+    <text x="600" y="670"
+          font-family="Arial Black, Orbitron, Montserrat, Arial, sans-serif"
+          font-size="122"
+          font-weight="900"
+          letter-spacing="10"
+          fill="#F5F6FA">LVL<tspan fill="#7C3AED">U</tspan><tspan fill="#22D3EE">P</tspan></text>
+
+    <path d="M248 725 L342 710 L342 740 Z" fill="#7C3AED"/>
+    <text x="600" y="742"
+          font-family="Orbitron, Montserrat, Arial, sans-serif"
+          font-size="43"
+          font-weight="700"
+          letter-spacing="25"
+          fill="#22D3EE">WHOLESALE</text>
+    <path d="M952 725 L858 710 L858 740 Z" fill="#7C3AED"/>
+  </g>
+</svg>
