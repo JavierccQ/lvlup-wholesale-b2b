@@ -37,6 +37,16 @@ Captura de reglas nuevas en `MEMORY.md`:
 - Si **no existe**, preguntar explícitamente si se desea añadirla a `MEMORY.md`.
 - **Nunca** añadir reglas a `MEMORY.md` sin confirmación explícita del usuario.
 
+## Convenciones de Ejecución de Comandos en Terminal
+
+Estas convenciones existen para que cada comando coincida con las reglas de `allow` de permisos de Claude Code (definidas en `.claude/settings.local.json`) y se reduzcan las confirmaciones repetitivas. Claude Code evalúa los permisos **por subcomando**: divide cualquier comando compuesto por los operadores `&&`, `||`, `;`, `|`, `|&`, `&` y los saltos de línea, y exige que **cada** parte coincida con una regla. Por eso los comandos compuestos rompen las reglas de `allow` y terminan pidiendo confirmación.
+
+- **Ejecutar los comandos de forma aislada**: lanzar un solo comando por invocación, sin encadenarlos con `cd`, redirecciones (`>`, `>>`), heredocs (`<<EOF`) ni pipes (`|`) en la misma línea, siempre que sea posible. Un comando atómico coincide con su regla de `allow`; uno compuesto, no.
+- **Crear archivos de payload o auxiliares en un paso separado**: cuando se necesite un archivo (payload JSON, script Apex/SOQL, definición, etc.), crearlo con la herramienta de escritura de archivos (Write) en lugar de redirigirlo con `cat > archivo <<EOF` encadenado a otro comando. Luego referenciar el archivo desde el comando (`--file`, `-f`, `@archivo`).
+- **Asumir la raíz del proyecto como directorio de trabajo**: el directorio de trabajo ya es la raíz del repositorio. No anteponer `cd` a rutas absolutas al inicio de cada comando; usar rutas relativas (`force-app/...`, `scripts/...`, `docs/...`). Esto mantiene los comandos cortos y permite que coincidan con las reglas de `allow`.
+
+Las operaciones destructivas o de alcance global (p. ej. `rm -rf`, `sudo`, `sf org delete`, `git push`, resets forzados) y cualquier escritura fuera de la raíz del proyecto seguirán pidiendo confirmación de forma intencionada (ver el bloque `deny` en `.claude/settings.local.json`).
+
 ## Comandos Comunes
 
 ### Desplegar y Recuperar Metadata
