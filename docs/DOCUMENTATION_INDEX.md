@@ -86,6 +86,7 @@ Vivirá bajo `docs/ux/`. Describe experiencia, journeys y comportamiento visual.
 | `docs/ux/cart-checkout-experience.md` | Experiencia de carrito y checkout | Creado |
 | `docs/ux/empty-error-loading-states.md` | Comportamiento de estados empty, error y loading | Creado |
 | `docs/ux/wireframes.md` | Wireframes (texto, Mermaid o assets visuales) | Creado |
+| `docs/ux/contextual-quick-buy-design.md` | Diseño funcional/UX y arquitectura conceptual de componentes LWC del feature *Contextual Quick Buy* (modal de compra contextual al producto) | En revisión |
 
 ---
 
@@ -118,6 +119,7 @@ modelo de plataforma.
 | `docs/salesforce/org-validation-checklist.md` | Checklist de validación de capacidades en la Developer Org | Creado |
 | `docs/salesforce/commerce-cloud-glossary.md` | Glosario de términos de Commerce Cloud | Creado |
 | `docs/salesforce/manual-add-product-runbook.md` | Runbook del alta manual de producto (categoría, producto, precio, imagen, publicación, reindex) | Creado |
+| `docs/salesforce/manual-inventory-setup-runbook.md` | Runbook de configuración y mantenimiento de inventario y reglas de compra B2B (campos custom en Product2; alternativa a OCI en DE) | Creado |
 
 ---
 
