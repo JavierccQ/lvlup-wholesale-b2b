@@ -117,6 +117,7 @@ modelo de plataforma.
 | `docs/salesforce/data-loading-strategy.md` | Estrategia de carga de datos (set MVP, orden, dependencias) | Creado |
 | `docs/salesforce/org-validation-checklist.md` | Checklist de validación de capacidades en la Developer Org | Creado |
 | `docs/salesforce/commerce-cloud-glossary.md` | Glosario de términos de Commerce Cloud | Creado |
+| `docs/salesforce/manual-add-product-runbook.md` | Runbook del alta manual de producto (categoría, producto, precio, imagen, publicación, reindex) | Creado |
 
 ---
 
