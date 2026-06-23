@@ -1,0 +1,30 @@
+.block-label {
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #9aa0c2;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+.attr-row {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 10px;
+}
+
+.attr-label {
+    font-size: 12px;
+    color: #9aa0c2;
+}
+
+.attr-select {
+    height: 38px;
+    border: 1px solid #e5e5e5;
+    border-radius: 6px;
+    background: #ffffff;
+    color: #15172a;
+    padding: 0 10px;
+    font-size: 14px;
+}

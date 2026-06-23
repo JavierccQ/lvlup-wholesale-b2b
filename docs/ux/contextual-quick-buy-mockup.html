@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Contextual Quick Buy — UX Spec (estilo Figma) · LvlUp WholeSale</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* === Tema oscuro del Site === */
+    --bg:#11132C;             /* BackgroundColor rgb(17,19,44) */
+    --surface:#1C2049;        /* _BackgroundColor1 rgb(28,32,73) — modal/card */
+    --surface-2:#14172F;      /* panel recendido (resumen) */
+    --line:#2B3160;           /* divisor sobre oscuro */
+    --ink:#FFFFFF;            /* TextColor */
+    --muted:#9AA0C2;          /* texto secundario derivado */
+    /* Marca (branding set B2B_Commerce, confirmado por retrieve) */
+    --brand:#19E08B;          /* ButtonColor */
+    --brand-ink:#06281C;      /* ButtonTextColor */
+    --brand-hover:#39E99E;    /* _ButtonColor1 */
+    --accent:#B490EB;         /* _PrimaryAccentColor2 (violeta claro on-dark) */
+    --accent-deep:#6D28D9;    /* PrimaryAccentColor */
+    --field:#FFFFFF;          /* FormElementBackgroundColor (inputs blancos) */
+    --field-ink:#15172A;      /* texto sobre input blanco */
+    --field-line:#E5E5E5;     /* FormElementBorderColor */
+    /* Semánticos adaptados a fondo oscuro */
+    --ok:#19E08B; --ok-txt:#5BE7A8; --ok-bg:rgba(25,224,139,.12);
+    --warn:#FFB75D; --warn-txt:#FFC97A; --warn-bg:rgba(255,183,93,.14);
+    --bad:#FF6B66; --bad-txt:#FF8A84; --bad-bg:rgba(255,107,102,.14);
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 18px 40px rgba(0,0,0,.45);
+    --radius:14px;            /* superficies */
+    --radius-ctl:6px;         /* controles (branding = 6px) */
+    --font:'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --head:'Space Grotesk','Inter',-apple-system,sans-serif;
+    --mono:"SFMono-Regular",ui-monospace,Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:var(--font);color:var(--ink);background:var(--bg);line-height:1.65;font-size:.875rem}
+  .wrap{max-width:1240px;margin:0 auto;padding:32px 24px 80px}
+  h1{font-family:var(--head);font-size:34px;letter-spacing:-.02em;margin:0 0 4px;font-weight:700;color:#fff}
+  h2{font-family:var(--head);font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:48px 0 18px;font-weight:600}
+  .sub{color:var(--muted);margin:0 0 6px;max-width:760px}
+  .pill{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:3px 10px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.03);color:var(--ink)}
+  .pill.ok{color:var(--ok-txt);background:var(--ok-bg);border-color:transparent}
+  .pill.warn{color:var(--warn-txt);background:var(--warn-bg);border-color:transparent}
+  .pill.bad{color:var(--bad-txt);background:var(--bad-bg);border-color:transparent}
+  .pill.brand{color:#C9B6FF;background:rgba(139,92,246,.16);border-color:transparent}
+  .pill.swatch i{width:12px;height:12px;border-radius:3px;display:inline-block;border:1px solid rgba(255,255,255,.18)}
+  .topmeta{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+  .mono{font-family:var(--mono);font-size:12px}
+
+  /* Figma-like frame */
+  .gallery{display:flex;flex-wrap:wrap;gap:34px}
+  .frame{display:flex;flex-direction:column;gap:8px}
+  .frame__label{font-family:var(--mono);font-size:12px;color:var(--accent);display:flex;align-items:center;gap:8px}
+  .frame__label .dot{width:8px;height:8px;border-radius:2px;background:var(--accent)}
+  .frame__body{background:var(--surface);border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid var(--line);overflow:hidden}
+
+  /* ---------- Modal ---------- */
+  .modal{width:380px}
+  .m-head{display:flex;align-items:center;justify-content:space-between;padding:16px 18px;border-bottom:1px solid var(--line)}
+  .m-head h3{font-family:var(--head);margin:0;font-size:16px;font-weight:600;color:#fff}
+  .x{width:28px;height:28px;border-radius:var(--radius-ctl);border:1px solid var(--line);background:transparent;color:var(--muted);font-size:15px;display:grid;place-items:center;cursor:default}
+  .m-body{padding:16px 18px;display:flex;flex-direction:column;gap:14px}
+  .prod{display:flex;gap:12px;align-items:center}
+  .thumb{width:60px;height:60px;border-radius:12px;background:linear-gradient(135deg,var(--accent-deep),#854BDF);color:#fff;display:grid;place-items:center;font-size:24px;flex:none;box-shadow:inset 0 0 0 1px rgba(255,255,255,.18)}
+  .prod .name{font-family:var(--head);font-weight:600;font-size:15px;color:#fff}
+  .prod .meta{font-size:12px;color:var(--muted)}
+  .sku{font-family:var(--mono);font-size:11px;color:var(--muted)}
+  .stock{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600}
+  .stock .led{width:9px;height:9px;border-radius:50%;box-shadow:0 0 8px currentColor}
+  .led.ok{background:var(--ok);color:var(--ok)} .led.warn{background:var(--warn);color:var(--warn)} .led.bad{background:var(--bad);color:var(--bad)}
+  .stock small{font-weight:500;color:var(--muted)}
+  .block-label{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:6px}
+  .stepper{display:flex;align-items:center;gap:10px}
+  .stepper button{width:38px;height:38px;border-radius:var(--radius-ctl);border:1px solid var(--line);background:rgba(255,255,255,.03);font-size:18px;color:var(--ink);display:grid;place-items:center}
+  .qty{width:84px;height:38px;border:1px solid var(--field-line);border-radius:var(--radius-ctl);text-align:center;font-size:16px;font-weight:700;display:grid;place-items:center;background:var(--field);color:var(--field-ink)}
+  .qty.invalid{border-color:var(--bad);color:var(--bad-txt);background:var(--bad-bg)}
+  .rules{font-size:12px;color:var(--muted);margin-top:6px}
+  .summary{display:flex;align-items:baseline;justify-content:space-between;background:var(--surface-2);border:1px solid var(--line);border-radius:var(--radius-ctl);padding:12px 14px}
+  .summary .calc{font-size:12px;color:var(--muted)}
+  .summary .total{font-family:var(--head);font-size:18px;font-weight:700;color:#fff}
+  .msg{font-size:13px;border-radius:var(--radius-ctl);padding:10px 12px;display:flex;gap:8px;align-items:flex-start}
+  .msg.bad{background:var(--bad-bg);color:var(--bad-txt)}
+  .msg.ok{background:var(--ok-bg);color:var(--ok-txt)}
+  .msg.warn{background:var(--warn-bg);color:var(--warn-txt)}
+  .attr-hidden{font-size:12px;color:var(--muted);border:1px dashed var(--line);border-radius:var(--radius-ctl);padding:8px 10px}
+  .m-foot{display:flex;gap:10px;padding:14px 18px;border-top:1px solid var(--line)}
+  .btn{flex:1;height:44px;border-radius:var(--radius-ctl);font-size:14px;font-weight:600;font-family:var(--font);border:1px solid var(--brand);background:transparent;color:var(--brand);display:grid;place-items:center;cursor:default}
+  .btn.primary{background:var(--brand);border-color:var(--brand);color:var(--brand-ink);box-shadow:0 0 18px rgba(25,224,139,.35)}
+  .btn.primary[disabled]{background:#2A2E50;border-color:#2A2E50;color:#6E739B;box-shadow:none}
+  .btn .spin{width:16px;height:16px;border-radius:50%;border:2px solid rgba(6,40,28,.35);border-top-color:var(--brand-ink);display:inline-block;margin-right:8px;vertical-align:-2px;animation:spin .8s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+
+  /* skeleton */
+  .sk{background:linear-gradient(90deg,#1d2042 25%,#2a2e54 37%,#1d2042 63%);background-size:400% 100%;animation:sh 1.3s ease infinite;border-radius:8px}
+  @keyframes sh{0%{background-position:100% 0}100%{background-position:-100% 0}}
+
+  /* PLP card */
+  .plp{display:flex;gap:18px}
+  .pcard{width:230px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+  .pcard .img{height:140px;background:linear-gradient(135deg,var(--accent-deep),#854BDF);display:grid;place-items:center;color:#fff;font-size:42px}
+  .pcard .pad{padding:12px 14px}
+  .pcard .pname{font-family:var(--head);font-weight:600;font-size:15px;margin:0 0 2px;color:#fff}
+  .pcard .pprice{font-family:var(--head);font-weight:700;margin:8px 0 12px;font-size:16px;color:#fff}
+  .pcard .buy{width:100%;height:40px;border-radius:var(--radius-ctl);background:var(--brand);color:var(--brand-ink);font-weight:600;border:none;display:flex;align-items:center;justify-content:center;gap:8px;font-family:var(--font);box-shadow:0 0 16px rgba(25,224,139,.3)}
+  .tagline{font-size:11px;color:var(--muted)}
+
+  /* Flow strip */
+  .flow{display:flex;flex-wrap:wrap;align-items:stretch;gap:10px}
+  .step{flex:1;min-width:120px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:12px;box-shadow:var(--shadow)}
+  .step .n{width:22px;height:22px;border-radius:6px;background:rgba(139,92,246,.18);color:var(--accent);font-weight:700;font-size:12px;display:grid;place-items:center;margin-bottom:8px;font-family:var(--head)}
+  .step .t{font-size:13px;font-weight:600;color:var(--ink)}
+  .step .ev{font-family:var(--mono);font-size:11px;color:var(--accent);margin-top:6px}
+  .arrow{align-self:center;color:#3a3f63;font-size:20px}
+
+  /* Anatomy callouts */
+  .anat{display:flex;gap:26px;flex-wrap:wrap;align-items:flex-start}
+  .tag{display:inline-grid;place-items:center;min-width:20px;height:20px;border-radius:6px;background:var(--accent-deep);color:#fff;font-size:11px;font-weight:700;padding:0 5px}
+  .legend{flex:1;min-width:300px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
+  table{border-collapse:collapse;width:100%;font-size:13px}
+  th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{background:rgba(255,255,255,.03);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+  td{color:var(--ink)}
+  td .mono{color:var(--accent)}
+  .anchor{display:inline-grid;place-items:center;min-width:20px;height:20px;border-radius:50%;background:#fff;color:var(--bg);font-size:11px;font-weight:700;margin-left:6px}
+  .foot-note{margin-top:10px;font-size:12px;color:var(--muted)}
+  @media(max-width:560px){.modal{width:100%}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>Contextual Quick Buy — UX Spec</h1>
+  <p class="sub">Especificación visual (estática, estilo Figma) del feature <strong>Contextual Quick Buy</strong> para el storefront B2B de LvlUp WholeSale. Sirve para analizar el flujo, la anatomía de componentes y los estados antes de codificar. No es funcional.</p>
+  <p class="sub" style="margin-top:8px"><strong>Tema oscuro</strong> con tokens <strong>confirmados</strong> vía retrieve del branding set <span class="mono">B2B_Commerce</span>: fondo <span class="mono">#11132C</span>, superficie <span class="mono">#1C2049</span>, CTA verde, acento violeta, texto blanco e inputs blancos.</p>
+  <div class="topmeta">
+    <span class="pill swatch"><i style="background:#11132C"></i> Fondo #11132C</span>
+    <span class="pill swatch"><i style="background:#1C2049"></i> Superficie #1C2049</span>
+    <span class="pill swatch"><i style="background:#19E08B"></i> CTA #19E08B</span>
+    <span class="pill swatch"><i style="background:#6D28D9"></i> Acento #6D28D9</span>
+    <span class="pill brand">Inter + Space Grotesk</span>
+  </div>
+  <div class="topmeta">
+    <span class="pill brand">Prefijo LWC · <span class="mono">lvlup</span></span>
+    <span class="pill">Producto demo · <span class="mono">LVL-CEL-001</span></span>
+    <span class="pill">Precio Buyer Group · 419,00 €</span>
+    <span class="pill ok">● En stock</span>
+    <span class="pill warn">● Stock bajo</span>
+    <span class="pill bad">● Sin stock / Error</span>
+  </div>
+
+  <!-- ============ FLOW ============ -->
+  <h2>1 · Flujo end-to-end</h2>
+  <div class="flow">
+    <div class="step"><div class="n">1</div><div class="t">Product Card</div><div class="ev">@api productId</div></div>
+    <div class="arrow">→</div>
+    <div class="step"><div class="n">2</div><div class="t">Click “Comprar”</div><div class="ev">buyclick</div></div>
+    <div class="arrow">→</div>
+    <div class="step"><div class="n">3</div><div class="t">Abre modal + carga producto</div><div class="ev">loadingProduct</div></div>
+    <div class="arrow">→</div>
+    <div class="step"><div class="n">4</div><div class="t">Ajusta cantidad / atributos</div><div class="ev">quantitychange · attributechange</div></div>
+    <div class="arrow">→</div>
+    <div class="step"><div class="n">5</div><div class="t">Valida stock + reglas</div><div class="ev">stockvalidated</div></div>
+    <div class="arrow">→</div>
+    <div class="step"><div class="n">6</div><div class="t">Confirma</div><div class="ev">confirmaddtocart</div></div>
+    <div class="arrow">→</div>
+    <div class="step"><div class="n">7</div><div class="t">Add to cart real</div><div class="ev">addingToCart</div></div>
+    <div class="arrow">→</div>
+    <div class="step"><div class="n">8</div><div class="t">Feedback</div><div class="ev">addedSuccess · addError</div></div>
+  </div>
+
+  <!-- ============ ANATOMY ============ -->
+  <h2>2 · Anatomía de componentes (padre-hijo)</h2>
+  <div class="anat">
+    <div class="frame">
+      <div class="frame__label"><span class="dot"></span>Anatomy / modal</div>
+      <div class="frame__body modal">
+        <div class="m-head"><h3>Comprar producto <span class="anchor">3</span></h3><div class="x">✕</div></div>
+        <div class="m-body">
+          <div class="prod">
+            <div class="thumb">📱</div>
+            <div>
+              <div class="name">EPhone 17 Plus Ultra</div>
+              <div class="sku">SKU · LVL-CEL-001</div>
+              <div class="meta">LvlUp Mobile · Celulares</div>
+            </div>
+          </div>
+          <div>
+            <div class="stock"><span class="led ok"></span> En stock · 320 uds <small>· case pack 5</small> <span class="anchor">5</span></div>
+          </div>
+          <div class="attr-hidden">Atributos: ocultos (este producto no tiene atributos configurados) <span class="anchor">6</span></div>
+          <div>
+            <div class="block-label">Cantidad <span class="anchor">4</span></div>
+            <div class="stepper"><button>−</button><div class="qty">25</div><button>+</button></div>
+            <div class="rules">Mín: 5 · Múltiplos de 5 · Máx: 500</div>
+          </div>
+          <div class="summary"><div><div class="calc">25 uds × 419,00 €</div></div><div class="total">10.475,00 € <span class="anchor">7</span></div></div>
+        </div>
+        <div class="m-foot"><button class="btn">Cancelar</button><button class="btn primary">Añadir ✓</button></div>
+      </div>
+    </div>
+
+    <div class="legend">
+      <table>
+        <thead><tr><th>#</th><th>Componente LWC</th><th>Responsabilidad</th><th>Evento</th></tr></thead>
+        <tbody>
+          <tr><td><span class="tag">P</span></td><td><span class="mono">lvlupProductQuickBuy</span></td><td>Padre: estado + integración carrito</td><td>(orquesta)</td></tr>
+          <tr><td><span class="tag">1</span></td><td><span class="mono">lvlupQuickBuyButton</span></td><td>Botón junto a la card</td><td><span class="mono">buyclick</span></td></tr>
+          <tr><td><span class="tag">3</span></td><td><span class="mono">lvlupQuickBuyModal</span></td><td>Contenedor / re-dispatch</td><td><span class="mono">closemodal</span>, <span class="mono">confirmaddtocart</span></td></tr>
+          <tr><td><span class="tag">4</span></td><td><span class="mono">lvlupQuantitySelector</span></td><td>Stepper + reglas</td><td><span class="mono">quantitychange</span></td></tr>
+          <tr><td><span class="tag">5</span></td><td><span class="mono">lvlupStockAvailabilityPanel</span></td><td>Stock + veredicto</td><td><span class="mono">stockvalidated</span></td></tr>
+          <tr><td><span class="tag">6</span></td><td><span class="mono">lvlupProductAttributeSelector</span></td><td>Atributos (degrada si no hay)</td><td><span class="mono">attributechange</span></td></tr>
+          <tr><td><span class="tag">7</span></td><td><span class="mono">lvlupPurchaseSummary</span></td><td>precio Buyer Group × cantidad</td><td>(presentacional)</td></tr>
+        </tbody>
+      </table>
+      <div style="padding:10px 12px" class="foot-note">Datos: stock y reglas vienen de campos custom de <span class="mono">Product2</span> (<span class="mono">Inventory_Quantity__c</span>, <span class="mono">Min_Order_Quantity__c</span>, <span class="mono">Order_Increment__c</span>, <span class="mono">Max_Order_Quantity__c</span>).</div>
+    </div>
+  </div>
+
+  <!-- ============ ENTRY POINT ============ -->
+  <h2>3 · Punto de entrada — Product Card (PLP / categoría / búsqueda)</h2>
+  <div class="frame">
+    <div class="frame__label"><span class="dot"></span>plp / card-grid</div>
+    <div class="frame__body" style="padding:18px">
+      <div class="plp">
+        <div class="pcard">
+          <div class="img">📱</div>
+          <div class="pad">
+            <p class="pname">EPhone 17 Plus Ultra</p>
+            <span class="sku">LVL-CEL-001</span>
+            <p class="pprice">419,00 €</p>
+            <button class="buy">🛒 Comprar</button>
+            <p class="tagline" style="margin:8px 0 0">El botón <span class="mono">lvlupQuickBuyButton</span> se inyecta junto a la card.</p>
+          </div>
+        </div>
+        <div class="pcard">
+          <div class="img">🎮</div>
+          <div class="pad">
+            <p class="pname">Galaxy Raiders (Físico)</p>
+            <span class="sku">LVL-VGM-001</span>
+            <p class="pprice">39,90 €</p>
+            <button class="buy">🛒 Comprar</button>
+            <p class="tagline" style="margin:8px 0 0">Disponible donde haya Product Card.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ STATES ============ -->
+  <h2>4 · Estados del modal (artboards)</h2>
+  <div class="gallery">
+
+    <!-- Loading -->
+    <div class="frame">
+      <div class="frame__label"><span class="dot"></span>state / loadingProduct</div>
+      <div class="frame__body modal">
+        <div class="m-head"><h3>Comprar producto</h3><div class="x">✕</div></div>
+        <div class="m-body">
+          <div class="prod"><div class="sk" style="width:60px;height:60px;border-radius:12px"></div><div style="flex:1"><div class="sk" style="height:14px;width:70%;margin-bottom:8px"></div><div class="sk" style="height:11px;width:40%"></div></div></div>
+          <div class="sk" style="height:16px;width:55%"></div>
+          <div class="sk" style="height:38px;width:100%"></div>
+          <div class="sk" style="height:48px;width:100%"></div>
+        </div>
+        <div class="m-foot"><button class="btn">Cancelar</button><button class="btn primary" disabled>Añadir</button></div>
+      </div>
+    </div>
+
+    <!-- Ready -->
+    <div class="frame">
+      <div class="frame__label"><span class="dot"></span>state / readyToAdd</div>
+      <div class="frame__body modal">
+        <div class="m-head"><h3>Comprar producto</h3><div class="x">✕</div></div>
+        <div class="m-body">
+          <div class="prod"><div class="thumb">📱</div><div><div class="name">EPhone 17 Plus Ultra</div><div class="sku">SKU · LVL-CEL-001</div><div class="meta">LvlUp Mobile</div></div></div>
+          <div class="stock"><span class="led ok"></span> En stock · 320 uds <small>· case pack 5</small></div>
+          <div><div class="block-label">Cantidad</div><div class="stepper"><button>−</button><div class="qty">25</div><button>+</button></div><div class="rules">Mín: 5 · Múltiplos de 5 · Máx: 500</div></div>
+          <div class="summary"><div class="calc">25 uds × 419,00 €</div><div class="total">10.475,00 €</div></div>
+          <div class="msg ok">✓ Listo para añadir al carrito.</div>
+        </div>
+        <div class="m-foot"><button class="btn">Cancelar</button><button class="btn primary">Añadir ✓</button></div>
+      </div>
+    </div>
+
+    <!-- Invalid quantity -->
+    <div class="frame">
+      <div class="frame__label"><span class="dot"></span>state / invalidQuantity</div>
+      <div class="frame__body modal">
+        <div class="m-head"><h3>Comprar producto</h3><div class="x">✕</div></div>
+        <div class="m-body">
+          <div class="prod"><div class="thumb">📱</div><div><div class="name">EPhone 17 Plus Ultra</div><div class="sku">SKU · LVL-CEL-001</div><div class="meta">LvlUp Mobile</div></div></div>
+          <div class="stock"><span class="led ok"></span> En stock · 320 uds <small>· case pack 5</small></div>
+          <div><div class="block-label">Cantidad</div><div class="stepper"><button>−</button><div class="qty invalid">7</div><button>+</button></div><div class="rules">Mín: 5 · Múltiplos de 5 · Máx: 500</div></div>
+          <div class="summary"><div class="calc">— uds × 419,00 €</div><div class="total" style="color:var(--muted)">—</div></div>
+          <div class="msg bad">⚠ Este producto se vende en múltiplos de 5.</div>
+        </div>
+        <div class="m-foot"><button class="btn">Cancelar</button><button class="btn primary" disabled>Añadir</button></div>
+      </div>
+    </div>
+
+    <!-- Insufficient stock -->
+    <div class="frame">
+      <div class="frame__label"><span class="dot"></span>state / insufficientStock</div>
+      <div class="frame__body modal">
+        <div class="m-head"><h3>Comprar producto</h3><div class="x">✕</div></div>
+        <div class="m-body">
+          <div class="prod"><div class="thumb">📱</div><div><div class="name">EPhone 17 Plus Ultra</div><div class="sku">SKU · LVL-CEL-001</div><div class="meta">LvlUp Mobile</div></div></div>
+          <div class="stock"><span class="led warn"></span> Quedan 320 uds <small>· solicitado 400</small></div>
+          <div><div class="block-label">Cantidad</div><div class="stepper"><button>−</button><div class="qty invalid">400</div><button>+</button></div><div class="rules">Mín: 5 · Múltiplos de 5 · Máx: 500</div></div>
+          <div class="summary"><div class="calc">400 uds × 419,00 €</div><div class="total" style="color:var(--muted)">—</div></div>
+          <div class="msg warn">⚠ Solo quedan 320 unidades disponibles.</div>
+        </div>
+        <div class="m-foot"><button class="btn">Cancelar</button><button class="btn primary" disabled>Añadir</button></div>
+      </div>
+    </div>
+
+    <!-- Out of stock -->
+    <div class="frame">
+      <div class="frame__label"><span class="dot"></span>state / outOfStock</div>
+      <div class="frame__body modal">
+        <div class="m-head"><h3>Comprar producto</h3><div class="x">✕</div></div>
+        <div class="m-body">
+          <div class="prod"><div class="thumb" style="background:linear-gradient(135deg,#3A3F63,#555A7E)">📱</div><div><div class="name">EPhone 17 Plus Ultra</div><div class="sku">SKU · LVL-CEL-001</div><div class="meta">LvlUp Mobile</div></div></div>
+          <div class="stock"><span class="led bad"></span> Sin stock</div>
+          <div><div class="block-label">Cantidad</div><div class="stepper" style="opacity:.5"><button>−</button><div class="qty">0</div><button>+</button></div><div class="rules">No disponible para pedir ahora.</div></div>
+          <div class="msg bad">⚠ Este producto no tiene stock disponible.</div>
+        </div>
+        <div class="m-foot"><button class="btn">Cancelar</button><button class="btn primary" disabled>Sin stock</button></div>
+      </div>
+    </div>
+
+    <!-- Adding -->
+    <div class="frame">
+      <div class="frame__label"><span class="dot"></span>state / addingToCart</div>
+      <div class="frame__body modal">
+        <div class="m-head"><h3>Comprar producto</h3><div class="x">✕</div></div>
+        <div class="m-body">
+          <div class="prod"><div class="thumb">📱</div><div><div class="name">EPhone 17 Plus Ultra</div><div class="sku">SKU · LVL-CEL-001</div><div class="meta">LvlUp Mobile</div></div></div>
+          <div class="stock"><span class="led ok"></span> En stock · 320 uds</div>
+          <div><div class="block-label">Cantidad</div><div class="stepper" style="opacity:.6"><button>−</button><div class="qty">25</div><button>+</button></div></div>
+          <div class="summary"><div class="calc">25 uds × 419,00 €</div><div class="total">10.475,00 €</div></div>
+        </div>
+        <div class="m-foot"><button class="btn" disabled>Cancelar</button><button class="btn primary" disabled><span class="spin"></span>Añadiendo…</button></div>
+      </div>
+    </div>
+
+    <!-- Success -->
+    <div class="frame">
+      <div class="frame__label"><span class="dot"></span>state / addedSuccess</div>
+      <div class="frame__body modal">
+        <div class="m-head"><h3>Comprar producto</h3><div class="x">✕</div></div>
+        <div class="m-body">
+          <div class="prod"><div class="thumb">📱</div><div><div class="name">EPhone 17 Plus Ultra</div><div class="sku">SKU · LVL-CEL-001</div><div class="meta">LvlUp Mobile</div></div></div>
+          <div class="msg ok">✓ Añadido al carrito: 25 uds · 10.475,00 €</div>
+          <div class="summary"><div class="calc">Carrito actualizado</div><div class="total" style="color:var(--ok-txt)">✓</div></div>
+        </div>
+        <div class="m-foot"><button class="btn">Seguir comprando</button><button class="btn primary">Ir al carrito →</button></div>
+      </div>
+    </div>
+
+    <!-- Error -->
+    <div class="frame">
+      <div class="frame__label"><span class="dot"></span>state / addError</div>
+      <div class="frame__body modal">
+        <div class="m-head"><h3>Comprar producto</h3><div class="x">✕</div></div>
+        <div class="m-body">
+          <div class="prod"><div class="thumb">📱</div><div><div class="name">EPhone 17 Plus Ultra</div><div class="sku">SKU · LVL-CEL-001</div><div class="meta">LvlUp Mobile</div></div></div>
+          <div class="stock"><span class="led ok"></span> En stock · 320 uds</div>
+          <div class="summary"><div class="calc">25 uds × 419,00 €</div><div class="total">10.475,00 €</div></div>
+          <div class="msg bad">⚠ No se pudo añadir al carrito. Inténtalo de nuevo.</div>
+        </div>
+        <div class="m-foot"><button class="btn">Cancelar</button><button class="btn primary">Reintentar ↻</button></div>
+      </div>
+    </div>
+
+  </div>
+
+  <p class="foot-note" style="margin-top:40px">LvlUp WholeSale · Contextual Quick Buy · UX Spec estática para revisión previa al desarrollo. Tema oscuro sobre <span class="mono">#11132C</span>. Acompaña a <span class="mono">docs/ux/contextual-quick-buy-design.md</span>.</p>
+
+</div>
+</body>
+</html>

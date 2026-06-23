@@ -9,6 +9,14 @@
 > Eventos en minúsculas sin separadores. El prefijo `ccprev_` **no se usa** en este
 > proyecto. Los nombres siguen siendo conceptuales hasta su creación.
 >
+> **Mockup visual (estilo Figma):** [`contextual-quick-buy-mockup.html`](contextual-quick-buy-mockup.html) — abrir en navegador.
+>
+> **Design tokens (tema oscuro, confirmados vía retrieve del branding set
+> `B2B_Commerce`):** fondo `#11132C`, superficie `#1C2049`, texto `#FFFFFF`,
+> CTA `#19E08B` (texto `#06281C`), acento `#6D28D9`; inputs **blancos** `#FFFFFF`
+> (borde `#E5E5E5`, radius 6px); fuentes Space Grotesk (títulos) e Inter (cuerpo).
+> La UI custom debe ser oscura y armonizar con `#11132C`.
+>
 > **Documentos relacionados:** [`storefront-journey.md`](storefront-journey.md),
 > [`plp-pdp-guidelines.md`](plp-pdp-guidelines.md),
 > [`empty-error-loading-states.md`](empty-error-loading-states.md),

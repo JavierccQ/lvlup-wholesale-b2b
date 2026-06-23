@@ -1,0 +1,33 @@
+.buy-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    min-height: 40px;
+    padding: 0.6rem 1rem;
+    background: #19e08b;
+    color: #06281c;
+    border: none;
+    border-radius: 6px;
+    font-family: 'Space Grotesk', 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 0 16px rgba(25, 224, 139, 0.3);
+}
+
+.buy-button:hover {
+    background: #39e99e;
+}
+
+.buy-button:disabled {
+    background: #2a2e50;
+    color: #6e739b;
+    box-shadow: none;
+    cursor: not-allowed;
+}
+
+.icon {
+    font-size: 1.05rem;
+}

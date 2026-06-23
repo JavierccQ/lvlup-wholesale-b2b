@@ -1,0 +1,13 @@
+<!--
+  Plantilla del botón "Comprar". Un solo <button>.
+    - onclick={handleClick}   → al hacer clic llama a handleClick (que emite 'buyclick').
+    - disabled={disabled}      → enlaza el atributo "disabled" del botón a la prop @api.
+    - {label}                  → muestra el texto de la prop "label".
+    - &#128722;                → es un emoji 🛒 escrito como entidad HTML.
+-->
+<template>
+    <button class="buy-button" onclick={handleClick} disabled={disabled}>
+        <span class="icon">&#128722;</span>
+        <span>{label}</span>
+    </button>
+</template>

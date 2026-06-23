@@ -1,0 +1,129 @@
+<!--
+  Plantilla del MODAL. Es la más compleja: pinta DISTINTAS pantallas según el
+  estado (uiState), con condicionales lwc:if / lwc:elseif / lwc:else.
+  ⚠ Regla LWC: lwc:elseif y lwc:else deben ir INMEDIATAMENTE tras su lwc:if
+     hermano; por eso NO hay comentarios ENTRE esas ramas (rompería la compilación).
+  Sintaxis que verás:
+    - lwc:if / lwc:elseif / lwc:else → el "if / else if / else" de LWC.
+    - <c-lvlup-...>                  → componentes hijos (kebab-case).
+    - on<evento>={fn}               → escucha eventos de los hijos (re-dispatch al padre).
+    - {x} / class={x}               → muestra/enlaza valores dinámicos.
+    - &times; &middot;              → símbolos como entidades HTML (× ·).
+-->
+<template>
+    <!-- Todo el modal solo existe si isOpen es verdadero. -->
+    <template lwc:if={isOpen}>
+        <!-- Fondo oscuro (backdrop): un clic aquí cierra el modal. -->
+        <div class="backdrop" onclick={handleBackdrop}>
+            <!-- Caja del modal. stopPropagation evita que un clic DENTRO la cierre. -->
+            <div class="modal" onclick={stopPropagation}>
+                <div class="m-head">
+                    <h3 class="m-title">Comprar producto</h3>
+                    <button class="x" onclick={handleClose} disabled={controlsDisabled}>&times;</button>
+                </div>
+
+                <!-- ▼ Tres ramas según el estado: CARGANDO / ÉXITO / (resto). -->
+                <template lwc:if={isLoading}>
+                    <!-- Rama CARGANDO: esqueletos (skeletons) mientras llega la respuesta de Apex. -->
+                    <div class="m-body">
+                        <div class="sk sk-prod"></div>
+                        <div class="sk sk-line"></div>
+                        <div class="sk sk-block"></div>
+                    </div>
+                </template>
+
+                <template lwc:elseif={isSuccess}>
+                    <!-- Rama ÉXITO: "añadido" + acciones para seguir o ir al carrito. -->
+                    <div class="m-body">
+                        <div class="prod">
+                            <!-- Reutilizamos el componente de imagen para la miniatura. -->
+                            <div class="thumb"><c-lvlup-product-image sku={product.sku} alt-text={product.name}></c-lvlup-product-image></div>
+                            <div>
+                                <div class="name">{product.name}</div>
+                                <div class="sku">SKU &middot; {product.sku}</div>
+                            </div>
+                        </div>
+                        <template lwc:if={hasMessage}>
+                            <div class={messageClass}>{message.text}</div>
+                        </template>
+                    </div>
+                    <div class="m-foot">
+                        <button class="btn" onclick={handleContinue}>Seguir comprando</button>
+                        <button class="btn primary" onclick={handleGoToCart}>Ir al carrito</button>
+                    </div>
+                </template>
+
+                <template lwc:else>
+                    <!-- Rama RESTO: dentro decide entre el FORMULARIO o el error de carga. -->
+                    <template lwc:if={showForm}>
+                        <div class="m-body">
+                            <div class="prod">
+                                <div class="thumb"><c-lvlup-product-image sku={product.sku} alt-text={product.name}></c-lvlup-product-image></div>
+                                <div>
+                                    <div class="name">{product.name}</div>
+                                    <div class="sku">SKU &middot; {product.sku}</div>
+                                </div>
+                            </div>
+
+                            <!-- Hijo: panel de stock. Bajamos datos y escuchamos su veredicto. -->
+                            <c-lvlup-stock-availability-panel
+                                stock={stock}
+                                case-pack={increment}
+                                requested-quantity={quantity}
+                                onstockvalidated={handleStockValidated}
+                            ></c-lvlup-stock-availability-panel>
+
+                            <!-- Hijo: atributos. Solo si el producto tiene (hoy, no). -->
+                            <template lwc:if={hasAttributes}>
+                                <c-lvlup-product-attribute-selector
+                                    attributes={attributes}
+                                    selected={selectedAttributes}
+                                    onattributechange={handleAttributeChange}
+                                ></c-lvlup-product-attribute-selector>
+                            </template>
+
+                            <!-- Hijo: selector de cantidad. -->
+                            <c-lvlup-quantity-selector
+                                min={minQuantity}
+                                max={maxQuantity}
+                                step={increment}
+                                value={quantity}
+                                disabled={controlsDisabled}
+                                onquantitychange={handleQuantityChange}
+                            ></c-lvlup-quantity-selector>
+
+                            <!-- Hijo: resumen del precio. -->
+                            <c-lvlup-purchase-summary
+                                unit-price={unitPrice}
+                                quantity={quantity}
+                            ></c-lvlup-purchase-summary>
+
+                            <template lwc:if={hasMessage}>
+                                <div class={messageClass}>{message.text}</div>
+                            </template>
+                        </div>
+                        <div class="m-foot">
+                            <button class="btn" onclick={handleClose} disabled={controlsDisabled}>Cancelar</button>
+                            <button class="btn primary" onclick={handleConfirm} disabled={primaryDisabled}>
+                                <!-- Spinner solo mientras se añade al carrito. -->
+                                <template lwc:if={isAdding}><span class="spin"></span></template>
+                                <span>{primaryLabel}</span>
+                            </button>
+                        </div>
+                    </template>
+                    <template lwc:else>
+                        <!-- Sin producto (falló la carga): solo el mensaje + botón cerrar. -->
+                        <div class="m-body">
+                            <template lwc:if={hasMessage}>
+                                <div class={messageClass}>{message.text}</div>
+                            </template>
+                        </div>
+                        <div class="m-foot">
+                            <button class="btn" onclick={handleClose}>Cerrar</button>
+                        </div>
+                    </template>
+                </template>
+            </div>
+        </div>
+    </template>
+</template>

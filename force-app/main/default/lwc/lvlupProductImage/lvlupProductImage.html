@@ -1,0 +1,28 @@
+<!--
+  Plantilla de la imagen del producto, envuelta en un enlace <a> a la ficha (PDP).
+    - href={pdpUrl}         → URL de la ficha (la calcula el JS). Permite "abrir en
+                              pestaña nueva". Si está vacío, el <a> no enlaza.
+    - onclick={handleClick} → navega dentro de la SPA (preventDefault + Navigate).
+    - <img loading="lazy">  → la imagen se descarga solo cuando entra en pantalla.
+    - onerror={handleError} → si la imagen no carga, pasamos a mostrar un placeholder.
+-->
+<template>
+    <a href={pdpUrl} class="image-link" title={computedAlt} onclick={handleClick}>
+        <div class="image-frame">
+            <!-- Si hay URL válida y no falló, mostramos la imagen; si no, un placeholder. -->
+            <template lwc:if={showImage}>
+                <img
+                    class="product-image"
+                    src={resolvedUrl}
+                    alt={computedAlt}
+                    loading="lazy"
+                    decoding="async"
+                    onerror={handleError}
+                />
+            </template>
+            <template lwc:else>
+                <div class="placeholder" aria-hidden="true"></div>
+            </template>
+        </div>
+    </a>
+</template>

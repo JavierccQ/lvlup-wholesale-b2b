@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Contextual Quick Buy — Diagrama de Arquitectura · LvlUp WholeSale</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#11132C; --surface:#1C2049; --surface-2:#14172F; --line:#2B3160;
+    --ink:#FFFFFF; --muted:#9AA0C2;
+    --brand:#19E08B; --brand-ink:#06281C; --accent:#B490EB; --accent-deep:#6D28D9;
+    --ok:#5BE7A8; --warn:#FFC97A; --bad:#FF8A84;
+    --font:'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    --head:'Space Grotesk','Inter',sans-serif;
+    --mono:"SFMono-Regular",ui-monospace,Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font-size:14px;line-height:1.6}
+  .wrap{max-width:1180px;margin:0 auto;padding:32px 22px 80px}
+  h1{font-family:var(--head);font-size:30px;font-weight:700;letter-spacing:-.02em;margin:0 0 4px}
+  h2{font-family:var(--head);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin:46px 0 16px;font-weight:600}
+  .sub{color:var(--muted);max-width:760px;margin:0}
+  .mono{font-family:var(--mono);font-size:12px}
+  .legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+  .chip{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:600;padding:4px 11px;border-radius:999px;background:var(--surface);border:1px solid var(--line)}
+  .chip i{width:11px;height:11px;border-radius:3px;display:inline-block}
+
+  /* ---- Component tree ---- */
+  .tree{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px}
+  .node{border-radius:10px;padding:11px 14px;border:1px solid var(--line);background:var(--surface-2)}
+  .node .name{font-family:var(--mono);font-weight:600;font-size:13px}
+  .node .role{font-size:12px;color:var(--muted);margin-top:2px}
+  .node.parent{border-color:var(--brand);box-shadow:0 0 0 1px rgba(25,224,139,.25) inset}
+  .node.parent .name{color:var(--brand)}
+  .node.container{border-color:var(--accent-deep)}
+  .node.container .name{color:var(--accent)}
+  .node.ext{border-style:dashed;opacity:.9}
+  .node.ext .name{color:var(--muted)}
+  .children{margin:12px 0 0 26px;border-left:2px solid var(--line);padding-left:18px;display:flex;flex-direction:column;gap:12px}
+  .lvl-label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:2px}
+
+  /* ---- Flow: props down / events up ---- */
+  .flow2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  @media(max-width:760px){.flow2{grid-template-columns:1fr}.dataflow{grid-template-columns:1fr}}
+  .panel{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px}
+  .panel h3{font-family:var(--head);margin:0 0 12px;font-size:15px}
+  .panel.down h3{color:var(--accent)}
+  .panel.up h3{color:var(--brand)}
+  .row{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px dashed var(--line)}
+  .row:last-child{border-bottom:none}
+  .arrow{font-size:16px}
+  .down .arrow{color:var(--accent)} .up .arrow{color:var(--brand)}
+  .tok{font-family:var(--mono);font-size:12px}
+  .down .tok{color:var(--accent)} .up .tok{color:var(--brand)}
+  .desc{color:var(--muted);font-size:12.5px}
+
+  /* ---- Sequence ---- */
+  .seq{display:flex;flex-direction:column;gap:0}
+  .step{display:grid;grid-template-columns:42px 1fr;gap:14px;align-items:start;position:relative;padding-bottom:18px}
+  .step:not(:last-child)::before{content:"";position:absolute;left:20px;top:38px;bottom:-2px;width:2px;background:var(--line)}
+  .step .n{width:42px;height:42px;border-radius:50%;background:var(--surface);border:1px solid var(--brand);color:var(--brand);font-family:var(--head);font-weight:700;display:grid;place-items:center;z-index:1}
+  .step .body{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+  .step .t{font-weight:600}
+  .step .d{color:var(--muted);font-size:12.5px;margin-top:3px}
+  .step .ev{font-family:var(--mono);font-size:11px;color:var(--brand);margin-top:6px}
+  .step .api{font-family:var(--mono);font-size:11px;color:var(--accent);margin-top:6px}
+
+  /* ---- Data layer ---- */
+  .dataflow{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .dcard{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px}
+  .dcard h3{font-family:var(--head);margin:0 0 8px;font-size:14px}
+  .dcard ul{margin:6px 0 0;padding-left:16px;color:var(--muted);font-size:12.5px}
+  .dcard .mono{color:var(--ink)}
+  .foot{margin-top:40px;color:var(--muted);font-size:12px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>Contextual Quick Buy — Arquitectura</h1>
+  <p class="sub">Diagrama del feature: árbol de componentes LWC (comunicación padre-hijo), flujo de datos/eventos, secuencia end-to-end y capa de datos/Apex. Complementa la guía <span class="mono">contextual-quick-buy-code-walkthrough.md</span>.</p>
+  <div class="legend">
+    <span class="chip"><i style="background:var(--brand)"></i> Padre / orquestador</span>
+    <span class="chip"><i style="background:var(--accent-deep)"></i> Contenedor</span>
+    <span class="chip"><i style="background:var(--surface-2);border:1px solid var(--line)"></i> Hijo de detalle</span>
+    <span class="chip"><i style="background:transparent;border:1px dashed var(--muted)"></i> Estándar / externo</span>
+  </div>
+
+  <!-- ====== 1. COMPONENT TREE ====== -->
+  <h2>1 · Árbol de componentes (padre → hijos)</h2>
+  <div class="tree">
+    <div class="lvl-label">PLP · celda repetida del Grid (variable Item)</div>
+    <div class="node ext">
+      <div class="name">Grid (Nested Expression {!Search.Results.cardCollection})</div>
+      <div class="role">Componente estándar. Repite la celda por cada producto.</div>
+    </div>
+    <div class="children">
+      <div class="node ext">
+        <div class="name">commerce_builder-product-card</div>
+        <div class="role">Estándar · nombre / SKU / precio (imagen oculta a propósito)</div>
+      </div>
+      <div class="node">
+        <div class="name">lvlupProductImage</div>
+        <div class="role">Imagen (URL externa) + link a la PDP · lazy load · 0 storage</div>
+      </div>
+
+      <div class="node parent">
+        <div class="name">lvlupProductQuickBuy &nbsp;◆ PADRE</div>
+        <div class="role">Estado + Apex (getProductPurchaseInfo) + carrito (addItemToCart)</div>
+        <div class="children">
+          <div class="node">
+            <div class="name">lvlupQuickBuyButton</div>
+            <div class="role">Botón "Comprar" → emite buyclick</div>
+          </div>
+          <div class="node container">
+            <div class="name">lvlupQuickBuyModal &nbsp;◇ CONTENEDOR</div>
+            <div class="role">Presenta el modal · re-emite los eventos de sus hijos</div>
+            <div class="children">
+              <div class="node"><div class="name">lvlupStockAvailabilityPanel</div><div class="role">Veredicto de stock → stockvalidated</div></div>
+              <div class="node"><div class="name">lvlupProductAttributeSelector</div><div class="role">Atributos (degrada si no hay) → attributechange</div></div>
+              <div class="node"><div class="name">lvlupQuantitySelector</div><div class="role">Cantidad + reglas → quantitychange</div></div>
+              <div class="node"><div class="name">lvlupPurchaseSummary</div><div class="role">precio × cantidad (presentacional)</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== 2. DATA / EVENT FLOW ====== -->
+  <h2>2 · Comunicación padre-hijo (datos bajan · eventos suben)</h2>
+  <div class="flow2">
+    <div class="panel down">
+      <h3>▼ Datos hacia abajo &nbsp;(props @api)</h3>
+      <div class="row"><span class="arrow">▼</span><span class="tok">product / isOpen / uiState</span></div>
+      <div class="row"><span class="arrow">▼</span><span class="tok">quantity / min / max / step</span></div>
+      <div class="row"><span class="arrow">▼</span><span class="tok">stock / casePack / requestedQuantity</span></div>
+      <div class="row"><span class="arrow">▼</span><span class="tok">unitPrice / message / productId</span></div>
+      <div class="desc" style="margin-top:8px">El padre es el <b>único dueño del estado</b>. Reasignar una prop redibuja al hijo.</div>
+    </div>
+    <div class="panel up">
+      <h3>▲ Eventos hacia arriba &nbsp;(CustomEvent)</h3>
+      <div class="row"><span class="arrow">▲</span><span class="tok">buyclick</span><span class="desc">botón → padre</span></div>
+      <div class="row"><span class="arrow">▲</span><span class="tok">quantitychange</span><span class="desc">selector → modal → padre</span></div>
+      <div class="row"><span class="arrow">▲</span><span class="tok">stockvalidated</span><span class="desc">panel → modal → padre</span></div>
+      <div class="row"><span class="arrow">▲</span><span class="tok">attributechange</span><span class="desc">atributos → modal → padre</span></div>
+      <div class="row"><span class="arrow">▲</span><span class="tok">closemodal · confirmaddtocart</span><span class="desc">modal → padre</span></div>
+      <div class="desc" style="margin-top:8px">El modal hace <b>re-dispatch</b>: recibe de sus hijos y reemite al padre (3 niveles).</div>
+    </div>
+  </div>
+
+  <!-- ====== 3. SEQUENCE ====== -->
+  <h2>3 · Secuencia end-to-end</h2>
+  <div class="seq">
+    <div class="step"><div class="n">1</div><div class="body"><div class="t">El comprador hace clic en "Comprar"</div><div class="d">En una card de la PLP.</div><div class="ev">lvlupQuickBuyButton → buyclick { productId }</div></div></div>
+    <div class="step"><div class="n">2</div><div class="body"><div class="t">El padre abre el modal y pide datos al servidor</div><div class="d">Estado loadingProduct. Llamada Apex con el productId.</div><div class="api">@AuraEnabled getProductPurchaseInfo(productId) → ProductPurchaseInfo</div></div></div>
+    <div class="step"><div class="n">3</div><div class="body"><div class="t">Apex consulta el producto + precio</div><div class="d">SOQL sobre Product2 (campos custom de inventario) y PricebookEntry. Clase without sharing.</div></div></div>
+    <div class="step"><div class="n">4</div><div class="body"><div class="t">El modal muestra el producto</div><div class="d">Imagen, SKU, stock, cantidad = MOQ por defecto.</div></div></div>
+    <div class="step"><div class="n">5</div><div class="body"><div class="t">El comprador ajusta cantidad / opciones</div><div class="d">Los hijos validan su parcela y avisan al padre (vía el modal).</div><div class="ev">quantitychange · stockvalidated · attributechange</div></div></div>
+    <div class="step"><div class="n">6</div><div class="body"><div class="t">El padre recalcula la validez global</div><div class="d">recompute(): MOQ, múltiplo, stock, atributos → uiState. "Añadir" se habilita solo si todo es válido.</div></div></div>
+    <div class="step"><div class="n">7</div><div class="body"><div class="t">Confirmar → add-to-cart real</div><div class="d">Estado addingToCart. API estándar del carrito.</div><div class="api">commerce/cartApi → addItemToCart(productId, quantity)</div></div></div>
+    <div class="step"><div class="n">8</div><div class="body"><div class="t">Feedback y carrito actualizado</div><div class="d">"Añadido ✓", el contador del carrito sube. addedSuccess / addError.</div></div></div>
+  </div>
+
+  <!-- ====== 4. DATA / BACKEND LAYER ====== -->
+  <h2>4 · Capa de datos y permisos (back-end)</h2>
+  <div class="dataflow">
+    <div class="dcard">
+      <h3 style="color:var(--accent)">Apex</h3>
+      <div class="mono" style="font-size:12px">LvlupQuickBuyController</div>
+      <ul>
+        <li><b>without sharing</b> (clave: si no, 0 filas para el buyer)</li>
+        <li>getProductPurchaseInfo(Id) → wrapper</li>
+        <li>SOQL: Product2 + PricebookEntry</li>
+        <li>Test con 100% de cobertura</li>
+      </ul>
+    </div>
+    <div class="dcard">
+      <h3 style="color:var(--brand)">Campos custom Product2</h3>
+      <ul>
+        <li><span class="mono">Inventory_Quantity__c</span></li>
+        <li><span class="mono">Min_Order_Quantity__c</span></li>
+        <li><span class="mono">Order_Increment__c</span></li>
+        <li><span class="mono">Max_Order_Quantity__c</span></li>
+      </ul>
+    </div>
+    <div class="dcard">
+      <h3 style="color:var(--accent)">Permission Sets</h3>
+      <ul>
+        <li><span class="mono">LvlUp_Inventory_Management</span> — FLS para el admin</li>
+        <li><span class="mono">LvlUp_Quick_Buy_Buyer</span> — acceso a la clase Apex + FLS para el buyer (sin esto: 400)</li>
+      </ul>
+    </div>
+  </div>
+
+  <p class="foot">LvlUp WholeSale · Contextual Quick Buy · Diagrama de arquitectura. Tokens de tema del branding set B2B_Commerce. Complementa <span class="mono">docs/development/contextual-quick-buy-code-walkthrough.md</span>.</p>
+
+</div>
+</body>
+</html>

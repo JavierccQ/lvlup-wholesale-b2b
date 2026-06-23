@@ -1,0 +1,35 @@
+.stock {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.led {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    box-shadow: 0 0 8px currentColor;
+}
+
+.led.ok {
+    background: #19e08b;
+    color: #19e08b;
+}
+
+.led.warn {
+    background: #ffb75d;
+    color: #ffb75d;
+}
+
+.led.bad {
+    background: #ff6b66;
+    color: #ff6b66;
+}
+
+.case {
+    font-weight: 500;
+    color: #9aa0c2;
+}

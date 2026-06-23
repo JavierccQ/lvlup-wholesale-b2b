@@ -68,9 +68,55 @@ Si la regla **no** estuviera documentada, Claude preguntaría:
 
 ## Reglas operativas
 
-> Sin reglas por ahora. Las reglas se añaden numeradas
-> (`REGLA-NNN — título`) **solo** tras confirmación explícita del usuario y
-> **solo** si cumplen los criterios anteriores.
+> Reglas operativas reutilizables descubiertas durante el desarrollo del feature
+> *Contextual Quick Buy* (sesión 2026-06-23), añadidas a petición explícita del
+> usuario. Son lecciones recurrentes de B2B Commerce/LWR que ahorran tiempo en
+> features futuros. El detalle completo vive en
+> `docs/development/contextual-quick-buy-code-walkthrough.md`,
+> `docs/salesforce/manual-inventory-setup-runbook.md` y
+> `docs/ux/contextual-quick-buy-architecture.html`.
+
+### REGLA-001 — Probar el storefront como Buyer real, no como Admin
+
+- **Regla:** Para validar UI, visibilidad, precios, carrito o Apex de comprador, iniciar sesión como un **Buyer User real** en el sitio **publicado**. El Admin salta entitlements y sharing → oculta bugs. El "Preview as Authenticated User" del Builder es poco fiable; las extensiones tipo Adblock rompen el preview.
+- **Ámbito:** QA / B2B Commerce.
+- **Origen:** Sesión 2026-06-23 (Contextual Quick Buy).
+
+### REGLA-002 — Cadena de habilitación de un Buyer de prueba
+
+- **Regla:** Crear un comprador: Account → habilitar como Buyer (`BuyerAccount.IsActive = true`; **no** basta `BuyerStatus`) → `BuyerGroupMember` (hereda entitlement + price book) → Contact → Customer Community Plus User + membresía del sitio → contraseña. En dev org no llega el email de bienvenida → fijar con `System.setPassword`. "Habilitar buyer" y "añadir al grupo" van en **transacciones Apex separadas**.
+- **Ámbito:** B2B Commerce / datos.
+- **Origen:** Sesión 2026-06-23.
+
+### REGLA-003 — Visibilidad de productos = entitlement + reindex
+
+- **Regla:** Un buyer solo ve productos listados en `CommerceEntitlementProduct` de la política de su Buyer Group. Precio + categoría **no bastan**. Tras altas o cambios de entitlement, **reconstruir el índice de búsqueda**. Los seed scripts de catálogo deben entitlar cada producto.
+- **Ámbito:** B2B Commerce / datos.
+- **Origen:** Sesión 2026-06-23.
+
+### REGLA-004 — Apex de storefront: `without sharing` + acceso a la clase
+
+- **Regla:** Controllers llamados por compradores que consulten `Product2`/objetos de commerce deben ser **`without sharing`** (`with sharing` → 0 filas para el buyer, porque la visibilidad la da el entitlement, no el sharing). Además, conceder al perfil/permission set del buyer **acceso a la clase Apex** (si falta → `400` en `/webruntime/api/apex/execute`).
+- **Ámbito:** Apex / B2B Commerce.
+- **Origen:** Sesión 2026-06-23.
+
+### REGLA-005 — PLP custom por producto: Grid + "Nested Expression"
+
+- **Regla:** La "Results" estándar no admite hijos. Para inyectar componentes por card: **Grid (Repeaters)** con data source **Nested Expression** = `{!Search.Results.cardCollection}`, prefijo `Item`, + Product Card (`{!Item}`). Paths del item: `{!Item.id}`, SKU `{!Item.fields.StockKeepingUnit.value}`, imagen `{!Item.defaultImage.url}`. Las `@api` de componentes custom **no tienen autocompletado** en el Builder (teclear la expresión a mano).
+- **Ámbito:** Experience Builder / LWC.
+- **Origen:** Sesión 2026-06-23.
+
+### REGLA-006 — Imágenes CMS con URL externa no renderizan en la card del grid
+
+- **Regla:** Imágenes `sfdc_cms__image` con URL externa (0 File Storage) se ven en la **PDP** pero **no** en la miniatura de la Product Card del grid (no genera renditions). Workaround: LWC propio que pinte la URL (`lvlupProductImage`).
+- **Ámbito:** B2B Commerce / LWC.
+- **Origen:** Sesión 2026-06-23.
+
+### REGLA-007 — Cambios de código LWC requieren Publish; Apex es inmediato
+
+- **Regla:** En LWR, los cambios de **código LWC** se sirven cacheados → **republicar** el sitio (Experience Builder → Publish) para verlos. Los cambios de **Apex** aplican al instante.
+- **Ámbito:** Deploy / LWR.
+- **Origen:** Sesión 2026-06-23.
 
 <!-- Plantilla para nuevas reglas:
 

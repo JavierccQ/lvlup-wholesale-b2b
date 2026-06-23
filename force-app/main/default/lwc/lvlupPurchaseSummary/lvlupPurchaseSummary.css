@@ -1,0 +1,21 @@
+.summary {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    background: #14172f;
+    border: 1px solid #2b3160;
+    border-radius: 6px;
+    padding: 12px 14px;
+}
+
+.calc {
+    font-size: 12px;
+    color: #9aa0c2;
+}
+
+.total {
+    font-family: 'Space Grotesk', 'Inter', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #ffffff;
+}

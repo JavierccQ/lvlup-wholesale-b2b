@@ -87,6 +87,8 @@ Vivirá bajo `docs/ux/`. Describe experiencia, journeys y comportamiento visual.
 | `docs/ux/empty-error-loading-states.md` | Comportamiento de estados empty, error y loading | Creado |
 | `docs/ux/wireframes.md` | Wireframes (texto, Mermaid o assets visuales) | Creado |
 | `docs/ux/contextual-quick-buy-design.md` | Diseño funcional/UX y arquitectura conceptual de componentes LWC del feature *Contextual Quick Buy* (modal de compra contextual al producto) | En revisión |
+| `docs/ux/contextual-quick-buy-mockup.html` | Mockup visual (estilo Figma, HTML estático) del flujo, anatomía de componentes y estados del modal de *Contextual Quick Buy* | En revisión |
+| `docs/ux/contextual-quick-buy-architecture.html` | Diagrama de arquitectura (HTML) de *Contextual Quick Buy*: árbol de componentes, flujo de datos/eventos, secuencia end-to-end y capa de datos/Apex | Creado |
 
 ---
 
@@ -135,6 +137,7 @@ Vivirá bajo `docs/development/`. Describe guías y convenciones de desarrollo.
 | `docs/development/integration-guidelines.md` | Guías de desarrollo de integraciones (REST, mocks, callouts) | Creado |
 | `docs/development/code-review-checklist.md` | Checklist transversal de code review | Creado |
 | `docs/development/naming-conventions.md` | Convenciones de nombres | Creado |
+| `docs/development/contextual-quick-buy-code-walkthrough.md` | Guía de código (para junior) de *Contextual Quick Buy*: Apex, LWC, permission sets y campos custom explicados archivo por archivo | Creado |
 | `docs/development/error-handling-guidelines.md` | Guías de manejo de errores | Creado |
 | `docs/development/logging-guidelines.md` | Guías de logging | Creado |
 | `docs/development/deployment-guidelines.md` | Guías de despliegue | Creado |

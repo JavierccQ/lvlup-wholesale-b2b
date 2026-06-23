@@ -1,0 +1,36 @@
+<!--
+  Plantilla del PADRE. Solo "monta" dos componentes hijos: el botón y el modal.
+  Toda la lógica está en lvlupProductQuickBuy.js.
+  Reglas de sintaxis LWC que verás aquí:
+    - <c-lvlup-...>      → usar OTRO LWC. El nombre va en kebab-case (con guiones);
+                           lvlupQuickBuyButton  →  <c-lvlup-quick-buy-button>.
+    - atributo={algo}    → BAJA un dato al hijo (su propiedad @api). En el HTML el
+                           nombre va en kebab-case; en el JS del hijo, en camelCase
+                           (product-id  ↔  productId).
+    - on<evento>={fn}    → ESCUCHA un evento que emite el hijo y llama a "fn".
+-->
+<template>
+    <!-- El botón. Le bajamos productId y label; escuchamos su evento 'buyclick'. -->
+    <c-lvlup-quick-buy-button
+        product-id={effectiveProductId}
+        label={buttonLabel}
+        onbuyclick={handleBuyClick}
+    ></c-lvlup-quick-buy-button>
+
+    <!-- El modal. Le bajamos todo el estado y escuchamos TODOS sus eventos
+         (incluidos los que él re-emite de sus propios hijos). -->
+    <c-lvlup-quick-buy-modal
+        product={modalProduct}
+        is-open={isOpen}
+        ui-state={uiState}
+        quantity={quantity}
+        selected-attributes={selectedAttributes}
+        message={message}
+        onquantitychange={handleQuantityChange}
+        onattributechange={handleAttributeChange}
+        onstockvalidated={handleStockValidated}
+        onconfirmaddtocart={handleConfirm}
+        onclosemodal={handleCloseModal}
+        ongotocart={handleGoToCart}
+    ></c-lvlup-quick-buy-modal>
+</template>

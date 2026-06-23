@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>66.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>LvlUp Product Image</masterLabel>
+    <description>Renders a product image from an external URL by SKU (0 File Storage, lazy-loaded). For use inside a custom product grid cell.</description>
+    <targets>
+        <target>lightningCommunity__Default</target>
+        <target>lightningCommunity__Page</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property
+                name="imageUrl"
+                type="String"
+                label="Image URL"
+                description="URL directa de la imagen (recomendado): bindéala a {!Item.defaultImage.url}."
+            />
+            <property
+                name="sku"
+                type="String"
+                label="SKU (fallback)"
+                description="Alternativa: construye la URL desde el SKU. Bindéalo a {!Item.fields.StockKeepingUnit.value}."
+            />
+            <property
+                name="productId"
+                type="String"
+                label="Product ID (enlace a PDP)"
+                description="Id del producto para enlazar a la ficha (PDP). Bindéalo a {!Item.id}. Si se deja vacío, la imagen no es enlace."
+            />
+            <property
+                name="baseUrl"
+                type="String"
+                label="Base URL"
+                default="https://raw.githubusercontent.com/JavierccQ/lvlup-wholesale-b2b/main/data/product-images"
+                description="URL base donde viven las imágenes (sin barra final)."
+            />
+            <property name="fileExtension" type="String" label="File Extension" default=".png" />
+            <property name="altText" type="String" label="Alt Text" />
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

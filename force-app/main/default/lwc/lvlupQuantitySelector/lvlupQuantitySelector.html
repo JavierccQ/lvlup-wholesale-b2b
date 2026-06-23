@@ -1,0 +1,26 @@
+<!--
+  Plantilla del selector de cantidad: [ − ] [ input ] [ + ] + texto de reglas.
+    - class={inputClass}  → la CLASE del input es dinámica (getter): añade 'invalid'
+                            (borde rojo) cuando el valor no cumple las reglas.
+    - value={value}       → el valor lo controla el padre (componente controlado).
+    - onchange={handleChange} → al escribir y salir del input, valida y emite.
+    - {rulesText}         → texto como "Mín: 5 · Múltiplos de 5 · Máx: 500".
+    - &minus;             → el signo "−" como entidad HTML.
+-->
+<template>
+    <div class="block-label">Cantidad</div>
+    <div class="stepper">
+        <!-- Botón restar. type="button" evita que envíe formularios. -->
+        <button type="button" class="step-btn" onclick={handleDecrement} disabled={disabled}>&minus;</button>
+        <input
+            class={inputClass}
+            type="number"
+            value={value}
+            onchange={handleChange}
+            disabled={disabled}
+        />
+        <!-- Botón sumar. -->
+        <button type="button" class="step-btn" onclick={handleIncrement} disabled={disabled}>+</button>
+    </div>
+    <div class="rules">{rulesText}</div>
+</template>

@@ -1,0 +1,28 @@
+<!--
+  Plantilla del selector de atributos. TODO va dentro de lwc:if={hasAttributes}:
+  si el producto no tiene atributos, no se renderiza nada (degradación elegante).
+  Sintaxis nueva que aparece aquí:
+    - for:each={lista}      → repite el contenido por cada elemento de la lista.
+      for:item="attr"       → nombre de la variable de cada vuelta del bucle.
+      key={attr.name}       → OBLIGATORIO en bucles: id único para que LWC sepa qué
+                              elemento cambió (necesario para el rendimiento).
+    - data-name={attr.name} → atributo "data-*"; el JS lo lee con dataset.name.
+-->
+<template>
+    <template lwc:if={hasAttributes}>
+        <div class="block-label">Opciones</div>
+        <!-- Un <select> por cada atributo del producto. -->
+        <template for:each={attributes} for:item="attr">
+            <div key={attr.name} class="attr-row">
+                <label class="attr-label">{attr.label}</label>
+                <select class="attr-select" data-name={attr.name} onchange={handleChange}>
+                    <option value="">Selecciona&hellip;</option>
+                    <!-- Bucle anidado: las opciones de ESTE atributo. -->
+                    <template for:each={attr.options} for:item="opt">
+                        <option key={opt.value} value={opt.value}>{opt.label}</option>
+                    </template>
+                </select>
+            </div>
+        </template>
+    </template>
+</template>

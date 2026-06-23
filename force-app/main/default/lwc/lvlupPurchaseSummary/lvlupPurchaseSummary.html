@@ -1,0 +1,12 @@
+<!--
+  Plantilla del resumen del precio. Dos textos: el cálculo y el total.
+    - {calcText}          → "25 uds × 419,00 €".
+    - {formattedSubtotal} → "10.475,00 €" (o "—" si la cantidad no es válida).
+  Componente presentacional: no tiene eventos ni interacción.
+-->
+<template>
+    <div class="summary">
+        <div class="calc">{calcText}</div>
+        <div class="total">{formattedSubtotal}</div>
+    </div>
+</template>

@@ -1,0 +1,16 @@
+<!--
+  Plantilla del panel de stock: un "led" de color + texto de estado + case pack.
+    - class={ledClass}    → clase dinámica: 'led ok' / 'led warn' / 'led bad'
+                            (el color del puntito depende del stock).
+    - {statusText}        → "En stock · 320 uds" / "Sin stock" / "Quedan X...".
+    - {casePackText}      → "· case pack 5" (vacío si no aplica).
+  Nota: este componente NO tiene botones; emite su veredicto desde el JS
+  (renderedCallback), no desde el HTML.
+-->
+<template>
+    <div class="stock">
+        <span class={ledClass}></span>
+        <span class="status">{statusText}</span>
+        <small class="case">{casePackText}</small>
+    </div>
+</template>
