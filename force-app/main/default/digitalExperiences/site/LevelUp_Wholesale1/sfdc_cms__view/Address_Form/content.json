@@ -9,6 +9,7 @@
             "backgroundImageConfig" : "",
             "backgroundImageOverlay" : "rgba(0,0,0,0)",
             "componentSpacerSize" : "",
+            "dxpStyle" : { },
             "layoutDirectionDesktop" : "row",
             "layoutDirectionMobile" : "column",
             "layoutDirectionTablet" : "column",
@@ -23,6 +24,7 @@
               "attributes" : {
                 "componentHeaderEditAddressLabel" : "Edit Address",
                 "componentHeaderNewAddressLabel" : "Add Address",
+                "dxpStyle" : { },
                 "formWidth" : 100,
                 "makeDefaultAddressLabel" : "Make this my default address",
                 "makePhoneNumberRequired" : false,
@@ -35,6 +37,7 @@
                 "children" : [ {
                   "attributes" : {
                     "buttonSpacing" : "medium",
+                    "dxpStyle" : { },
                     "firstActionButtonText" : "Cancel",
                     "firstActionButtonTextDecoration" : "{}",
                     "firstButtonVariant" : "secondary",
@@ -72,6 +75,7 @@
       }, {
         "children" : [ {
           "attributes" : {
+            "dxpStyle" : { },
             "recordId" : "{!recordId}"
           },
           "definition" : "community_builder:seoAssistant",

@@ -9,6 +9,7 @@
             "backgroundImageConfig" : "",
             "backgroundImageOverlay" : "rgba(0,0,0,0)",
             "componentSpacerSize" : "",
+            "dxpStyle" : { },
             "layoutDirectionDesktop" : "row",
             "layoutDirectionMobile" : "column",
             "layoutDirectionTablet" : "column",
@@ -22,6 +23,7 @@
             "children" : [ {
               "attributes" : {
                 "clientState" : "{!MyProfile.ClientState}",
+                "dxpStyle" : { },
                 "emailLabel" : "Email Address",
                 "firstNameLabel" : "First Name",
                 "lastNameLabel" : "Last Name",
@@ -35,6 +37,7 @@
                 "children" : [ {
                   "attributes" : {
                     "backgroundColor" : "",
+                    "dxpStyle" : { },
                     "isLinkable" : false,
                     "linkAssistiveText" : "",
                     "paddingHorizontal" : "none",
@@ -56,6 +59,7 @@
                 "children" : [ {
                   "attributes" : {
                     "backgroundColor" : "",
+                    "dxpStyle" : { },
                     "isLinkable" : false,
                     "linkAssistiveText" : "",
                     "paddingHorizontal" : "none",
@@ -76,6 +80,7 @@
               }, {
                 "children" : [ {
                   "attributes" : {
+                    "dxpStyle" : { },
                     "size" : "standard",
                     "text" : "Change Password",
                     "variant" : "secondary",
@@ -93,6 +98,7 @@
                 "children" : [ {
                   "attributes" : {
                     "backgroundColor" : "",
+                    "dxpStyle" : { },
                     "isLinkable" : false,
                     "linkAssistiveText" : "",
                     "paddingHorizontal" : "none",
@@ -114,6 +120,7 @@
                 "children" : [ {
                   "attributes" : {
                     "backgroundColor" : "",
+                    "dxpStyle" : { },
                     "isLinkable" : false,
                     "linkAssistiveText" : "",
                     "paddingHorizontal" : "none",
@@ -169,12 +176,14 @@
           "children" : [ {
             "children" : [ {
               "attributes" : {
-                "consentData" : "{!Marketing.Subscriptions}"
+                "consentData" : "{!Marketing.Subscriptions}",
+                "dxpStyle" : { }
               },
               "children" : [ {
                 "children" : [ {
                   "attributes" : {
                     "backgroundColor" : "",
+                    "dxpStyle" : { },
                     "isLinkable" : false,
                     "linkAssistiveText" : "",
                     "paddingHorizontal" : "none",
@@ -195,6 +204,7 @@
               }, {
                 "children" : [ {
                   "attributes" : {
+                    "dxpStyle" : { },
                     "imageInfos" : "",
                     "richTextValue" : "<p>Read the <a href=\"{!Site.basePath}/privacy-policy\" rel=\"noopener noreferrer\" target=\"_blank\"><u>Privacy Policy</u></a> to learn how we handle your data.</p>"
                   },
@@ -235,6 +245,7 @@
       }, {
         "children" : [ {
           "attributes" : {
+            "dxpStyle" : { },
             "recordId" : "{!recordId}"
           },
           "definition" : "community_builder:seoAssistant",

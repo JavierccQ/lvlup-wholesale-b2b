@@ -6,13 +6,16 @@
       "attributes" : { },
       "children" : [ {
         "children" : [ {
-          "attributes" : { },
+          "attributes" : {
+            "dxpStyle" : { }
+          },
           "children" : [ {
             "children" : [ {
               "attributes" : {
                 "columnGutterWidth" : "",
                 "columnMinHeight" : "",
                 "columnVerticalAlign" : "flex-start",
+                "dxpStyle" : { },
                 "layoutDirectionDesktop" : "row",
                 "layoutDirectionMobile" : "column",
                 "layoutDirectionTablet" : "column",
@@ -21,6 +24,7 @@
               "children" : [ {
                 "children" : [ {
                   "attributes" : {
+                    "dxpStyle" : { },
                     "imageInfos" : "",
                     "richTextValue" : "<div style=\"background-color:#1C1C1C; padding:0.625rem;\"><p style=\"text-align: center; color: #fff; font-family: Poppins;\">Exclusive winter sale ends this Friday. <a style=\"color: #fff; text-decoration: underline;\" href=\"/category/products\" target=\"_blank\">View Sale</a></p></div>"
                   },
@@ -45,8 +49,9 @@
             "children" : [ {
               "attributes" : {
                 "alignment" : "left",
-                "imageInfo" : "",
-                "imageInfoMobile" : "",
+                "dxpStyle" : { },
+                "imageInfo" : "{\"imageInfoV1\":{\"url\":\"/sfsites/c/cms/delivery/media/MCLZA5OAFLIZBLVIGJ7MXPSHXEVA?lastModifiedDate=Thu Jun 18 14:49:32 GMT 2026\",\"altText\":\"\",\"contentKey\":\"MCLZA5OAFLIZBLVIGJ7MXPSHXEVA\",\"contentType\":null}}",
+                "imageInfoMobile" : "{\"imageInfoV1\":{\"url\":\"\",\"altText\":\"\",\"contentKey\":\"MC6ACKPN6SVFF77OQHVGJLIMSZEY\",\"contentType\":null}}",
                 "logoWidth" : 250
               },
               "definition" : "dxp_content_layout:siteLogo",
@@ -60,6 +65,7 @@
           }, {
             "children" : [ {
               "attributes" : {
+                "dxpStyle" : { },
                 "menuHorizontalAlignment" : "left",
                 "menuItemTextStyle" : "body-regular",
                 "menuItemTextStyleFontSize" : "",
@@ -82,6 +88,7 @@
                 "navItemTextStyleFontWeight" : "600",
                 "navItemTextStyleOverride" : true,
                 "navigationMenuData" : "{!NavMenu.MenuItems}",
+                "navigationMenuEditor" : "Default_Navigation1",
                 "showHomeLink" : true,
                 "showLogo" : true,
                 "showMyAccountMenu" : true,
@@ -95,6 +102,7 @@
                 "children" : [ {
                   "attributes" : {
                     "alignment" : "left",
+                    "dxpStyle" : { },
                     "imageInfo" : "",
                     "imageInfoMobile" : "",
                     "logoWidth" : 150
@@ -111,6 +119,7 @@
                 "children" : [ {
                   "attributes" : {
                     "descriptionText" : "Become a member for the best prices.",
+                    "dxpStyle" : { },
                     "logInLabel" : "Log In",
                     "logOutLabel" : "Log Out",
                     "navigationMenuData" : "{!NavMenu.MenuItems}",
@@ -140,17 +149,14 @@
           }, {
             "children" : [ {
               "attributes" : {
-                "bestSellerHeaderText" : "Bestsellers",
-                "borderRadius" : 50,
-                "enableProductSuggestions" : false,
-                "enableSearchSuggestions" : true,
-                "placeholderText" : "Search",
-                "recentSearchHeaderText" : "Recent searches",
-                "suggestedProductsHeaderText" : "Suggested products",
-                "suggestedSearchesHeaderText" : "Suggested searches"
+                "borderRadius" : 0,
+                "iconColor" : "rgb(255, 255, 255)",
+                "placeholderText" : "Enter keyword",
+                "showSearchButton" : true,
+                "showSearchSuggestionsSetup" : true
               },
-              "definition" : "commerce_builder:searchInputContainer",
-              "id" : "8323520e-2367-4e8f-b098-c510c50b8d8e",
+              "definition" : "commerce_builder:searchInput",
+              "id" : "7aa96f48-cd2b-487c-84ce-f39198199a4a",
               "type" : "component"
             } ],
             "id" : "a79e28c2-6562-4f0e-96ad-1a102763ddb7",
@@ -165,6 +171,7 @@
           }, {
             "children" : [ {
               "attributes" : {
+                "dxpStyle" : { },
                 "iconStyle" : "userIcon",
                 "includeCompanyName" : false,
                 "logOutLabel" : "Log Out",
@@ -186,6 +193,7 @@
                 "continueShoppingButtonText" : "Continue Shopping",
                 "countType" : "TotalProductCount",
                 "defaultPillLabel" : "Default",
+                "dxpStyle" : { },
                 "headerText" : "My Cart",
                 "paymentMethodSetId" : "",
                 "recommendationHeaderText" : "You May Also Like",
@@ -223,12 +231,14 @@
         "children" : [ {
           "attributes" : {
             "acceptButtonText" : "Accept",
+            "dxpStyle" : { },
             "excludedPages" : "Privacy_Policy\nTerms_And_Conditions",
             "rejectButtonText" : "Reject"
           },
           "children" : [ {
             "children" : [ {
               "attributes" : {
+                "dxpStyle" : { },
                 "imageInfos" : "",
                 "richTextValue" : "<p style=\"text-align: center;\"><strong style=\"font-size: 18px;\">Cookie Consent</strong></p><p style=\"text-align: center;\"><br></p><p style=\"text-align: center;\">Your cookie consent policy lives <a href=\"{!Site.basePath}/privacy-policy\" rel=\"noopener noreferrer\" target=\"_blank\"><strong>here</strong></a>. Replace the place holder property with your own.</p>"
               },
@@ -296,6 +306,7 @@
                 "children" : [ {
                   "attributes" : {
                     "backgroundColor" : "",
+                    "dxpStyle" : { },
                     "isLinkable" : false,
                     "linkAssistiveText" : "",
                     "paddingHorizontal" : "none",
@@ -311,6 +322,7 @@
                 }, {
                   "attributes" : {
                     "backgroundColor" : "",
+                    "dxpStyle" : { },
                     "isLinkable" : false,
                     "linkAssistiveText" : "",
                     "paddingHorizontal" : "none",
@@ -331,6 +343,7 @@
               }, {
                 "children" : [ {
                   "attributes" : {
+                    "dxpStyle" : { },
                     "imageInfos" : "",
                     "richTextValue" : "<p>By submitting this, I agree to the <u><a href=\"{!Site.basePath}/terms-and-conditions\" rel=\"noopener noreferrer\" target=\"_blank\">Terms & Conditions</a></u> and <u><a href=\"{!Site.basePath}/privacy-policy\" rel=\"noopener noreferrer\" target=\"_blank\">Privacy Policy</a></u>.</p>"
                   },
@@ -381,6 +394,7 @@
           "children" : [ {
             "children" : [ {
               "attributes" : {
+                "dxpStyle" : { },
                 "linkSpacing" : "small",
                 "maxDepth" : "1",
                 "menuEditor" : "Default_Our_Company_Menu",
@@ -392,6 +406,7 @@
                 "children" : [ {
                   "attributes" : {
                     "backgroundColor" : "",
+                    "dxpStyle" : { },
                     "isLinkable" : false,
                     "linkAssistiveText" : "",
                     "paddingHorizontal" : "none",
@@ -421,6 +436,7 @@
           }, {
             "children" : [ {
               "attributes" : {
+                "dxpStyle" : { },
                 "linkSpacing" : "small",
                 "maxDepth" : "1",
                 "menuEditor" : "Default_Get_Help_Menu",
@@ -432,6 +448,7 @@
                 "children" : [ {
                   "attributes" : {
                     "backgroundColor" : "",
+                    "dxpStyle" : { },
                     "isLinkable" : false,
                     "linkAssistiveText" : "",
                     "paddingHorizontal" : "none",
@@ -461,6 +478,7 @@
           }, {
             "children" : [ {
               "attributes" : {
+                "dxpStyle" : { },
                 "linkSpacing" : "small",
                 "maxDepth" : "1",
                 "menuEditor" : "Default_My_Account_Menu",
@@ -472,6 +490,7 @@
                 "children" : [ {
                   "attributes" : {
                     "backgroundColor" : "",
+                    "dxpStyle" : { },
                     "isLinkable" : false,
                     "linkAssistiveText" : "",
                     "paddingHorizontal" : "none",
@@ -501,6 +520,7 @@
           }, {
             "children" : [ {
               "attributes" : {
+                "dxpStyle" : { },
                 "flexAlignment" : "flex-end",
                 "menuName" : "Default_Social_Media_Menu",
                 "orientation" : "horizontal"
@@ -580,6 +600,7 @@
             "children" : [ {
               "attributes" : {
                 "alignment" : "center",
+                "dxpStyle" : { },
                 "lineStyle" : "solid",
                 "size" : 1,
                 "width" : 100
@@ -622,9 +643,10 @@
           "children" : [ {
             "children" : [ {
               "attributes" : {
-                "alignment" : "left",
-                "imageInfo" : "",
-                "imageInfoMobile" : "",
+                "alignment" : "center",
+                "dxpStyle" : { },
+                "imageInfo" : "{\"imageInfoV1\":{\"url\":\"\",\"altText\":\"\",\"contentKey\":\"MCLZA5OAFLIZBLVIGJ7MXPSHXEVA\",\"contentType\":null}}",
+                "imageInfoMobile" : "{\"imageInfoV1\":{\"url\":\"\",\"altText\":\"\",\"contentKey\":\"MCLZA5OAFLIZBLVIGJ7MXPSHXEVA\",\"contentType\":null}}",
                 "logoWidth" : 250
               },
               "definition" : "dxp_content_layout:siteLogo",

@@ -9,6 +9,7 @@
             "backgroundImageConfig" : "",
             "backgroundImageOverlay" : "rgba(0,0,0,0)",
             "componentSpacerSize" : "",
+            "dxpStyle" : { },
             "layoutDirectionDesktop" : "row",
             "layoutDirectionMobile" : "column",
             "layoutDirectionTablet" : "column",
@@ -22,6 +23,7 @@
             "children" : [ {
               "attributes" : {
                 "divider" : "slash",
+                "dxpStyle" : { },
                 "hideOnMobile" : false,
                 "maxDepthOnMobile" : "3",
                 "showHomeLink" : true,
@@ -35,6 +37,7 @@
               "attributes" : {
                 "browseStep" : 3,
                 "categoryId" : "{!Route.recordId}",
+                "dxpStyle" : { },
                 "headerText" : "Shop By Category",
                 "pageSize" : 6
               },
@@ -43,16 +46,20 @@
               "type" : "component"
             }, {
               "attributes" : {
+                "dxpStyle" : { },
                 "searchResultsLoading" : "{!Search.ClientState.loading}",
                 "searchResultsTotal" : "{!Search.Results.productLoadedCount}"
               },
               "children" : [ {
                 "children" : [ {
-                  "attributes" : { },
+                  "attributes" : {
+                    "dxpStyle" : { }
+                  },
                   "children" : [ {
                     "children" : [ {
                       "attributes" : {
                         "backgroundColor" : "",
+                        "dxpStyle" : { },
                         "isLinkable" : false,
                         "linkAssistiveText" : "",
                         "paddingHorizontal" : "none",
@@ -74,6 +81,7 @@
                     "children" : [ {
                       "attributes" : {
                         "backgroundColor" : "",
+                        "dxpStyle" : { },
                         "isLinkable" : false,
                         "linkAssistiveText" : "",
                         "paddingHorizontal" : "none",
@@ -94,6 +102,7 @@
                   }, {
                     "children" : [ {
                       "attributes" : {
+                        "dxpStyle" : { },
                         "sortRuleId" : "{!Search.SortRules.currentSortRuleId}",
                         "sortRules" : "{!Search.SortRules.rules}"
                       },
@@ -101,6 +110,7 @@
                         "children" : [ {
                           "attributes" : {
                             "backgroundColor" : "",
+                            "dxpStyle" : { },
                             "isLinkable" : false,
                             "linkAssistiveText" : "",
                             "paddingHorizontal" : "none",
@@ -130,6 +140,7 @@
                   }, {
                     "children" : [ {
                       "attributes" : {
+                        "dxpStyle" : { },
                         "headingTextAlign" : "left",
                         "headingTextDecoration" : "{}",
                         "headingTextDisplayInfo" : "{}",
@@ -140,12 +151,12 @@
                         "paddingVertical" : "none",
                         "searchResults" : "{!Search.Results}",
                         "searchTerm" : "{!Route.term}",
-                        "showFacetCounts" : false,
+                        "showFacetCounts" : true,
                         "showFilters" : "{!Search.ClientState.showFilters}",
                         "sortRuleId" : "{!Search.SortRules.currentSortRuleId}",
                         "sortRules" : "{!Search.SortRules.rules}",
                         "textDecoration" : "{}",
-                        "textDisplayInfo" : "{\"textStyle\": \"body-regular\"}"
+                        "textDisplayInfo" : "{}"
                       },
                       "definition" : "commerce_builder:searchFilters",
                       "id" : "49cc181b-b7c7-4e70-947b-a481029954ec",
@@ -165,6 +176,7 @@
                         "cardBorderRadius" : "1",
                         "cardContentMapping" : "[{\"name\": \"Name\", \"showLabel\": false, \"label\": \"Product Name\", \"fontSize\": \"medium\"}]",
                         "currentPage" : "{!Search.Pagination.currentPage}",
+                        "dxpStyle" : { },
                         "gridColumnSpacing" : "small",
                         "gridRowSpacing" : "small",
                         "includeQuantityRules" : "",
@@ -210,6 +222,7 @@
               }, {
                 "children" : [ {
                   "attributes" : {
+                    "dxpStyle" : { },
                     "imageInfos" : "",
                     "richTextValue" : "<div style=\"display: flex; flex-direction: column; align-items: center; text-align: center; height: 50vh; justify-content: center;\">\n\t<h1 class=\"slds-text-heading_large\" style=\"margin-bottom: 20px; font-weight: bold;\">We're Sorry</h1>\n\t<p class=\"slds-text-heading_small\" style=\"margin-bottom: 5px;\">We can’t seem to find any products that match your search.</p>\n\t<p class=\"slds-text-heading_small\">Try a new search using fewer words</p>\n\t<div style=\"background: url({!Site.basePath}/assets/images/empty-search.svg) center no-repeat; background-size: contain; margin-top:25px; height: 200px; width: 50%;\"></div>\n</div>"
                   },
@@ -249,6 +262,7 @@
           "attributes" : {
             "customHeadTags" : "",
             "description" : "{!Record._Description}",
+            "dxpStyle" : { },
             "pageTitle" : "{!Record._Title}",
             "recordId" : "{!recordId}"
           },

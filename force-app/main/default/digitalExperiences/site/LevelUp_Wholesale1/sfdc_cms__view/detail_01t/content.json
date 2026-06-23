@@ -9,6 +9,7 @@
             "backgroundImageConfig" : "",
             "backgroundImageOverlay" : "rgba(0,0,0,0)",
             "componentSpacerSize" : "",
+            "dxpStyle" : { },
             "layoutDirectionDesktop" : "row",
             "layoutDirectionMobile" : "column",
             "layoutDirectionTablet" : "column",
@@ -22,6 +23,7 @@
             "children" : [ {
               "attributes" : {
                 "divider" : "slash",
+                "dxpStyle" : { },
                 "hideOnMobile" : false,
                 "maxDepthOnMobile" : "3",
                 "showHomeLink" : false,
@@ -45,6 +47,7 @@
             "backgroundImageConfig" : "",
             "backgroundImageOverlay" : "rgba(0,0,0,0)",
             "componentSpacerSize" : "",
+            "dxpStyle" : { },
             "layoutDirectionDesktop" : "row",
             "layoutDirectionMobile" : "column",
             "layoutDirectionTablet" : "column",
@@ -57,6 +60,7 @@
           "children" : [ {
             "children" : [ {
               "attributes" : {
+                "dxpStyle" : { },
                 "hoverThumbnailBorderColor" : "#1C1C1C",
                 "imageAspectRatio" : "1",
                 "imageBorderColor" : "#D9DFE7",
@@ -77,6 +81,7 @@
           }, {
             "children" : [ {
               "attributes" : {
+                "dxpStyle" : { },
                 "dynamicAttributesAvailableText" : "{0} Configurable Attributes",
                 "identifierName" : "SKU#",
                 "product" : "{!Product.Details}",
@@ -87,6 +92,7 @@
                 "children" : [ {
                   "attributes" : {
                     "backgroundColor" : "",
+                    "dxpStyle" : { },
                     "isLinkable" : false,
                     "linkAssistiveText" : "",
                     "paddingHorizontal" : "none",
@@ -110,6 +116,7 @@
               "type" : "component"
             }, {
               "attributes" : {
+                "dxpStyle" : { },
                 "lastLowestPriceLabel" : "Last Lowest Price:",
                 "lastLowestPriceLabelColor" : "rgb(112, 114, 117)",
                 "lastLowestPriceLabelSize" : "small",
@@ -140,6 +147,7 @@
                 "backgroundColor" : "#F7F9FA",
                 "borderRadius" : 4,
                 "discountRowLabel" : "Discount per Unit",
+                "dxpStyle" : { },
                 "productPricing" : "{!Product.Pricing}",
                 "quantityRowLabel" : "Quantity"
               },
@@ -147,6 +155,7 @@
                 "children" : [ {
                   "attributes" : {
                     "backgroundColor" : "",
+                    "dxpStyle" : { },
                     "isLinkable" : false,
                     "linkAssistiveText" : "",
                     "paddingHorizontal" : "none",
@@ -171,6 +180,7 @@
             }, {
               "attributes" : {
                 "assistiveOutOfStockText" : "Out of Stock",
+                "dxpStyle" : { },
                 "outOfStockText" : "(Out of Stock)",
                 "pillBackgroundColor" : "#FFFFFF",
                 "pillBorderColor" : "#B9C0C8",
@@ -197,6 +207,7 @@
               "attributes" : {
                 "borderColor" : "#c9c9c9",
                 "borderRadius" : 16,
+                "dxpStyle" : { },
                 "product" : "{!Product.Details}",
                 "productPricing" : "{!Product.Pricing}",
                 "selectedProductSellingModel" : "{!Product.SelectedProductSellingModel}",
@@ -206,6 +217,7 @@
                 "children" : [ {
                   "attributes" : {
                     "backgroundColor" : "",
+                    "dxpStyle" : { },
                     "isLinkable" : false,
                     "linkAssistiveText" : "",
                     "paddingHorizontal" : "none",
@@ -227,6 +239,7 @@
                 "children" : [ {
                   "attributes" : {
                     "backgroundColor" : "",
+                    "dxpStyle" : { },
                     "isLinkable" : false,
                     "linkAssistiveText" : "",
                     "paddingHorizontal" : "none",
@@ -247,6 +260,7 @@
               }, {
                 "children" : [ {
                   "attributes" : {
+                    "dxpStyle" : { },
                     "lastLowestPriceLabel" : "Last Lowest Price:",
                     "lastLowestPriceLabelColor" : "rgb(112, 114, 117)",
                     "lastLowestPriceLabelSize" : "small",
@@ -280,6 +294,7 @@
               }, {
                 "children" : [ {
                   "attributes" : {
+                    "dxpStyle" : { },
                     "lastLowestPriceLabel" : "Last Lowest Price:",
                     "lastLowestPriceLabelColor" : "rgb(112, 114, 117)",
                     "lastLowestPriceLabelSize" : "small",
@@ -314,6 +329,7 @@
                 "children" : [ {
                   "attributes" : {
                     "backgroundColor" : "",
+                    "dxpStyle" : { },
                     "isLinkable" : false,
                     "linkAssistiveText" : "",
                     "paddingHorizontal" : "none",
@@ -335,6 +351,7 @@
                 "children" : [ {
                   "attributes" : {
                     "backgroundColor" : "",
+                    "dxpStyle" : { },
                     "isLinkable" : false,
                     "linkAssistiveText" : "",
                     "paddingHorizontal" : "none",
@@ -370,6 +387,7 @@
                 "addToListButtonTextHoverColor" : "#1C1C1C",
                 "configureButtonBorderRadius" : 0,
                 "configureButtonText" : "Configure",
+                "dxpStyle" : { },
                 "incrementValueGuideText" : "Increment quantity is {0}",
                 "maximumValueGuideText" : "Maximum quantity is {0}",
                 "minimumValueGuideText" : "Minimum quantity is {0}",
@@ -387,6 +405,7 @@
                 "children" : [ {
                   "attributes" : {
                     "backgroundColor" : "",
+                    "dxpStyle" : { },
                     "isLinkable" : false,
                     "linkAssistiveText" : "",
                     "paddingHorizontal" : "none",
@@ -428,6 +447,7 @@
               "type" : "component"
             }, {
               "attributes" : {
+                "dxpStyle" : { },
                 "expandByDefault" : false,
                 "icon" : "arrow",
                 "iconAlignment" : "left"
@@ -436,6 +456,7 @@
                 "children" : [ {
                   "attributes" : {
                     "backgroundColor" : "",
+                    "dxpStyle" : { },
                     "isLinkable" : false,
                     "linkAssistiveText" : "",
                     "paddingHorizontal" : "none",
@@ -456,6 +477,7 @@
               }, {
                 "children" : [ {
                   "attributes" : {
+                    "dxpStyle" : { },
                     "imageInfos" : "",
                     "richTextValue" : "{!Product.Details.fields.Description}"
                   },
@@ -474,6 +496,7 @@
             }, {
               "attributes" : {
                 "alignment" : "center",
+                "dxpStyle" : { },
                 "lineStyle" : "solid",
                 "size" : 1,
                 "width" : 100
@@ -483,12 +506,14 @@
               "type" : "component"
             }, {
               "attributes" : {
+                "dxpStyle" : { },
                 "productClass" : "{!ProductChild.productClass}",
                 "total" : "{!ProductChild.total}"
               },
               "children" : [ {
                 "children" : [ {
                   "attributes" : {
+                    "dxpStyle" : { },
                     "expandByDefault" : true,
                     "icon" : "arrow",
                     "iconAlignment" : "left"
@@ -497,6 +522,7 @@
                     "children" : [ {
                       "attributes" : {
                         "backgroundColor" : "",
+                        "dxpStyle" : { },
                         "isLinkable" : false,
                         "linkAssistiveText" : "",
                         "paddingHorizontal" : "none",
@@ -522,6 +548,7 @@
                         "borderColor" : "",
                         "borderRadius" : 0,
                         "borderWidth" : 0,
+                        "dxpStyle" : { },
                         "isOrderReversed" : false,
                         "itemSpacing" : "none",
                         "listType" : "unformatted",
@@ -540,6 +567,7 @@
                       "children" : [ {
                         "children" : [ {
                           "attributes" : {
+                            "dxpStyle" : { },
                             "dynamicAttributesAvailableText" : "{0} Configurable Attributes",
                             "hideQuantityWhenItsOne" : false,
                             "item" : "{!Item.data}",
@@ -620,6 +648,7 @@
             }, {
               "attributes" : {
                 "currencyIsoCode" : "{!Product.Pricing.currencyIsoCode}",
+                "dxpStyle" : { },
                 "incrementValueGuideText" : "Increment quantity is {0}",
                 "lastLowestPriceLabel" : "Last Lowest Price:",
                 "lastLowestPriceLabelColor" : "rgb(112, 114, 117, 1)",
@@ -648,6 +677,7 @@
                 "children" : [ {
                   "attributes" : {
                     "backgroundColor" : "",
+                    "dxpStyle" : { },
                     "isLinkable" : false,
                     "linkAssistiveText" : "",
                     "paddingHorizontal" : "none",
@@ -669,6 +699,7 @@
                 "children" : [ {
                   "attributes" : {
                     "backgroundColor" : "",
+                    "dxpStyle" : { },
                     "isLinkable" : false,
                     "linkAssistiveText" : "",
                     "paddingHorizontal" : "none",
@@ -709,6 +740,7 @@
           "attributes" : {
             "customHeadTags" : "<script type=\"application/ld+json\">\n[{\n    \"@context\": \"https://schema.org\",\n    \"@type\": \"Product\",\n    \"name\": \"{!Record.Name}\",\n    \"description\": \"{!Record._Description}\",\n    \"category\": \"{!Record.ProductCategory.Name}\",\n    \"sku\": \"{!Record.StockKeepingUnit}\",\n    \"offers\": {\n        \"@type\": \"Offer\",\n        \"price\": \"{!Record.Offers.Price}\",\n        \"priceCurrency\": \"{!Record.Offers.Currency}\"\n    },\n    \"image\": \"{!Record.ProductMedia.ProductDetailImages}\"\n},\n{\n    \"@context\": \"https://schema.org\",\n    \"@type\": \"BreadcrumbList\",\n    \"itemListElement\": \"{!Record.BreadcrumbList}\"\n}]\n</script>",
             "description" : "{!Record._Description}",
+            "dxpStyle" : { },
             "pageTitle" : "{!Record._Title}",
             "recordId" : "{!recordId}"
           },

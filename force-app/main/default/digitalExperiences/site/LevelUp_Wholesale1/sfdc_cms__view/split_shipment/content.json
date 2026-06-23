@@ -38,15 +38,19 @@
                 "cartDetails" : "{!Checkout.CartDetails}",
                 "cartTotals" : "{!Checkout.CartTotals}",
                 "checkoutDetails" : "{!Checkout.Details}",
+                "dxpStyle" : { },
                 "showSummaryColumn" : true
               },
               "children" : [ {
                 "children" : [ {
-                  "attributes" : { },
+                  "attributes" : {
+                    "dxpStyle" : { }
+                  },
                   "children" : [ {
                     "children" : [ {
                       "attributes" : {
                         "backgroundColor" : "",
+                        "dxpStyle" : { },
                         "isLinkable" : false,
                         "linkAssistiveText" : "",
                         "paddingHorizontal" : "none",
@@ -67,6 +71,7 @@
                   }, {
                     "children" : [ {
                       "attributes" : {
+                        "dxpStyle" : { },
                         "size" : "standard",
                         "text" : "Continue to Shipping Method",
                         "variant" : "primary",
@@ -83,6 +88,7 @@
                   }, {
                     "children" : [ {
                       "attributes" : {
+                        "dxpStyle" : { },
                         "size" : "standard",
                         "text" : "< Ship to Single Address",
                         "variant" : "tertiary",
@@ -105,6 +111,7 @@
                     "addresses" : "{!SplitShipment.Addresses.items}",
                     "deliveryGroupCartProps" : "{!SplitShipment.DeliveryGroupCartProps}",
                     "deliveryGroups" : "{!SplitShipment.DeliveryGroups.items}",
+                    "dxpStyle" : { },
                     "imageAspectRatio" : "1",
                     "imageSize" : "contain",
                     "incrementValueGuideText" : "Sold in increments of {0}",
@@ -132,6 +139,7 @@
                 "children" : [ {
                   "attributes" : {
                     "discountAmountTextSize" : "small",
+                    "dxpStyle" : { },
                     "originalTextSize" : "small",
                     "shippingTextSize" : "small",
                     "showDiscountAmount" : true,
@@ -148,6 +156,7 @@
                     "children" : [ {
                       "attributes" : {
                         "backgroundColor" : "",
+                        "dxpStyle" : { },
                         "isLinkable" : false,
                         "linkAssistiveText" : "",
                         "paddingHorizontal" : "none",
@@ -169,6 +178,7 @@
                     "children" : [ {
                       "attributes" : {
                         "backgroundColor" : "",
+                        "dxpStyle" : { },
                         "isLinkable" : false,
                         "linkAssistiveText" : "",
                         "paddingHorizontal" : "none",
@@ -190,6 +200,7 @@
                     "children" : [ {
                       "attributes" : {
                         "backgroundColor" : "",
+                        "dxpStyle" : { },
                         "isLinkable" : false,
                         "linkAssistiveText" : "",
                         "paddingHorizontal" : "none",
@@ -211,6 +222,7 @@
                     "children" : [ {
                       "attributes" : {
                         "backgroundColor" : "",
+                        "dxpStyle" : { },
                         "isLinkable" : false,
                         "linkAssistiveText" : "",
                         "paddingHorizontal" : "none",
@@ -232,6 +244,7 @@
                     "children" : [ {
                       "attributes" : {
                         "backgroundColor" : "",
+                        "dxpStyle" : { },
                         "isLinkable" : false,
                         "linkAssistiveText" : "",
                         "paddingHorizontal" : "none",
@@ -253,6 +266,7 @@
                     "children" : [ {
                       "attributes" : {
                         "backgroundColor" : "",
+                        "dxpStyle" : { },
                         "isLinkable" : false,
                         "linkAssistiveText" : "",
                         "paddingHorizontal" : "none",
@@ -274,6 +288,7 @@
                     "children" : [ {
                       "attributes" : {
                         "backgroundColor" : "",
+                        "dxpStyle" : { },
                         "isLinkable" : false,
                         "linkAssistiveText" : "",
                         "paddingHorizontal" : "none",
@@ -295,6 +310,7 @@
                     "children" : [ {
                       "attributes" : {
                         "backgroundColor" : "",
+                        "dxpStyle" : { },
                         "isLinkable" : false,
                         "linkAssistiveText" : "",
                         "paddingHorizontal" : "none",
@@ -342,6 +358,7 @@
       }, {
         "children" : [ {
           "attributes" : {
+            "dxpStyle" : { },
             "recordId" : "{!recordId}"
           },
           "definition" : "community_builder:seoAssistant",

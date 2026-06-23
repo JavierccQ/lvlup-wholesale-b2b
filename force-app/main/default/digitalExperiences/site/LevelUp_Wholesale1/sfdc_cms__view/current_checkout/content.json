@@ -34,6 +34,7 @@
                 "checkoutPaymentLink" : "{!Checkout.PaymentLink}",
                 "checkoutSessionError" : "{!Checkout.SessionError}",
                 "clientErrors" : true,
+                "dxpStyle" : { },
                 "integrationErrors" : true,
                 "sessionErrors" : true,
                 "typeCheckoutFailure" : true,
@@ -53,6 +54,7 @@
                 "applepayLabel" : "plain",
                 "buttonShape" : "rectangle",
                 "buttonSize" : "standard",
+                "dxpStyle" : { },
                 "googlepayColor" : "black",
                 "googlepayLabel" : "buy",
                 "paymentMethodSetId" : "",
@@ -67,16 +69,20 @@
               "id" : "418c5c02-c4f5-4d4e-a6db-5bb10a8d2277",
               "type" : "component"
             }, {
-              "attributes" : { },
+              "attributes" : {
+                "dxpStyle" : { }
+              },
               "children" : [ {
                 "children" : [ {
                   "attributes" : {
+                    "dxpStyle" : { },
                     "proceedButtonAlignment" : "right"
                   },
                   "children" : [ {
                     "children" : [ {
                       "attributes" : {
                         "backgroundColor" : "",
+                        "dxpStyle" : { },
                         "isLinkable" : false,
                         "linkAssistiveText" : "",
                         "paddingHorizontal" : "none",
@@ -97,6 +103,7 @@
                   }, {
                     "children" : [ {
                       "attributes" : {
+                        "dxpStyle" : { },
                         "size" : "standard",
                         "text" : "Change",
                         "variant" : "tertiary",
@@ -114,6 +121,7 @@
                     "children" : [ {
                       "attributes" : {
                         "checkoutDetails" : "{!Checkout.Details}",
+                        "dxpStyle" : { },
                         "emailLabel" : "Email",
                         "enableUserLookup" : false,
                         "phoneNumberLabel" : "Phone Number"
@@ -129,6 +137,7 @@
                   }, {
                     "children" : [ {
                       "attributes" : {
+                        "dxpStyle" : { },
                         "size" : "standard",
                         "text" : "Continue to Shipping Address",
                         "variant" : "primary",
@@ -148,12 +157,14 @@
                   "type" : "component"
                 }, {
                   "attributes" : {
+                    "dxpStyle" : { },
                     "proceedButtonAlignment" : "right"
                   },
                   "children" : [ {
                     "children" : [ {
                       "attributes" : {
                         "backgroundColor" : "",
+                        "dxpStyle" : { },
                         "isLinkable" : false,
                         "linkAssistiveText" : "",
                         "paddingHorizontal" : "none",
@@ -174,11 +185,13 @@
                   }, {
                     "children" : [ {
                       "attributes" : {
-                        "checkoutDetails" : "{!Checkout.Details}"
+                        "checkoutDetails" : "{!Checkout.Details}",
+                        "dxpStyle" : { }
                       },
                       "children" : [ {
                         "children" : [ {
                           "attributes" : {
+                            "dxpStyle" : { },
                             "size" : "standard",
                             "text" : "Change",
                             "variant" : "tertiary",
@@ -208,6 +221,7 @@
                         "checkoutAddresses" : "{!Checkout.Addresses}",
                         "checkoutDetails" : "{!Checkout.Details}",
                         "componentHeaderEditAddressLabel" : "Edit Address",
+                        "dxpStyle" : { },
                         "editAddressLabel" : "Edit Address",
                         "makeDefaultAddressLabel" : "Make this my default address",
                         "newAddressButtonLabel" : "New Address",
@@ -231,6 +245,7 @@
                   }, {
                     "children" : [ {
                       "attributes" : {
+                        "dxpStyle" : { },
                         "size" : "standard",
                         "text" : "Continue to Shipping Method",
                         "variant" : "primary",
@@ -250,12 +265,14 @@
                   "type" : "component"
                 }, {
                   "attributes" : {
+                    "dxpStyle" : { },
                     "proceedButtonAlignment" : "right"
                   },
                   "children" : [ {
                     "children" : [ {
                       "attributes" : {
                         "backgroundColor" : "",
+                        "dxpStyle" : { },
                         "isLinkable" : false,
                         "linkAssistiveText" : "",
                         "paddingHorizontal" : "none",
@@ -276,6 +293,7 @@
                   }, {
                     "children" : [ {
                       "attributes" : {
+                        "dxpStyle" : { },
                         "size" : "standard",
                         "text" : "Change",
                         "variant" : "tertiary",
@@ -292,7 +310,8 @@
                   }, {
                     "children" : [ {
                       "attributes" : {
-                        "checkoutDetails" : "{!Checkout.Details}"
+                        "checkoutDetails" : "{!Checkout.Details}",
+                        "dxpStyle" : { }
                       },
                       "definition" : "commerce_builder:checkoutDeliveryMethod",
                       "id" : "e3edd307-92f7-4f68-8f63-7097deb00235",
@@ -305,6 +324,7 @@
                   }, {
                     "children" : [ {
                       "attributes" : {
+                        "dxpStyle" : { },
                         "size" : "standard",
                         "text" : "Continue to Payment",
                         "variant" : "primary",
@@ -324,12 +344,14 @@
                   "type" : "component"
                 }, {
                   "attributes" : {
+                    "dxpStyle" : { },
                     "proceedButtonAlignment" : "right"
                   },
                   "children" : [ {
                     "children" : [ {
                       "attributes" : {
                         "backgroundColor" : "",
+                        "dxpStyle" : { },
                         "isLinkable" : false,
                         "linkAssistiveText" : "",
                         "paddingHorizontal" : "none",
@@ -350,6 +372,7 @@
                   }, {
                     "children" : [ {
                       "attributes" : {
+                        "dxpStyle" : { },
                         "size" : "standard",
                         "text" : "Change",
                         "variant" : "tertiary",
@@ -370,6 +393,7 @@
                         "billingAddressSameAsShippingAddressLabel" : "Same as shipping address",
                         "cardPaymentLabel" : "Credit Card",
                         "checkoutDetails" : "{!Checkout.Details}",
+                        "dxpStyle" : { },
                         "headerLabel" : "Purchase Order",
                         "inputLabel" : "Purchase Order Number",
                         "isPurchaseOrderAvailable" : true,
@@ -385,6 +409,7 @@
                       "attributes" : {
                         "alignment" : "right",
                         "checkoutDetails" : "{!Checkout.Details}",
+                        "dxpStyle" : { },
                         "size" : "standard",
                         "text" : "Place Order",
                         "variant" : "primary",
@@ -459,6 +484,7 @@
                 "children" : [ {
                   "attributes" : {
                     "discountAmountTextSize" : "small",
+                    "dxpStyle" : { },
                     "originalTextSize" : "small",
                     "shippingTextSize" : "small",
                     "showDiscountAmount" : true,
@@ -474,6 +500,7 @@
                   "children" : [ {
                     "children" : [ {
                       "attributes" : {
+                        "dxpStyle" : { },
                         "expandByDefault" : false,
                         "icon" : "arrow",
                         "iconAlignment" : "left"
@@ -482,6 +509,7 @@
                         "children" : [ {
                           "attributes" : {
                             "backgroundColor" : "",
+                            "dxpStyle" : { },
                             "isLinkable" : false,
                             "linkAssistiveText" : "",
                             "paddingHorizontal" : "none",
@@ -504,6 +532,7 @@
                           "attributes" : {
                             "actualPriceFontSize" : "small",
                             "currencyIsoCode" : "{!Cart.Details.currencyIsoCode}",
+                            "dxpStyle" : { },
                             "hasNextPageItems" : "{!Cart.Pagination.hasNextPage}",
                             "hideQuantitySelector" : true,
                             "imageAspectRatio" : "1",
@@ -545,6 +574,7 @@
                             "children" : [ {
                               "attributes" : {
                                 "backgroundColor" : "",
+                                "dxpStyle" : { },
                                 "isLinkable" : false,
                                 "linkAssistiveText" : "",
                                 "paddingHorizontal" : "none",
@@ -584,6 +614,7 @@
                     "children" : [ {
                       "attributes" : {
                         "backgroundColor" : "",
+                        "dxpStyle" : { },
                         "isLinkable" : false,
                         "linkAssistiveText" : "",
                         "paddingHorizontal" : "none",
@@ -605,6 +636,7 @@
                     "children" : [ {
                       "attributes" : {
                         "backgroundColor" : "",
+                        "dxpStyle" : { },
                         "isLinkable" : false,
                         "linkAssistiveText" : "",
                         "paddingHorizontal" : "none",
@@ -626,6 +658,7 @@
                     "children" : [ {
                       "attributes" : {
                         "backgroundColor" : "",
+                        "dxpStyle" : { },
                         "isLinkable" : false,
                         "linkAssistiveText" : "",
                         "paddingHorizontal" : "none",
@@ -647,6 +680,7 @@
                     "children" : [ {
                       "attributes" : {
                         "backgroundColor" : "",
+                        "dxpStyle" : { },
                         "isLinkable" : false,
                         "linkAssistiveText" : "",
                         "paddingHorizontal" : "none",
@@ -668,6 +702,7 @@
                     "children" : [ {
                       "attributes" : {
                         "backgroundColor" : "",
+                        "dxpStyle" : { },
                         "isLinkable" : false,
                         "linkAssistiveText" : "",
                         "paddingHorizontal" : "none",
@@ -689,6 +724,7 @@
                     "children" : [ {
                       "attributes" : {
                         "backgroundColor" : "",
+                        "dxpStyle" : { },
                         "isLinkable" : false,
                         "linkAssistiveText" : "",
                         "paddingHorizontal" : "none",
@@ -710,6 +746,7 @@
                     "children" : [ {
                       "attributes" : {
                         "backgroundColor" : "",
+                        "dxpStyle" : { },
                         "isLinkable" : false,
                         "linkAssistiveText" : "",
                         "paddingHorizontal" : "none",
@@ -763,6 +800,7 @@
       }, {
         "children" : [ {
           "attributes" : {
+            "dxpStyle" : { },
             "recordId" : "{!recordId}"
           },
           "definition" : "community_builder:seoAssistant",

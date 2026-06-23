@@ -30,6 +30,7 @@
             "children" : [ {
               "attributes" : {
                 "backgroundColor" : "",
+                "dxpStyle" : { },
                 "isLinkable" : false,
                 "linkAssistiveText" : "",
                 "paddingHorizontal" : "small",
@@ -51,6 +52,7 @@
             "children" : [ {
               "attributes" : {
                 "alignment" : "right",
+                "dxpStyle" : { },
                 "size" : "standard",
                 "text" : "Add Address",
                 "variant" : "primary",
@@ -92,7 +94,9 @@
           },
           "children" : [ {
             "children" : [ {
-              "attributes" : { },
+              "attributes" : {
+                "dxpStyle" : { }
+              },
               "children" : [ {
                 "children" : [ {
                   "attributes" : {
@@ -102,6 +106,7 @@
                     "borderColor" : "",
                     "borderRadius" : "0px",
                     "borderWeight" : "0px",
+                    "dxpStyle" : { },
                     "enableOverflowMenu" : false,
                     "imageFit" : "cover",
                     "imagePosition" : "center center",
@@ -127,6 +132,7 @@
                         "borderColor" : "",
                         "borderRadius" : 0,
                         "borderWidth" : 0,
+                        "dxpStyle" : { },
                         "horizontalAlignment" : "center",
                         "isFixedRowHeight" : true,
                         "itemSpacing" : "xx-small",
@@ -138,11 +144,14 @@
                       },
                       "children" : [ {
                         "children" : [ {
-                          "attributes" : { },
+                          "attributes" : {
+                            "dxpStyle" : { }
+                          },
                           "children" : [ {
                             "children" : [ {
                               "attributes" : {
                                 "backgroundColor" : "",
+                                "dxpStyle" : { },
                                 "isLinkable" : false,
                                 "linkAssistiveText" : "",
                                 "paddingHorizontal" : "none",
@@ -158,6 +167,7 @@
                             }, {
                               "attributes" : {
                                 "backgroundColor" : "",
+                                "dxpStyle" : { },
                                 "isLinkable" : false,
                                 "linkAssistiveText" : "",
                                 "paddingHorizontal" : "none",
@@ -186,7 +196,9 @@
                         "type" : "region"
                       }, {
                         "children" : [ {
-                          "attributes" : { },
+                          "attributes" : {
+                            "dxpStyle" : { }
+                          },
                           "definition" : "commerce_builder:myAccountAddressErrorState",
                           "id" : "0599694e-0590-4001-a1bf-efb104db0c91",
                           "type" : "component"
@@ -199,6 +211,7 @@
                         "children" : [ {
                           "attributes" : {
                             "cardDefaultBadgeLabel" : "Default",
+                            "dxpStyle" : { },
                             "footerDeleteLabel" : "Delete",
                             "footerEditLabel" : "Edit",
                             "item" : "{!MyAccountAddress}",
@@ -215,12 +228,15 @@
                       }, {
                         "children" : [ {
                           "attributes" : {
+                            "dxpStyle" : { },
                             "paginatorAttributes" : "{\"nested\":{\"componentName\":\"dxp_content_layout:paginatorShowMore\",\"attributes\":{\"label\":\"Show More\",\"textDecoration\":\"{}\",\"buttonStyle\":\"secondary\",\"size\":\"standard\",\"width\":\"standard\",\"verticalPadding\":\"none\",\"horizontalAlignment\":\"center\"}}}",
                             "variant" : "showmore"
                           },
                           "children" : [ {
                             "children" : [ {
-                              "attributes" : { },
+                              "attributes" : {
+                                "dxpStyle" : { }
+                              },
                               "definition" : "dxp_page_layout:placeHolder",
                               "id" : "7c0876a7-a271-4b86-88bf-69d8f9d96934",
                               "type" : "component"
@@ -265,6 +281,7 @@
                         "borderColor" : "",
                         "borderRadius" : 0,
                         "borderWidth" : 0,
+                        "dxpStyle" : { },
                         "horizontalAlignment" : "center",
                         "isFixedRowHeight" : true,
                         "itemSpacing" : "xx-small",
@@ -276,11 +293,14 @@
                       },
                       "children" : [ {
                         "children" : [ {
-                          "attributes" : { },
+                          "attributes" : {
+                            "dxpStyle" : { }
+                          },
                           "children" : [ {
                             "children" : [ {
                               "attributes" : {
                                 "backgroundColor" : "",
+                                "dxpStyle" : { },
                                 "isLinkable" : false,
                                 "linkAssistiveText" : "",
                                 "paddingHorizontal" : "none",
@@ -296,6 +316,7 @@
                             }, {
                               "attributes" : {
                                 "backgroundColor" : "",
+                                "dxpStyle" : { },
                                 "isLinkable" : false,
                                 "linkAssistiveText" : "",
                                 "paddingHorizontal" : "none",
@@ -324,7 +345,9 @@
                         "type" : "region"
                       }, {
                         "children" : [ {
-                          "attributes" : { },
+                          "attributes" : {
+                            "dxpStyle" : { }
+                          },
                           "definition" : "commerce_builder:myAccountAddressErrorState",
                           "id" : "91ccb352-34af-484f-973c-01e788e1fb82",
                           "type" : "component"
@@ -337,6 +360,7 @@
                         "children" : [ {
                           "attributes" : {
                             "cardDefaultBadgeLabel" : "Default",
+                            "dxpStyle" : { },
                             "footerDeleteLabel" : "Delete",
                             "footerEditLabel" : "Edit",
                             "item" : "{!MyAccountAddress}",
@@ -353,12 +377,15 @@
                       }, {
                         "children" : [ {
                           "attributes" : {
+                            "dxpStyle" : { },
                             "paginatorAttributes" : "{\"nested\":{\"componentName\":\"dxp_content_layout:paginatorShowMore\",\"attributes\":{\"label\":\"Show More\",\"textDecoration\":\"{}\",\"buttonStyle\":\"secondary\",\"size\":\"standard\",\"width\":\"standard\",\"verticalPadding\":\"none\",\"horizontalAlignment\":\"center\"}}}",
                             "variant" : "showmore"
                           },
                           "children" : [ {
                             "children" : [ {
-                              "attributes" : { },
+                              "attributes" : {
+                                "dxpStyle" : { }
+                              },
                               "definition" : "dxp_page_layout:placeHolder",
                               "id" : "94ff4dda-d6df-439c-b5b9-f9d4762a685e",
                               "type" : "component"
@@ -433,6 +460,7 @@
       }, {
         "children" : [ {
           "attributes" : {
+            "dxpStyle" : { },
             "recordId" : "{!recordId}"
           },
           "definition" : "community_builder:seoAssistant",

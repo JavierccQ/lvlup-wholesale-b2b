@@ -9,6 +9,7 @@
             "backgroundImageConfig" : "",
             "backgroundImageOverlay" : "rgba(0,0,0,0)",
             "componentSpacerSize" : "",
+            "dxpStyle" : { },
             "layoutDirectionDesktop" : "row",
             "layoutDirectionMobile" : "column",
             "layoutDirectionTablet" : "column",
@@ -21,6 +22,7 @@
           "children" : [ {
             "children" : [ {
               "attributes" : {
+                "dxpStyle" : { },
                 "items" : "{!Cart.Items}",
                 "messages" : "{!Cart.Messages}",
                 "showSortOptions" : true
@@ -29,6 +31,7 @@
                 "children" : [ {
                   "attributes" : {
                     "backgroundColor" : "",
+                    "dxpStyle" : { },
                     "isLinkable" : false,
                     "linkAssistiveText" : "",
                     "paddingHorizontal" : "none",
@@ -50,6 +53,7 @@
                 "children" : [ {
                   "attributes" : {
                     "backgroundColor" : "",
+                    "dxpStyle" : { },
                     "isLinkable" : false,
                     "linkAssistiveText" : "",
                     "paddingHorizontal" : "none",
@@ -65,6 +69,7 @@
                 }, {
                   "attributes" : {
                     "alignment" : "center",
+                    "dxpStyle" : { },
                     "size" : "standard",
                     "stretch" : "standard",
                     "text" : "Continue Shopping",
@@ -83,6 +88,7 @@
                 "children" : [ {
                   "attributes" : {
                     "backgroundColor" : "",
+                    "dxpStyle" : { },
                     "isLinkable" : false,
                     "linkAssistiveText" : "",
                     "paddingHorizontal" : "none",
@@ -104,6 +110,7 @@
                 "children" : [ {
                   "attributes" : {
                     "backgroundColor" : "",
+                    "dxpStyle" : { },
                     "isLinkable" : false,
                     "linkAssistiveText" : "",
                     "paddingHorizontal" : "none",
@@ -124,7 +131,8 @@
               }, {
                 "children" : [ {
                   "attributes" : {
-                    "discountsApproaching" : "{!Cart.DiscountsApproaching}"
+                    "discountsApproaching" : "{!Cart.DiscountsApproaching}",
+                    "dxpStyle" : { }
                   },
                   "definition" : "commerce_builder:promotionDiscountsApproaching",
                   "id" : "2ff11b73-637e-4530-84d0-d37b7d83207d",
@@ -139,6 +147,7 @@
                   "attributes" : {
                     "actualPriceFontSize" : "small",
                     "currencyIsoCode" : "{!Cart.Details.currencyIsoCode}",
+                    "dxpStyle" : { },
                     "hasNextPageItems" : "{!Cart.Pagination.hasNextPage}",
                     "hideQuantitySelector" : false,
                     "imageAspectRatio" : "1",
@@ -180,6 +189,7 @@
                     "children" : [ {
                       "attributes" : {
                         "backgroundColor" : "",
+                        "dxpStyle" : { },
                         "isLinkable" : false,
                         "linkAssistiveText" : "",
                         "paddingHorizontal" : "none",
@@ -209,6 +219,7 @@
               }, {
                 "children" : [ {
                   "attributes" : {
+                    "dxpStyle" : { },
                     "size" : "standard",
                     "text" : "Clear Cart",
                     "variant" : "tertiary",
@@ -225,7 +236,8 @@
               }, {
                 "children" : [ {
                   "attributes" : {
-                    "discountsApproaching" : "{!Cart.DiscountsApproaching}"
+                    "discountsApproaching" : "{!Cart.DiscountsApproaching}",
+                    "dxpStyle" : { }
                   },
                   "definition" : "commerce_builder:promotionDiscountsApproaching",
                   "id" : "b1442b9c-f6d4-4c0a-8a11-9fd5fe8a90b4",
@@ -250,6 +262,7 @@
                 "columnGutterWidth" : "",
                 "columnMinHeight" : "",
                 "columnVerticalAlign" : "flex-start",
+                "dxpStyle" : { },
                 "layoutDirectionDesktop" : "row",
                 "layoutDirectionMobile" : "column",
                 "layoutDirectionTablet" : "column",
@@ -272,6 +285,7 @@
           }, {
             "children" : [ {
               "attributes" : {
+                "dxpStyle" : { },
                 "stickyType" : "columnContentDesktop"
               },
               "children" : [ {
@@ -302,6 +316,7 @@
                     "children" : [ {
                       "attributes" : {
                         "backgroundColor" : "",
+                        "dxpStyle" : { },
                         "isLinkable" : false,
                         "linkAssistiveText" : "",
                         "paddingHorizontal" : "none",
@@ -323,6 +338,7 @@
                     "children" : [ {
                       "attributes" : {
                         "backgroundColor" : "",
+                        "dxpStyle" : { },
                         "isLinkable" : false,
                         "linkAssistiveText" : "",
                         "paddingHorizontal" : "none",
@@ -344,6 +360,7 @@
                     "children" : [ {
                       "attributes" : {
                         "backgroundColor" : "",
+                        "dxpStyle" : { },
                         "isLinkable" : false,
                         "linkAssistiveText" : "",
                         "paddingHorizontal" : "none",
@@ -365,6 +382,7 @@
                     "children" : [ {
                       "attributes" : {
                         "backgroundColor" : "",
+                        "dxpStyle" : { },
                         "isLinkable" : false,
                         "linkAssistiveText" : "",
                         "paddingHorizontal" : "none",
@@ -386,6 +404,7 @@
                     "children" : [ {
                       "attributes" : {
                         "backgroundColor" : "",
+                        "dxpStyle" : { },
                         "isLinkable" : false,
                         "linkAssistiveText" : "",
                         "paddingHorizontal" : "none",
@@ -407,6 +426,7 @@
                     "children" : [ {
                       "attributes" : {
                         "backgroundColor" : "",
+                        "dxpStyle" : { },
                         "isLinkable" : false,
                         "linkAssistiveText" : "",
                         "paddingHorizontal" : "none",
@@ -428,6 +448,7 @@
                     "children" : [ {
                       "attributes" : {
                         "backgroundColor" : "",
+                        "dxpStyle" : { },
                         "isLinkable" : false,
                         "linkAssistiveText" : "",
                         "paddingHorizontal" : "none",
@@ -449,6 +470,7 @@
                     "children" : [ {
                       "attributes" : {
                         "backgroundColor" : "",
+                        "dxpStyle" : { },
                         "isLinkable" : false,
                         "linkAssistiveText" : "",
                         "paddingHorizontal" : "none",
@@ -490,12 +512,14 @@
                         "applyCouponButtonText" : "Apply",
                         "couponInputBackgroundColor" : "rgba(255, 255, 255, 0)",
                         "couponInputPlaceholderText" : "Coupon code...",
+                        "dxpStyle" : { },
                         "showRevealButton" : true
                       },
                       "children" : [ {
                         "children" : [ {
                           "attributes" : {
                             "alignment" : "left",
+                            "dxpStyle" : { },
                             "size" : "standard",
                             "stretch" : "standard",
                             "text" : "Enter a Coupon Code",
@@ -523,6 +547,7 @@
                     "children" : [ {
                       "attributes" : {
                         "backgroundColor" : "",
+                        "dxpStyle" : { },
                         "isLinkable" : false,
                         "linkAssistiveText" : "",
                         "paddingHorizontal" : "none",
@@ -548,6 +573,7 @@
                         "borderColor" : "",
                         "borderRadius" : 0,
                         "borderWidth" : 0,
+                        "dxpStyle" : { },
                         "isOrderReversed" : false,
                         "itemSpacing" : "medium",
                         "listType" : "unformatted",
@@ -571,6 +597,7 @@
                             "borderRadius" : 8,
                             "couponCode" : "{!Promotion.couponCode}",
                             "couponId" : "{!Promotion.couponId}",
+                            "dxpStyle" : { },
                             "name" : "{!Promotion.name}",
                             "showDiscountAmount" : true,
                             "showTermsAndConditions" : false,
@@ -581,6 +608,7 @@
                             "children" : [ {
                               "attributes" : {
                                 "alignment" : "left",
+                                "dxpStyle" : { },
                                 "size" : "standard",
                                 "stretch" : "standard",
                                 "text" : "Terms & Conditions",
@@ -601,6 +629,7 @@
                                 "backgroundColor" : "",
                                 "currencyCode" : "{!Cart.Details.currencyIsoCode}",
                                 "displayAs" : "symbol",
+                                "dxpStyle" : { },
                                 "paddingHorizontal" : "none",
                                 "paddingVertical" : "xx-small",
                                 "textAlign" : "left",
@@ -628,12 +657,15 @@
                       }, {
                         "children" : [ {
                           "attributes" : {
+                            "dxpStyle" : { },
                             "paginatorAttributes" : "{\"nested\":{\"componentName\":\"dxp_content_layout:paginatorShowMore\",\"attributes\":{\"label\":\"Show More\",\"textDecoration\":\"{}\",\"buttonStyle\":\"secondary\",\"size\":\"standard\",\"width\":\"standard\",\"verticalPadding\":\"none\",\"horizontalAlignment\":\"center\"}}}",
                             "variant" : "showmore"
                           },
                           "children" : [ {
                             "children" : [ {
-                              "attributes" : { },
+                              "attributes" : {
+                                "dxpStyle" : { }
+                              },
                               "definition" : "dxp_page_layout:placeHolder",
                               "id" : "24865f55-dcc2-4bd6-9209-05144ca6f74c",
                               "type" : "component"
@@ -673,6 +705,7 @@
                   "type" : "component"
                 }, {
                   "attributes" : {
+                    "dxpStyle" : { },
                     "stickyType" : "bottomMobile"
                   },
                   "children" : [ {
@@ -765,6 +798,7 @@
       }, {
         "children" : [ {
           "attributes" : {
+            "dxpStyle" : { },
             "recordId" : "{!recordId}"
           },
           "definition" : "community_builder:seoAssistant",

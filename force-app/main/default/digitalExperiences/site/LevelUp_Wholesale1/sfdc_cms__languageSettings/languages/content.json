@@ -8,6 +8,11 @@
       "isAuthoringOnly" : false,
       "label" : "English (US)",
       "locale" : "en_US"
+    }, {
+      "isActive" : true,
+      "isAuthoringOnly" : false,
+      "label" : "Spanish (Mexico) (MX)",
+      "locale" : "es_MX"
     } ]
   },
   "urlName" : "languagecontent"

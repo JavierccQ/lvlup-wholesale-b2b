@@ -30,6 +30,7 @@
             "children" : [ {
               "attributes" : {
                 "backgroundColor" : "",
+                "dxpStyle" : { },
                 "isLinkable" : false,
                 "linkAssistiveText" : "",
                 "paddingHorizontal" : "none",
@@ -75,10 +76,14 @@
           },
           "children" : [ {
             "children" : [ {
-              "attributes" : { },
+              "attributes" : {
+                "dxpStyle" : { }
+              },
               "children" : [ {
                 "children" : [ {
-                  "attributes" : { },
+                  "attributes" : {
+                    "dxpStyle" : { }
+                  },
                   "definition" : "commerce_builder:orderListDateFilter",
                   "id" : "32090fea-2da9-4bd6-87f2-d23dd7ce3cc7",
                   "type" : "component"
@@ -91,6 +96,7 @@
                 "children" : [ {
                   "attributes" : {
                     "backgroundColor" : "",
+                    "dxpStyle" : { },
                     "isLinkable" : false,
                     "linkAssistiveText" : "",
                     "paddingHorizontal" : "none",
@@ -106,6 +112,7 @@
                 }, {
                   "attributes" : {
                     "backgroundColor" : "",
+                    "dxpStyle" : { },
                     "isLinkable" : false,
                     "linkAssistiveText" : "",
                     "paddingHorizontal" : "none",
@@ -121,6 +128,7 @@
                 }, {
                   "attributes" : {
                     "alignment" : "center",
+                    "dxpStyle" : { },
                     "size" : "standard",
                     "stretch" : "standard",
                     "text" : "Continue Shopping",
@@ -143,6 +151,7 @@
                     "borderColor" : "",
                     "borderRadius" : 0,
                     "borderWidth" : 0,
+                    "dxpStyle" : { },
                     "isOrderReversed" : false,
                     "itemSpacing" : "small",
                     "listType" : "unformatted",
@@ -162,6 +171,7 @@
                     "children" : [ {
                       "attributes" : {
                         "borderColor" : "#ecebea",
+                        "dxpStyle" : { },
                         "headerBgColor" : "#F7F9FA",
                         "imageAspectRatio" : "1",
                         "imageSize" : "contain",
@@ -175,6 +185,7 @@
                         "children" : [ {
                           "attributes" : {
                             "backgroundColor" : "",
+                            "dxpStyle" : { },
                             "isLinkable" : false,
                             "linkAssistiveText" : "",
                             "paddingHorizontal" : "none",
@@ -196,6 +207,7 @@
                         "children" : [ {
                           "attributes" : {
                             "backgroundColor" : "",
+                            "dxpStyle" : { },
                             "isLinkable" : false,
                             "linkAssistiveText" : "",
                             "paddingHorizontal" : "none",
@@ -225,12 +237,15 @@
                   }, {
                     "children" : [ {
                       "attributes" : {
+                        "dxpStyle" : { },
                         "paginatorAttributes" : "{\"nested\":{\"componentName\":\"dxp_content_layout:paginatorShowMore\",\"attributes\":{\"label\":\"Show More\",\"textDecoration\":\"{}\",\"buttonStyle\":\"secondary\",\"size\":\"standard\",\"width\":\"standard\",\"verticalPadding\":\"none\",\"horizontalAlignment\":\"center\"}}}",
                         "variant" : "showmore"
                       },
                       "children" : [ {
                         "children" : [ {
-                          "attributes" : { },
+                          "attributes" : {
+                            "dxpStyle" : { }
+                          },
                           "definition" : "dxp_page_layout:placeHolder",
                           "id" : "4fa102a7-c3e3-4c8a-9ba3-06cb6628db88",
                           "type" : "component"
@@ -283,6 +298,7 @@
       }, {
         "children" : [ {
           "attributes" : {
+            "dxpStyle" : { },
             "recordId" : "{!recordId}"
           },
           "definition" : "community_builder:seoAssistant",

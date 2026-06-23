@@ -30,15 +30,19 @@
             "children" : [ {
               "attributes" : {
                 "clientState" : "{!Order.ClientState}",
+                "dxpStyle" : { },
                 "loaderAltText" : "Loading order confirmation details..."
               },
               "children" : [ {
                 "children" : [ {
-                  "attributes" : { },
+                  "attributes" : {
+                    "dxpStyle" : { }
+                  },
                   "children" : [ {
                     "children" : [ {
                       "attributes" : {
                         "backgroundColor" : "",
+                        "dxpStyle" : { },
                         "isLinkable" : false,
                         "linkAssistiveText" : "",
                         "paddingHorizontal" : "none",
@@ -60,6 +64,7 @@
                     "children" : [ {
                       "attributes" : {
                         "backgroundColor" : "",
+                        "dxpStyle" : { },
                         "isLinkable" : false,
                         "linkAssistiveText" : "",
                         "paddingHorizontal" : "none",
@@ -75,6 +80,7 @@
                     }, {
                       "attributes" : {
                         "backgroundColor" : "",
+                        "dxpStyle" : { },
                         "isLinkable" : false,
                         "linkAssistiveText" : "",
                         "paddingHorizontal" : "none",
@@ -121,6 +127,7 @@
                     "borderColor" : "",
                     "borderRadius" : 0,
                     "borderWidth" : 0,
+                    "dxpStyle" : { },
                     "isOrderReversed" : false,
                     "itemSpacing" : "none",
                     "listType" : "unformatted",
@@ -142,6 +149,7 @@
                         "companyNameLabel" : "Company Name",
                         "deliveryGroup" : "{!DeliveryGroup}",
                         "deliveryTimelineLabel" : "Arriving",
+                        "dxpStyle" : { },
                         "emailAddressLabel" : "Email ID",
                         "giftMessageLabel" : "Gift Message",
                         "giftOrderLabel" : "This is a gift",
@@ -155,6 +163,7 @@
                         "children" : [ {
                           "attributes" : {
                             "backgroundColor" : "",
+                            "dxpStyle" : { },
                             "isLinkable" : false,
                             "linkAssistiveText" : "",
                             "paddingHorizontal" : "none",
@@ -176,6 +185,7 @@
                         "children" : [ {
                           "attributes" : {
                             "backgroundColor" : "",
+                            "dxpStyle" : { },
                             "isLinkable" : false,
                             "linkAssistiveText" : "",
                             "paddingHorizontal" : "none",
@@ -198,6 +208,7 @@
                           "attributes" : {
                             "currencyIsoCode" : "{!DeliveryGroup.currencyIsoCode}",
                             "deliveryGroupId" : "{!DeliveryGroup.id}",
+                            "dxpStyle" : { },
                             "imageAspectRatio" : "1",
                             "imageSize" : "contain",
                             "items" : "{!DeliveryGroup.lineItems}",
@@ -214,6 +225,7 @@
                             "children" : [ {
                               "attributes" : {
                                 "backgroundColor" : "",
+                                "dxpStyle" : { },
                                 "isLinkable" : false,
                                 "linkAssistiveText" : "",
                                 "paddingHorizontal" : "none",
@@ -235,6 +247,7 @@
                             "children" : [ {
                               "attributes" : {
                                 "backgroundColor" : "",
+                                "dxpStyle" : { },
                                 "isLinkable" : false,
                                 "linkAssistiveText" : "",
                                 "paddingHorizontal" : "none",
@@ -291,11 +304,14 @@
                   }, {
                     "children" : [ {
                       "attributes" : {
+                        "dxpStyle" : { },
                         "variant" : "showmore"
                       },
                       "children" : [ {
                         "children" : [ {
-                          "attributes" : { },
+                          "attributes" : {
+                            "dxpStyle" : { }
+                          },
                           "definition" : "dxp_page_layout:placeHolder",
                           "id" : "bc879722-f68c-41d7-b060-32df769970c3",
                           "type" : "component"
@@ -331,6 +347,7 @@
                     "borderColor" : "",
                     "borderRadius" : 0,
                     "borderWidth" : 0,
+                    "dxpStyle" : { },
                     "isOrderReversed" : false,
                     "itemSpacing" : "none",
                     "listType" : "unformatted",
@@ -351,6 +368,7 @@
                       "attributes" : {
                         "billingAddressLabel" : "Billing Address",
                         "billingDetails" : "{!BillingDetails}",
+                        "dxpStyle" : { },
                         "emailAddressLabel" : "Email ID",
                         "ownerInfo" : "{!Order.Owner}",
                         "paymentMethodLabel" : "Payment Method"
@@ -359,6 +377,7 @@
                         "children" : [ {
                           "attributes" : {
                             "backgroundColor" : "",
+                            "dxpStyle" : { },
                             "isLinkable" : false,
                             "linkAssistiveText" : "",
                             "paddingHorizontal" : "none",
@@ -388,11 +407,14 @@
                   }, {
                     "children" : [ {
                       "attributes" : {
+                        "dxpStyle" : { },
                         "variant" : "showmore"
                       },
                       "children" : [ {
                         "children" : [ {
-                          "attributes" : { },
+                          "attributes" : {
+                            "dxpStyle" : { }
+                          },
                           "definition" : "dxp_page_layout:placeHolder",
                           "id" : "2022abe3-264f-47cc-8026-c736516ab0cc",
                           "type" : "component"
@@ -442,6 +464,7 @@
                 }, {
                   "attributes" : {
                     "alignment" : "right",
+                    "dxpStyle" : { },
                     "size" : "standard",
                     "stretch" : "standard",
                     "text" : "Continue Shopping",
@@ -460,6 +483,7 @@
                 "children" : [ {
                   "attributes" : {
                     "discountAmountTextSize" : "small",
+                    "dxpStyle" : { },
                     "originalTextSize" : "small",
                     "shippingTextSize" : "small",
                     "showDiscountAmount" : true,
@@ -477,6 +501,7 @@
                     "children" : [ {
                       "attributes" : {
                         "backgroundColor" : "",
+                        "dxpStyle" : { },
                         "isLinkable" : false,
                         "linkAssistiveText" : "",
                         "paddingHorizontal" : "none",
@@ -498,6 +523,7 @@
                     "children" : [ {
                       "attributes" : {
                         "backgroundColor" : "",
+                        "dxpStyle" : { },
                         "isLinkable" : false,
                         "linkAssistiveText" : "",
                         "paddingHorizontal" : "none",
@@ -519,6 +545,7 @@
                     "children" : [ {
                       "attributes" : {
                         "backgroundColor" : "",
+                        "dxpStyle" : { },
                         "isLinkable" : false,
                         "linkAssistiveText" : "",
                         "paddingHorizontal" : "none",
@@ -540,6 +567,7 @@
                     "children" : [ {
                       "attributes" : {
                         "backgroundColor" : "",
+                        "dxpStyle" : { },
                         "isLinkable" : false,
                         "linkAssistiveText" : "",
                         "paddingHorizontal" : "none",
@@ -561,6 +589,7 @@
                     "children" : [ {
                       "attributes" : {
                         "backgroundColor" : "",
+                        "dxpStyle" : { },
                         "isLinkable" : false,
                         "linkAssistiveText" : "",
                         "paddingHorizontal" : "none",
@@ -582,6 +611,7 @@
                     "children" : [ {
                       "attributes" : {
                         "backgroundColor" : "",
+                        "dxpStyle" : { },
                         "isLinkable" : false,
                         "linkAssistiveText" : "",
                         "paddingHorizontal" : "none",
@@ -603,6 +633,7 @@
                     "children" : [ {
                       "attributes" : {
                         "backgroundColor" : "",
+                        "dxpStyle" : { },
                         "isLinkable" : false,
                         "linkAssistiveText" : "",
                         "paddingHorizontal" : "none",
@@ -624,6 +655,7 @@
                     "children" : [ {
                       "attributes" : {
                         "backgroundColor" : "",
+                        "dxpStyle" : { },
                         "isLinkable" : false,
                         "linkAssistiveText" : "",
                         "paddingHorizontal" : "none",
@@ -665,12 +697,14 @@
                   "type" : "component"
                 }, {
                   "attributes" : {
-                    "appliedPromotions" : "{!Order.Adjustments}"
+                    "appliedPromotions" : "{!Order.Adjustments}",
+                    "dxpStyle" : { }
                   },
                   "children" : [ {
                     "children" : [ {
                       "attributes" : {
                         "backgroundColor" : "",
+                        "dxpStyle" : { },
                         "isLinkable" : false,
                         "linkAssistiveText" : "",
                         "paddingHorizontal" : "none",
@@ -716,12 +750,14 @@
                 "children" : [ {
                   "attributes" : {
                     "authUserButtonText" : "View Order History",
+                    "dxpStyle" : { },
                     "guestUserButtonText" : "Find My Order"
                   },
                   "children" : [ {
                     "children" : [ {
                       "attributes" : {
                         "backgroundColor" : "",
+                        "dxpStyle" : { },
                         "isLinkable" : false,
                         "linkAssistiveText" : "",
                         "paddingHorizontal" : "none",
@@ -737,6 +773,7 @@
                     }, {
                       "attributes" : {
                         "backgroundColor" : "",
+                        "dxpStyle" : { },
                         "isLinkable" : false,
                         "linkAssistiveText" : "",
                         "paddingHorizontal" : "none",
@@ -784,6 +821,7 @@
       }, {
         "children" : [ {
           "attributes" : {
+            "dxpStyle" : { },
             "recordId" : "{!recordId}"
           },
           "definition" : "community_builder:seoAssistant",

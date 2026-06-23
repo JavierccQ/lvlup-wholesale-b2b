@@ -9,6 +9,7 @@
             "backgroundImageConfig" : "",
             "backgroundImageOverlay" : "rgba(0,0,0,0)",
             "componentSpacerSize" : "",
+            "dxpStyle" : { },
             "layoutDirectionDesktop" : "row",
             "layoutDirectionMobile" : "column",
             "layoutDirectionTablet" : "column",
@@ -21,12 +22,14 @@
           "children" : [ {
             "children" : [ {
               "attributes" : {
+                "dxpStyle" : { },
                 "wishlistsData" : "{!Wishlists}"
               },
               "children" : [ {
                 "children" : [ {
                   "attributes" : {
                     "backgroundColor" : "",
+                    "dxpStyle" : { },
                     "isLinkable" : false,
                     "linkAssistiveText" : "",
                     "paddingHorizontal" : "none",
@@ -48,6 +51,7 @@
                 "children" : [ {
                   "attributes" : {
                     "backgroundColor" : "",
+                    "dxpStyle" : { },
                     "isLinkable" : false,
                     "linkAssistiveText" : "",
                     "paddingHorizontal" : "xx-small",
@@ -70,6 +74,7 @@
                 "children" : [ {
                   "attributes" : {
                     "backgroundColor" : "",
+                    "dxpStyle" : { },
                     "isLinkable" : false,
                     "linkAssistiveText" : "",
                     "paddingHorizontal" : "none",
@@ -85,6 +90,7 @@
                 }, {
                   "attributes" : {
                     "backgroundColor" : "",
+                    "dxpStyle" : { },
                     "isLinkable" : false,
                     "linkAssistiveText" : "",
                     "paddingHorizontal" : "none",
@@ -100,6 +106,7 @@
                 }, {
                   "attributes" : {
                     "alignment" : "center",
+                    "dxpStyle" : { },
                     "size" : "standard",
                     "stretch" : "standard",
                     "text" : "Continue Shopping",
@@ -147,6 +154,7 @@
                 "children" : [ {
                   "attributes" : {
                     "backgroundColor" : "",
+                    "dxpStyle" : { },
                     "isLinkable" : false,
                     "linkAssistiveText" : "",
                     "paddingHorizontal" : "xx-small",
@@ -173,6 +181,7 @@
                     "borderColor" : "",
                     "borderRadius" : 0,
                     "borderWidth" : 0,
+                    "dxpStyle" : { },
                     "horizontalAlignment" : "center",
                     "isFixedRowHeight" : true,
                     "itemSpacing" : "xx-small",
@@ -203,23 +212,21 @@
                         "cardImageSize" : "contain",
                         "cardTextFlexAlign" : "flex-start",
                         "combinePromosThreshold" : "1",
+                        "dxpStyle" : { },
                         "imageAspectRatio" : "1",
                         "imageHoverAction" : "none",
                         "item" : "{!Item}",
                         "priceType" : "displayAllPrices",
                         "primaryPriceFontSize" : "medium",
                         "primaryPriceTextStyle" : "{\"bold\":true}",
-                        "productQuickViewButtonLabel" : "Quick View",
                         "promotionTextColor" : "#0d825d",
                         "secondaryPriceFontSize" : "small",
                         "secondaryPriceTextColor" : "#707275",
                         "showButtonOnDesktop" : true,
                         "showButtonOnMobile" : true,
                         "showProductImage" : true,
-                        "showProductQuickView" : false,
                         "showSku" : false,
                         "showWishlistIcon" : true,
-                        "showWishlistInQuickView" : false,
                         "skuLabel" : "SKU:",
                         "swatchBorderRadius" : 5,
                         "unavailablePriceLabel" : "Price Unavailable",
@@ -236,12 +243,15 @@
                   }, {
                     "children" : [ {
                       "attributes" : {
+                        "dxpStyle" : { },
                         "paginatorAttributes" : "{\"nested\":{\"componentName\":\"dxp_content_layout:paginatorShowMore\",\"attributes\":{\"label\":\"Show More\",\"textDecoration\":\"{}\",\"buttonStyle\":\"secondary\",\"size\":\"standard\",\"width\":\"standard\",\"verticalPadding\":\"none\",\"horizontalAlignment\":\"center\"}}}",
                         "variant" : "showmore"
                       },
                       "children" : [ {
                         "children" : [ {
-                          "attributes" : { },
+                          "attributes" : {
+                            "dxpStyle" : { }
+                          },
                           "definition" : "dxp_page_layout:placeHolder",
                           "id" : "553a255e-5562-4af4-a10a-931721c129be",
                           "type" : "component"
@@ -296,6 +306,7 @@
       }, {
         "children" : [ {
           "attributes" : {
+            "dxpStyle" : { },
             "recordId" : "{!recordId}"
           },
           "definition" : "community_builder:seoAssistant",

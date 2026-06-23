@@ -1,0 +1,12 @@
+{
+  "type" : "sfdc_cms__route",
+  "title" : "Quick Order",
+  "contentBody" : {
+    "activeViewId" : "Quick_Order",
+    "configurationTags" : [ ],
+    "pageAccess" : "UseParent",
+    "routeType" : "custom-quick-order",
+    "urlPrefix" : "quick-order"
+  },
+  "urlName" : "quick-order"
+}

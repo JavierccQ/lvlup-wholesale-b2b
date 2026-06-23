@@ -7,6 +7,7 @@
         "children" : [ {
           "attributes" : {
             "clientState" : "{!Order.ClientState}",
+            "dxpStyle" : { },
             "errorComponentButtonText" : "Continue Shopping",
             "errorComponentHeadingText" : "We couldn't find any order",
             "errorComponentSubHeadingText" : "Check the order ID and try again. If the problem persists, contact customer support.",
@@ -39,6 +40,7 @@
                 "children" : [ {
                   "attributes" : {
                     "divider" : "slash",
+                    "dxpStyle" : { },
                     "hideOnMobile" : true,
                     "maxDepthOnMobile" : "3",
                     "showHomeLink" : false,
@@ -83,6 +85,7 @@
                 "children" : [ {
                   "attributes" : {
                     "backgroundColor" : "",
+                    "dxpStyle" : { },
                     "isLinkable" : false,
                     "linkAssistiveText" : "",
                     "paddingHorizontal" : "none",
@@ -105,6 +108,7 @@
                   "attributes" : {
                     "alignment" : "right",
                     "buttonText" : "Start Reorder",
+                    "dxpStyle" : { },
                     "orderSummaryId" : "{!Route.recordId}",
                     "size" : "standard",
                     "variant" : "primary",
@@ -148,6 +152,7 @@
                 "children" : [ {
                   "attributes" : {
                     "alignment" : "center",
+                    "dxpStyle" : { },
                     "lineStyle" : "solid",
                     "size" : 1,
                     "width" : 100
@@ -189,6 +194,7 @@
               "children" : [ {
                 "children" : [ {
                   "attributes" : {
+                    "dxpStyle" : { },
                     "orderStatus" : "{!Order.Details.status}",
                     "trackerCardBorderColor" : "#D9DFE7",
                     "trackerCardBorderRadius" : 5
@@ -197,6 +203,7 @@
                     "children" : [ {
                       "attributes" : {
                         "backgroundColor" : "",
+                        "dxpStyle" : { },
                         "isLinkable" : false,
                         "linkAssistiveText" : "",
                         "paddingHorizontal" : "none",
@@ -221,6 +228,7 @@
                   "type" : "component"
                 }, {
                   "attributes" : {
+                    "dxpStyle" : { },
                     "orderDeliveryGroups" : "{!Order.DeliveryGroups}"
                   },
                   "children" : [ {
@@ -231,6 +239,7 @@
                         "borderColor" : "",
                         "borderRadius" : 0,
                         "borderWidth" : 0,
+                        "dxpStyle" : { },
                         "isOrderReversed" : false,
                         "itemSpacing" : "none",
                         "listType" : "unformatted",
@@ -249,6 +258,7 @@
                       "children" : [ {
                         "children" : [ {
                           "attributes" : {
+                            "dxpStyle" : { },
                             "giftMessageLabel" : "Gift Message",
                             "giftOrderLabel" : "This is a gift",
                             "orderDeliveryGroup" : "{!OrderDeliveryGroup}",
@@ -264,6 +274,7 @@
                                 "borderColor" : "",
                                 "borderRadius" : 0,
                                 "borderWidth" : 0,
+                                "dxpStyle" : { },
                                 "isOrderReversed" : false,
                                 "itemSpacing" : "none",
                                 "listType" : "unformatted",
@@ -284,6 +295,7 @@
                                   "attributes" : {
                                     "bundleExpandCollapseLabel" : "{0} Products Included",
                                     "childProductFieldMapping" : "[{\"entity\":\"OrderItemSummary\",\"name\":\"StockKeepingUnit\",\"label\":\"Product Sku\",\"type\":\"Text(255)\",\"expression\":\"{!Order.OrderItemSummary.StockKeepingUnit}\"},{\"entity\":\"OrderItemSummary\",\"name\":\"Quantity\",\"label\":\"Quantity\",\"type\":\"Number(18, 0)\",\"expression\":\"{!Order.OrderItemSummary.Quantity}\"}]",
+                                    "dxpStyle" : { },
                                     "imageAspectRatio" : "1",
                                     "imageSize" : "contain",
                                     "orderItem" : "{!OrderLineItem}",
@@ -324,7 +336,9 @@
                                   },
                                   "children" : [ {
                                     "children" : [ {
-                                      "attributes" : { },
+                                      "attributes" : {
+                                        "dxpStyle" : { }
+                                      },
                                       "definition" : "dxp_page_layout:placeHolder",
                                       "id" : "b5cf86db-ed44-47d2-a183-acc4521d5144",
                                       "type" : "component"
@@ -370,12 +384,15 @@
                       }, {
                         "children" : [ {
                           "attributes" : {
+                            "dxpStyle" : { },
                             "paginatorAttributes" : "{\"nested\":{\"componentName\":\"dxp_content_layout:paginatorShowMore\",\"attributes\":{\"label\":\"Show More\",\"textDecoration\":\"{}\",\"buttonStyle\":\"secondary\",\"size\":\"standard\",\"width\":\"standard\",\"verticalPadding\":\"none\",\"horizontalAlignment\":\"center\"}}}",
                             "variant" : "showmore"
                           },
                           "children" : [ {
                             "children" : [ {
-                              "attributes" : { },
+                              "attributes" : {
+                                "dxpStyle" : { }
+                              },
                               "definition" : "dxp_page_layout:placeHolder",
                               "id" : "6f25a02f-b5d5-4a45-aca8-e071718b2114",
                               "type" : "component"
@@ -421,6 +438,7 @@
               }, {
                 "children" : [ {
                   "attributes" : {
+                    "dxpStyle" : { },
                     "grossTaxOrdersFieldMapping" : "[\n{\"entity\": \"OrderSummary\",\"name\": \"TotalProductAmountWithTax\",\"label\": \"Subtotal\",\"type\": \"Formula (Currency)\",\"expression\": \"{!Order.OrderSummary.TotalProductAmountWithTax}\"\n},\n{\"entity\": \"OrderAdjustmentAggregateSummary\",\"name\": \"TotalProductPromotionDiscount\",\"label\": \"Promotions\",\"type\": \"Currency\",\"expression\": \"{!Order.OrderAdjustmentAggregateSummary.TotalProductPromotionDiscount}\"\n},\n{\"entity\": \"OrderSummary\",\"name\": \"TotalAdjDeliveryAmtWithTax\",\"label\": \"Shipping\",\"type\": \"Formula (Currency)\",\"expression\": \"{!Order.OrderSummary.TotalAdjDeliveryAmtWithTax}\"\n},\n{\"entity\": \"OrderSummary\",\"name\": \"TotalTaxAmount\",\"label\": \"Tax\",\"type\": \"Roll-Up Summary (SUM Order Product Summary)\",\"expression\": \"{!Order.OrderSummary.TotalTaxAmount}\"\n},\n{\"entity\": \"OrderSummary\",\"name\": \"GrandTotalAmount\",\"label\": \"Total\",\"type\": \"Formula (Currency)\",\"expression\": \"{!Order.OrderSummary.GrandTotalAmount}\"\n}\n]",
                     "hideFieldValueSeparator" : true,
                     "hideTitle" : true,
@@ -476,6 +494,7 @@
       }, {
         "children" : [ {
           "attributes" : {
+            "dxpStyle" : { },
             "recordId" : "{!recordId}"
           },
           "definition" : "community_builder:seoAssistant",
