@@ -28,7 +28,15 @@ Este repositorio incluye documentación estructurada y una configuración multia
 
 ## Memoria Operativa y Lectura Previa
 
-Antes de ejecutar cualquier tarea del repositorio, leer en este orden: `PROJECT_CONTEXT.md` (contexto), `CLAUDE.md` (operación) y `MEMORY.md` (memoria operativa ligera con reglas y preferencias recurrentes del usuario). No duplicar aquí el contenido de `MEMORY.md`.
+**Paso previo OBLIGATORIO y BLOQUEANTE.** Antes de proponer **cualquier** solución, respuesta técnica o ejecución de tarea sobre el repositorio, Claude **debe leer de verdad** (abrir con la herramienta de lectura de archivos, no asumir "de memoria") estos archivos, en este orden: `PROJECT_CONTEXT.md` (contexto), `CLAUDE.md` (operación) y `MEMORY.md` (memoria operativa).
+
+`MEMORY.md` es una **fuente de aprendizaje incremental**: sus reglas (`REGLA-NNN`) son **restricciones vinculantes**, no sugerencias. Antes de responder:
+
+1. Leer `MEMORY.md` completo.
+2. Si la tarea toca un área cubierta por una regla, **citarla explícitamente** (p. ej. "según REGLA-013…") y **respetarla** en la solución.
+3. Esta lectura se hace **al inicio de cada sesión**; en conversaciones largas, **re-leer** `MEMORY.md` antes de emprender una tarea nueva (el contenido pudo cambiar o salirse de contexto).
+
+No duplicar aquí el contenido de `MEMORY.md`.
 
 Captura de reglas nuevas en `MEMORY.md`:
 

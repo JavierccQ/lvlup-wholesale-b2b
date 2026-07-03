@@ -118,6 +118,74 @@ Si la regla **no** estuviera documentada, Claude preguntaría:
 - **Ámbito:** Deploy / LWR.
 - **Origen:** Sesión 2026-06-23.
 
+---
+
+> Reglas de la sesión de **integración de productos externos (Platzi → `Product2`)**,
+> sesión 2026-06-29, añadidas a petición explícita del usuario. Complementan (no
+> duplican) REGLA-003/004/006/007, que se reaplicaron en esta integración. El flujo
+> completo explicado vive en
+> `docs/salesforce/integracion-productos-externos-guion-narrativo.md`.
+
+### REGLA-008 — Callout antes de DML; patrón async para integraciones programadas
+
+- **Regla:** Apex prohíbe hacer un **callout después de un DML** en la misma transacción. En una orquestación (importar + publicar), el **callout va primero** y luego todo el DML. Para correrlo programado, usar **`Schedulable` → `System.enqueueJob` → `Queueable implements Database.AllowsCallouts`** (el callout corre en el Queueable, no en el Schedulable).
+- **Ámbito:** Apex / integraciones.
+- **Origen:** Sesión 2026-06-29 (Platzi).
+
+### REGLA-009 — Desplegar clases en la cadena de un job programado
+
+- **Regla:** No se puede recompilar una clase que esté en la **cadena de dependencias de un job Scheduled activo** (error "This schedulable class has jobs pending"). Flujo: **abortar el job** (`System.abortJob`) → desplegar → **reprogramar**. Alternativa: habilitar "Deploy with Apex jobs pending" en Deployment Settings.
+- **Ámbito:** Deploy / Apex.
+- **Origen:** Sesión 2026-06-29.
+
+### REGLA-010 — Límite de 40 caracteres en identificadores Apex
+
+- **Regla:** Los nombres de clase/identificadores Apex topan en **40 caracteres**. El test `<Clase>Test` de una clase con nombre largo suele pasarse del límite → abreviar (p. ej. `LvlupExternalProductEntitlementPublisher` + `Test` = 44 → `LvlupExtProductEntitlementPublisherTest`). Verificar el largo al nombrar antes de desplegar.
+- **Ámbito:** Apex.
+- **Origen:** Sesión 2026-06-29.
+
+### REGLA-011 — Testabilidad de objetos CMS/commerce → inyección de dependencias
+
+- **Regla:** Algunos objetos **no son insertables en tests** (`ManagedContent`) o su DML está restringido en contexto de test (`ProductMedia`). Diseñar la clase con un **método core que reciba los datos por parámetro** (Map/Set/Ids) más un método público que los descubra por SOQL; el test inyecta datos y valida la lógica sin depender de esos objetos. `CommerceEntitlementPolicy`/`CommerceEntitlementProduct` y `ProductCatalog`/`ProductCategory` **sí** son insertables. Para PBE estándar en test: `Test.getStandardPricebookId()`.
+- **Ámbito:** Apex / testing.
+- **Origen:** Sesión 2026-06-29.
+
+### REGLA-012 — Import de imágenes al CMS = referencia por URL, no binario
+
+- **Regla:** El paquete de import de Managed Content (Enhanced CMS) para imagen por URL usa `content.json` con **`type: "sfdc_cms__image"` y `source.type: "url"`** apuntando a la URL externa (`fileSize`/`mimeType` en `null`), **sin** carpeta `_media/` ni `ref`. El `title` pasa a ser `ManagedContent.Name`. El ZIP debe usar rutas con **`/`** (el `Compress-Archive` de PowerShell 5 usa `\` y rompe el import → construir el ZIP con rutas `/`). Generador: `scripts/cms/generate-platzi-image-package.mjs`.
+- **Ámbito:** B2B Commerce / CMS.
+- **Origen:** Sesión 2026-06-29.
+
+### REGLA-013 — Imágenes de productos EXTERNOS en el storefront (extiende REGLA-006)
+
+- **Regla:** El LWC `lvlupProductImage` usa `{!Item.defaultImage.url}` si existe; si no, **fallback `<baseUrl = GitHub del repo>/<SKU>.png`** (así se sirven los internos, alojados en `data/product-images/<SKU>.png`). Para productos **externos** con imagen en su propio host, `defaultImage.url` llega **vacío** y el fallback GitHub da 404. Solución: alimentar la URL **per-SKU vía Apex cacheable** (`LvlupProductImageController.getExternalImageUrls` → `Map<SKU,URL>`), que el LWC prioriza; y añadir el host externo como **Trusted URL** (`CspTrustedSite`, `img-src`) o la CSP lo bloquea (`ERR_BLOCKED_BY_ORB`). El casado imagen↔producto es por **`ManagedContent.Name = Product2.ProductCode`**.
+- **Ámbito:** B2B Commerce / LWC / CSP.
+- **Origen:** Sesión 2026-06-29.
+
+### REGLA-014 — Contraste de inputs = token `FormElementTextColor` del branding
+
+- **Regla:** Texto invisible en inputs (blanco sobre blanco) = el token del branding set **`FormElementTextColor`** está en `var(--dxp-g-root-contrast)` (blanco en el tema oscuro) mientras el fondo del input es blanco. Fijarlo a un oscuro (p. ej. `#1A1A1A`) en el branding set arregla **todos los inputs estándar** de golpe, sin tocar títulos/banners (esos usan `Heading*Color`, que quedan en blanco). Fuente: `…/sfdc_cms__brandingSet/B2B_Commerce/content.json`.
+- **Ámbito:** UX / branding / storefront.
+- **Origen:** Sesión 2026-06-29.
+
+### REGLA-015 — Named Credential nuevo: External Credential + acceso al principal
+
+- **Regla:** En la UI nueva de Named Credentials, el campo **External Credential** no ofrece opciones hasta **crear uno primero** (Named Credential = a dónde se llama; External Credential = cómo se autentica). Tras crearlo, su **principal** necesita acceso explícito, que se concede vía **Permission Set** (si falta → error de permisos al hacer el callout).
+- **Ámbito:** Integraciones / seguridad.
+- **Origen:** Sesión 2026-06-29.
+
+### REGLA-016 — Pedir capturas/exports del org antes de asumir lo no visible
+
+- **Regla:** Cuando el resultado depende de **configuración del org que no se ve en el repo** (branding, CSP/Trusted URLs, índice de búsqueda, contenido CMS, cómo un componente renderiza), **pedir al usuario una captura o un export antes** de proponer la solución, en vez de iterar sobre suposiciones. Sus capturas/exports son la fuente de verdad para converger rápido.
+- **Ámbito:** Método de trabajo / preferencia del usuario.
+- **Origen:** Sesión 2026-06-29.
+
+### REGLA-017 — Esqueleto reutilizable de integración inbound
+
+- **Regla:** Las integraciones entrantes se estructuran en capas con **una responsabilidad cada una**: **Service** (solo callout HTTP + `JSON.deserialize` a wrappers tipados) → **Importer** (upsert **idempotente por *External ID*** a un objeto **staging** con `Sync_Status__c` como máquina de estados) → **Publisher(es)** (staging → registros reales con **trazabilidad bidireccional** y **DML parcial** `Database.*(list, false)`). Cada publisher expone un método core inyectable (para tests) y devuelve un wrapper de resultado con contadores. Reutilizar este esqueleto en integraciones futuras.
+- **Ámbito:** Apex / integraciones.
+- **Origen:** Sesión 2026-06-29.
+
 <!-- Plantilla para nuevas reglas:
 
 ### REGLA-001 — <título corto>

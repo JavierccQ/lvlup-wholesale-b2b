@@ -98,7 +98,7 @@
       "FormElementPaddingLeft" : "12px",
       "FormElementPaddingRight" : "12px",
       "FormElementPaddingTop" : "0px",
-      "FormElementTextColor" : "var(--dxp-g-root-contrast)",
+      "FormElementTextColor" : "#1A1A1A",
       "FormElementTextDecoration" : "none",
       "FormElementTextFocusColor" : "var(--dxp-s-form-element-text-color)",
       "FormElementTextFont" : "var(--dxp-s-html-font-family)",

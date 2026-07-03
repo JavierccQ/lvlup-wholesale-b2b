@@ -11,8 +11,9 @@
 //   - loading="lazy" en el <img> (HTML): no descarga imágenes fuera de pantalla.
 //   - 0 File Storage de Salesforce (la imagen vive en un host externo).
 // ============================================================================
-import { LightningElement, api } from 'lwc';
+import { LightningElement, api, wire } from 'lwc';
 import { NavigationMixin } from 'lightning/navigation';
+import getExternalImageUrls from '@salesforce/apex/LvlupProductImageController.getExternalImageUrls';
 
 // Constante de módulo (fuera de la clase): la URL base por defecto de las imágenes.
 const DEFAULT_BASE_URL =
@@ -32,6 +33,22 @@ export default class LvlupProductImage extends NavigationMixin(LightningElement)
 
     hasError = false;   // se pone true si la imagen no carga (404, etc.).
     pdpUrl;             // URL calculada de la ficha (para el atributo href del <a>).
+
+    // Map SKU -> URL externa real (productos de integración, p. ej. Platzi). El
+    // índice de búsqueda NO expone esa URL, así que la pedimos por Apex. La
+    // llamada es @wire cacheable: se hace UNA vez y se comparte entre TODAS las
+    // tarjetas de la grilla (sin penalizar el rendimiento).
+    externalUrlsBySku;
+
+    @wire(getExternalImageUrls)
+    wiredExternalUrls({ data }) {
+        if (data) {
+            this.externalUrlsBySku = data;
+            // Si la imagen ya había fallado con el fallback, reintentar ahora que
+            // tenemos la URL real.
+            this.hasError = false;
+        }
+    }
 
     // pageReference: el "objeto destino" de la navegación. Aquí: la record page de
     // Product2 (que en Commerce es la ficha del producto / PDP).
@@ -77,11 +94,18 @@ export default class LvlupProductImage extends NavigationMixin(LightningElement)
         this[NavigationMixin.Navigate](this.pageReference);      // navega dentro de la SPA.
     }
 
-    // Resuelve qué URL usar para el <img>: 1º la directa; si no, la arma con el SKU.
+    // Resuelve qué URL usar para el <img>, por prioridad.
     get resolvedUrl() {
+        // 1º: URL externa por SKU (productos de integración). Cada producto
+        // referencia su imagen desde SU fuente de verdad, sin copiar nada al repo.
+        if (this.externalUrlsBySku && this.sku && this.externalUrlsBySku[this.sku]) {
+            return this.externalUrlsBySku[this.sku];
+        }
+        // 2º: URL directa (defaultImage.url), si el índice la expone.
         if (this.imageUrl) {
             return this.imageUrl;
         }
+        // 3º: fallback por SKU (catálogo interno alojado en GitHub).
         if (!this.sku) {
             return null;
         }

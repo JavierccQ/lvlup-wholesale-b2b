@@ -7,6 +7,10 @@
         <apexClass>LvlupQuickBuyController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
+    <classAccesses>
+        <apexClass>LvlupProductImageController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
     <fieldPermissions>
         <editable>false</editable>
         <field>Product2.Inventory_Quantity__c</field>
