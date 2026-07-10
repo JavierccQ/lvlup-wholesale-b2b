@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Change_Type__c</fullName>
+    <description
+  >Business classification of the catalog change: NEW, PRICE_DROP, RESTOCK or UPDATED. Decided by the curation layer, not copied verbatim from CDC.</description>
+    <label>Change Type</label>
+    <length>40</length>
+    <required>true</required>
+    <type>Text</type>
+</CustomField>

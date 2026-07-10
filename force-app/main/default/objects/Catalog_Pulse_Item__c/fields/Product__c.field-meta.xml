@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Product__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description
+  >Product2 this novelty refers to. Used to join against CommerceEntitlementProduct so the controller only surfaces products the buyer is actually entitled to see.</description>
+    <externalId>false</externalId>
+    <label>Product</label>
+    <referenceTo>Product2</referenceTo>
+    <relationshipLabel>Catalog Pulse Items</relationshipLabel>
+    <relationshipName>Catalog_Pulse_Items</relationshipName>
+    <required>false</required>
+    <type>Lookup</type>
+</CustomField>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Segment_Key__c</fullName>
+    <description
+  >Optional functional segment key (e.g. Buyer Group name) this novelty is relevant for. Null means it applies to all segments. NEVER a hardcoded record Id; it is a functional key resolved at query time. Security is still enforced by entitlements, not by this key.</description>
+    <label>Segment Key</label>
+    <length>255</length>
+    <required>false</required>
+    <type>Text</type>
+</CustomField>

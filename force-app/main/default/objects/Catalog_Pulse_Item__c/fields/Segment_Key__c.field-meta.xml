@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Segment_Key__c</fullName>
+    <description
+  >Functional segment key (e.g. Buyer Group name) this novelty is relevant for. Null means global (all segments). Filtering only; the security boundary is the entitlement join, not this field.</description>
+    <externalId>false</externalId>
+    <label>Segment Key</label>
+    <length>255</length>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+</CustomField>

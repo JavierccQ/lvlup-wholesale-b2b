@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Status__c</fullName>
+    <description
+  >Lifecycle state of the novelty: ACTIVE (shown), EXPIRED (aged out) or HIDDEN (manually suppressed). Only ACTIVE items are returned to the storefront.</description>
+    <label>Status</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>ACTIVE</fullName>
+                <default>true</default>
+                <label>Active</label>
+            </value>
+            <value>
+                <fullName>EXPIRED</fullName>
+                <default>false</default>
+                <label>Expired</label>
+            </value>
+            <value>
+                <fullName>HIDDEN</fullName>
+                <default>false</default>
+                <label>Hidden</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

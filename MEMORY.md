@@ -32,7 +32,7 @@ Añadir aquí **solo si** la regla:
 - Es recurrente o reutilizable.
 - Afecta cómo se trabaja en el proyecto.
 - No está ya documentada en otro `.md`.
-- No contradice el MVP, los ADRs ni el principio *standard-first*.
+- No contradice el MVP, los ADRs ni el principio _standard-first_.
 - No merece todavía un ADR ni una actualización formal de documentación.
 
 **No** añadir aquí:
@@ -50,8 +50,8 @@ Añadir aquí **solo si** la regla:
 Demuestra el comportamiento esperado cuando el usuario corrige con una regla
 aparentemente reutilizable.
 
-> Usuario: *"Evita usar guiones o caracteres especiales al nombrar funciones.
-> Usa nombres cortos, descriptivos y en camelCase."*
+> Usuario: _"Evita usar guiones o caracteres especiales al nombrar funciones.
+> Usa nombres cortos, descriptivos y en camelCase."_
 
 1. Claude verifica primero si la regla ya está documentada.
 2. En este caso **sí lo está**: vive en `docs/development/naming-conventions.md`
@@ -61,15 +61,15 @@ aparentemente reutilizable.
    **no** la añade a `MEMORY.md`.
 
 Si la regla **no** estuviera documentada, Claude preguntaría:
-*"Esta regla no parece estar documentada todavía. ¿Quieres que la añada a
-`MEMORY.md`?"*, y solo la añadiría tras confirmación explícita.
+_"Esta regla no parece estar documentada todavía. ¿Quieres que la añada a
+`MEMORY.md`?"_, y solo la añadiría tras confirmación explícita.
 
 ---
 
 ## Reglas operativas
 
 > Reglas operativas reutilizables descubiertas durante el desarrollo del feature
-> *Contextual Quick Buy* (sesión 2026-06-23), añadidas a petición explícita del
+> _Contextual Quick Buy_ (sesión 2026-06-23), añadidas a petición explícita del
 > usuario. Son lecciones recurrentes de B2B Commerce/LWR que ahorran tiempo en
 > features futuros. El detalle completo vive en
 > `docs/development/contextual-quick-buy-code-walkthrough.md`,
@@ -182,9 +182,54 @@ Si la regla **no** estuviera documentada, Claude preguntaría:
 
 ### REGLA-017 — Esqueleto reutilizable de integración inbound
 
-- **Regla:** Las integraciones entrantes se estructuran en capas con **una responsabilidad cada una**: **Service** (solo callout HTTP + `JSON.deserialize` a wrappers tipados) → **Importer** (upsert **idempotente por *External ID*** a un objeto **staging** con `Sync_Status__c` como máquina de estados) → **Publisher(es)** (staging → registros reales con **trazabilidad bidireccional** y **DML parcial** `Database.*(list, false)`). Cada publisher expone un método core inyectable (para tests) y devuelve un wrapper de resultado con contadores. Reutilizar este esqueleto en integraciones futuras.
+- **Regla:** Las integraciones entrantes se estructuran en capas con **una responsabilidad cada una**: **Service** (solo callout HTTP + `JSON.deserialize` a wrappers tipados) → **Importer** (upsert **idempotente por _External ID_** a un objeto **staging** con `Sync_Status__c` como máquina de estados) → **Publisher(es)** (staging → registros reales con **trazabilidad bidireccional** y **DML parcial** `Database.*(list, false)`). Cada publisher expone un método core inyectable (para tests) y devuelve un wrapper de resultado con contadores. Reutilizar este esqueleto en integraciones futuras.
 - **Ámbito:** Apex / integraciones.
 - **Origen:** Sesión 2026-06-29.
+
+---
+
+> Reglas de la sesión de **Buyer Group Catalog Pulse (CDC + Platform Events)**,
+> sesión 2026-07-08, añadidas a petición explícita del usuario. Lecciones
+> reutilizables de Change Data Capture y Platform Events. El detalle completo vive
+> en `docs/development/catalog-pulse-development-walkthrough.md`,
+> `docs/salesforce/manual-catalog-pulse-cdc-runbook.md` y
+> `adr/0007-event-driven-catalog-pulse-architecture.md`.
+
+### REGLA-018 — CDC: en UPDATE, los campos no cambiados no son fiables
+
+- **Regla:** En un change event de UPDATE, CDC solo trae los campos que cambiaron; los booleanos NO cambiados llegan como su default `false` (no null). Nunca decidir lógica con un campo que no esté en `header.getChangedFields()`; fiarse de un valor solo si el campo cambió, o si la operación es CREATE/UNDELETE (traen valores reales).
+- **Ámbito:** Apex / CDC.
+- **Origen:** Sesión 2026-07-08 (Catalog Pulse). Detalle en `docs/development/catalog-pulse-development-walkthrough.md` §6.
+
+### REGLA-019 — CDC capta cualquier fuente y solo dispara ante cambios reales
+
+- **Regla:** Un Apex trigger sobre `<Objeto>ChangeEvent` (con la entidad en el canal `ChangeEvents`) capta cambios de UI, API y Apex por igual. CDC NO emite evento si el DML reescribe valores idénticos → los upserts idempotentes (re-sync diario) no generan ruido. Verificar habilitación con `PlatformEventChannelMember WHERE SelectedEntity = '<Objeto>ChangeEvent'`.
+- **Ámbito:** CDC / B2B Commerce.
+- **Origen:** Sesión 2026-07-08 (Catalog Pulse). Runbook `manual-catalog-pulse-cdc-runbook.md` §2.
+
+### REGLA-020 — Testear CDC + Platform Events en Apex
+
+- **Regla:** CDC: `Test.enableChangeDataCapture()` antes del DML + `Test.getEventBus().deliver()` (uno por salto de la cadena) dentro de `Test.startTest/stopTest`. Subscriber de Platform Event: `EventBus.publish(...)` y dejar que `Test.stopTest()` haga el flush. La lógica se testea con wrappers/DTOs propios sin depender de los objetos de evento.
+- **Ámbito:** Apex / testing / eventos.
+- **Origen:** Sesión 2026-07-08 (Catalog Pulse).
+
+### REGLA-021 — Triggers async (CDC/Platform Event) corren como Automated Process
+
+- **Regla:** Los triggers de ChangeEvent y de Platform Event se ejecutan async como el usuario **Automated Process** (`autoproc`). Para ver sus logs, crear un `TraceFlag` (LogType `USER_DEBUG`) sobre ese usuario y leer el `ApexLog`; el log del usuario que hizo el DML no los contiene.
+- **Ámbito:** Apex / debugging / eventos.
+- **Origen:** Sesión 2026-07-08 (Catalog Pulse).
+
+### REGLA-022 — FLS: consultar campos custom por API/report exige permission set
+
+- **Regla:** Un usuario (incl. admin) necesita FLS de lectura para consultar un campo custom por SOQL en API/reports; sin él la query da `No such column` aunque el campo exista. El Apex `without sharing`/system mode ignora FLS (por eso un LWC servido por Apex funciona sin ese permiso, pero una query directa del admin no).
+- **Ámbito:** Seguridad / FLS.
+- **Origen:** Sesión 2026-07-08 (Catalog Pulse).
+
+### REGLA-023 — `group` y `desc` son palabras reservadas en Apex
+
+- **Regla:** No usar `group` ni `desc` (ni otras palabras reservadas de SOQL/Apex) como nombre de variable; el deploy falla con "Identifier name is reserved". Usar alternativas (`buyerGroup`, `cleaned`, etc.).
+- **Ámbito:** Apex.
+- **Origen:** Sesión 2026-07-08 (Catalog Pulse).
 
 <!-- Plantilla para nuevas reglas:
 

@@ -1,0 +1,88 @@
+<template>
+  <section class="pulse" aria-labelledby="pulse-heading">
+    <header class="pulse-header">
+      <h2 id="pulse-heading" class="pulse-heading">{cardTitle}</h2>
+      <template lwc:if={showCarousel}>
+        <div class="pulse-nav" role="group" aria-label="Controles del carrusel">
+          <button
+            type="button"
+            class="pulse-nav__btn"
+            aria-label="Anterior"
+            onclick={handlePrev}
+          >
+            &#8249;
+          </button>
+          <button
+            type="button"
+            class="pulse-nav__btn"
+            aria-label="Siguiente"
+            onclick={handleNext}
+          >
+            &#8250;
+          </button>
+        </div>
+      </template>
+    </header>
+
+    <!-- LOADING -->
+    <template lwc:if={isLoading}>
+      <div class="pulse-state pulse-loading" role="status" aria-live="polite">
+        <div class="pulse-spinner" aria-hidden="true"></div>
+        <span>Cargando novedades…</span>
+      </div>
+    </template>
+
+    <!-- ERROR -->
+    <template lwc:if={hasError}>
+      <div class="pulse-state pulse-error" role="alert">
+        <span
+          >No hemos podido cargar las novedades ahora mismo. Inténtalo de nuevo
+          más tarde.</span
+        >
+      </div>
+    </template>
+
+    <!-- EMPTY -->
+    <template lwc:if={showEmpty}>
+      <div class="pulse-state pulse-empty" role="status">
+        <span>No hay novedades para tu cuenta por ahora. Vuelve pronto.</span>
+      </div>
+    </template>
+
+    <!-- DATA -->
+    <template lwc:if={showCarousel}>
+      <ul class="pulse-track" role="list">
+        <template for:each={items} for:item="item">
+          <li key={item.id} class="pulse-card" role="listitem">
+            <div
+              class="pulse-card__clickable"
+              role="button"
+              tabindex="0"
+              data-product-id={item.productId}
+              onclick={handleOpenProduct}
+              onkeyup={handleOpenProduct}
+            >
+              <div class="pulse-card__media">
+                <span class={item.badgeClass}>{item.changeTypeLabel}</span>
+                <template lwc:if={item.imageSrc}>
+                  <img
+                    class="pulse-card__img"
+                    src={item.imageSrc}
+                    alt={item.productName}
+                    loading="lazy"
+                    onerror={handleImageError}
+                  />
+                </template>
+              </div>
+              <div class="pulse-card__body">
+                <p class="pulse-card__title">{item.title}</p>
+                <p class="pulse-card__name">{item.productName}</p>
+                <p class="pulse-card__message">{item.message}</p>
+              </div>
+            </div>
+          </li>
+        </template>
+      </ul>
+    </template>
+  </section>
+</template>

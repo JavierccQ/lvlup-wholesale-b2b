@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>66.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>LvlUp Catalog Pulse Carousel</masterLabel>
+    <description
+  >Carrusel de novedades de catálogo (Buyer Group Catalog Pulse) segmentado y entitlement-aware para el storefront B2B. Consulta datos persistidos vía Apex cacheable; no escucha eventos efímeros.</description>
+    <targets>
+        <target>lightningCommunity__Default</target>
+        <target>lightningCommunity__Page</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property
+        name="cardTitle"
+        type="String"
+        label="Título"
+        default="Novedades para ti"
+        description="Encabezado que se muestra sobre el carrusel."
+      />
+            <property
+        name="maxItems"
+        type="Integer"
+        label="Máximo de novedades"
+        default="12"
+        description="Número máximo de novedades a mostrar (el servidor lo topa a 24)."
+      />
+            <property
+        name="hideWhenEmpty"
+        type="Boolean"
+        label="Ocultar si no hay novedades"
+        default="false"
+        description="Si se activa, el componente no ocupa espacio cuando no hay novedades para el comprador."
+      />
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>
