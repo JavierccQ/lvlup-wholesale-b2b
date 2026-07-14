@@ -15,41 +15,63 @@
             "layoutDirectionTablet" : "column",
             "maxContentWidth" : "",
             "sectionColumnGutterWidth" : "",
-            "sectionConfig" : "{\"UUID\":\"bacdaf69-15f3-4061-a9dd-3266171be095\",\"columns\":[{\"UUID\":\"44ee539d-2cd6-48e1-a438-d19fde8ea881\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":null}]}",
+            "sectionConfig" : "{\"UUID\":\"bacdaf69-15f3-4061-a9dd-3266171be095\",\"columns\":[{\"UUID\":\"44ee539d-2cd6-48e1-a438-d19fde8ea881\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"5\",\"seedComponents\":null},{\"UUID\":\"f3d9a2b1-6c47-4e05-8a1d-2b9c05e7d413\",\"columnName\":\"Column 2\",\"columnKey\":\"col2\",\"columnWidth\":\"7\",\"seedComponents\":null}]}",
             "sectionMinHeight" : "",
             "sectionVerticalAlign" : "flex-start"
           },
           "children" : [ {
             "children" : [ {
               "attributes" : {
-                "alignment" : "left",
                 "dxpStyle" : { },
-                "imageInfo" : "",
-                "imageInfoMobile" : "",
-                "logoWidth" : 250
+                "imageInfos" : "",
+                "richTextValue" : "<div class=\"lvlup-login-panel\"><div><img class=\"lvlup-login-logo\" src=\"https://raw.githubusercontent.com/JavierccQ/lvlup-wholesale-b2b/main/docs/ux/brand/lvlup-logo-02-esports-light.svg\" alt=\"LvlUp WholeSale\" /><p class=\"lvlup-login-tagline\">Tecnología y <span class=\"neon\">gaming</span> al por mayor.</p><ul class=\"lvlup-login-points\"><li><span class=\"chev\">»</span>Precios negociados por cuenta</li><li><span class=\"chev\">»</span>Stock y disponibilidad al momento</li><li><span class=\"chev\">»</span>Reorder en un clic desde tu historial</li></ul></div><p class=\"lvlup-login-foot\">Portal exclusivo para clientes mayoristas.</p></div>"
               },
-              "definition" : "dxp_content_layout:siteLogo",
-              "id" : "d404ad44-8127-4ce5-a6c4-5509c7d27a19",
-              "type" : "component"
-            }, {
-              "attributes" : {
-                "dxpStyle" : { },
-                "forgotPasswordLabel" : "Forgot your password?",
-                "forgotPasswordUrl" : "/ForgotPassword",
-                "loginButtonLabel" : "Log In",
-                "passwordLabel" : "Password",
-                "selfRegisterLabel" : "Not a member?",
-                "selfRegisterUrl" : "/SelfRegister",
-                "startUrl" : "",
-                "usernameLabel" : "Username"
-              },
-              "definition" : "community_login:loginForm",
-              "id" : "9b65be0e-a21e-4403-8db4-a66e953a9802",
+              "definition" : "community_builder:htmlEditor",
+              "id" : "1a2f4c68-9d3e-47b0-b52a-8e91d64c07af",
               "type" : "component"
             } ],
             "id" : "44ee539d-2cd6-48e1-a438-d19fde8ea881",
             "name" : "col1",
             "title" : "Column 1",
+            "type" : "region"
+          }, {
+            "children" : [ {
+              "attributes" : {
+                "dxpStyle" : { },
+                "imageInfos" : "",
+                "richTextValue" : "<div class=\"lvlup-login-card-head\"><h1>Accede a tu cuenta</h1><p>Introduce tus credenciales de cliente</p></div>"
+              },
+              "definition" : "community_builder:htmlEditor",
+              "id" : "7c8e21d4-3b5f-49a6-9e02-d15a3f86c9b0",
+              "type" : "component"
+            }, {
+              "attributes" : {
+                "dxpStyle" : { },
+                "forgotPasswordLabel" : "¿Olvidaste tu contraseña?",
+                "forgotPasswordUrl" : "/ForgotPassword",
+                "loginButtonLabel" : "Iniciar sesión",
+                "passwordLabel" : "Contraseña",
+                "selfRegisterLabel" : "¿Aún no eres cliente? Solicita tu alta",
+                "selfRegisterUrl" : "/SelfRegister",
+                "startUrl" : "",
+                "usernameLabel" : "Usuario"
+              },
+              "definition" : "community_login:loginForm",
+              "id" : "9b65be0e-a21e-4403-8db4-a66e953a9802",
+              "type" : "component"
+            }, {
+              "attributes" : {
+                "dxpStyle" : { },
+                "imageInfos" : "",
+                "richTextValue" : "<div class=\"lvlup-login-card-foot\"><hr /><p>¿Aún no eres cliente? <a href=\"/levelupwholesale/SelfRegister\">Solicita tu alta</a></p></div>"
+              },
+              "definition" : "community_builder:htmlEditor",
+              "id" : "3b6f9d17-52ae-48c3-8f7d-604e1c2a9b58",
+              "type" : "component"
+            } ],
+            "id" : "f3d9a2b1-6c47-4e05-8a1d-2b9c05e7d413",
+            "name" : "col2",
+            "title" : "Column 2",
             "type" : "region"
           } ],
           "definition" : "community_layout:section",

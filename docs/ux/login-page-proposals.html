@@ -1,0 +1,923 @@
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Login LvlUp — Propuestas de diseño</title>
+<style>
+  /* ==========================================================================
+     Documento de propuestas UX — Login Page LvlUp WholeSale.
+     Mockups fieles al branding set real del Site (tema oscuro):
+     fondo #11132C · superficie #1C2049 · CTA #19E08B · acento #6D28D9.
+     Fuentes reales del sitio: Space Grotesk (títulos) e Inter (cuerpo);
+     aquí se aproximan con la pila del sistema (mockup sin CDNs).
+     El documento completo se compromete con el mundo oscuro del storefront.
+     ========================================================================== */
+  :root {
+    --bg: #0b0d20;
+    --panel: #141737;
+    --ink: #f2f3fb;
+    --muted: #a9add6;
+    --line: rgba(169, 173, 214, 0.18);
+    --green: #19e08b;
+    --green-ink: #06281c;
+    --violet: #6d28d9;
+    --violet-2: #854bdf;
+    --cyan: #22d3ee;
+    --site-bg: #11132c;
+    --site-surface: #1c2049;
+    --display: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    --body: "Segoe UI", system-ui, -apple-system, sans-serif;
+    --mono: Consolas, "Courier New", monospace;
+  }
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--body);
+    line-height: 1.65;
+  }
+  .wrap {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 5rem;
+  }
+
+  /* ----- cabecera del documento ----- */
+  .eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--green);
+    font-weight: 700;
+  }
+  h1 {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: clamp(1.7rem, 4vw, 2.4rem);
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    margin: 0.4rem 0 0.6rem;
+    text-wrap: balance;
+  }
+  .lede {
+    color: var(--muted);
+    max-width: 62ch;
+    margin: 0;
+  }
+
+  /* ----- crítica del estado actual ----- */
+  .current {
+    margin-top: 2.2rem;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: var(--panel);
+    padding: 1.2rem 1.4rem;
+  }
+  .current h2 {
+    font-size: 1rem;
+    margin: 0 0 0.5rem;
+  }
+  .current ul {
+    margin: 0;
+    padding-left: 1.2rem;
+    color: var(--muted);
+  }
+  .current li {
+    margin: 0.25rem 0;
+  }
+  .current strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  /* ----- secciones de propuesta ----- */
+  .proposal {
+    margin-top: 3.5rem;
+  }
+  .proposal-head {
+    display: flex;
+    align-items: baseline;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+  }
+  .badge {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+  }
+  .badge-a {
+    background: rgba(109, 40, 217, 0.28);
+    color: #c9b0f4;
+  }
+  .badge-b {
+    background: rgba(25, 224, 139, 0.16);
+    color: var(--green);
+  }
+  .proposal h2 {
+    font-family: var(--display);
+    font-size: 1.45rem;
+    letter-spacing: -0.01em;
+    margin: 0;
+  }
+  .proposal .thesis {
+    color: var(--muted);
+    max-width: 68ch;
+    margin: 0.6rem 0 1.4rem;
+  }
+
+  /* ----- marcos de mockup ----- */
+  .frames {
+    display: flex;
+    gap: 1.2rem;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+  .browser {
+    flex: 1 1 620px;
+    min-width: 320px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    overflow: hidden;
+    background: var(--site-bg);
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+  }
+  .browser-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.5rem 0.8rem;
+    background: #0d0f26;
+    border-bottom: 1px solid var(--line);
+  }
+  .dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #33366b;
+  }
+  .urlbar {
+    flex: 1;
+    font-family: var(--mono);
+    font-size: 0.66rem;
+    color: var(--muted);
+    background: #141737;
+    border-radius: 4px;
+    padding: 0.18rem 0.6rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .phone {
+    flex: 0 0 200px;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    overflow: hidden;
+    background: var(--site-bg);
+    box-shadow: 0 12px 34px rgba(0, 0, 0, 0.45);
+  }
+  .phone-notch {
+    height: 14px;
+    background: #0d0f26;
+    border-bottom: 1px solid var(--line);
+  }
+  .frame-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0.5rem 0 0;
+    text-align: center;
+  }
+  .frame-col {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 200px;
+  }
+  .frame-col-wide {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 620px;
+    min-width: 320px;
+  }
+
+  /* ==========================================================================
+     Piezas compartidas de los mockups (form, inputs, botones)
+     ========================================================================== */
+  .mock {
+    font-family: var(--body);
+  }
+  .m-card {
+    background: var(--site-surface);
+    border: 1px solid rgba(109, 40, 217, 0.35);
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.35);
+  }
+  .m-title {
+    font-family: var(--display);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: #fff;
+    font-size: 1.15rem;
+    margin: 0 0 0.2rem;
+  }
+  .m-sub {
+    color: #9aa0cf;
+    font-size: 0.72rem;
+    margin: 0 0 1rem;
+  }
+  .m-input {
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 6px;
+    padding: 0.4rem 0.7rem;
+    margin-bottom: 0.7rem;
+  }
+  .m-input .lab {
+    font-size: 0.58rem;
+    color: #6b6b6b;
+  }
+  .m-input .val {
+    font-size: 0.76rem;
+    color: #1a1a1a;
+  }
+  .m-input.focus {
+    border-color: var(--green);
+    box-shadow: 0 0 0 2px rgba(25, 224, 139, 0.25);
+  }
+  .m-cta {
+    background: var(--green);
+    color: var(--green-ink);
+    font-weight: 700;
+    text-align: center;
+    border-radius: 6px;
+    padding: 0.55rem;
+    font-size: 0.8rem;
+    margin: 0.4rem 0 0.9rem;
+  }
+  .m-links {
+    text-align: center;
+    font-size: 0.68rem;
+  }
+  .m-links a {
+    color: var(--violet-2);
+    text-decoration: none;
+  }
+  .m-divider {
+    border-top: 1px solid rgba(169, 173, 214, 0.18);
+    margin: 0.8rem 0;
+  }
+  .m-register {
+    color: #9aa0cf;
+    font-size: 0.68rem;
+    text-align: center;
+  }
+  .m-register b {
+    color: var(--green);
+    font-weight: 600;
+  }
+
+  .m-logo {
+    font-family: var(--display);
+    font-weight: 800;
+    letter-spacing: 0.06em;
+  }
+  .m-logo .u {
+    color: var(--violet-2);
+  }
+  .m-logo .p {
+    color: var(--cyan);
+  }
+  .m-logo-sub {
+    font-size: 0.5em;
+    letter-spacing: 0.45em;
+    color: var(--cyan);
+    font-weight: 600;
+    display: block;
+    margin-top: 0.1rem;
+  }
+
+  /* ==========================================================================
+     Propuesta A — Panel de marca (split 45/55)
+     ========================================================================== */
+  .a-screen {
+    display: flex;
+    min-height: 430px;
+  }
+  .a-brand {
+    flex: 0 0 45%;
+    position: relative;
+    overflow: hidden;
+    padding: 2rem 1.8rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background:
+      radial-gradient(
+        120% 90% at 15% 10%,
+        rgba(109, 40, 217, 0.32),
+        transparent 60%
+      ),
+      radial-gradient(
+        100% 80% at 90% 100%,
+        rgba(25, 224, 139, 0.1),
+        transparent 55%
+      ),
+      linear-gradient(150deg, #1c2049 0%, #11132c 70%);
+  }
+  /* patrón de chevrones "level-up" heredado del logo, casi imperceptible */
+  .a-brand::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: repeating-linear-gradient(
+      -45deg,
+      rgba(255, 255, 255, 0.025) 0 2px,
+      transparent 2px 26px
+    );
+  }
+  .a-brand .m-logo {
+    font-size: 1.35rem;
+    color: #fff;
+  }
+  .a-tagline {
+    font-family: var(--display);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: #fff;
+    font-size: 1.28rem;
+    line-height: 1.3;
+    margin: 1.4rem 0 0;
+    text-wrap: balance;
+  }
+  .a-tagline em {
+    font-style: normal;
+    color: var(--green);
+  }
+  .a-points {
+    list-style: none;
+    margin: 1.2rem 0 0;
+    padding: 0;
+  }
+  .a-points li {
+    display: flex;
+    gap: 0.55rem;
+    align-items: baseline;
+    color: #c6c9e8;
+    font-size: 0.78rem;
+    margin: 0.55rem 0;
+  }
+  .a-points .chev {
+    color: var(--green);
+    font-weight: 800;
+  }
+  .a-foot {
+    color: #7d82b8;
+    font-size: 0.65rem;
+    position: relative;
+  }
+  .a-form {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--site-bg);
+    padding: 2rem 1.6rem;
+  }
+  .a-form .m-card {
+    width: 300px;
+  }
+
+  /* móvil A: strip de marca arriba, form debajo */
+  .a-mob-strip {
+    padding: 1rem 1rem 0.9rem;
+    text-align: center;
+    background: linear-gradient(160deg, #1c2049, #11132c);
+    border-bottom: 1px solid rgba(109, 40, 217, 0.3);
+  }
+  .a-mob-strip .m-logo {
+    font-size: 0.95rem;
+    color: #fff;
+  }
+  .a-mob-strip p {
+    color: #c6c9e8;
+    font-size: 0.6rem;
+    margin: 0.3rem 0 0;
+  }
+  .a-mob-form {
+    padding: 1.2rem 0.9rem 1.6rem;
+  }
+
+  /* ==========================================================================
+     Propuesta B — Hero centrado con ambiente
+     ========================================================================== */
+  .b-screen {
+    min-height: 430px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 2rem 1rem 1rem;
+    background:
+      radial-gradient(
+        45% 40% at 12% 8%,
+        rgba(109, 40, 217, 0.22),
+        transparent 65%
+      ),
+      radial-gradient(
+        50% 45% at 92% 95%,
+        rgba(25, 224, 139, 0.1),
+        transparent 60%
+      ),
+      var(--site-bg);
+  }
+  /* retícula de puntos, textura apenas visible */
+  .b-screen::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: radial-gradient(
+      rgba(255, 255, 255, 0.05) 1px,
+      transparent 1px
+    );
+    background-size: 26px 26px;
+  }
+  .b-inner {
+    position: relative;
+    text-align: center;
+  }
+  .b-inner .m-logo {
+    font-size: 1.1rem;
+    color: #fff;
+  }
+  .b-head {
+    font-family: var(--display);
+    color: #fff;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    font-size: 1.3rem;
+    margin: 0.9rem 0 0.15rem;
+  }
+  .b-subhead {
+    color: #9aa0cf;
+    font-size: 0.74rem;
+    margin: 0 0 1.2rem;
+  }
+  .b-inner .m-card {
+    width: 300px;
+    margin: 0 auto;
+    text-align: left;
+  }
+  .b-foot {
+    position: relative;
+    margin-top: 1.6rem;
+    color: #7d82b8;
+    font-size: 0.62rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    width: 100%;
+  }
+
+  /* móvil B */
+  .b-mob {
+    padding: 1.6rem 0.9rem;
+  }
+  .b-mob .b-inner .m-card {
+    width: 100%;
+  }
+
+  /* ----- notas de cada propuesta ----- */
+  .notes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem;
+    margin-top: 1.4rem;
+  }
+  .note {
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: var(--panel);
+    padding: 1rem 1.1rem;
+  }
+  .note h3 {
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin: 0 0 0.4rem;
+  }
+  .note ul {
+    margin: 0;
+    padding-left: 1.1rem;
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+  .note li {
+    margin: 0.25rem 0;
+  }
+  .note code {
+    font-family: var(--mono);
+    font-size: 0.78em;
+    color: #c9b0f4;
+  }
+
+  /* ----- tabla comparativa ----- */
+  .compare {
+    margin-top: 3.2rem;
+  }
+  .compare h2 {
+    font-family: var(--display);
+    font-size: 1.3rem;
+    letter-spacing: -0.01em;
+  }
+  .table-scroll {
+    overflow-x: auto;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 560px;
+    font-size: 0.85rem;
+  }
+  th,
+  td {
+    text-align: left;
+    padding: 0.65rem 0.9rem;
+    border-bottom: 1px solid var(--line);
+  }
+  th {
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    background: var(--panel);
+  }
+  tr:last-child td {
+    border-bottom: none;
+  }
+  td:first-child {
+    color: var(--muted);
+  }
+  .reco {
+    margin-top: 1.6rem;
+    border-left: 3px solid var(--green);
+    background: var(--panel);
+    border-radius: 0 10px 10px 0;
+    padding: 1rem 1.2rem;
+    color: var(--muted);
+    max-width: 75ch;
+  }
+  .reco strong {
+    color: var(--ink);
+  }
+</style>
+
+<div class="wrap">
+  <p class="eyebrow">LvlUp WholeSale · UX · Login Page</p>
+  <h1>Dos propuestas para dar vida al Login</h1>
+  <p class="lede">
+    Diseño de alto nivel sobre la página real (<code>login_main</code>): ambas
+    propuestas conservan el componente estándar
+    <code>community_login:loginForm</code> y se materializan con Experience
+    Builder + CSS global. Paleta y tipografías del branding set del Site.
+  </p>
+
+  <div class="current">
+    <h2>Punto de partida (captura actual)</h2>
+    <ul>
+      <li>
+        <strong>Sin identidad</strong>: no se ve logo ni nombre — podría ser el
+        login de cualquier cosa.
+      </li>
+      <li>
+        <strong>CTA inconsistente</strong>: botón violeta con texto verde,
+        cuando el CTA del storefront es verde <code>#19E08B</code> con texto
+        oscuro.
+      </li>
+      <li>
+        <strong>Composición flotante</strong>: la card cuelga en un vacío
+        enorme, sin ancla visual ni contexto B2B.
+      </li>
+      <li>
+        <strong>Idioma mezclado</strong>: labels en inglés ("Log In", "Forgot
+        your password?") en un portal en español.
+      </li>
+    </ul>
+  </div>
+
+  <!-- ============================ PROPUESTA A ============================ -->
+  <section class="proposal">
+    <div class="proposal-head">
+      <span class="badge badge-a">Propuesta A</span>
+      <h2>Panel de marca — split 45 / 55</h2>
+    </div>
+    <p class="thesis">
+      La puerta de entrada también vende: la mitad izquierda presenta la marca y
+      los tres motivos por los que un comprador B2B quiere entrar (pricing por
+      cuenta, stock, reorder). El formulario respira en su propia columna. Es el
+      patrón clásico de portal enterprise, ejecutado con la paleta LvlUp.
+    </p>
+
+    <div class="frames">
+      <div class="frame-col-wide">
+        <div class="browser mock">
+          <div class="browser-bar">
+            <span class="dot"></span><span class="dot"></span
+            ><span class="dot"></span>
+            <span class="urlbar">levelupwholesale.../login</span>
+          </div>
+          <div class="a-screen">
+            <div class="a-brand">
+              <div>
+                <div class="m-logo">
+                  LVL<span class="u">U</span><span class="p">P</span>
+                  <span class="m-logo-sub">WHOLESALE</span>
+                </div>
+                <p class="a-tagline">
+                  Tecnología y <em>gaming</em> al por mayor.
+                </p>
+                <ul class="a-points">
+                  <li>
+                    <span class="chev">»</span> Precios negociados por cuenta
+                  </li>
+                  <li>
+                    <span class="chev">»</span> Stock y disponibilidad al
+                    momento
+                  </li>
+                  <li>
+                    <span class="chev">»</span> Reorder en un clic desde tu
+                    historial
+                  </li>
+                </ul>
+              </div>
+              <p class="a-foot">Portal exclusivo para clientes mayoristas.</p>
+            </div>
+            <div class="a-form">
+              <div class="m-card">
+                <p class="m-title">Accede a tu cuenta</p>
+                <p class="m-sub">Introduce tus credenciales de cliente</p>
+                <div class="m-input">
+                  <div class="lab">Usuario</div>
+                  <div class="val">javier.camposq@gmail.com</div>
+                </div>
+                <div class="m-input focus">
+                  <div class="lab">Contraseña</div>
+                  <div class="val">••••••••••••</div>
+                </div>
+                <div class="m-cta">Iniciar sesión</div>
+                <p class="m-links"><a href="#">¿Olvidaste tu contraseña?</a></p>
+                <div class="m-divider"></div>
+                <p class="m-register">
+                  ¿Aún no eres cliente? <b>Solicita tu alta</b>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="frame-label">Desktop</p>
+      </div>
+
+      <div class="frame-col">
+        <div class="phone mock">
+          <div class="phone-notch"></div>
+          <div class="a-mob-strip">
+            <div class="m-logo">
+              LVL<span class="u">U</span><span class="p">P</span>
+            </div>
+            <p>Tecnología y gaming al por mayor</p>
+          </div>
+          <div class="a-mob-form">
+            <div class="m-card" style="padding: 1.1rem">
+              <p class="m-title" style="font-size: 0.95rem">
+                Accede a tu cuenta
+              </p>
+              <p class="m-sub">Credenciales de cliente</p>
+              <div class="m-input">
+                <div class="lab">Usuario</div>
+                <div class="val">javier@...</div>
+              </div>
+              <div class="m-input">
+                <div class="lab">Contraseña</div>
+                <div class="val">••••••••</div>
+              </div>
+              <div class="m-cta">Iniciar sesión</div>
+              <p class="m-links"><a href="#">¿Olvidaste tu contraseña?</a></p>
+            </div>
+          </div>
+        </div>
+        <p class="frame-label">Mobile</p>
+      </div>
+    </div>
+
+    <div class="notes">
+      <div class="note">
+        <h3>Por qué funciona en B2B</h3>
+        <ul>
+          <li>
+            Contexto inmediato para el buyer nuevo: qué es el portal y qué gana
+            usándolo.
+          </li>
+          <li>
+            Sobrio: cero promociones; los bullets son capacidades reales del
+            MVP.
+          </li>
+          <li>El panel colapsa a un strip compacto en móvil (mobile-first).</li>
+        </ul>
+      </div>
+      <div class="note">
+        <h3>Implementación</h3>
+        <ul>
+          <li>
+            Sección de 2 columnas en Builder + bloques de texto/HTML en la
+            izquierda.
+          </li>
+          <li>
+            <code>loginForm</code> estándar intacto; labels en español vía sus
+            propiedades.
+          </li>
+          <li>
+            Fondos y patrón por CSS global (head markup). Publish al terminar.
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ PROPUESTA B ============================ -->
+  <section class="proposal">
+    <div class="proposal-head">
+      <span class="badge badge-b">Propuesta B</span>
+      <h2>Hero centrado con ambiente</h2>
+    </div>
+    <p class="thesis">
+      Evolución mínima de lo que ya hay: la card sigue centrada, pero deja de
+      flotar en el vacío — logo y bienvenida encima, dos brillos muy tenues
+      (violeta/verde) y una retícula de puntos casi imperceptible dan
+      profundidad sin ruido. La vida la ponen las micro-interacciones: foco
+      verde en inputs, hover del CTA y una entrada suave de la card.
+    </p>
+
+    <div class="frames">
+      <div class="frame-col-wide">
+        <div class="browser mock">
+          <div class="browser-bar">
+            <span class="dot"></span><span class="dot"></span
+            ><span class="dot"></span>
+            <span class="urlbar">levelupwholesale.../login</span>
+          </div>
+          <div class="b-screen">
+            <div class="b-inner">
+              <div class="m-logo">
+                LVL<span class="u">U</span><span class="p">P</span>
+                <span class="m-logo-sub">WHOLESALE</span>
+              </div>
+              <p class="b-head">Bienvenido de nuevo</p>
+              <p class="b-subhead">
+                El catálogo mayorista de tecnología y gaming
+              </p>
+              <div class="m-card">
+                <div class="m-input">
+                  <div class="lab">Usuario</div>
+                  <div class="val">javier.camposq@gmail.com</div>
+                </div>
+                <div class="m-input focus">
+                  <div class="lab">Contraseña</div>
+                  <div class="val">••••••••••••</div>
+                </div>
+                <div class="m-cta">Iniciar sesión</div>
+                <p class="m-links"><a href="#">¿Olvidaste tu contraseña?</a></p>
+              </div>
+              <div class="b-foot">
+                <span>¿Necesitas ayuda? Contacta a tu comercial</span>
+                <span>© 2026 LvlUp WholeSale</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="frame-label">Desktop</p>
+      </div>
+
+      <div class="frame-col">
+        <div class="phone mock">
+          <div class="phone-notch"></div>
+          <div class="b-screen b-mob" style="min-height: 0">
+            <div class="b-inner">
+              <div class="m-logo" style="font-size: 0.95rem">
+                LVL<span class="u">U</span><span class="p">P</span>
+              </div>
+              <p class="b-head" style="font-size: 1rem">Bienvenido de nuevo</p>
+              <div class="m-card" style="padding: 1.1rem">
+                <div class="m-input">
+                  <div class="lab">Usuario</div>
+                  <div class="val">javier@...</div>
+                </div>
+                <div class="m-input">
+                  <div class="lab">Contraseña</div>
+                  <div class="val">••••••••</div>
+                </div>
+                <div class="m-cta">Iniciar sesión</div>
+                <p class="m-links"><a href="#">¿Olvidaste tu contraseña?</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="frame-label">Mobile</p>
+      </div>
+    </div>
+
+    <div class="notes">
+      <div class="note">
+        <h3>Por qué funciona en B2B</h3>
+        <ul>
+          <li>
+            Mantiene el foco absoluto en la tarea: entrar rápido (velocidad ante
+            todo).
+          </li>
+          <li>
+            El "ambiente" es textura, no contenido: nada compite con el
+            formulario.
+          </li>
+          <li>
+            Micro-interacciones con
+            <code>prefers-reduced-motion</code> respetado.
+          </li>
+        </ul>
+      </div>
+      <div class="note">
+        <h3>Implementación</h3>
+        <ul>
+          <li>
+            Casi todo CSS global (fondos, retícula, foco, animación de entrada).
+          </li>
+          <li>
+            En Builder solo se añade el bloque de bienvenida y el pie de ayuda.
+          </li>
+          <li>El coste más bajo de las dos; sin cambios de layout.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ COMPARATIVA ============================ -->
+  <section class="compare">
+    <h2>Comparativa y recomendación</h2>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>Criterio</th>
+            <th>A — Panel de marca</th>
+            <th>B — Hero con ambiente</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Identidad de marca</td>
+            <td>Alta: la marca ocupa media pantalla</td>
+            <td>Media: logo + bienvenida</td>
+          </tr>
+          <tr>
+            <td>Contexto B2B para buyers nuevos</td>
+            <td>Sí (3 value points del MVP)</td>
+            <td>No (solo tono)</td>
+          </tr>
+          <tr>
+            <td>Esfuerzo</td>
+            <td>Builder (2 columnas) + CSS</td>
+            <td>Casi solo CSS</td>
+          </tr>
+          <tr>
+            <td>Riesgo visual</td>
+            <td>Bajo–medio (más piezas que cuidar)</td>
+            <td>Muy bajo</td>
+          </tr>
+          <tr>
+            <td>Cambios comunes</td>
+            <td colspan="2">
+              CTA verde · logo visible · labels en español · foco accesible
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="reco">
+      <strong>Recomendación: Propuesta A.</strong> El login es la única pantalla
+      que ven todos los compradores en cada visita y hoy no dice nada; el panel
+      de marca convierte ese espacio muerto en contexto útil sin añadir fricción
+      al formulario. Si prefieres el mínimo cambio con máximo pulido, B es la
+      vía rápida — y nada impide hacer B hoy y evolucionar a A después, porque
+      comparten todos los cambios comunes.
+    </p>
+  </section>
+</div>

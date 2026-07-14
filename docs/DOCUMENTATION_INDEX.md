@@ -89,6 +89,8 @@ Vivirá bajo `docs/ux/`. Describe experiencia, journeys y comportamiento visual.
 | `docs/ux/contextual-quick-buy-design.md`         | Diseño funcional/UX y arquitectura conceptual de componentes LWC del feature _Contextual Quick Buy_ (modal de compra contextual al producto)       | En revisión |
 | `docs/ux/contextual-quick-buy-mockup.html`       | Mockup visual (estilo Figma, HTML estático) del flujo, anatomía de componentes y estados del modal de _Contextual Quick Buy_                       | En revisión |
 | `docs/ux/contextual-quick-buy-architecture.html` | Diagrama de arquitectura (HTML) de _Contextual Quick Buy_: árbol de componentes, flujo de datos/eventos, secuencia end-to-end y capa de datos/Apex | Creado      |
+| `docs/ux/login-page-proposals.html`              | Propuestas de diseño A/B (mockups HTML desktop/mobile) para el rediseño de la Login Page                                                           | Creado      |
+| `docs/ux/login-page-design-spec.md`              | Spec del diseño aprobado del Login (Propuesta A refinada): layout, tokens, copy, accesibilidad y notas de implementación                           | Creado      |
 
 ---
 
