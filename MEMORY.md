@@ -231,6 +231,43 @@ _"Esta regla no parece estar documentada todavía. ¿Quieres que la añada a
 - **Ámbito:** Apex.
 - **Origen:** Sesión 2026-07-08 (Catalog Pulse).
 
+---
+
+> Reglas de las sesiones de **imágenes de categoría + paginador custom + rediseño del Login**
+> (sesiones 2026-07-13 y 2026-07-14), añadidas a petición explícita del usuario. Lecciones de
+> B2B Commerce LWR sobre CMS por URL, paginación de búsqueda y CSS sobre componentes estándar.
+> El diseño aprobado del Login vive en `docs/ux/login-page-design-spec.md`.
+
+### REGLA-024 — Imágenes CMS por URL sí renderizan en tiles de categoría (matiza REGLA-006)
+
+- **Regla:** Las imágenes `sfdc_cms__image` por referencia URL (REGLA-012, 0 File Storage) **sí** se pintan en el Banner/Tile Image de categoría ("Shop by Category"), aunque la miniatura en la UI admin del Commerce salga rota (no genera renditions; solo cosmético). La asociación son **2 `ProductCategoryMedia` por categoría** (grupos `bannerImage` y `tileImage`, `ElectronicMediaId` = Id del `ManagedContent`), automatizable por Apex. Herramientas: `scripts/cms/generate-category-image-package.mjs` + `scripts/apex/assign-category-images.apex`.
+- **Ámbito:** B2B Commerce / CMS.
+- **Origen:** Sesión 2026-07-13.
+
+### REGLA-025 — Assets de páginas guest: GitHub raw, no CMS
+
+- **Regla:** La entrega CMS (`/cms/delivery/media/...`) **redirige al login** para usuarios no autenticados → ningún asset del CMS sirve para páginas guest (login, self-register). Servirlos desde el repo GitHub (`raw.githubusercontent.com`, ya Trusted URL); GitHub entrega `.svg` con `Content-Type: image/svg+xml` (válido en `<img>`). Verificar el acceso guest con `curl` antes de dar una URL por buena.
+- **Ámbito:** B2B Commerce / CMS / CSP.
+- **Origen:** Sesión 2026-07-14 (logo del login roto para invitados).
+
+### REGLA-026 — Reindexar la búsqueda: cómo y cuándo (operativiza REGLA-003)
+
+- **Regla:** El índice se reconstruye con **`ConnectApi.CommerceSearchSettings.createCommerceSearchIndex(webstoreId)`** (`scripts/apex/rebuild-search-index.apex`); el endpoint REST `/commerce/management/.../search/indexes` no existe en esta org. Los **syncs programados** (Platzi) crean productos/entitlements que **nadie ve** hasta reindexar — el banner del Builder muestra la fecha del último índice; revisarla al diagnosticar "productos que faltan". Hay límite diario de rebuilds manuales.
+- **Ámbito:** B2B Commerce / búsqueda.
+- **Origen:** Sesión 2026-07-13 (índice de 5 días ocultaba 6 productos Platzi).
+
+### REGLA-027 — El Grid custom de la PLP no pagina; la paginación vive en la URL (`?page=N`)
+
+- **Regla:** El patrón Grid + Nested Expression (REGLA-005) **pierde la paginación estándar**: el paginador propio del Grid lee un `expressionDataProvider` estático y no renderiza en runtime (en el Builder sí, por ser design-time) → buyers limitados a la primera página (~20). El estado de paginación del commerce search data provider está en la **URL**: navegar con `?page=N` recarga esa página y `{!Search.Results.cardCollection}` se refresca. Solución: **`c:lvlupSearchPaginator`** (NavigationMixin + CurrentPageReference; total parseado de `{!Search.Results.description}`; el componente estándar se ancla a `{!Search.Pagination.currentPage}`).
+- **Ámbito:** B2B Commerce / LWC / Experience Builder.
+- **Origen:** Sesión 2026-07-13.
+
+### REGLA-028 — CSS global sobre componentes estándar: reglas de combate
+
+- **Regla:** El head markup (`mainAppPage`) carga en **todo** el site (login incluido): scope con selectores que solo existan en la página objetivo (clases propias `lvlup-*`, custom elements como `community_login-login-form`) o `:has()`. Los componentes estándar renderizan **light DOM** con clases scoped `lwc-<hash>` (**no usarlas**: usar tags de custom element y clases semánticas `comm-*`/`slds-*`). El espaciado entre componentes lo pone la clase **`component-wrapper-spacer`** del wrapper: anularlo en origen (`margin-bottom: 0`), **nunca** con márgenes negativos (los wrappers **recortan** el contenido desbordado). El rich text del Builder pisa el color de los links con estilos scoped → requiere `!important`. Y máximo **una** iteración a ciegas: al segundo fallo, pedir el DOM real (REGLA-016).
+- **Ámbito:** UX / CSS / Experience Builder.
+- **Origen:** Sesiones 2026-07-13/14 (hover de tiles y rediseño del Login).
+
 <!-- Plantilla para nuevas reglas:
 
 ### REGLA-001 — <título corto>
