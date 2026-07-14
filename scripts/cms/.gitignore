@@ -1,3 +1,4 @@
-# Artefactos generados por generate-platzi-image-package.mjs (imágenes descargadas)
+# Artefactos generados por los generadores de paquetes CMS (staging e import ZIPs)
 staging/
+staging-categories/
 out/
