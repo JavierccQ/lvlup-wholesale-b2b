@@ -1,0 +1,49 @@
+/* Dark-theme paginator styled with the site branding tokens (green CTA #19E08B
+   on background #11132C); dxp styling hooks first, hex fallbacks second. */
+.paginator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1.5rem 0 0.5rem;
+  font-family: var(--dxp-s-html-font-family, "Inter", sans-serif);
+}
+
+button {
+  min-width: 2.5rem;
+  height: 2.5rem;
+  padding: 0 0.75rem;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: transparent;
+  color: var(--dxp-g-root-contrast, #ffffff);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition:
+    border-color 150ms ease-out,
+    color 150ms ease-out,
+    background 150ms ease-out;
+}
+
+button:hover:not(:disabled):not(.active) {
+  border-color: var(--dxp-s-button-color, #19e08b);
+  color: var(--dxp-s-button-color, #19e08b);
+}
+
+button:focus-visible {
+  outline: 2px solid var(--dxp-s-button-color, #19e08b);
+  outline-offset: 2px;
+}
+
+.active {
+  background: var(--dxp-s-button-color, #19e08b);
+  border-color: transparent;
+  color: #06281c;
+  font-weight: 600;
+  cursor: default;
+}
+
+button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}

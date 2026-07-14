@@ -1,0 +1,25 @@
+<template>
+  <template lwc:if={showPaginator}>
+    <nav class="paginator" aria-label="Paginación de resultados">
+      <button class="nav-btn" disabled={isFirstPage} onclick={handlePrevious}>
+        {previousLabel}
+      </button>
+
+      <template for:each={pageItems} for:item="p">
+        <button
+          key={p.number}
+          class={p.cssClass}
+          data-page={p.number}
+          aria-current={p.ariaCurrent}
+          onclick={handlePageClick}
+        >
+          {p.number}
+        </button>
+      </template>
+
+      <button class="nav-btn" disabled={isLastPage} onclick={handleNext}>
+        {nextLabel}
+      </button>
+    </nav>
+  </template>
+</template>

@@ -3,6 +3,8 @@
 #
 
 **/staticresources/**
+# Site bundle JSON is org-generated (sf retrieve owns its format); formatting it creates retrieve churn
+**/digitalExperiences/**
 .localdevserver
 .sfdx
 .sf

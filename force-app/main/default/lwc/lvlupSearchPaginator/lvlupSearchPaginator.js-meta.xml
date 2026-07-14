@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>66.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>LvlUp Search Paginator</masterLabel>
+    <description
+  >Pagina los resultados de búsqueda/categoría navegando con ?page=N (el data provider de commerce recarga la página y el Grid se re-renderiza). Para usar junto al Grid custom de la PLP.</description>
+    <targets>
+        <target>lightningCommunity__Default</target>
+        <target>lightningCommunity__Page</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property
+        name="currentPage"
+        type="String"
+        label="Current Page"
+        description="Bindéalo a {!Search.Pagination.currentPage}. La URL (?page=N) tiene prioridad; esto es fallback."
+      />
+            <property
+        name="loadedCount"
+        type="String"
+        label="Loaded Count"
+        description="Bindéalo a {!Search.Results.productLoadedCount}."
+      />
+            <property
+        name="resultsDescription"
+        type="String"
+        label="Results Description"
+        description="Bindéalo a {!Search.Results.description} (p. ej. '83 Items'); de aquí se obtiene el total."
+      />
+            <property
+        name="pageSize"
+        type="Integer"
+        label="Page Size"
+        default="20"
+        description="Tamaño de página del data provider de búsqueda (20 por defecto)."
+      />
+            <property
+        name="previousLabel"
+        type="String"
+        label="Previous Label"
+        default="Anterior"
+      />
+            <property
+        name="nextLabel"
+        type="String"
+        label="Next Label"
+        default="Siguiente"
+      />
+            <property
+        name="maxPageButtons"
+        type="Integer"
+        label="Max Page Buttons"
+        default="5"
+        description="Máximo de botones numerados visibles (ventana deslizante)."
+      />
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

@@ -169,41 +169,127 @@
                   }, {
                     "children" : [ {
                       "attributes" : {
-                        "addToCartButtonProcessingText" : "Adding...",
-                        "addToCartButtonStyle" : "primary",
-                        "addToCartButtonText" : "Add to cart",
-                        "cardAlignment" : "center",
-                        "cardBorderRadius" : "1",
-                        "cardContentMapping" : "[{\"name\": \"Name\", \"showLabel\": false, \"label\": \"Product Name\", \"fontSize\": \"medium\"}]",
+                        "autoScrollToMostRecent" : true,
+                        "backgroundColor" : "",
+                        "borderColor" : "rgba(110, 105, 100, 0)",
+                        "borderRadius" : 5,
+                        "borderWidth" : 0,
+                        "dxpStyle" : { },
+                        "horizontalAlignment" : "center",
+                        "isFixedRowHeight" : true,
+                        "itemSpacing" : "small",
+                        "numberOfColumns" : 4,
+                        "showEmptyState" : false,
+                        "showErrorState" : true,
+                        "showPagination" : false,
+                        "width" : 100
+                      },
+                      "children" : [ {
+                        "id" : "d700e849-2384-4eb7-a13f-d9527c825971",
+                        "name" : "emptyState",
+                        "title" : "emptyState",
+                        "type" : "region"
+                      }, {
+                        "id" : "8bface3b-383f-43ad-b7b1-40d5150facb2",
+                        "name" : "errorState",
+                        "title" : "errorState",
+                        "type" : "region"
+                      }, {
+                        "children" : [ {
+                          "attributes" : {
+                            "baseUrl" : "https://raw.githubusercontent.com/JavierccQ/lvlup-wholesale-b2b/main/data/product-images",
+                            "dxpStyle" : { },
+                            "fileExtension" : ".png",
+                            "sku" : "{!Item.fields.StockKeepingUnit.value}"
+                          },
+                          "definition" : "c:lvlupProductImage",
+                          "id" : "d195427b-3a70-4957-9088-7fcf0630d5a5",
+                          "type" : "component"
+                        }, {
+                          "attributes" : {
+                            "addToCartButtonLabel" : "Add To Cart",
+                            "cardBackgroundColor" : "rgba(17, 19, 44, 0)",
+                            "cardBorderColor" : "rgba(0, 0, 0, 0)",
+                            "cardBorderRadius" : 5,
+                            "cardBorderWeight" : 0,
+                            "cardContentMapping" : "[{\"name\":\"Name\",\"showLabel\":false,\"label\":\"Product Name\",\"fontSize\":\"small\",\"type\":\"STRING\"}]",
+                            "cardImageBorderColor" : "#d9dfe7",
+                            "cardImageSize" : "contain",
+                            "cardInfoPadding" : "{\"top\":\"5px\",\"right\":\"5px\",\"bottom\":\"5px\",\"left\":\"5px\"}",
+                            "cardTextFlexAlign" : "flex-start",
+                            "combinePromosThreshold" : "1",
+                            "dxpStyle" : { },
+                            "imageAspectRatio" : "1",
+                            "imageHoverAction" : "zoom",
+                            "incrementValueGuideText" : "Increment quantity is {0}",
+                            "item" : "{!Item}",
+                            "maximumValueGuideText" : "Maximum quantity is {0}",
+                            "minimumValueGuideText" : "Minimum quantity is {0}",
+                            "priceType" : "displayAllPrices",
+                            "primaryPriceFontSize" : "medium",
+                            "primaryPriceTextStyle" : "{\"bold\":true}",
+                            "promotionTextColor" : "#0d825d",
+                            "searchResultsFields" : "{!Search.Name}",
+                            "secondaryPriceFontSize" : "small",
+                            "secondaryPriceTextColor" : "#707275",
+                            "showButtonOnDesktop" : false,
+                            "showButtonOnMobile" : false,
+                            "showProductImage" : false,
+                            "showQuantityRulesText" : false,
+                            "showQuantitySelector" : false,
+                            "showSku" : true,
+                            "showWishlistIcon" : true,
+                            "skuLabel" : "SKU:",
+                            "subscriptionOptionsLabel" : "Subscription Options Available",
+                            "swatchBorderRadius" : 5,
+                            "unavailablePriceLabel" : "Price Unavailable",
+                            "viewProductOptionsButtonLabel" : "View Options",
+                            "wishlistIconSelectedColor" : "rgb(245, 35, 116)",
+                            "wishlistIconUnselectedColor" : "rgba(179, 180, 182, 0.91)"
+                          },
+                          "definition" : "commerce_builder:productCard",
+                          "id" : "9df7dcf3-503d-4e7f-922d-dae386e87dba",
+                          "type" : "component"
+                        }, {
+                          "attributes" : {
+                            "buttonLabel" : "Comprar",
+                            "dxpStyle" : { },
+                            "productId" : "{!Item.id}"
+                          },
+                          "definition" : "c:lvlupProductQuickBuy",
+                          "id" : "74f6e829-391f-455c-822d-122005bf722b",
+                          "type" : "component"
+                        } ],
+                        "id" : "12a20f8b-d5a8-4ac2-a913-7857382063b8",
+                        "name" : "sfdcRepeaterItem",
+                        "title" : "sfdcRepeaterItem",
+                        "type" : "region"
+                      }, {
+                        "id" : "3fa23123-ad4c-4c97-9333-ac34924ab6a8",
+                        "name" : "pagination",
+                        "title" : "pagination",
+                        "type" : "region"
+                      } ],
+                      "definition" : "dxp_content_layout:grid",
+                      "id" : "4d361639-93df-4314-81ef-198b08f9382e",
+                      "type" : "component",
+                      "dataProviders" : [ {
+                        "definition" : "sfdc_cms__expressionDataProvider",
+                        "sfdcExpressionKey" : "Item",
+                        "attributes" : {
+                          "listSource" : "{!Search.Results.cardCollection}"
+                        }
+                      } ]
+                    }, {
+                      "attributes" : {
                         "currentPage" : "{!Search.Pagination.currentPage}",
                         "dxpStyle" : { },
-                        "gridColumnSpacing" : "small",
-                        "gridRowSpacing" : "small",
-                        "includeQuantityRules" : "",
-                        "incrementValueGuideText" : "Increment quantity is {0}",
-                        "listRowSpacing" : "small",
-                        "maximumValueGuideText" : "Maximum quantity is {0}",
-                        "minimumValueGuideText" : "Minimum quantity is {0}",
-                        "navigateToParentProduct" : false,
-                        "negotiatedPriceTextSize" : "medium",
-                        "originalPriceTextSize" : "medium",
-                        "quantitySelectorLabel" : "QTY",
-                        "resultNavigation" : "slidingWindow",
-                        "resultsLayout" : "grid",
-                        "searchResults" : "{!Search.Results}",
-                        "searchResultsFields" : "{!Search.Name}",
-                        "searchResultsLoading" : "{!Search.ClientState.loading}",
-                        "showCallToActionButton" : false,
-                        "showNegotiatedPrice" : true,
-                        "showOriginalPrice" : true,
-                        "showProductImage" : true,
-                        "showQuantityRulesText" : false,
-                        "showQuantitySelector" : false,
-                        "subscriptionOptionsText" : "Subscription Options Available",
-                        "viewOptionsButtonText" : "View options"
+                        "loadedCount" : "{!Search.Results.productLoadedCount}",
+                        "pageSize" : 20,
+                        "resultsDescription" : "{!Search.Results.description}"
                       },
-                      "definition" : "commerce_builder:searchResults",
-                      "id" : "c5bd4188-e1c1-4d25-a8bd-431c6c07b470",
+                      "definition" : "c:lvlupSearchPaginator",
+                      "id" : "e5a1b7c9-2d43-4f8a-9b06-71c4d2e8f350",
                       "type" : "component"
                     } ],
                     "id" : "4ca2ef65-0831-43e2-ad63-d2b375850cbe",
