@@ -176,6 +176,16 @@
           "children" : [ {
             "children" : [ {
               "attributes" : {
+                "cardTitle" : "Novedades para ti",
+                "dxpStyle" : { },
+                "hideWhenEmpty" : false,
+                "maxItems" : 12
+              },
+              "definition" : "c:lvlupCatalogPulseCarousel",
+              "id" : "4b316b88-9a12-4f08-acd1-ae402365d2a5",
+              "type" : "component"
+            }, {
+              "attributes" : {
                 "browseStep" : 3,
                 "dxpStyle" : { },
                 "headerText" : "Destacados para tu cuenta",

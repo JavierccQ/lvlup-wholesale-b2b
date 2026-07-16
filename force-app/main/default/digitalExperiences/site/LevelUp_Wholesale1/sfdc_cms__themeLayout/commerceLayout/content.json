@@ -150,6 +150,7 @@
             "children" : [ {
               "attributes" : {
                 "borderRadius" : 0,
+                "dxpStyle" : { },
                 "iconColor" : "rgb(255, 255, 255)",
                 "placeholderText" : "Enter keyword",
                 "showSearchButton" : true,

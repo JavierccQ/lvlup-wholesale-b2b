@@ -9,6 +9,7 @@
             "backgroundImageConfig" : "",
             "backgroundImageOverlay" : "rgba(0,0,0,0)",
             "componentSpacerSize" : "",
+            "dxpStyle" : { },
             "layoutDirectionDesktop" : "row",
             "layoutDirectionMobile" : "column",
             "layoutDirectionTablet" : "column",
@@ -25,6 +26,7 @@
                 "borderColor" : "",
                 "borderRadius" : 0,
                 "borderWidth" : 0,
+                "dxpStyle" : { },
                 "hideForFewerThan" : 1,
                 "iconBorderRadius" : 0,
                 "iconBorderWidth" : 0,
@@ -46,7 +48,9 @@
                 "type" : "region"
               }, {
                 "children" : [ {
-                  "attributes" : { },
+                  "attributes" : {
+                    "dxpStyle" : { }
+                  },
                   "definition" : "dxp_page_layout:placeHolder",
                   "id" : "7f6129d5-e9bc-4703-9412-fd9d1110e358",
                   "type" : "component"
@@ -86,6 +90,7 @@
           "attributes" : {
             "customHeadTags" : "",
             "description" : "",
+            "dxpStyle" : { },
             "pageTitle" : "Quick Order",
             "recordId" : "{!recordId}"
           },
