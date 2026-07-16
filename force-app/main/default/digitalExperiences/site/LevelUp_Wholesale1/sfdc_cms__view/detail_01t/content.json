@@ -85,7 +85,7 @@
                 "dynamicAttributesAvailableText" : "{0} Configurable Attributes",
                 "identifierName" : "SKU#",
                 "product" : "{!Product.Details}",
-                "productDetailSummaryFieldMapping" : "[]",
+                "productDetailSummaryFieldMapping" : "[{\"name\":\"Brand__c\",\"label\":\"Marca\",\"type\":\"STRING\"},{\"name\":\"Family\",\"label\":\"Familia\",\"type\":\"PICKLIST\"},{\"name\":\"Warranty_Months__c\",\"label\":\"Garantía (meses)\",\"type\":\"DOUBLE\"}]",
                 "showAdditionalFields" : true
               },
               "children" : [ {
@@ -141,6 +141,13 @@
               },
               "definition" : "commerce_builder:productPricingDetails",
               "id" : "f9bc7417-d5e4-4f2b-ab6f-23b6b52e7df0",
+              "type" : "component"
+            }, {
+              "attributes" : {
+                "recordId" : "{!recordId}"
+              },
+              "definition" : "c:lvlupProductAvailability",
+              "id" : "9c88378a-f537-4166-8e1c-d760a80d6a45",
               "type" : "component"
             }, {
               "attributes" : {
@@ -461,7 +468,7 @@
                     "linkAssistiveText" : "",
                     "paddingHorizontal" : "none",
                     "paddingVertical" : "none",
-                    "text" : "Product Details",
+                    "text" : "Especificaciones",
                     "textAlign" : "left",
                     "textDecoration" : "{\"bold\": false}",
                     "textDisplayInfo" : "{\"textStyle\": \"heading-small\", \"headingTag\": \"h4\"}"
