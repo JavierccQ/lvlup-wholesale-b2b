@@ -19,14 +19,16 @@
  * Atomic: anonymous Apex runs in one transaction; any failure rolls everything back.
  *
  * Run: sf apex run --file scripts/apex/seed-products.apex --target-org commerce-b2b-dev
- * MANUAL FOLLOW-UP: rebuild the store search index (Commerce app > store > Search > Rebuild Index).
+ * MANUAL FOLLOW-UP: rebuild the store search index (scripts/apex/rebuild-search-index.apex, REGLA-026).
  */
 
-// ---- Wiring (verified in org) -------------------------------------------------
-Id catalogId   = '0ZSgK0000004Pe9WAE'; // LevelUp Wholesale Catalog
-Id stdPbId     = '01sgK000007644wQAA'; // Standard Price Book (IsStandard = true)
-Id sellPbId    = '01sgK000007E9diQAC'; // LevelUp Wholesale Price Book (Buyer Group price)
-Id strikePbId  = '01sgK000007E9dhQAC'; // LevelUp Wholesale Strikethrough Price Book
+// ---- Wiring (resolved by Name / IsStandard; no hardcoded org IDs) --------------
+// Note: the org also has a custom price book literally named "Standard", so the
+// standard price book must be resolved via IsStandard, never by Name.
+Id catalogId   = [SELECT Id FROM ProductCatalog WHERE Name = 'LevelUp Wholesale Catalog' LIMIT 1].Id;
+Id stdPbId     = [SELECT Id FROM Pricebook2 WHERE IsStandard = true LIMIT 1].Id;
+Id sellPbId    = [SELECT Id FROM Pricebook2 WHERE Name = 'LevelUp Wholesale Price Book' LIMIT 1].Id;
+Id strikePbId  = [SELECT Id FROM Pricebook2 WHERE Name = 'LevelUp Wholesale Strikethrough Price Book' LIMIT 1].Id;
 
 // ---- Category name -> Id ------------------------------------------------------
 Map<String, Id> catByName = new Map<String, Id>();
