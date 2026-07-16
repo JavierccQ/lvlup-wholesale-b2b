@@ -19,11 +19,11 @@ Sirve para:
 - Reducir los supuestos no validados.
 
 Esta checklist **no reemplaza la documentación oficial de Salesforce** ni los
-comandos de inspección técnica. Aplica el principio rector: *Configuration first,
-customization only when justified*.
+comandos de inspección técnica. Aplica el principio rector: _Configuration first,
+customization only when justified_.
 
 > **Estado inicial:** ningún ítem se ha validado todavía. Todos los checkboxes
-> empiezan **sin marcar** (estado *No revisado*). Esta checklist se completa al
+> empiezan **sin marcar** (estado _No revisado_). Esta checklist se completa al
 > ejecutar la validación en la org.
 
 ---
@@ -43,16 +43,16 @@ customization only when justified*.
 
 ## 3. Estados de Validación
 
-| Estado | Significado | Cuándo usarlo | Acción siguiente |
-| --- | --- | --- | --- |
-| No revisado | Aún no validado | Estado inicial | Programar validación |
-| En revisión | Validación en curso | Mientras se comprueba | Completar |
-| Validado | Confirmado en la org | Funciona como se espera | Documentar |
-| Parcialmente validado | Funciona con límites | Cobertura parcial | Documentar gap |
-| No disponible | No existe en la org | Capacidad ausente | Evaluar alternativa |
-| Bloqueado | No se puede validar aún | Falta acceso/dependencia | Desbloquear |
-| Fuera del MVP | No aplica al MVP | Excluido del alcance | Diferir |
-| Requiere ADR | Implica customización/excepción | Antes de implementar | Crear ADR |
+| Estado                | Significado                     | Cuándo usarlo            | Acción siguiente     |
+| --------------------- | ------------------------------- | ------------------------ | -------------------- |
+| No revisado           | Aún no validado                 | Estado inicial           | Programar validación |
+| En revisión           | Validación en curso             | Mientras se comprueba    | Completar            |
+| Validado              | Confirmado en la org            | Funciona como se espera  | Documentar           |
+| Parcialmente validado | Funciona con límites            | Cobertura parcial        | Documentar gap       |
+| No disponible         | No existe en la org             | Capacidad ausente        | Evaluar alternativa  |
+| Bloqueado             | No se puede validar aún         | Falta acceso/dependencia | Desbloquear          |
+| Fuera del MVP         | No aplica al MVP                | Excluido del alcance     | Diferir              |
+| Requiere ADR          | Implica customización/excepción | Antes de implementar     | Crear ADR            |
 
 ---
 
@@ -84,31 +84,31 @@ Prefijos de ID (orientativos): `VAL-ORG` (general), `VAL-STO` (storefront),
 
 ## 5. Validación General de Org
 
-| ID | Validación | Resultado esperado | Estado inicial | Evidencia requerida | Documento relacionado |
-| --- | --- | --- | --- | --- | --- |
-| VAL-ORG-001 | La Developer Org es accesible | Acceso correcto | No revisado | Acceso confirmado | `solution-architecture.md` |
-| VAL-ORG-002 | B2B Commerce está disponible | Capacidad presente | No revisado | Capacidad visible | `b2b-commerce-standard-capabilities.md` |
-| VAL-ORG-003 | El Site/storefront está activo | Storefront operativo | No revisado | Storefront accesible | `solution-architecture.md` |
-| VAL-ORG-004 | El admin accede a la configuración relevante | Acceso de configuración | No revisado | Configuración visible | `configuration-decisions.md` |
-| VAL-ORG-005 | La org permite trabajar con datos de catálogo | Catálogo gestionable | No revisado | Datos cargables | `data-loading-strategy.md` |
-| VAL-ORG-006 | La org permite configurar Experience Builder | Builder accesible | No revisado | Builder editable | `ux-principles.md` |
-| VAL-ORG-007 | La org permite crear/validar buyers | Buyers gestionables | No revisado | Buyer operativo | `security-model.md` |
-| VAL-ORG-008 | La org permite revisar permisos relevantes | Permisos visibles | No revisado | Permisos revisados | `security-model.md` |
+| ID          | Validación                                    | Resultado esperado      | Estado inicial | Evidencia requerida   | Documento relacionado                   |
+| ----------- | --------------------------------------------- | ----------------------- | -------------- | --------------------- | --------------------------------------- |
+| VAL-ORG-001 | La Developer Org es accesible                 | Acceso correcto         | No revisado    | Acceso confirmado     | `solution-architecture.md`              |
+| VAL-ORG-002 | B2B Commerce está disponible                  | Capacidad presente      | No revisado    | Capacidad visible     | `b2b-commerce-standard-capabilities.md` |
+| VAL-ORG-003 | El Site/storefront está activo                | Storefront operativo    | No revisado    | Storefront accesible  | `solution-architecture.md`              |
+| VAL-ORG-004 | El admin accede a la configuración relevante  | Acceso de configuración | No revisado    | Configuración visible | `configuration-decisions.md`            |
+| VAL-ORG-005 | La org permite trabajar con datos de catálogo | Catálogo gestionable    | No revisado    | Datos cargables       | `data-loading-strategy.md`              |
+| VAL-ORG-006 | La org permite configurar Experience Builder  | Builder accesible       | No revisado    | Builder editable      | `ux-principles.md`                      |
+| VAL-ORG-007 | La org permite crear/validar buyers           | Buyers gestionables     | No revisado    | Buyer operativo       | `security-model.md`                     |
+| VAL-ORG-008 | La org permite revisar permisos relevantes    | Permisos visibles       | No revisado    | Permisos revisados    | `security-model.md`                     |
 
 ---
 
 ## 6. Validación de Storefront / Site
 
-| Punto | Resultado esperado | Riesgo si falla | Documento relacionado |
-| --- | --- | --- | --- |
-| Storefront existente identificado | Storefront localizado | Sin base de trabajo | `solution-architecture.md` |
-| Site activo | Site operativo | Sin acceso al portal | `solution-architecture.md` |
-| Home accesible | Home carga | Sin punto de entrada | `wireframes.md` |
-| Navegación básica disponible | Navegación operativa | Sin exploración | `storefront-journey.md` |
-| Experiencia accesible autenticado | Acceso buyer | Sin experiencia B2B | `security-model.md` |
-| Experiencia no autenticada controlada | Acceso restringido sin login | Exposición indebida | `security-model.md` |
-| Branding básico configurable | Branding ajustable | UX pobre | `ux-principles.md` |
-| Mobile responsive básico | Responsive correcto | Mala UX mobile | `ux-principles.md` |
+| Punto                                 | Resultado esperado           | Riesgo si falla      | Documento relacionado      |
+| ------------------------------------- | ---------------------------- | -------------------- | -------------------------- |
+| Storefront existente identificado     | Storefront localizado        | Sin base de trabajo  | `solution-architecture.md` |
+| Site activo                           | Site operativo               | Sin acceso al portal | `solution-architecture.md` |
+| Home accesible                        | Home carga                   | Sin punto de entrada | `wireframes.md`            |
+| Navegación básica disponible          | Navegación operativa         | Sin exploración      | `storefront-journey.md`    |
+| Experiencia accesible autenticado     | Acceso buyer                 | Sin experiencia B2B  | `security-model.md`        |
+| Experiencia no autenticada controlada | Acceso restringido sin login | Exposición indebida  | `security-model.md`        |
+| Branding básico configurable          | Branding ajustable           | UX pobre             | `ux-principles.md`         |
+| Mobile responsive básico              | Responsive correcto          | Mala UX mobile       | `ux-principles.md`         |
 
 ---
 
@@ -125,22 +125,22 @@ Prefijos de ID (orientativos): `VAL-ORG` (general), `VAL-STO` (storefront),
 - [ ] Páginas de carrito/checkout configurables o identificables.
 - [ ] Limitaciones detectadas y documentadas.
 
-*(No se inventan nombres concretos de componentes; se registran al validar.)*
+_(No se inventan nombres concretos de componentes; se registran al validar.)_
 
 ---
 
 ## 8. Validación de Catálogo
 
-| ID | Validación | Resultado esperado | Estado | Evidencia | Impacto |
-| --- | --- | --- | --- | --- | --- |
-| VAL-CAT-001 | Existe capacidad de Product Catalog | Catálogo disponible | No revisado | Catálogo creado | Sin catálogo no hay tienda |
-| VAL-CAT-002 | Existen categorías o estructura equivalente | Categorías disponibles | No revisado | Categorías visibles | Sin navegación |
-| VAL-CAT-003 | Productos asociables a catálogo | Asociación posible | No revisado | Producto en catálogo | Producto huérfano |
-| VAL-CAT-004 | Productos asociables a categorías | Asociación posible | No revisado | Producto en categoría | Sin clasificación |
-| VAL-CAT-005 | Categorías aparecen en navegación | Navegación correcta | No revisado | Categoría navegable | Catálogo invisible |
-| VAL-CAT-006 | PLP muestra productos por categoría | PLP correcta | No revisado | PLP con productos | Sin listado |
-| VAL-CAT-007 | Producto activo/no activo distinguible | Estado visible | No revisado | Estado probado | Comprar no comprable |
-| VAL-CAT-008 | Imágenes o placeholders se muestran | Imagen/placeholder | No revisado | Imagen visible | PLP/PDP pobre |
+| ID          | Validación                                  | Resultado esperado     | Estado      | Evidencia             | Impacto                    |
+| ----------- | ------------------------------------------- | ---------------------- | ----------- | --------------------- | -------------------------- |
+| VAL-CAT-001 | Existe capacidad de Product Catalog         | Catálogo disponible    | No revisado | Catálogo creado       | Sin catálogo no hay tienda |
+| VAL-CAT-002 | Existen categorías o estructura equivalente | Categorías disponibles | No revisado | Categorías visibles   | Sin navegación             |
+| VAL-CAT-003 | Productos asociables a catálogo             | Asociación posible     | No revisado | Producto en catálogo  | Producto huérfano          |
+| VAL-CAT-004 | Productos asociables a categorías           | Asociación posible     | No revisado | Producto en categoría | Sin clasificación          |
+| VAL-CAT-005 | Categorías aparecen en navegación           | Navegación correcta    | No revisado | Categoría navegable   | Catálogo invisible         |
+| VAL-CAT-006 | PLP muestra productos por categoría         | PLP correcta           | No revisado | PLP con productos     | Sin listado                |
+| VAL-CAT-007 | Producto activo/no activo distinguible      | Estado visible         | No revisado | Estado probado        | Comprar no comprable       |
+| VAL-CAT-008 | Imágenes o placeholders se muestran         | Imagen/placeholder     | No revisado | Imagen visible        | PLP/PDP pobre              |
 
 ---
 
@@ -180,8 +180,8 @@ Prefijos de ID (orientativos): `VAL-ORG` (general), `VAL-STO` (storefront),
 - [ ] El buyer puede consultar historial (si aplica).
 - [ ] El buyer no puede acceder a información de otra cuenta.
 
-*(No se inventan licencias ni Permission Sets; se marcan como pendiente de
-validación.)*
+_(No se inventan licencias ni Permission Sets; se marcan como pendiente de
+validación.)_
 
 ---
 
@@ -355,7 +355,7 @@ validación.)*
 - [ ] Validar que el buyer no accede a productos restringidos.
 - [ ] Registrar los gaps en `security-model.md`.
 
-*(No se inventan nombres concretos.)*
+_(No se inventan nombres concretos.)_
 
 ---
 
@@ -400,18 +400,37 @@ Tipo de evidencia a capturar por ítem:
 - Documento actualizado.
 - ADR creado (si aplica).
 
-*(No se incluyen imágenes todavía; aquí solo se define el criterio.)*
+_(No se incluyen imágenes todavía; aquí solo se define el criterio.)_
 
 ---
 
 ## 29. Gaps y Acciones Posteriores
 
-| ID | Gap encontrado | Área | Impacto | Alternativa estándar evaluada | Acción recomendada | ¿Requiere ADR? | Estado |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| VAL-GAP-001 | *(a registrar al validar)* | — | — | — | — | — | Abierto |
+| ID          | Gap encontrado             | Área | Impacto | Alternativa estándar evaluada | Acción recomendada | ¿Requiere ADR? | Estado  |
+| ----------- | -------------------------- | ---- | ------- | ----------------------------- | ------------------ | -------------- | ------- |
+| VAL-GAP-001 | _(a registrar al validar)_ | —    | —       | —                             | —                  | —              | Abierto |
 
-*(Esta tabla se completa con los gaps reales detectados durante la validación;
-inicialmente está vacía salvo el ejemplo de formato.)*
+_(Esta tabla se completa con los gaps reales detectados durante la validación;
+inicialmente está vacía salvo el ejemplo de formato.)_
+
+### 29.1 Validaciones Ejecutadas — Enriquecimiento de Información de Producto (fase 1, 2026-07-16)
+
+Validaciones definidas en el análisis de la iniciativa (V1–V3 en la sesión de
+análisis del 2026-07-15; V4–V6 durante la ejecución) y sus resultados. Detalle y
+lecciones en `docs/salesforce/product-content-enrichment-runbook.md` §5-§6 y
+`adr/0008-product-information-architecture.md`.
+
+| ID  | Validación                                                                                                                                                      | Estado                 | Evidencia / resultado                                                                                                                                                           |
+| --- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| V4  | Los mappings estándar (`productDetailSummaryFieldMapping`, `cardContentMapping`) aceptan campos custom presentes en los Searchable/Results Fields               | Validado               | Capturas del Builder (2026-07-16): `Brand__c` seleccionable en heading y card; plan B (todo en Description) descartado                                                          |
+| V5  | El contenedor `lvlupProductAvailability` reutiliza `LvlupQuickBuyController.getProductPurchaseInfo` + `lvlupStockAvailabilityPanel` en la PDP con `{!recordId}` | Validado               | QA como Buyer real: "En stock · 300 uds" (LAP-001) y "Sin stock" (LAP-003) sin Apex nuevo                                                                                       |
+| V6  | ¿El canal commerce exige FLS de lectura al buyer para mostrar campos custom en PDP/cards?                                                                       | Validado (sí la exige) | Family (estándar) renderizaba; Brand/Warranty no, y la línea de card llegaba vacía. Resuelto con `LvlUp_Product_Content_Buyer`. Los facets no la exigen (agregación del índice) |
+
+Hallazgos de plataforma derivados: el heading de PDP admite **máx. 3 field
+mappings**; los **facets solo aceptan tipos enumerables** (Brand pasó a
+picklist restringido); la conversión **Text→Picklist no está soportada** en esta
+org (eliminar y recrear con el mismo API name); el **label del facet = label del
+campo**.
 
 ---
 

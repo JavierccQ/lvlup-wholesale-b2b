@@ -19,12 +19,12 @@ Sirve como base para:
 - Servir como base para decisiones técnicas y ADRs.
 
 Este documento **no define el modelo físico definitivo ni reemplaza la validación
-real en Salesforce**. Aplica el principio rector: *Configuration first,
-customization only when justified*.
+real en Salesforce**. Aplica el principio rector: _Configuration first,
+customization only when justified_.
 
 > **Nota de honestidad:** las entidades y objetos se describen a nivel conceptual.
 > No se inventan campos custom ni configuración; los objetos/relaciones no
-> confirmados se marcan como *pendiente de validación*.
+> confirmados se marcan como _pendiente de validación_.
 
 ---
 
@@ -72,21 +72,21 @@ diagrama físico ni un esquema de objetos confirmado en la org.
 
 ## 4. Entidades Funcionales
 
-| Entidad funcional | Descripción | Rol en el MVP | Estado |
-| --- | --- | --- | --- |
-| Buyer Account | Cuenta compradora B2B | Hub del comprador | Pendiente de validación |
-| Buyer User | Usuario operativo de la cuenta | Único usuario por cuenta en el MVP | Pendiente de validación |
-| Buyer Group | Agrupación de compradores | Pricing y visibilidad | Pendiente de validación |
-| Product Catalog | Catálogo de productos | Base de navegación | Pendiente de validación |
-| Product Category | Categoría del catálogo | Organización del catálogo | Pendiente de validación |
-| Product | Producto vendible | Núcleo de PLP/PDP | Pendiente de validación |
-| Pricing | Precio aplicable por cuenta/Buyer Group | Pricing personalizado | Pendiente de validación |
-| Product Visibility / Entitlement | Qué productos ve cada buyer | Catálogo restringido | Pendiente de validación |
-| Cart | Carrito de compra | Compra en curso | Pendiente de validación |
-| Order | Pedido confirmado | Resultado del checkout | Pendiente de validación |
-| Order History | Historial de pedidos | Trazabilidad y reorder | Pendiente de validación |
-| Stock (funcional) | Disponibilidad de producto | Stock insuficiente | Funcional / futuro |
-| Credit (funcional) | Estado de crédito de la cuenta | Validación de crédito | Funcional / futuro |
+| Entidad funcional                | Descripción                             | Rol en el MVP                      | Estado                  |
+| -------------------------------- | --------------------------------------- | ---------------------------------- | ----------------------- |
+| Buyer Account                    | Cuenta compradora B2B                   | Hub del comprador                  | Pendiente de validación |
+| Buyer User                       | Usuario operativo de la cuenta          | Único usuario por cuenta en el MVP | Pendiente de validación |
+| Buyer Group                      | Agrupación de compradores               | Pricing y visibilidad              | Pendiente de validación |
+| Product Catalog                  | Catálogo de productos                   | Base de navegación                 | Pendiente de validación |
+| Product Category                 | Categoría del catálogo                  | Organización del catálogo          | Pendiente de validación |
+| Product                          | Producto vendible                       | Núcleo de PLP/PDP                  | Pendiente de validación |
+| Pricing                          | Precio aplicable por cuenta/Buyer Group | Pricing personalizado              | Pendiente de validación |
+| Product Visibility / Entitlement | Qué productos ve cada buyer             | Catálogo restringido               | Pendiente de validación |
+| Cart                             | Carrito de compra                       | Compra en curso                    | Pendiente de validación |
+| Order                            | Pedido confirmado                       | Resultado del checkout             | Pendiente de validación |
+| Order History                    | Historial de pedidos                    | Trazabilidad y reorder             | Pendiente de validación |
+| Stock (funcional)                | Disponibilidad de producto              | Stock insuficiente                 | Funcional / futuro      |
+| Credit (funcional)               | Estado de crédito de la cuenta          | Validación de crédito              | Funcional / futuro      |
 
 ---
 
@@ -95,44 +95,65 @@ diagrama físico ni un esquema de objetos confirmado en la org.
 Objetos estándar **esperados**. Los confirmados por el contexto del proyecto
 (`CLAUDE.md`) se indican; el resto queda **pendiente de validación** en la org.
 
-| Entidad funcional | Objeto estándar esperado | Tipo | Estado de validación | Notas |
-| --- | --- | --- | --- | --- |
-| Webstore | WebStore | Configuración/datos | Confirmado por contexto | Tienda B2B |
-| Buyer Account | Account | Datos | Confirmado por contexto | Hub buyer/seller con campos custom |
-| Buyer User | User / Contact | Datos | Pendiente de validación | Usuario operativo del buyer |
-| Buyer Group | BuyerGroup | Datos | Confirmado por contexto | Pricing y visibilidad |
-| Product Catalog | ProductCatalog | Datos | Confirmado por contexto | Catálogo |
-| Product Category | ProductCategory | Datos | Confirmado por contexto | Categorías |
-| Product | Product2 | Datos | Confirmado por contexto | Productos |
-| Pricing | Pricebook2 / PricebookEntry | Datos | Confirmado por contexto | Precios |
-| Product Visibility / Entitlement | CommerceEntitlementPolicy (+ relacionados) | Datos/config | Confirmado por contexto | Visibilidad/entitlements |
-| Cart | Objeto estándar de carrito (típicamente WebCart y líneas de carrito) | Datos | Pendiente de validación | Nombre exacto por validar |
-| Checkout | Proceso estándar de checkout | Proceso | Pendiente de validación | No es un único objeto |
-| Order | Objeto estándar de pedido y sus líneas | Datos | Pendiente de validación | Nombre exacto por validar |
-| Order History / Reorder | Basado en los pedidos | Datos/funcional | Pendiente de validación | Soporte de reorder por validar |
+| Entidad funcional                | Objeto estándar esperado                                             | Tipo                | Estado de validación    | Notas                              |
+| -------------------------------- | -------------------------------------------------------------------- | ------------------- | ----------------------- | ---------------------------------- |
+| Webstore                         | WebStore                                                             | Configuración/datos | Confirmado por contexto | Tienda B2B                         |
+| Buyer Account                    | Account                                                              | Datos               | Confirmado por contexto | Hub buyer/seller con campos custom |
+| Buyer User                       | User / Contact                                                       | Datos               | Pendiente de validación | Usuario operativo del buyer        |
+| Buyer Group                      | BuyerGroup                                                           | Datos               | Confirmado por contexto | Pricing y visibilidad              |
+| Product Catalog                  | ProductCatalog                                                       | Datos               | Confirmado por contexto | Catálogo                           |
+| Product Category                 | ProductCategory                                                      | Datos               | Confirmado por contexto | Categorías                         |
+| Product                          | Product2                                                             | Datos               | Confirmado por contexto | Productos                          |
+| Pricing                          | Pricebook2 / PricebookEntry                                          | Datos               | Confirmado por contexto | Precios                            |
+| Product Visibility / Entitlement | CommerceEntitlementPolicy (+ relacionados)                           | Datos/config        | Confirmado por contexto | Visibilidad/entitlements           |
+| Cart                             | Objeto estándar de carrito (típicamente WebCart y líneas de carrito) | Datos               | Pendiente de validación | Nombre exacto por validar          |
+| Checkout                         | Proceso estándar de checkout                                         | Proceso             | Pendiente de validación | No es un único objeto              |
+| Order                            | Objeto estándar de pedido y sus líneas                               | Datos               | Pendiente de validación | Nombre exacto por validar          |
+| Order History / Reorder          | Basado en los pedidos                                                | Datos/funcional     | Pendiente de validación | Soporte de reorder por validar     |
 
 > **Sobre Account:** el contexto indica que `Account` actúa como hub buyer/seller
 > con campos custom (crédito, configuración wholesale, segmentación). **Este
 > documento no enumera ni inventa esos API names**; deben validarse y documentarse
 > aparte.
 
+### 5.1 Campos de Contenido de Product2 (confirmados, fase 1 de enriquecimiento)
+
+Campos **reales** creados/poblados por la iniciativa de enriquecimiento de
+información de producto (`adr/0008-product-information-architecture.md`,
+Accepted 2026-07-16):
+
+| Campo                    | Tipo                                 | Rol                                      | Nota                                                                                |
+| ------------------------ | ------------------------------------ | ---------------------------------------- | ----------------------------------------------------------------------------------- |
+| `Brand__c`               | Picklist restringido (label "Marca") | Marca en heading PDP, cards y facet      | Picklist porque los facets de Commerce solo aceptan tipos enumerables               |
+| `Warranty_Months__c`     | Number (3,0)                         | Garantía en el heading de la PDP         | —                                                                                   |
+| `EAN__c`                 | Text (14)                            | Identificador EAN-13/GTIN para resellers | Sin UI en fase 1 (dato de matching)                                                 |
+| `Family` (estándar)      | Picklist estándar (`Product2Family`) | Familia en heading + facet               | Valores = las 8 categorías internas; se puebla desde la categoría del producto      |
+| `Description` (estándar) | Text Area                            | Especificaciones en la PDP               | HTML estructurado por plantilla fija (párrafo B2B + `<ul>` de specs + MOQ/múltiplo) |
+
+La FLS de estos campos se gestiona con los permission sets
+`LvlUp_Product_Content_Admin` (edición) y `LvlUp_Product_Content_Buyer`
+(lectura del buyer; el canal commerce exige FLS en campos custom). Los campos de
+inventario/reglas de compra (`Inventory_Quantity__c`, `Min_Order_Quantity__c`,
+`Order_Increment__c`, `Max_Order_Quantity__c`) están documentados en
+`docs/salesforce/manual-inventory-setup-runbook.md`.
+
 ---
 
 ## 6. Relaciones Principales
 
-| Entidad A | Relación | Entidad B | Notas |
-| --- | --- | --- | --- |
-| Buyer Account | tiene | Buyer User | Un único usuario operativo en el MVP |
-| Buyer Account | pertenece a | Buyer Group | Base de pricing/visibilidad |
-| Buyer Group | determina | Pricing | Precio aplicable por grupo/cuenta |
-| Buyer Group | determina | Product Visibility | Catálogo permitido |
-| Product Catalog | agrupa | Product Category | Organización |
-| Product Category | contiene | Product | Clasificación |
-| Product | tiene | Pricing | Precio por Price Book/segmento |
-| Product | sujeto a | Entitlement | Visibilidad por buyer |
-| Buyer User | crea | Cart | Carrito de compra |
-| Cart | deriva en | Order | Tras el checkout |
-| Order | compone | Order History | Trazabilidad y reorder |
+| Entidad A        | Relación    | Entidad B          | Notas                                |
+| ---------------- | ----------- | ------------------ | ------------------------------------ |
+| Buyer Account    | tiene       | Buyer User         | Un único usuario operativo en el MVP |
+| Buyer Account    | pertenece a | Buyer Group        | Base de pricing/visibilidad          |
+| Buyer Group      | determina   | Pricing            | Precio aplicable por grupo/cuenta    |
+| Buyer Group      | determina   | Product Visibility | Catálogo permitido                   |
+| Product Catalog  | agrupa      | Product Category   | Organización                         |
+| Product Category | contiene    | Product            | Clasificación                        |
+| Product          | tiene       | Pricing            | Precio por Price Book/segmento       |
+| Product          | sujeto a    | Entitlement        | Visibilidad por buyer                |
+| Buyer User       | crea        | Cart               | Carrito de compra                    |
+| Cart             | deriva en   | Order              | Tras el checkout                     |
+| Order            | compone     | Order History      | Trazabilidad y reorder               |
 
 Las cardinalidades y relaciones exactas **deben validarse en la org**.
 
@@ -225,17 +246,17 @@ A nivel conceptual (el detalle se definirá en `docs/salesforce/`):
 
 ## 12. Trazabilidad Reglas ↔ Datos
 
-| Regla / referencia | Datos implicados |
-| --- | --- |
-| `BR-ACCESS-001/002` | Buyer User autenticado; pricing por cuenta |
-| `PV-001`, `PV-006` | Entitlements / visibilidad por Buyer Group |
-| `PR-001`, `PR-002`, `PR-003` | Pricing por cuenta/Buyer Group; consistencia |
-| `BR-CART-005` | Carrito revalida visibilidad/pricing/stock |
-| `BR-APPROVAL-*` | Total del pedido vs umbral |
-| `BR-CREDIT-*` | Estado/límite de crédito de la cuenta |
-| `BR-STOCK-*` | Disponibilidad de stock por producto |
-| `BR-REORDER-003` | Pedido previo + revalidación de datos actuales |
-| `BR-HISTORY-001/002` | Pedidos e historial por cuenta |
+| Regla / referencia           | Datos implicados                               |
+| ---------------------------- | ---------------------------------------------- |
+| `BR-ACCESS-001/002`          | Buyer User autenticado; pricing por cuenta     |
+| `PV-001`, `PV-006`           | Entitlements / visibilidad por Buyer Group     |
+| `PR-001`, `PR-002`, `PR-003` | Pricing por cuenta/Buyer Group; consistencia   |
+| `BR-CART-005`                | Carrito revalida visibilidad/pricing/stock     |
+| `BR-APPROVAL-*`              | Total del pedido vs umbral                     |
+| `BR-CREDIT-*`                | Estado/límite de crédito de la cuenta          |
+| `BR-STOCK-*`                 | Disponibilidad de stock por producto           |
+| `BR-REORDER-003`             | Pedido previo + revalidación de datos actuales |
+| `BR-HISTORY-001/002`         | Pedidos e historial por cuenta                 |
 
 ---
 

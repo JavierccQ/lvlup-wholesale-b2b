@@ -19,7 +19,7 @@ Sirve como base para:
 Se alinea con `docs/ux/ux-principles.md`, `docs/ux/storefront-journey.md`,
 `docs/business/product-catalog-strategy.md` y
 `docs/business/pricing-and-visibility-strategy.md`, y aplica el principio rector
-del proyecto: *Configuration first, customization only when justified*.
+del proyecto: _Configuration first, customization only when justified_.
 
 ---
 
@@ -98,16 +98,16 @@ rápida, no la exploración prolongada.
 
 ### 3.7 Estados de PLP
 
-| Estado | Qué ve el comprador | Mensaje UX recomendado | Acción siguiente | Riesgo UX |
-| --- | --- | --- | --- | --- |
-| Con productos visibles | Listado con precio y disponibilidad | — | Entrar a PDP o añadir al carrito | Saturación visual |
-| Sin productos visibles | Estado vacío explicado | "No hay productos disponibles en esta categoría para tu cuenta." | Explorar otras categorías | Parecer un error y no un estado vacío |
-| Búsqueda sin resultados | Estado vacío de búsqueda | "No encontramos productos para tu búsqueda." | Revisar términos o ver categorías | Dejar al comprador sin salida |
-| Filtros sin resultados | Estado vacío de filtros | "Ningún producto coincide con los filtros aplicados." | Ajustar o limpiar filtros | No ofrecer limpiar filtros |
-| Error al cargar | Mensaje de error | "No pudimos cargar los productos. Inténtalo de nuevo." | Reintentar | Mensaje técnico |
-| Loading | Indicador de carga | "Cargando productos…" | Esperar | Pantalla congelada sin feedback |
-| Productos con stock insuficiente | Producto con aviso de disponibilidad | "Stock insuficiente para la cantidad habitual." | Ajustar cantidad o ver alternativas | Ocultar el problema |
-| Productos no comprables | Producto visible sin acción de compra | "Producto no disponible para compra en este momento." | Volver al catálogo | Permitir añadir algo no comprable |
+| Estado                           | Qué ve el comprador                   | Mensaje UX recomendado                                           | Acción siguiente                    | Riesgo UX                             |
+| -------------------------------- | ------------------------------------- | ---------------------------------------------------------------- | ----------------------------------- | ------------------------------------- |
+| Con productos visibles           | Listado con precio y disponibilidad   | —                                                                | Entrar a PDP o añadir al carrito    | Saturación visual                     |
+| Sin productos visibles           | Estado vacío explicado                | "No hay productos disponibles en esta categoría para tu cuenta." | Explorar otras categorías           | Parecer un error y no un estado vacío |
+| Búsqueda sin resultados          | Estado vacío de búsqueda              | "No encontramos productos para tu búsqueda."                     | Revisar términos o ver categorías   | Dejar al comprador sin salida         |
+| Filtros sin resultados           | Estado vacío de filtros               | "Ningún producto coincide con los filtros aplicados."            | Ajustar o limpiar filtros           | No ofrecer limpiar filtros            |
+| Error al cargar                  | Mensaje de error                      | "No pudimos cargar los productos. Inténtalo de nuevo."           | Reintentar                          | Mensaje técnico                       |
+| Loading                          | Indicador de carga                    | "Cargando productos…"                                            | Esperar                             | Pantalla congelada sin feedback       |
+| Productos con stock insuficiente | Producto con aviso de disponibilidad  | "Stock insuficiente para la cantidad habitual."                  | Ajustar cantidad o ver alternativas | Ocultar el problema                   |
+| Productos no comprables          | Producto visible sin acción de compra | "Producto no disponible para compra en este momento."            | Volver al catálogo                  | Permitir añadir algo no comprable     |
 
 ### 3.8 Mobile-First en PLP
 
@@ -205,17 +205,17 @@ La PDP **no debe convertirse en una página promocional B2C**.
 
 ### 4.8 Estados de PDP
 
-| Estado | Qué ve el comprador | Mensaje UX recomendado | Acción siguiente | Riesgo UX |
-| --- | --- | --- | --- | --- |
-| Producto disponible | Detalle completo y acción de compra | — | Ajustar cantidad y añadir al carrito | — |
-| Stock insuficiente | Detalle con aviso de disponibilidad | "Stock insuficiente para la cantidad solicitada." | Ajustar cantidad o ver alternativas | Ocultar el problema hasta el carrito |
-| No visible / no permitido | Mensaje de no disponibilidad | "Este producto no está disponible para tu cuenta." | Volver al catálogo | Exponer detalles de un producto restringido |
-| Producto inactivo | Detalle sin acción de compra | "Producto no disponible actualmente." | Ver alternativas o volver | Permitir compra de algo inactivo |
-| Error al cargar | Mensaje de error | "No pudimos cargar el producto. Inténtalo de nuevo." | Reintentar | Mensaje técnico |
-| Loading | Indicador de carga | "Cargando producto…" | Esperar | Pantalla congelada |
-| Precio no disponible | Detalle sin precio firme | "El precio no está disponible en este momento." | Reintentar o volver más tarde | Mostrar un precio genérico erróneo |
-| Producto agregado al carrito | Confirmación de añadido | "Producto añadido al carrito." | Ver carrito o seguir comprando | Confirmación poco visible |
-| Cantidad inválida | Aviso en el selector de cantidad | "Introduce una cantidad válida." | Corregir la cantidad | Permitir continuar con cantidad inválida |
+| Estado                       | Qué ve el comprador                 | Mensaje UX recomendado                               | Acción siguiente                     | Riesgo UX                                   |
+| ---------------------------- | ----------------------------------- | ---------------------------------------------------- | ------------------------------------ | ------------------------------------------- |
+| Producto disponible          | Detalle completo y acción de compra | —                                                    | Ajustar cantidad y añadir al carrito | —                                           |
+| Stock insuficiente           | Detalle con aviso de disponibilidad | "Stock insuficiente para la cantidad solicitada."    | Ajustar cantidad o ver alternativas  | Ocultar el problema hasta el carrito        |
+| No visible / no permitido    | Mensaje de no disponibilidad        | "Este producto no está disponible para tu cuenta."   | Volver al catálogo                   | Exponer detalles de un producto restringido |
+| Producto inactivo            | Detalle sin acción de compra        | "Producto no disponible actualmente."                | Ver alternativas o volver            | Permitir compra de algo inactivo            |
+| Error al cargar              | Mensaje de error                    | "No pudimos cargar el producto. Inténtalo de nuevo." | Reintentar                           | Mensaje técnico                             |
+| Loading                      | Indicador de carga                  | "Cargando producto…"                                 | Esperar                              | Pantalla congelada                          |
+| Precio no disponible         | Detalle sin precio firme            | "El precio no está disponible en este momento."      | Reintentar o volver más tarde        | Mostrar un precio genérico erróneo          |
+| Producto agregado al carrito | Confirmación de añadido             | "Producto añadido al carrito."                       | Ver carrito o seguir comprando       | Confirmación poco visible                   |
+| Cantidad inválida            | Aviso en el selector de cantidad    | "Introduce una cantidad válida."                     | Corregir la cantidad                 | Permitir continuar con cantidad inválida    |
 
 ### 4.9 Mobile-First en PDP
 
@@ -258,18 +258,18 @@ La PDP **no debe convertirse en una página promocional B2C**.
 Mensajes claros, no técnicos y orientados a la acción. Prioridad MVP: Alta /
 Media / Baja.
 
-| Escenario | Mensaje sugerido | Acción recomendada | Prioridad MVP |
-| --- | --- | --- | --- |
-| Sin productos visibles | "No hay productos disponibles en esta categoría para tu cuenta." | Explorar otras categorías | Alta |
-| Sin resultados de búsqueda | "No encontramos productos para tu búsqueda." | Revisar términos o ver categorías | Alta |
-| Producto sin stock suficiente | "Stock insuficiente para la cantidad solicitada." | Ajustar cantidad o ver alternativas | Alta |
-| Producto no disponible para tu cuenta | "Este producto no está disponible para tu cuenta." | Volver al catálogo | Media |
-| Precio no disponible | "El precio no está disponible en este momento." | Reintentar o volver más tarde | Media |
-| Producto agregado al carrito | "Producto añadido al carrito." | Ver carrito o seguir comprando | Alta |
-| Cantidad inválida | "Introduce una cantidad válida." | Corregir la cantidad | Alta |
-| Error al cargar productos | "No pudimos cargar los productos. Inténtalo de nuevo." | Reintentar | Alta |
-| Producto eliminado o no visible durante reorder | "Algunos productos de tu pedido anterior ya no están disponibles." | Continuar con los válidos o buscar alternativa | Alta |
-| Pricing actualizado | "El precio de algunos productos se ha actualizado." | Revisar antes de confirmar | Media |
+| Escenario                                       | Mensaje sugerido                                                   | Acción recomendada                             | Prioridad MVP |
+| ----------------------------------------------- | ------------------------------------------------------------------ | ---------------------------------------------- | ------------- |
+| Sin productos visibles                          | "No hay productos disponibles en esta categoría para tu cuenta."   | Explorar otras categorías                      | Alta          |
+| Sin resultados de búsqueda                      | "No encontramos productos para tu búsqueda."                       | Revisar términos o ver categorías              | Alta          |
+| Producto sin stock suficiente                   | "Stock insuficiente para la cantidad solicitada."                  | Ajustar cantidad o ver alternativas            | Alta          |
+| Producto no disponible para tu cuenta           | "Este producto no está disponible para tu cuenta."                 | Volver al catálogo                             | Media         |
+| Precio no disponible                            | "El precio no está disponible en este momento."                    | Reintentar o volver más tarde                  | Media         |
+| Producto agregado al carrito                    | "Producto añadido al carrito."                                     | Ver carrito o seguir comprando                 | Alta          |
+| Cantidad inválida                               | "Introduce una cantidad válida."                                   | Corregir la cantidad                           | Alta          |
+| Error al cargar productos                       | "No pudimos cargar los productos. Inténtalo de nuevo."             | Reintentar                                     | Alta          |
+| Producto eliminado o no visible durante reorder | "Algunos productos de tu pedido anterior ya no están disponibles." | Continuar con los válidos o buscar alternativa | Alta          |
+| Pricing actualizado                             | "El precio de algunos productos se ha actualizado."                | Revisar antes de confirmar                     | Media         |
 
 ---
 
@@ -300,16 +300,34 @@ Media / Baja.
 
 ## 10. Decisiones Pendientes
 
-- Nivel de filtros en PLP.
-- Ordenamiento por defecto.
-- Campos definitivos visibles en PLP.
-- Campos definitivos visibles en PDP.
+Actualizado tras la fase 1 de enriquecimiento de información de producto
+(`adr/0008-product-information-architecture.md`, 2026-07-16):
+
+**Resueltas:**
+
+- ~~Nivel de filtros en PLP~~ → facets de **Familia** y **Marca** además del de
+  categoría (configuración estándar de Search).
+- ~~Ordenamiento por defecto~~ → _Best Match_ por defecto + sort rules de
+  **precio ascendente/descendente**.
+- ~~Campos definitivos visibles en PLP~~ → imagen, nombre, SKU, **marca** y
+  precio (venta + strikethrough) en la card.
+- ~~Campos definitivos visibles en PDP~~ → heading con SKU, **Marca, Familia,
+  Garantía (meses)**; precio; **disponibilidad de stock**; acordeón
+  "Especificaciones" (párrafo comercial + specs + cantidad mínima + múltiplo).
+- ~~Si se mostrarán cantidades mínimas~~ → sí: en las especificaciones de la PDP
+  (renderizadas desde los campos de reglas de compra) y aplicadas por el Quick
+  Buy.
+- ~~Necesidad real de LWC custom~~ → solo contenedores finos justificados:
+  `lvlupProductAvailability` (PDP) reutilizando piezas existentes; el resto es
+  estándar.
+
+**Siguen pendientes:**
+
 - Mensajes UX finales.
-- Si se permitirá agregar al carrito desde PLP.
+- Si se permitirá agregar al carrito desde PLP (hoy: Quick Buy en cards de
+  categoría).
 - Si habrá productos relacionados.
 - Si habrá productos alternativos ante stock insuficiente.
-- Si se mostrarán cantidades mínimas.
-- Necesidad real de LWC custom.
 
 ---
 

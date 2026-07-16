@@ -125,6 +125,7 @@ modelo de plataforma.
 | `docs/salesforce/manual-add-product-runbook.md`         | Runbook del alta manual de producto (categoría, producto, precio, imagen, publicación, reindex)                                                                                                                    | Creado |
 | `docs/salesforce/manual-inventory-setup-runbook.md`     | Runbook de configuración y mantenimiento de inventario y reglas de compra B2B (campos custom en Product2; alternativa a OCI en DE)                                                                                 | Creado |
 | `docs/salesforce/manual-catalog-pulse-cdc-runbook.md`   | Runbook de pasos manuales del feature _Buyer Group Catalog Pulse_: habilitar CDC para Product2, permission sets, colocar el carrusel y publicar, generar novedades, probar como Buyer y contrato futuro Agentforce | Creado |
+| `docs/salesforce/product-content-enrichment-runbook.md` | Runbook con la receta replicable de enriquecimiento de contenido de producto por categoría (campos de contenido, seed idempotente, reindex único, QA como buyer) + validaciones V4/V5/V6 y lecciones de plataforma | Creado |
 
 ---
 
@@ -200,16 +201,17 @@ explica su propósito.
 Vivirán bajo `adr/`. Cada ADR registra una **decisión arquitectónica relevante**:
 contexto, decisión tomada, consecuencias y alternativas consideradas.
 
-| Archivo                                                   | Propósito esperado                                                                                                                            | Estado   |
-| --------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| `adr/README.md`                                           | Índice y guía base de la carpeta `adr/` (qué es un ADR, cuándo crearlo, naming, estructura)                                                   | Creado   |
-| `adr/0001-project-scope-and-mvp-boundaries.md`            | Alcance del proyecto y límites del MVP                                                                                                        | Creado   |
-| `adr/0002-standard-first-b2b-commerce-approach.md`        | Enfoque estándar primero en B2B Commerce                                                                                                      | Creado   |
-| `adr/0003-commerce-data-vs-metadata-strategy.md`          | Estrategia de data vs metadata en Commerce                                                                                                    | Creado   |
-| `adr/0004-pricing-and-visibility-strategy.md`             | Estrategia de pricing y visibility                                                                                                            | Creado   |
-| `adr/0005-checkout-approval-credit-and-stock-strategy.md` | Estrategia de checkout: approval, credit y stock                                                                                              | Creado   |
-| `adr/0006-future-rest-mock-integration-strategy.md`       | Estrategia futura de integración REST/mock                                                                                                    | Creado   |
-| `adr/0007-event-driven-catalog-pulse-architecture.md`     | Arquitectura event-driven para _Buyer Group Catalog Pulse_ (CDC + Platform Events + persistencia consultable + LWC carrusel; base Agentforce) | Proposed |
+| Archivo                                                   | Propósito esperado                                                                                                                                                            | Estado   |
+| --------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| `adr/README.md`                                           | Índice y guía base de la carpeta `adr/` (qué es un ADR, cuándo crearlo, naming, estructura)                                                                                   | Creado   |
+| `adr/0001-project-scope-and-mvp-boundaries.md`            | Alcance del proyecto y límites del MVP                                                                                                                                        | Creado   |
+| `adr/0002-standard-first-b2b-commerce-approach.md`        | Enfoque estándar primero en B2B Commerce                                                                                                                                      | Creado   |
+| `adr/0003-commerce-data-vs-metadata-strategy.md`          | Estrategia de data vs metadata en Commerce                                                                                                                                    | Creado   |
+| `adr/0004-pricing-and-visibility-strategy.md`             | Estrategia de pricing y visibility                                                                                                                                            | Creado   |
+| `adr/0005-checkout-approval-credit-and-stock-strategy.md` | Estrategia de checkout: approval, credit y stock                                                                                                                              | Creado   |
+| `adr/0006-future-rest-mock-integration-strategy.md`       | Estrategia futura de integración REST/mock                                                                                                                                    | Creado   |
+| `adr/0007-event-driven-catalog-pulse-architecture.md`     | Arquitectura event-driven para _Buyer Group Catalog Pulse_ (CDC + Platform Events + persistencia consultable + LWC carrusel; base Agentforce)                                 | Proposed |
+| `adr/0008-product-information-architecture.md`            | Arquitectura de información de producto (PDP + cards): campos transversales en Product2, Description HTML estructurado, mapeos estándar, facets/sort, FLS por permission sets | Accepted |
 
 ---
 
