@@ -2,13 +2,22 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Brand__c</fullName>
     <description
-  >Manufacturer brand shown on the PDP heading and on product cards (PLP and search).</description>
+  >Manufacturer brand shown on the PDP heading, on product cards and as a search facet. Restricted picklist because Commerce search can only facet on enumerable field types (free text is not facetable); add a value here before curating a new brand.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Manufacturer brand, e.g. Lenovo, ASUS.</inlineHelpText>
-    <label>Brand</label>
-    <length>80</length>
+    <inlineHelpText>Marca del fabricante, p. ej. LvlUp.</inlineHelpText>
+    <label>Marca</label>
     <required>false</required>
     <trackTrending>false</trackTrending>
-    <type>Text</type>
-    <unique>false</unique>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>LvlUp</fullName>
+                <default>false</default>
+                <label>LvlUp</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
 </CustomField>
