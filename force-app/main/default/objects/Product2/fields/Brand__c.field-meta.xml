@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Brand__c</fullName>
+    <description
+  >Manufacturer brand shown on the PDP heading and on product cards (PLP and search).</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Manufacturer brand, e.g. Lenovo, ASUS.</inlineHelpText>
+    <label>Brand</label>
+    <length>80</length>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

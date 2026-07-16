@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sorted>false</sorted>
+    <standardValue>
+        <fullName>Consolas de gaming</fullName>
+        <default>false</default>
+        <label>Consolas de gaming</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Videojuegos</fullName>
+        <default>false</default>
+        <label>Videojuegos</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Portátiles</fullName>
+        <default>false</default>
+        <label>Portátiles</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Monitores</fullName>
+        <default>false</default>
+        <label>Monitores</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Periféricos</fullName>
+        <default>false</default>
+        <label>Periféricos</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Networking</fullName>
+        <default>false</default>
+        <label>Networking</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Accesorios</fullName>
+        <default>false</default>
+        <label>Accesorios</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Bundles enterprise</fullName>
+        <default>false</default>
+        <label>Bundles enterprise</label>
+    </standardValue>
+</StandardValueSet>
