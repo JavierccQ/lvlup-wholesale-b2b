@@ -11,7 +11,10 @@
  *      Internal products in categories outside the taxonomy are reported, not updated.
  *   2. Full content for the Portátiles vertical slice (LVL-LAP-001..007):
  *      Brand__c, Warranty_Months__c, EAN__c and a Description built from a fixed
- *      HTML template (short B2B pitch + <ul> spec list). Spanish content per D4.
+ *      HTML template (short B2B pitch + <ul> spec list + purchase rules rendered
+ *      from the record's MOQ/increment fields). Spanish content per D4. The PDP
+ *      heading only fits 3 field mappings, so MOQ and order increment live in
+ *      the Description HTML instead (user decision, 2026-07-16).
  *
  * Keys: StockKeepingUnit (products) and Name (catalog/categories). No hardcoded org IDs.
  *
@@ -50,7 +53,10 @@ class LaptopContent {
     }
 
     // Fixed template: short B2B pitch paragraph + spec list (D1). Order is part of the recipe.
-    String toDescriptionHtml() {
+    // Purchase rules (MOQ / order increment) are rendered from the record's own
+    // Min_Order_Quantity__c / Order_Increment__c so re-running the seed keeps the
+    // HTML in sync with the fields the Quick Buy enforces (no duplicated source).
+    String toDescriptionHtml(Decimal minQuantity, Decimal orderIncrement) {
         return '<p>' + pitch + '</p>'
             + '<ul>'
             + '<li><strong>Procesador:</strong> ' + cpu + '</li>'
@@ -60,7 +66,14 @@ class LaptopContent {
             + '<li><strong>GPU:</strong> ' + gpu + '</li>'
             + '<li><strong>Sistema operativo:</strong> ' + os + '</li>'
             + '<li><strong>Peso:</strong> ' + weight + '</li>'
+            + '<li><strong>Cantidad mínima:</strong> ' + formatUnits(minQuantity) + '</li>'
+            + '<li><strong>Múltiplo de venta:</strong> ' + formatUnits(orderIncrement) + '</li>'
             + '</ul>';
+    }
+
+    String formatUnits(Decimal quantity) {
+        Integer units = quantity == null ? 1 : quantity.intValue();
+        return units == 1 ? '1 ud' : units + ' uds';
     }
 }
 
@@ -131,7 +144,8 @@ Integer laptopCurrent = 0;
 
 for (Product2 p : [
     SELECT Id, StockKeepingUnit, Family, Brand__c, Warranty_Months__c, EAN__c,
-           Description, Is_External_Product__c
+           Description, Is_External_Product__c,
+           Min_Order_Quantity__c, Order_Increment__c
     FROM Product2
     WHERE IsActive = true
       AND Is_External_Product__c = false
@@ -152,7 +166,7 @@ for (Product2 p : [
 
     LaptopContent c = contentBySku.get(p.StockKeepingUnit);
     if (c != null) {
-        String html = c.toDescriptionHtml();
+        String html = c.toDescriptionHtml(p.Min_Order_Quantity__c, p.Order_Increment__c);
         if (p.Brand__c != c.brand || p.Warranty_Months__c != c.warrantyMonths
             || p.EAN__c != c.ean || p.Description != html) {
             p.Brand__c = c.brand;
