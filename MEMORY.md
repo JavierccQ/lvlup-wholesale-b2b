@@ -268,6 +268,37 @@ _"Esta regla no parece estar documentada todavía. ¿Quieres que la añada a
 - **Ámbito:** UX / CSS / Experience Builder.
 - **Origen:** Sesiones 2026-07-13/14 (hover de tiles y rediseño del Login).
 
+> Reglas de la sesión de **enriquecimiento de información de producto (fase 1)**
+> (sesión 2026-07-16), añadidas a petición explícita del usuario. Lecciones de
+> plataforma validadas ejecutando el ADR-0008 (vertical slice Portátiles). El
+> detalle completo vive en `adr/0008-product-information-architecture.md` y
+> `docs/salesforce/product-content-enrichment-runbook.md` (§5 validaciones, §6
+> lecciones).
+
+### REGLA-029 — El canal commerce exige FLS en campos custom de Product2 (extiende REGLA-022)
+
+- **Regla:** Los **field mappings de la PDP** y los **campos de card** de search/categoría NO renderizan para el buyer sin **FLS de lectura explícita** sobre el campo custom (los estándar, como `Family`, sí renderizan por defecto). Los **facets sí funcionan sin FLS** (son agregación del índice) → no usar el facet como prueba de que la FLS está bien. Patrón: permission set de lectura por feature para el buyer (p. ej. `LvlUp_Product_Content_Buyer`). Los cambios de FLS aplican al instante, sin publish ni reindex.
+- **Ámbito:** B2B Commerce / seguridad / FLS.
+- **Origen:** Sesión 2026-07-16 (validación V6, fase 1 enriquecimiento).
+
+### REGLA-030 — Campos facetables nacen picklist; Text→Picklist no es convertible
+
+- **Regla:** Los _Results Filters_ (facets) solo aceptan **tipos enumerables** (picklist, multi-select, checkbox, number); un campo Text **no aparece** en _Manage Filters_. Y la conversión **Text→Picklist no está soportada** en esta org (ni Metadata API ni Setup: "Unsupported custom field type conversion"). Si un campo facetable nació Text: quitarlo de _Searchable Fields_ → **eliminar y recrear** como picklist con el **mismo API name** (los mappings del Builder sobreviven, referencian por nombre) → redesplegar FLS → re-ejecutar el seed. Diseñar como picklist restringido desde el día 0 (gobernanza: añadir el valor antes de curar). El label del storefront del facet = **label del campo** (no configurable por facet).
+- **Ámbito:** B2B Commerce / search / metadata.
+- **Origen:** Sesión 2026-07-16 (facet de Marca, fase 1 enriquecimiento).
+
+### REGLA-031 — Product Detail Headings: máximo 3 field mappings
+
+- **Regla:** El componente estándar _Product Detail Headings_ de la PDP admite **máximo 3 field mappings** adicionales. Elegirlos bien: el **SKU ya lo pinta el propio heading** (propiedad "SKU Field Label") — no gastar un slot en Product Code. Lo que no quepa va a la **Description HTML** (plantilla del seed), idealmente renderizado **desde los campos del registro** (como MOQ/múltiplo desde `Min_Order_Quantity__c`/`Order_Increment__c`) para no duplicar fuentes de verdad.
+- **Ámbito:** Experience Builder / PDP.
+- **Origen:** Sesión 2026-07-16 (fase 1 enriquecimiento).
+
+### REGLA-032 — Publish y estado del índice por CLI (operativiza REGLA-007/026)
+
+- **Regla:** El site se puede publicar sin abrir el Builder: `sf community publish --name "LevelUp Wholesale"` (usa el **Name del Network**, no el nombre de carpeta del site; consultarlo con `SELECT Name FROM Network`). El estado del reindex se consulta por Apex con `ConnectApi.CommerceSearchSettings.getCommerceSearchIndexes(webstoreId)` — esperar `indexStatus=Completed` / `usage=Live` (un full build tarda ~4 min). Recordar qué exige qué: **FLS y Apex** aplican al instante; **código LWC y cambios de Builder** exigen Publish (REGLA-007); **datos que ven cards/facets/search** exigen reindex (REGLA-026).
+- **Ámbito:** Deploy / LWR / búsqueda.
+- **Origen:** Sesión 2026-07-16 (fase 1 enriquecimiento).
+
 <!-- Plantilla para nuevas reglas:
 
 ### REGLA-001 — <título corto>
