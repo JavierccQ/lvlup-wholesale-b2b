@@ -252,6 +252,13 @@
                           "type" : "component"
                         }, {
                           "attributes" : {
+                            "productId" : "{!Item.id}"
+                          },
+                          "definition" : "c:lvlupProductPrice",
+                          "id" : "322ba166-b664-4547-a206-021b198e85dc",
+                          "type" : "component"
+                        }, {
+                          "attributes" : {
                             "buttonLabel" : "Comprar",
                             "dxpStyle" : { },
                             "productId" : "{!Item.id}"
