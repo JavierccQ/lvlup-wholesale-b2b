@@ -1,0 +1,10 @@
+<template>
+  <template lwc:if={showPrice}>
+    <div class="price">
+      <template lwc:if={showListPrice}>
+        <span class="list-price">{formattedListPrice}</span>
+      </template>
+      <span class="unit-price">{formattedUnitPrice}</span>
+    </div>
+  </template>
+</template>

@@ -1,0 +1,19 @@
+/* Mirrors the standard results card price styles: struck-through list price in
+   muted gray next to the bold negotiated price (inherits the card text color). */
+.price {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  padding: 0.25rem 0;
+}
+
+.list-price {
+  text-decoration: line-through;
+  color: #707275;
+  font-size: 0.875rem;
+}
+
+.unit-price {
+  font-weight: 700;
+  font-size: 1.125rem;
+}

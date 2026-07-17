@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>66.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>LvlUp Product Price</masterLabel>
+    <description
+  >Precio negociado + precio tachado del producto para las cards del Grid custom de la PLP.</description>
+    <targets>
+        <target>lightningCommunity__Default</target>
+        <target>lightningCommunity__Page</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property
+        name="productId"
+        type="String"
+        label="Product ID"
+        description="Id del producto (Product2). En el Grid de la PLP, bindear a {!Item.id}."
+      />
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>
