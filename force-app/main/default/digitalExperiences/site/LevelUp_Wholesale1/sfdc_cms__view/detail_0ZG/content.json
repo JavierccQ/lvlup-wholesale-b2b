@@ -176,7 +176,7 @@
                         "borderWidth" : 0,
                         "dxpStyle" : { },
                         "horizontalAlignment" : "center",
-                        "isFixedRowHeight" : true,
+                        "isFixedRowHeight" : false,
                         "itemSpacing" : "small",
                         "numberOfColumns" : 4,
                         "showEmptyState" : false,

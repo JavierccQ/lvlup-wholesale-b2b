@@ -8,13 +8,10 @@
   cursor: pointer;
 }
 
-/* 4:3 en vez de 1:1: en la grid de 4 columnas una imagen cuadrada hacía la
-   card ~320px solo de foto. "contain" centra la foto (source cuadrada) dejando
-   una franja blanca a los lados en vez de recortarla. */
 .image-frame {
   display: block;
   width: 100%;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 1 / 1;
   background: #ffffff;
   border-radius: 8px;
   overflow: hidden;
