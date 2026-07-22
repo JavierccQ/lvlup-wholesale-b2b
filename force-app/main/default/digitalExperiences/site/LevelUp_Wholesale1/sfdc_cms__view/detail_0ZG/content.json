@@ -215,7 +215,7 @@
                             "cardContentMapping" : "[{\"name\":\"Name\",\"showLabel\":false,\"label\":\"Product Name\",\"fontSize\":\"small\",\"type\":\"STRING\"},{\"name\":\"Brand__c\",\"showLabel\":false,\"label\":\"Brand\",\"type\":\"STRING\",\"fontSize\":\"medium\",\"fontColor\":\"#FFFFFF\"}]",
                             "cardImageBorderColor" : "#d9dfe7",
                             "cardImageSize" : "contain",
-                            "cardInfoPadding" : "{\"top\":\"5px\",\"right\":\"5px\",\"bottom\":\"5px\",\"left\":\"5px\"}",
+                            "cardInfoPadding" : "{\"top\":\"5px\",\"right\":\"0px\",\"bottom\":\"5px\",\"left\":\"0px\"}",
                             "cardTextFlexAlign" : "flex-start",
                             "combinePromosThreshold" : "1",
                             "dxpStyle" : { },
