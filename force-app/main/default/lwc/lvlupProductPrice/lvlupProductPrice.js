@@ -46,6 +46,24 @@ export default class LvlupProductPrice extends LightningElement {
     return this.format(this.price.listPrice);
   }
 
+  // Whole-percent saving vs the list price; only shown when there is a real
+  // discount (list price higher than what the buyer pays).
+  get discountPercent() {
+    if (!this.showListPrice) {
+      return null;
+    }
+    const list = Number(this.price.listPrice);
+    const unit = Number(this.price.unitPrice);
+    if (!list || list <= unit) {
+      return null;
+    }
+    return Math.round(((list - unit) / list) * 100);
+  }
+
+  get showDiscount() {
+    return this.discountPercent > 0;
+  }
+
   // Matches the standard results card formatting (en-US locale of the store).
   format(value) {
     try {

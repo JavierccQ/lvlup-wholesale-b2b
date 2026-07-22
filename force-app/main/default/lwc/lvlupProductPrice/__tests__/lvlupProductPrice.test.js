@@ -72,6 +72,18 @@ describe("c-lvlup-product-price", () => {
       "$899.00"
     );
     expect(element.shadowRoot.querySelector(".list-price")).toBeNull();
+    expect(element.shadowRoot.querySelector(".discount-badge")).toBeNull();
+  });
+
+  it("muestra el badge de descuento redondeado desde lista vs venta", async () => {
+    const element = createComponent();
+    // (1499 - 1349) / 1499 = 10.0% -> "-10%"
+    getProductPrice.emit(MOCK_PRICE);
+    await flushPromises();
+
+    const badge = element.shadowRoot.querySelector(".discount-badge");
+    expect(badge).not.toBeNull();
+    expect(badge.textContent).toBe("-10%");
   });
 
   it("no renderiza nada sin precio negociado (p. ej. usuario interno)", async () => {

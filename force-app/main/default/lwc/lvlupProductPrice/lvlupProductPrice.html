@@ -5,6 +5,9 @@
         <span class="list-price">{formattedListPrice}</span>
       </template>
       <span class="unit-price">{formattedUnitPrice}</span>
+      <template lwc:if={showDiscount}>
+        <span class="discount-badge">-{discountPercent}%</span>
+      </template>
     </div>
   </template>
 </template>

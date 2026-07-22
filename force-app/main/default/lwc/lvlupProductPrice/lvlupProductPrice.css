@@ -17,3 +17,17 @@
   font-weight: 700;
   font-size: 1.125rem;
 }
+
+/* Discount pill in the brand green (#19E08B). margin-left:auto pushes it to the
+   right end of the price row, using the horizontal space with conversion info. */
+.discount-badge {
+  margin-left: auto;
+  background: rgba(25, 224, 139, 0.15);
+  color: #19e08b;
+  font-weight: 700;
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  padding: 0.05rem 0.4rem;
+  border-radius: 4px;
+  white-space: nowrap;
+}
