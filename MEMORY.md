@@ -299,6 +299,19 @@ _"Esta regla no parece estar documentada todavía. ¿Quieres que la añada a
 - **Ámbito:** Deploy / LWR / búsqueda.
 - **Origen:** Sesión 2026-07-16 (fase 1 enriquecimiento).
 
+---
+
+> Regla de la sesión de **precio y layout en la card del Grid (fase 1.1)**
+> (sesión 2026-07-22), añadida a petición explícita del usuario. Detalle completo
+> en la adenda de `adr/0008-product-information-architecture.md` y el runbook
+> `docs/salesforce/product-content-enrichment-runbook.md` §7.
+
+### REGLA-033 — El card estándar dentro del Grid no pinta el precio en runtime (familia de REGLA-005/006/027)
+
+- **Regla:** Dentro del patrón **Grid + `{!Item}`** (REGLA-005), el `commerce_builder:productCard` estándar es fiable **solo para nombre, SKU, marca y wishlist**; **no pinta su bloque de precio en runtime** (en el Builder sí, por el mock de design-time; y la llamada de pricing sí devuelve `listPrice`/`unitPrice`). Tercer caso de la misma familia: imágenes (REGLA-006) y paginación (REGLA-027). Solución: renderizar lo que falte con **LWC propios hermanos** bindeados a `{!Item.id}` / `{!Item.fields.*.value}`, y **ocultar** las partes del card estándar que dupliques con **CSS scoped en el head markup** usando `:has(+ c-tu-componente)` (afecta solo la card del Grid, no el Wishlist ni el resto del site; el card estándar renderiza light DOM, targeteable con clases `comm-*`/`slds-*`, REGLA-028). Para el precio del buyer: resolver el price book de venta por la cadena estándar Account → `BuyerGroupMember` → `BuyerGroupPricebook` y el tachado desde `WebStore.StrikethroughPricebookId` (**sin hardcodear nombres**), con Apex cacheable `without sharing` + acceso a la clase para el buyer (REGLA-004).
+- **Ámbito:** B2B Commerce / LWC / Experience Builder.
+- **Origen:** Sesión 2026-07-22 (fase 1.1, precio en la card del Grid).
+
 <!-- Plantilla para nuevas reglas:
 
 ### REGLA-001 — <título corto>

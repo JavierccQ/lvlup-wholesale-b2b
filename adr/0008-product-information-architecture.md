@@ -159,3 +159,52 @@ receta):
 - ADR-0003 (data vs metadata): el contenido es dato; los campos, metadata.
 - ADR-0007 (Catalog Pulse): sin interacción directa; comparte el patrón de
   permission sets por feature.
+
+## Adenda 2026-07-22 — Precio, badge y layout en la card del Grid (fase 1.1)
+
+Durante el QA de la PLP se detectó que **la card del Grid custom no mostraba
+precios** (sí en la página de búsqueda y en la PDP). Diagnóstico con evidencia
+de red (DevTools): la llamada de pricing (`.../pricing/products`) **sí devuelve**
+`listPrice`/`unitPrice` en la página de categoría, pero el `commerce_builder:productCard`
+estándar, montado dentro del patrón Grid + `{!Item}` (REGLA-005), **no pinta su
+bloque de precio en runtime** (en el Builder sí, por el mock de design-time). Es
+el mismo patrón ya visto con las imágenes (REGLA-006) y la paginación
+(REGLA-027): dentro del Grid, el card estándar es una caja negra fiable solo para
+nombre, SKU, marca y wishlist.
+
+Decisiones de la fase 1.1:
+
+1. **Precio en la card vía LWC propio** `lvlupProductPrice` (presentacional) +
+   `LvlupProductPriceController` (Apex cacheable `without sharing`, REGLA-004).
+   El price book de venta se resuelve por la cadena estándar
+   Account → `BuyerGroupMember` → `BuyerGroupPricebook`, y el tachado desde
+   `WebStore.StrikethroughPricebookId` — **sin nombres de price book
+   hardcodeados**. Único Apex nuevo de la fase 1.1.
+2. **La card del Grid pasa a hibridarse**: el card estándar se conserva solo por
+   el **nombre y el corazón de wishlist**; `lvlupProductPrice` asume **SKU, marca
+   y precio** para controlar el layout (SKU + badge de descuento ovalado en una
+   misma fila de 2 columnas). El SKU y la marca del card estándar se **ocultan**
+   con CSS scoped; SKU y marca se bindean a `{!Item.fields.*.value}`.
+3. **CSS scoped en el head markup** (`mainAppPage`), acotado con
+   `:has(+ c-lvlup-product-price)` para afectar **solo** la card del Grid de
+   Category (el card del Wishlist y el resto del sitio quedan intactos): compacta
+   el cuerpo (quita gaps del wrapper, colapsa el `card-actions-area` vacío),
+   alinea todo a un único borde izquierdo (resetea el padding del rich-text del
+   nombre + `cardInfoPadding` horizontal a 0) y oculta SKU/marca estándar.
+4. **Grid `isFixedRowHeight: false`** para que las cards cortas no se estiren a la
+   altura de la más alta de la fila.
+5. **UX**: jerarquía por contraste (nombre y precio destacan; SKU/marca en el
+   gris del branding `#9AA0CF`), badge de descuento `-X%` en el verde de marca
+   calculado desde lista vs venta. Se descartó a propósito rellenar el ancho
+   estirando/centrando texto (rompe la escaneabilidad de columna).
+
+Consecuencia para la receta: esta configuración de card (LWC + CSS scoped +
+bindings) es **transversal** — una sola vez para todas las categorías; replicar
+una categoría sigue siendo solo datos + reindex (ver runbook §3).
+
+Nota de deuda técnica detectada (no corregida aquí para no arriesgar regresión
+del Quick Buy): `LvlupQuickBuyController.getProductPurchaseInfo` resuelve el
+precio con `ORDER BY IsStandard DESC`, por lo que el **modal del Quick Buy podría
+mostrar el precio de lista** en vez del negociado. `LvlupProductPriceController`
+deja la resolución correcta (por Buyer Group) lista para reutilizar si se decide
+alinear el modal en una fase futura.

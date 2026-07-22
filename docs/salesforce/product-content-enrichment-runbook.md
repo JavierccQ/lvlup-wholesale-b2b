@@ -20,14 +20,15 @@ justified_, y la separación data vs metadata de
 
 ## 2. Piezas de Referencia
 
-| Pieza                 | Nombre / ruta                                                                      | Rol                                             |
-| --------------------- | ---------------------------------------------------------------------------------- | ----------------------------------------------- |
-| Campos de contenido   | `Product2.Brand__c` (picklist "Marca"), `Warranty_Months__c`, `EAN__c`, `Family`   | Datos estructurados de la ficha                 |
-| Plantilla de specs    | `scripts/apex/seed-product-content.apex` (clase `LaptopContent.toDescriptionHtml`) | HTML estructurado de la Description             |
-| Seed de contenido     | `scripts/apex/seed-product-content.apex`                                           | Family (todos los internos) + contenido por SKU |
-| LWC de disponibilidad | `lvlupProductAvailability` → `lvlupStockAvailabilityPanel`                         | Stock en la PDP (ya colocado)                   |
-| Permission sets       | `LvlUp_Product_Content_Admin` (edición) / `LvlUp_Product_Content_Buyer` (lectura)  | FLS de los campos de contenido                  |
-| Reindex               | `scripts/apex/rebuild-search-index.apex`                                           | Único reindex al final (REGLA-026)              |
+| Pieza                 | Nombre / ruta                                                                      | Rol                                                      |
+| --------------------- | ---------------------------------------------------------------------------------- | -------------------------------------------------------- |
+| Campos de contenido   | `Product2.Brand__c` (picklist "Marca"), `Warranty_Months__c`, `EAN__c`, `Family`   | Datos estructurados de la ficha                          |
+| Plantilla de specs    | `scripts/apex/seed-product-content.apex` (clase `LaptopContent.toDescriptionHtml`) | HTML estructurado de la Description                      |
+| Seed de contenido     | `scripts/apex/seed-product-content.apex`                                           | Family (todos los internos) + contenido por SKU          |
+| LWC de disponibilidad | `lvlupProductAvailability` → `lvlupStockAvailabilityPanel`                         | Stock en la PDP (ya colocado)                            |
+| LWC de card meta      | `lvlupProductPrice` + `LvlupProductPriceController`                                | SKU + badge, marca y precio en la card del Grid (ver §7) |
+| Permission sets       | `LvlUp_Product_Content_Admin` (edición) / `LvlUp_Product_Content_Buyer` (lectura)  | FLS de los campos de contenido                           |
+| Reindex               | `scripts/apex/rebuild-search-index.apex`                                           | Único reindex al final (REGLA-026)                       |
 
 ---
 
@@ -50,6 +51,13 @@ Se documenta para trazabilidad y para reconstruirla en otra org:
    acordeón retitulado a **"Especificaciones"**, y `lvlupProductAvailability`
    bajo _Product Pricing Details_. Cards de categoría y búsqueda con `Brand__c`
    mapeado sin label.
+5. **Card del Grid de Category** (fase 1.1, ver §7 y la adenda del ADR-0008):
+   `lvlupProductPrice` colocado en el item del repeater con
+   `productId={!Item.id}`, `sku={!Item.fields.StockKeepingUnit.value}` y
+   `brand={!Item.fields.Brand__c.value}`; el card estándar se conserva solo por
+   el nombre y el wishlist, con su SKU/marca ocultos vía CSS scoped en el head
+   markup de `mainAppPage`; el Grid con `isFixedRowHeight: false`. Es
+   **transversal**: aplica a todas las categorías sin repetir.
 
 ---
 
@@ -143,10 +151,44 @@ En el site **publicado**, con un **Buyer User real** (nunca Builder Preview):
   límite diario de rebuilds manuales.
 - Cambios de **FLS y Apex aplican al instante**; cambios de **código LWC o
   Builder** requieren Publish (REGLA-007).
+- **El card estándar del Grid no pinta el precio en runtime** (sí en la PDP y en
+  la búsqueda; en el Builder sí por el mock de design-time). Aunque la llamada de
+  pricing devuelve `listPrice`/`unitPrice`, dentro del patrón Grid + `{!Item}` el
+  `commerce_builder:productCard` es fiable solo para nombre, SKU, marca y
+  wishlist — igual que ya pasaba con imágenes (REGLA-006) y paginación
+  (REGLA-027). El precio se resuelve con LWC propio (ver §7).
 
 ---
 
-## 7. Relación con Otros Documentos
+## 7. La Card del Grid: Precio y Layout (fase 1.1)
+
+Contexto y decisiones completas en la **adenda del `adr/0008`**. Resumen operativo
+para replicar/mantener:
+
+- **Precio**: `lvlupProductPrice` (LWC presentacional) + `LvlupProductPriceController`
+  (Apex cacheable `without sharing`). El price book de venta se resuelve por la
+  cadena estándar Account → `BuyerGroupMember` → `BuyerGroupPricebook`, y el tachado
+  desde `WebStore.StrikethroughPricebookId` — **sin nombres de price book
+  hardcodeados**. El buyer necesita **acceso a la clase** (`LvlUp_Quick_Buy_Buyer`,
+  REGLA-004).
+- **Layout híbrido de la card**: el card estándar se conserva solo por el **nombre
+  y el wishlist**; `lvlupProductPrice` asume **SKU, marca y precio** (SKU + badge
+  de descuento ovalado en una fila de 2 columnas). Los `sku`/`brand` se bindean a
+  `{!Item.fields.StockKeepingUnit.value}` / `{!Item.fields.Brand__c.value}`.
+- **CSS scoped** en el head markup de `mainAppPage`, acotado con
+  `:has(+ c-lvlup-product-price)` para tocar **solo** la card del Grid de Category:
+  oculta SKU/marca estándar, compacta el cuerpo, alinea a un único borde izquierdo
+  (`cardInfoPadding` horizontal a 0 + reset del padding del rich-text del nombre) y
+  colapsa el `card-actions-area` vacío. El Grid con `isFixedRowHeight: false`.
+- **Todo esto es transversal**: no se repite por categoría.
+- **Deuda técnica anotada**: `LvlupQuickBuyController.getProductPurchaseInfo` resuelve
+  el precio con `ORDER BY IsStandard DESC` → el modal del Quick Buy podría mostrar el
+  precio de lista, no el negociado. `LvlupProductPriceController` deja lista la
+  resolución correcta si se decide alinear el modal (fase futura).
+
+---
+
+## 8. Relación con Otros Documentos
 
 - `adr/0008-product-information-architecture.md` — decisión y restricciones.
 - `docs/salesforce/manual-add-product-runbook.md` — alta de producto (previo a
