@@ -23,6 +23,8 @@ function createComponent(productId = "01t000000000001AAA") {
     is: LvlupProductPrice
   });
   element.productId = productId;
+  element.sku = "LVL-LAP-001";
+  element.brand = "LvlUp";
   document.body.appendChild(element);
   return element;
 }
@@ -84,6 +86,26 @@ describe("c-lvlup-product-price", () => {
     const badge = element.shadowRoot.querySelector(".discount-badge");
     expect(badge).not.toBeNull();
     expect(badge.textContent).toBe("-10%");
+  });
+
+  it("pinta la SKU y el badge en la misma fila de 2 columnas", async () => {
+    const element = createComponent();
+    getProductPrice.emit(MOCK_PRICE);
+    await flushPromises();
+
+    const row = element.shadowRoot.querySelector(".sku-row");
+    expect(row).not.toBeNull();
+    expect(row.querySelector(".sku").textContent).toBe("SKU: LVL-LAP-001");
+    expect(row.querySelector(".discount-badge").textContent).toBe("-10%");
+  });
+
+  it("renderiza la marca recibida por @api", async () => {
+    const element = createComponent();
+    await flushPromises();
+
+    expect(element.shadowRoot.querySelector(".brand").textContent).toBe(
+      "LvlUp"
+    );
   });
 
   it("no renderiza nada sin precio negociado (p. ej. usuario interno)", async () => {

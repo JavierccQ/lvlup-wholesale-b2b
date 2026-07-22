@@ -1,10 +1,13 @@
 // ============================================================================
-//  lvlupProductPrice → card price line for the custom PLP grid
+//  lvlupProductPrice → SKU + brand + price block for the custom PLP grid card
 // ============================================================================
 //  The standard product card inside the Grid + {!Item} pattern does not render
-//  its price block at runtime (REGLA-005/027 family; see ADR-0008 addendum), so
-//  this presentational component paints the negotiated price plus the
-//  strikethrough list price from the existing pricing data via cacheable Apex.
+//  its price block at runtime (REGLA-005/027 family; see ADR-0008 addendum).
+//  This component renders the whole meta+price block (SKU, brand and price) so
+//  the layout is fully controlled — notably the SKU and the discount badge share
+//  one row. The standard card is kept only for the product name and the wishlist
+//  heart; its own SKU and brand are hidden via scoped CSS. SKU and brand come in
+//  as @api bound to {!Item.fields...}; the price comes from cacheable Apex.
 // ============================================================================
 import { LightningElement, api, wire } from "lwc";
 import getProductPrice from "@salesforce/apex/LvlupProductPriceController.getProductPrice";
@@ -12,6 +15,9 @@ import getProductPrice from "@salesforce/apex/LvlupProductPriceController.getPro
 export default class LvlupProductPrice extends LightningElement {
   // Product2 Id. In the Grid it is bound manually to {!Item.id} (REGLA-005).
   @api productId;
+  // Meta bound to the search item fields ({!Item.fields.*.value}).
+  @api sku;
+  @api brand;
 
   price;
 
@@ -20,7 +26,7 @@ export default class LvlupProductPrice extends LightningElement {
     if (data) {
       this.price = data;
     } else if (error) {
-      // Render nothing for the buyer; keep the diagnostic in the console.
+      // Render no price for the buyer; keep the diagnostic in the console.
       this.price = undefined;
       console.error(
         "lvlupProductPrice: getProductPrice failed. productId=" +
@@ -28,6 +34,14 @@ export default class LvlupProductPrice extends LightningElement {
         error
       );
     }
+  }
+
+  get showSku() {
+    return Boolean(this.sku);
+  }
+
+  get showBrand() {
+    return Boolean(this.brand);
   }
 
   get showPrice() {

@@ -252,7 +252,9 @@
                           "type" : "component"
                         }, {
                           "attributes" : {
-                            "productId" : "{!Item.id}"
+                            "brand" : "{!Item.fields.Brand__c.value}",
+                            "productId" : "{!Item.id}",
+                            "sku" : "{!Item.fields.StockKeepingUnit.value}"
                           },
                           "definition" : "c:lvlupProductPrice",
                           "id" : "322ba166-b664-4547-a206-021b198e85dc",

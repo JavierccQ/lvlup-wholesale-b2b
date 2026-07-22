@@ -1,13 +1,23 @@
 <template>
-  <template lwc:if={showPrice}>
-    <div class="price">
-      <template lwc:if={showListPrice}>
-        <span class="list-price">{formattedListPrice}</span>
-      </template>
-      <span class="unit-price">{formattedUnitPrice}</span>
-      <template lwc:if={showDiscount}>
-        <span class="discount-badge">-{discountPercent}%</span>
-      </template>
-    </div>
-  </template>
+  <div class="card-meta">
+    <template lwc:if={showSku}>
+      <div class="sku-row">
+        <span class="sku">SKU: {sku}</span>
+        <template lwc:if={showDiscount}>
+          <span class="discount-badge">-{discountPercent}%</span>
+        </template>
+      </div>
+    </template>
+    <template lwc:if={showBrand}>
+      <div class="brand">{brand}</div>
+    </template>
+    <template lwc:if={showPrice}>
+      <div class="price">
+        <template lwc:if={showListPrice}>
+          <span class="list-price">{formattedListPrice}</span>
+        </template>
+        <span class="unit-price">{formattedUnitPrice}</span>
+      </div>
+    </template>
+  </div>
 </template>
