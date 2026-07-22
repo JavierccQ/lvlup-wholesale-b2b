@@ -1,61 +1,64 @@
 .image-link {
-    display: block;
-    text-decoration: none;
-    color: inherit;
+  display: block;
+  text-decoration: none;
+  color: inherit;
 }
 
 .image-link[href] {
-    cursor: pointer;
+  cursor: pointer;
 }
 
+/* 4:3 en vez de 1:1: en la grid de 4 columnas una imagen cuadrada hacía la
+   card ~320px solo de foto. "contain" centra la foto (source cuadrada) dejando
+   una franja blanca a los lados en vez de recortarla. */
 .image-frame {
-    display: block;
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    background: #ffffff;
-    border-radius: 8px;
-    overflow: hidden;
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 .product-image {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    display: block;
-    transition: transform 0.2s ease;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  transition: transform 0.2s ease;
 }
 
 .image-link[href]:hover .product-image {
-    transform: scale(1.03);
+  transform: scale(1.03);
 }
 
 /* Estado "sin imagen": superficie oscura del branding (#1C2049) con icono y
    label atenuados en blanco, coherente con el tema oscuro del storefront. */
 .placeholder {
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, #1c2049, #2b3160);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    padding: 0.5rem;
-    box-sizing: border-box;
-    color: rgba(255, 255, 255, 0.55);
-    font-family: 'Inter', Arial, sans-serif;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #1c2049, #2b3160);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  box-sizing: border-box;
+  color: rgba(255, 255, 255, 0.55);
+  font-family: "Inter", Arial, sans-serif;
 }
 
 .placeholder-icon {
-    width: 32%;
-    max-width: 56px;
-    height: auto;
-    opacity: 0.85;
+  width: 32%;
+  max-width: 56px;
+  height: auto;
+  opacity: 0.85;
 }
 
 .placeholder-text {
-    font-size: 0.75rem;
-    line-height: 1;
-    letter-spacing: 0.02em;
-    text-align: center;
+  font-size: 0.75rem;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-align: center;
 }
