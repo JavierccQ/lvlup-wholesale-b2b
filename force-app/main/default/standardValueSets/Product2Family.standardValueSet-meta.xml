@@ -41,4 +41,9 @@
         <default>false</default>
         <label>Bundles enterprise</label>
     </standardValue>
+    <standardValue>
+        <fullName>SmartPhones</fullName>
+        <default>false</default>
+        <label>SmartPhones</label>
+    </standardValue>
 </StandardValueSet>

@@ -18,6 +18,41 @@
                 <default>false</default>
                 <label>LvlUp</label>
             </value>
+            <value>
+                <fullName>RetroStation</fullName>
+                <default>false</default>
+                <label>RetroStation</label>
+            </value>
+            <value>
+                <fullName>CloudPlay</fullName>
+                <default>false</default>
+                <label>CloudPlay</label>
+            </value>
+            <value>
+                <fullName>Nova Interactive</fullName>
+                <default>false</default>
+                <label>Nova Interactive</label>
+            </value>
+            <value>
+                <fullName>Redline Studios</fullName>
+                <default>false</default>
+                <label>Redline Studios</label>
+            </value>
+            <value>
+                <fullName>Mythdale Games</fullName>
+                <default>false</default>
+                <label>Mythdale Games</label>
+            </value>
+            <value>
+                <fullName>Blackout Games</fullName>
+                <default>false</default>
+                <label>Blackout Games</label>
+            </value>
+            <value>
+                <fullName>Greenfield Interactive</fullName>
+                <default>false</default>
+                <label>Greenfield Interactive</label>
+            </value>
         </valueSetDefinition>
     </valueSet>
 </CustomField>

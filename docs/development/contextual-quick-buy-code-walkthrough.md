@@ -2,7 +2,7 @@
 
 > **Para quién es esto:** alguien que sabe programar (HTML, JS, algo de back-end)
 > pero **nunca ha trabajado en Salesforce**. Explica, archivo por archivo, el
-> feature *Contextual Quick Buy*: imports, variables, métodos, eventos y llamadas
+> feature _Contextual Quick Buy_: imports, variables, métodos, eventos y llamadas
 > a API. Acompaña al diagrama visual
 > [`contextual-quick-buy-architecture.html`](../ux/contextual-quick-buy-architecture.html)
 > y al diseño funcional [`contextual-quick-buy-design.md`](../ux/contextual-quick-buy-design.md).
@@ -15,18 +15,18 @@ Salesforce es una plataforma cloud. Nuestro storefront (la tienda B2B) corre sob
 **Experience Cloud / LWR** (un tipo de sitio web de Salesforce). Lo que construimos
 usa estas piezas:
 
-| Concepto | En cristiano |
-|---|---|
-| **LWC (Lightning Web Component)** | Un componente web (HTML + JS + CSS), estándar moderno. Cada componente es una carpeta con 4 archivos. Es lo mismo que un Web Component, con azúcar de Salesforce. |
-| **`@api`** | Decorador que hace **pública** una propiedad de un LWC. Es como un *prop* de React: el padre le pasa datos al hijo a través de propiedades `@api`. |
-| **`CustomEvent`** | El mecanismo para que un **hijo avise al padre** ("evento hacia arriba"). El hijo hace `dispatchEvent(new CustomEvent('nombre', { detail }))`; el padre lo escucha con `onnombre={handler}`. |
-| **Apex** | El lenguaje **back-end** de Salesforce (parecido a Java). Corre en el servidor y habla con la base de datos. |
-| **`@AuraEnabled`** | Decorador que hace que un método Apex sea **llamable desde un LWC** (JS → servidor). Si además es `cacheable=true`, el resultado se cachea y solo sirve para **leer** datos. |
-| **SOQL** | El "SQL de Salesforce". Se escribe entre corchetes: `[SELECT Id FROM Product2 WHERE ...]`. |
-| **Objeto / Registro** | Un "objeto" es una tabla (p. ej. `Product2`, `Account`). Un "registro" es una fila. |
-| **Campo custom** | Una columna que añadimos a una tabla. Termina en `__c` (p. ej. `Inventory_Quantity__c`). |
-| **Permission Set** | Un "paquete de permisos" que asignas a usuarios: acceso a clases Apex, a campos, a objetos. |
-| **`with sharing` / `without sharing`** | Le dice a una clase Apex si debe respetar las **reglas de visibilidad de registros** del usuario. Clave en este proyecto (ver el controller). |
+| Concepto                               | En cristiano                                                                                                                                                                                 |
+| -------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **LWC (Lightning Web Component)**      | Un componente web (HTML + JS + CSS), estándar moderno. Cada componente es una carpeta con 4 archivos. Es lo mismo que un Web Component, con azúcar de Salesforce.                            |
+| **`@api`**                             | Decorador que hace **pública** una propiedad de un LWC. Es como un _prop_ de React: el padre le pasa datos al hijo a través de propiedades `@api`.                                           |
+| **`CustomEvent`**                      | El mecanismo para que un **hijo avise al padre** ("evento hacia arriba"). El hijo hace `dispatchEvent(new CustomEvent('nombre', { detail }))`; el padre lo escucha con `onnombre={handler}`. |
+| **Apex**                               | El lenguaje **back-end** de Salesforce (parecido a Java). Corre en el servidor y habla con la base de datos.                                                                                 |
+| **`@AuraEnabled`**                     | Decorador que hace que un método Apex sea **llamable desde un LWC** (JS → servidor). Si además es `cacheable=true`, el resultado se cachea y solo sirve para **leer** datos.                 |
+| **SOQL**                               | El "SQL de Salesforce". Se escribe entre corchetes: `[SELECT Id FROM Product2 WHERE ...]`.                                                                                                   |
+| **Objeto / Registro**                  | Un "objeto" es una tabla (p. ej. `Product2`, `Account`). Un "registro" es una fila.                                                                                                          |
+| **Campo custom**                       | Una columna que añadimos a una tabla. Termina en `__c` (p. ej. `Inventory_Quantity__c`).                                                                                                     |
+| **Permission Set**                     | Un "paquete de permisos" que asignas a usuarios: acceso a clases Apex, a campos, a objetos.                                                                                                  |
+| **`with sharing` / `without sharing`** | Le dice a una clase Apex si debe respetar las **reglas de visibilidad de registros** del usuario. Clave en este proyecto (ver el controller).                                                |
 
 **El patrón estrella del feature** es la **comunicación padre-hijo**: los datos bajan
 por `@api` y los eventos suben por `CustomEvent`. Todo el árbol de componentes se
@@ -66,10 +66,11 @@ Su único trabajo: dado el `Id` de un producto, devolver lo que el modal necesit
 ```apex
 public without sharing class LvlupQuickBuyController {
 ```
+
 - **`public`**: visible para otras clases/LWC.
 - **`without sharing`**: ⚠️ **lo más importante.** En B2B Commerce, los registros
   `Product2` **no se comparten al comprador** por las reglas de visibilidad
-  normales; su visibilidad la da el *entitlement* de comercio. Si la clase fuera
+  normales; su visibilidad la da el _entitlement_ de comercio. Si la clase fuera
   `with sharing`, la consulta devolvería **0 filas** para el comprador (¡aunque
   pueda ver el producto en la tienda!). `without sharing` evita ese bloqueo. El
   producto ya está entitled, así que es seguro.
@@ -78,6 +79,7 @@ public without sharing class LvlupQuickBuyController {
     @AuraEnabled(cacheable=true)
     public static ProductPurchaseInfo getProductPurchaseInfo(Id productId) {
 ```
+
 - **`@AuraEnabled(cacheable=true)`**: este método se puede llamar desde el LWC y su
   resultado se cachea (es de solo lectura).
 - **`static`**: no necesita instanciar la clase.
@@ -86,22 +88,41 @@ public without sharing class LvlupQuickBuyController {
 
 ```apex
         Product2 product = [
-            SELECT Id, Name, StockKeepingUnit, DisplayUrl,
-                   Inventory_Quantity__c, Min_Order_Quantity__c,
-                   Order_Increment__c, Max_Order_Quantity__c
+            SELECT Id, Name, StockKeepingUnit, DisplayUrl, Inventory_Quantity__c
             FROM Product2
             WHERE Id = :productId
             LIMIT 1
         ];
 ```
+
 - Esto es **SOQL**. Trae **una** fila de `Product2` cuyo `Id` coincide.
 - `:productId` es un **bind variable**: inyecta de forma segura la variable de Apex
   en la consulta (equivale a un parámetro preparado; evita inyección).
-- Selecciona campos estándar (`Name`, `StockKeepingUnit`, `DisplayUrl`) y nuestros 4
-  campos custom (`*__c`).
+- Selecciona campos estándar (`Name`, `StockKeepingUnit`, `DisplayUrl`) y el
+  **stock** (`Inventory_Quantity__c`). El MOQ / múltiplo / máximo **ya no** salen de
+  aquí: vienen de la regla estándar (ver el siguiente bloque, ADR-0009).
 - Si no hay filas, el assignment a un solo `Product2` lanza
   `QueryException` ("List has no rows...") — eso fue justo el bug que arreglamos con
   `without sharing`.
+
+```apex
+        // Regla de cantidad ESTÁNDAR (PurchaseQuantityRule) asociada por el
+        // junction ProductQuantityRule. Defaults seguros si no hay regla.
+        Decimal minQuantity = 1, increment = 1, maxQuantity = null;
+        for (ProductQuantityRule link : [
+            SELECT PurchaseQuantityRule.Minimum, PurchaseQuantityRule.Increment,
+                   PurchaseQuantityRule.Maximum
+            FROM ProductQuantityRule
+            WHERE ProductId = :productId
+            ORDER BY CreatedDate DESC LIMIT 1
+        ]) { ... }
+```
+
+- El MOQ / múltiplo / máximo viven ahora en el objeto **estándar**
+  `PurchaseQuantityRule` (fuente de verdad única, ADR-0009), asociado al producto
+  por el junction `ProductQuantityRule`. Recorremos con un `for` (si no hay regla,
+  quedan los defaults `min 1 / inc 1 / sin máx`, iguales a los del selector).
+- El **DTO que se devuelve al LWC no cambió**, así que el modal funciona idéntico.
 
 ```apex
         Decimal unitPrice = null;
@@ -114,8 +135,9 @@ public without sharing class LvlupQuickBuyController {
             unitPrice = entry.UnitPrice;
         }
 ```
-- El **precio** vive en `PricebookEntry` (precio de un producto dentro de un *price
-  book*). Hacemos un `for` sobre la consulta (patrón seguro: si no hay precio,
+
+- El **precio** vive en `PricebookEntry` (precio de un producto dentro de un _price
+  book_). Hacemos un `for` sobre la consulta (patrón seguro: si no hay precio,
   `unitPrice` queda en `null` sin lanzar excepción).
 - `ORDER BY Pricebook2.IsStandard DESC LIMIT 1`: toma un precio (priorizando el
   estándar). Es el "precio del MVP".
@@ -128,6 +150,7 @@ public without sharing class LvlupQuickBuyController {
         return info;
     }
 ```
+
 - Crea el objeto de respuesta, lo rellena y lo devuelve. El LWC recibe esto como un
   objeto JS plano.
 
@@ -138,17 +161,19 @@ public without sharing class LvlupQuickBuyController {
         ...
     }
 ```
+
 - Clase interna (**wrapper / DTO**). Cada campo lleva `@AuraEnabled` para que viaje
   al LWC. Sin ese decorador, el campo no sería visible en JS.
 
 > **Nota de seguridad:** no forzamos FLS (field-level security) sobre los campos de
-> inventario porque son datos de *display* que el comprador debe ver. Está
+> inventario porque son datos de _display_ que el comprador debe ver. Está
 > documentado en el comentario de cabecera de la clase.
 
 ### 2.2 `LvlupQuickBuyControllerTest.cls`
 
 Salesforce **exige tests** para subir Apex a producción (mínimo 75% de cobertura).
 Este test:
+
 - Crea un `Product2` y un `PricebookEntry` de prueba (datos aislados; los tests no
   ven los datos reales por defecto).
 - Llama a `getProductPurchaseInfo`.
@@ -161,21 +186,20 @@ estándar (en tests no se puede usar el real directamente).
 
 ---
 
-## 3. Campos custom de `Product2`
+## 3. De dónde salen el stock y las reglas de compra
 
-Inventario y reglas de compra **no existen de forma usable** en Commerce estándar
-sin Omnichannel Inventory (no disponible en esta org). Por eso los guardamos como
-campos custom (decisión documentada). Son 4, todos `Number`:
+- **Stock** → campo custom `Inventory_Quantity__c` en `Product2` (Number). El
+  inventario real no existe de forma usable sin Omnichannel Inventory (no
+  disponible en esta org), así que se simula con este campo (ver
+  `manual-inventory-setup-runbook.md`).
+- **Reglas de compra** (MOQ / múltiplo / máximo) → objeto **estándar**
+  `PurchaseQuantityRule` (`Minimum` / `Increment` / `Maximum`), asociado por el
+  junction `ProductQuantityRule`. Es la **fuente de verdad única**, leída tanto por
+  este Quick Buy como por el componente estándar de la PDP (ADR-0009).
 
-| Campo (API) | Significado |
-|---|---|
-| `Inventory_Quantity__c` | Unidades en stock. |
-| `Min_Order_Quantity__c` | Cantidad mínima de pedido (MOQ). |
-| `Order_Increment__c` | Múltiplo de compra / case pack. |
-| `Max_Order_Quantity__c` | Máximo por pedido. |
-
-Cada uno es un archivo XML simple (`*.field-meta.xml`) que define etiqueta, tipo y
-precisión. No tienen lógica.
+> Los antiguos campos `Min_Order_Quantity__c` / `Order_Increment__c` /
+> `Max_Order_Quantity__c` quedaron **DEPRECADOS** (ADR-0009): siguen existiendo
+> read-only pero el storefront ya no los lee. No editarlos para cambiar una regla.
 
 ---
 
@@ -188,12 +212,14 @@ qué páginas, qué propiedades expone).
 ### 4.1 `lvlupProductQuickBuy` — el PADRE / orquestador
 
 **Imports:**
+
 ```js
-import { LightningElement, api } from 'lwc';
-import { NavigationMixin } from 'lightning/navigation';
-import getProductPurchaseInfo from '@salesforce/apex/LvlupQuickBuyController.getProductPurchaseInfo';
-import { addItemToCart } from 'commerce/cartApi';
+import { LightningElement, api } from "lwc";
+import { NavigationMixin } from "lightning/navigation";
+import getProductPurchaseInfo from "@salesforce/apex/LvlupQuickBuyController.getProductPurchaseInfo";
+import { addItemToCart } from "commerce/cartApi";
 ```
+
 - `LightningElement`: la clase base de todo LWC.
 - `api`: el decorador para propiedades públicas.
 - `NavigationMixin`: utilidad para **navegar** (cambiar de página) dentro del sitio.
@@ -204,13 +230,16 @@ import { addItemToCart } from 'commerce/cartApi';
   (`commerce/cartApi`). Añade un producto al carrito real. Disponible en orgs B2B.
 
 **Declaración:**
+
 ```js
 export default class LvlupProductQuickBuy extends NavigationMixin(LightningElement) {
 ```
-- `extends NavigationMixin(LightningElement)`: un *mixin* — extiende la clase base
+
+- `extends NavigationMixin(LightningElement)`: un _mixin_ — extiende la clase base
   añadiéndole capacidad de navegación.
 
 **Propiedades públicas (entran desde el Builder / la página):**
+
 ```js
 @api productId;     // Id del producto (se bindea a {!Item.id} en el Grid)
 @api recordId;      // si está en una record page, Salesforce lo inyecta solo
@@ -223,14 +252,17 @@ export default class LvlupProductQuickBuy extends NavigationMixin(LightningEleme
 plantilla automáticamente (reactividad).
 
 **Getters (propiedades calculadas):**
+
 ```js
 get effectiveProductId() { return this.productId || this.recordId; }
 get modalProduct() { return this.product ? {...this.product, attributes: []} : null; }
 ```
+
 - Un `get` es una propiedad de solo lectura que se recalcula al usarse. Equivale a
-  un *computed*.
+  un _computed_.
 
 **Métodos clave:**
+
 - `handleBuyClick()` → llama a `openAndLoad()`.
 - `openAndLoad()`: abre el modal, pone `uiState='loadingProduct'` y **llama a Apex**:
   ```js
@@ -249,19 +281,35 @@ get modalProduct() { return this.product ? {...this.product, attributes: []} : n
 - `handleConfirm(event)`: hace el **add-to-cart real**:
   ```js
   addItemToCart(productId, quantity)
-      .then(() => { uiState = 'addedSuccess'; })
-      .catch(() => { uiState = 'addError'; });
+    .then(() => {
+      uiState = "addedSuccess";
+    })
+    .catch(() => {
+      uiState = "addError";
+    });
   ```
 - `handleCloseModal()`: resetea todo.
 - `handleGoToCart()`: navega al carrito con `NavigationMixin.Navigate`.
 
 **Plantilla (`.html`):** solo renderiza al botón y al modal, pasándoles props y
 escuchando sus eventos:
+
 ```html
-<c-lvlup-quick-buy-button product-id={effectiveProductId} onbuyclick={handleBuyClick}>
-<c-lvlup-quick-buy-modal product={modalProduct} is-open={isOpen} ui-state={uiState}
-    onquantitychange={handleQuantityChange} onconfirmaddtocart={handleConfirm} ...>
+<c-lvlup-quick-buy-button
+  product-id="{effectiveProductId}"
+  onbuyclick="{handleBuyClick}"
+>
+  <c-lvlup-quick-buy-modal
+    product="{modalProduct}"
+    is-open="{isOpen}"
+    ui-state="{uiState}"
+    onquantitychange="{handleQuantityChange}"
+    onconfirmaddtocart="{handleConfirm}"
+    ...
+  ></c-lvlup-quick-buy-modal
+></c-lvlup-quick-buy-button>
 ```
+
 - Ojo: en HTML los nombres van en **kebab-case** (`product-id`), en JS en
   **camelCase** (`productId`). Los eventos se escuchan con `on` + nombre en minúscula.
 
@@ -273,6 +321,7 @@ handleClick() {
     this.dispatchEvent(new CustomEvent('buyclick', { detail: { productId: this.productId } }));
 }
 ```
+
 - No tiene lógica de negocio. Al hacer clic, **emite el evento `buyclick`** hacia
   arriba con el `productId` en `detail`. El padre lo escucha. Esto es **comunicación
   hijo→padre** en su forma más pura.
@@ -280,13 +329,14 @@ handleClick() {
 ### 4.3 `lvlupQuickBuyModal` — el contenedor del modal (padre intermedio)
 
 Es el caso más interesante de comunicación: recibe props del padre **y** re-emite
-los eventos de sus propios hijos hacia el padre (*re-dispatch*).
+los eventos de sus propios hijos hacia el padre (_re-dispatch_).
 
 ```js
 handleQuantityChange(event) {
     this.dispatchEvent(new CustomEvent('quantitychange', { detail: event.detail }));
 }
 ```
+
 - Recibe `quantitychange` de `lvlupQuantitySelector` y lo **vuelve a emitir** al
   padre. Lo mismo con `attributechange` y `stockvalidated`.
 - Emite sus propios eventos: `closemodal`, `confirmaddtocart`, `gotocart`.
@@ -301,6 +351,7 @@ handleQuantityChange(event) {
 ```js
 @api min = 1; @api max; @api step = 1; @api value = 1;
 ```
+
 - Es un **componente controlado**: el valor "real" vive en el padre. El hijo solo
   muestra `value` y, al cambiar, **emite** el nuevo valor.
 - `validate(quantity)`: comprueba mínimo, máximo y múltiplo, y devuelve
@@ -317,8 +368,9 @@ renderedCallback() {
     // dispara 'stockvalidated' SOLO si cambió (guardado en this._lastKey)
 }
 ```
+
 - `renderedCallback()` es un **hook de ciclo de vida**: corre tras cada render.
-- Calcula si hay stock suficiente y emite `stockvalidated`. Usa una *guard* (`_lastKey`)
+- Calcula si hay stock suficiente y emite `stockvalidated`. Usa una _guard_ (`_lastKey`)
   para no emitir en bucle (solo cuando el resultado cambia). Es el patrón correcto
   para emitir eventos derivados sin loops infinitos.
 
@@ -338,6 +390,7 @@ get formattedSubtotal() {
     return new Intl.NumberFormat('es-ES', { style:'currency', currency:'EUR' }).format(this.subtotal);
 }
 ```
+
 - No emite eventos. Solo calcula `unitPrice × quantity` y lo formatea con
   `Intl.NumberFormat` (API nativa del navegador, sin servidor).
 
@@ -361,6 +414,7 @@ get resolvedUrl() {
 ```
 
 **Navegación a la ficha (PDP):**
+
 ```js
 connectedCallback() {
     this[NavigationMixin.GenerateUrl](this.pageReference).then(url => this.pdpUrl = url);
@@ -371,10 +425,11 @@ handleClick(event) {
     this[NavigationMixin.Navigate](this.pageReference);  // navega dentro de la SPA
 }
 ```
+
 - `GenerateUrl` calcula el `href` real (para que el `<a>` soporte abrir en pestaña
   nueva). `Navigate` hace la navegación **imperativa** (más fiable que confiar en
   que el router intercepte el clic en LWR).
-- `pageReference` apunta a la *record page* de `Product2` (la ficha del producto).
+- `pageReference` apunta a la _record page_ de `Product2` (la ficha del producto).
 
 **Rendimiento (lo cuidamos a propósito):** `loading="lazy"` (las imágenes fuera de
 pantalla no se descargan hasta hacer scroll), `decoding="async"`, **0 llamadas
@@ -389,14 +444,19 @@ En Salesforce, desplegar código **no** lo hace accesible a los usuarios; hay qu
 **conceder permisos**. Dos permission sets:
 
 ### 5.1 `LvlUp_Inventory_Management`
+
 Da acceso (FLS) a los 4 campos custom de `Product2`. Se asigna al **admin** que
 edita inventario. Pensado para gestión interna.
 
 ### 5.2 `LvlUp_Quick_Buy_Buyer`
+
 Da al **comprador del storefront**:
+
 - **Acceso a la clase Apex** `LvlupQuickBuyController` (sin esto, el LWC del
   comprador recibe `400 Bad Request` al llamar al servidor).
-- **FLS de lectura** sobre los 4 campos.
+- **FLS de lectura** sobre `Inventory_Quantity__c` (stock). Las reglas de compra
+  las lee el Apex `without sharing` desde la `PurchaseQuantityRule` estándar, que
+  no exige FLS del buyer (ADR-0009). La FLS de los campos deprecados es inocua.
 
 > Esto fue clave para que el modal funcionara: los usuarios de comunidad necesitan
 > acceso explícito a la clase Apex.

@@ -32,7 +32,10 @@ la categoría Portátiles (7 productos `LVL-LAP-001..007`) con receta replicable
 1. **Campos transversales nuevos en `Product2`**: `Brand__c` (picklist
    restringido, label "Marca"), `Warranty_Months__c` (Number 3,0), `EAN__c`
    (Text 14). `Family` (estándar) se puebla con la taxonomía oficial de 8
-   categorías (el Name de la categoría es el valor del picklist).
+   categorías (el Name de la categoría es el valor del picklist). _(Actualización
+   2026-07-27: la taxonomía pasó a 9 categorías al adoptar **SmartPhones** como 9ª
+   —producto `LVL-CEL-001`—; el seed usa desde entonces una interfaz
+   `ProductContent` con una clase de specs por tipo, ver runbook §2/§4.)_
 2. **Description con HTML estructurado** generado por plantilla fija (párrafo
    comercial B2B + `<ul>` de especificaciones: procesador, RAM, almacenamiento,
    pantalla, GPU, SO, peso + reglas de compra). Contenido en español. Se
@@ -43,9 +46,12 @@ la categoría Portátiles (7 productos `LVL-LAP-001..007`) con receta replicable
    por redundante con el SKU del propio heading). Las cards de categoría y
    búsqueda mapean `Brand__c` sin label.
 4. **MOQ y múltiplo de venta** se muestran dentro del HTML de Description,
-   renderizados en seed-time **desde** `Min_Order_Quantity__c` /
-   `Order_Increment__c` (una sola fuente de verdad con el Quick Buy). Decisión
-   forzada por el límite de 3 mappings del heading.
+   renderizados en seed-time **desde** los campos de reglas de compra (una sola
+   fuente de verdad con el Quick Buy). Decisión forzada por el límite de 3
+   mappings del heading. _(Actualización ADR-0009, 2026-07-22: la fuente pasó a
+   ser el objeto estándar `PurchaseQuantityRule`; el seed de contenido y el Quick
+   Buy leen de ahí. Los campos `Min_Order_Quantity__c` / `Order_Increment__c`
+   quedan deprecados.)_
 5. **Disponibilidad en la PDP** con un único LWC nuevo: `lvlupProductAvailability`
    (contenedor fino que reutiliza el Apex cacheable
    `LvlupQuickBuyController.getProductPurchaseInfo` y el panel presentacional
@@ -146,9 +152,14 @@ receta):
 
 ## Validaciones Pendientes
 
-- Fase 2: migración de MOQ a `PurchaseQuantityRule` (ADR propio; compatibilidad
-  Quick Buy).
-- Fase 3: replicar la receta en Monitores y resto de categorías internas.
+- ~~Fase 2: migración de MOQ a `PurchaseQuantityRule` (ADR propio; compatibilidad
+  Quick Buy).~~ **Hecho** en `adr/0009-purchase-quantity-rule-migration.md`
+  (Accepted 2026-07-22).
+- ~~Fase 3: replicar la receta en Monitores y resto de categorías internas.~~
+  **Hecho** (2026-07-27): curadas las 7 categorías restantes (Consolas, Videojuegos,
+  Monitores, Periféricos, Networking, Accesorios, Bundles); 51 internos con ficha
+  completa. Modelo de marca multi-marca acotado y seed dividido en 2 lotes por el
+  límite del Apex anónimo (ver runbook §9/§10).
 - Fase 4: contenido/Family de productos Platzi.
 - Revisar el riesgo _Skip Entitlement Checks During Search = ON_ si se introduce
   catálogo restringido (RISK-016).

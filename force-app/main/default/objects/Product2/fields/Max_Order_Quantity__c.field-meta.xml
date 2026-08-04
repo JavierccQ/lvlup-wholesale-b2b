@@ -1,9 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Max_Order_Quantity__c</fullName>
-    <description>Maximum order quantity allowed per order. Leave blank for no cap. Enforced by the Contextual Quick Buy component.</description>
+    <description
+  >DEPRECATED (ADR-0009): the maximum per order is now the Maximum of the standard PurchaseQuantityRule, associated via ProductQuantityRule and read by the Quick Buy. This field is no longer read by the storefront; kept read-only for reversibility.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Maximum units per order (optional).</inlineHelpText>
+    <inlineHelpText
+  >DEPRECATED — use the standard Purchase Quantity Rule (ADR-0009). No longer read by the storefront.</inlineHelpText>
     <label>Max Order Quantity</label>
     <precision>18</precision>
     <required>false</required>

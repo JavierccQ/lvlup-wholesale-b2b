@@ -312,6 +312,30 @@ _"Esta regla no parece estar documentada todavía. ¿Quieres que la añada a
 - **Ámbito:** B2B Commerce / LWC / Experience Builder.
 - **Origen:** Sesión 2026-07-22 (fase 1.1, precio en la card del Grid).
 
+> Regla de la sesión de **migración de las reglas de cantidad de compra a
+> `PurchaseQuantityRule` estándar (fase 2)** (sesión 2026-07-22), añadida a
+> petición explícita del usuario. Detalle completo en
+> `adr/0009-purchase-quantity-rule-migration.md` (Accepted) y
+> `docs/salesforce/manual-inventory-setup-runbook.md` §9.
+
+### REGLA-034 — Reglas de cantidad de compra = objeto estándar `PurchaseQuantityRule` + junction
+
+- **Regla:** El MOQ / múltiplo / máximo de un producto **no** necesitan campos custom: viven en el objeto **estándar `PurchaseQuantityRule`** (`Minimum` / `Increment` / `Maximum`), asociado a `Product2` por el junction **estándar `ProductQuantityRule`** (`ProductId` + `PurchaseQuantityRuleId`). **No** hay lookup directo en `Product2` (`Product2.PurchaseQuantityRuleId` no existe); el `Name` del junction es **auto-number no escribible**. La regla es **global por producto** (sin dimensión de Buyer Group, a diferencia del pricing). El componente estándar de la PDP (`commerce_builder:purchaseOptions`) **ya viene cableado** a `{!Product.Details.purchaseQuantityRule.*}`: asociar el junction **activa el enforcement server-side del add-to-cart y el display** sin config extra (puede surgir la región `combinedPurchaseQuantityRuleInfo` con el texto en **inglés** → **vaciar la región** en la vista `detail_01t` y republicar). **No requiere reindex** (la regla alimenta el product data provider, no el índice). Un Apex `without sharing` la lee por SOQL al junction (`SELECT PurchaseQuantityRule.Minimum, ... FROM ProductQuantityRule WHERE ProductId = :id`) manteniendo el contrato hacia el LWC. Seed idempotente agrupando por combo min/inc/máx (sin IDs hardcodeados, ADR-0003). `PurchaseQuantityRule` / `ProductQuantityRule` **sí son insertables en tests** Apex.
+- **Ámbito:** B2B Commerce / datos / Apex / Experience Builder.
+- **Origen:** Sesión 2026-07-22 (fase 2, migración de reglas de cantidad a `PurchaseQuantityRule`).
+
+> Regla de la sesión de **enriquecimiento de contenido de producto en las 7
+> categorías internas restantes (fase 3)** (sesión 2026-07-27), añadida a petición
+> explícita del usuario. Detalle en
+> `docs/salesforce/product-content-enrichment-runbook.md` §10 y
+> `adr/0008-product-information-architecture.md`.
+
+### REGLA-035 — El Apex anónimo tiene límite de tamaño (~32 KB): dividir los seeds grandes en lotes
+
+- **Regla:** Un bloque de **Apex anónimo** (`sf apex run --file`) falla con **`Script too large`** al superar ~32 KB (el seed de contenido de las 9 categorías, 51 productos, llegó a 40,7 KB y falló; con ~la mitad del contenido, ~27 KB, sí ejecuta). Cuando un seed de datos crezca, **partirlo en varios ficheros idempotentes** (mismo framework/lógica, distinto `contentBySku`), cada uno por debajo del límite, y ejecutarlos todos (el orden es indiferente si son idempotentes por clave). **Medir el tamaño con `wc -c` antes de ejecutar.** Alternativa si no se quiere partir: desplegar la lógica como **clase Apex** (límite 1 M chars) e invocarla con un one-liner — pero eso convierte el seed en metadata desplegable, menos alineado con "contenido = data" (ADR-0003). Ejemplo: `scripts/apex/seed-product-content.apex` + `seed-product-content-2.apex`.
+- **Ámbito:** Apex / datos / seeds.
+- **Origen:** Sesión 2026-07-27 (fase 3, enriquecimiento de contenido; el seed de las 9 categorías superó el límite y se dividió en 2 lotes).
+
 <!-- Plantilla para nuevas reglas:
 
 ### REGLA-001 — <título corto>

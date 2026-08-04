@@ -1,0 +1,7 @@
+SELECT StockKeepingUnit, Name, Family, Brand__c
+FROM Product2
+WHERE IsActive = TRUE
+  AND Is_External_Product__c = FALSE
+  AND StockKeepingUnit != '9999999'
+  AND (Brand__c = NULL OR Description = NULL OR Family = NULL)
+ORDER BY StockKeepingUnit

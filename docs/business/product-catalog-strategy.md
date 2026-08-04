@@ -20,7 +20,7 @@ Sirve como base para:
 Este documento **no define la configuración técnica detallada de Salesforce ni los
 scripts de carga de datos**. Se alinea con los documentos de `docs/business/` y con
 `docs/business/pricing-and-visibility-strategy.md`, y aplica el principio rector
-del proyecto: *Configuration first, customization only when justified*.
+del proyecto: _Configuration first, customization only when justified_.
 
 ---
 
@@ -108,6 +108,16 @@ del proyecto: *Configuration first, customization only when justified*.
   segmento).
 - **Consideraciones B2B.** Simplifican la compra recurrente de alto volumen.
 
+### SmartPhones
+
+- **Descripción funcional.** Smartphones de gama alta para reventa.
+- **Tipo de comprador relevante.** Reseller; tienda; empresa (renovación de flota).
+- **Ejemplos de productos.** EPhone 17 Plus Ultra.
+- **Relevancia para el MVP.** Media; alto valor unitario y margen. **Categoría
+  añadida el 2026-07-27** como 9ª categoría oficial de la taxonomía (el producto
+  `LVL-CEL-001` ya existía en la org fuera de la taxonomía; se adoptó formalmente).
+- **Consideraciones B2B.** Sensible a stock y a pricing negociado.
+
 ---
 
 ## 4. Taxonomía Inicial del Catálogo
@@ -117,29 +127,34 @@ una configuración técnica; se mantiene deliberadamente acotada para no
 sobredimensionar el catálogo del MVP.
 
 ### Consolas de gaming
+
 - Consolas PlayStation
 - Consolas Xbox
 - Consolas Nintendo
 - Packs de consola
 
 ### Videojuegos
+
 - Juegos físicos
 - Juegos digitales
 - Preventas
 - Bundles de juegos
 
 ### Portátiles
+
 - Gaming laptops
 - Business laptops
 - Workstation laptops
 
 ### Monitores
+
 - Monitores gaming
 - Monitores profesionales
 - Monitores curvos
 - Monitores 4K
 
 ### Periféricos
+
 - Teclados
 - Ratones
 - Auriculares
@@ -147,37 +162,47 @@ sobredimensionar el catálogo del MVP.
 - Webcams
 
 ### Networking
+
 - Routers
 - Switches
 - Access points
 - Cableado
 
 ### Accesorios
+
 - Cables
 - Soportes
 - Cargadores
 - Adaptadores
 
 ### Bundles enterprise
+
 - Kits para tiendas gaming
 - Kits para oficinas
 - Kits para eventos
 - Packs de renovación tecnológica
 
+### SmartPhones
+
+- Smartphones flagship
+- Smartphones gama media
+- Accesorios de smartphone
+
 ---
 
 ## 5. Catálogo MVP vs Catálogo Futuro
 
-| Categoría | Incluida en MVP | Nivel de prioridad | Posible expansión futura | Comentario |
-| --- | --- | --- | --- | --- |
-| Consolas de gaming | Sí | Alta | Más modelos y ediciones limitadas | Producto ancla de gaming |
-| Videojuegos | Sí | Alta | Catálogo digital ampliado, preventas | Alta rotación |
-| Portátiles | Sí | Alta | Más gamas y configuraciones | Alto valor transversal |
-| Monitores | Sí | Media | Gamas profesionales y 4K | Complemento de portátiles |
-| Periféricos | Sí | Media | Líneas pro y accesorios gaming | Alta recurrencia |
-| Networking | Sí | Media | Equipamiento avanzado de red | Reseller y empresa |
-| Accesorios | Sí | Baja | Consumibles y almacenamiento | Refuerzan ticket |
-| Bundles enterprise | Sí (acotado) | Media | Bundles configurables por acuerdo | Visibilidad por segmento |
+| Categoría          | Incluida en MVP         | Nivel de prioridad | Posible expansión futura             | Comentario                                |
+| ------------------ | ----------------------- | ------------------ | ------------------------------------ | ----------------------------------------- |
+| Consolas de gaming | Sí                      | Alta               | Más modelos y ediciones limitadas    | Producto ancla de gaming                  |
+| Videojuegos        | Sí                      | Alta               | Catálogo digital ampliado, preventas | Alta rotación                             |
+| Portátiles         | Sí                      | Alta               | Más gamas y configuraciones          | Alto valor transversal                    |
+| Monitores          | Sí                      | Media              | Gamas profesionales y 4K             | Complemento de portátiles                 |
+| Periféricos        | Sí                      | Media              | Líneas pro y accesorios gaming       | Alta recurrencia                          |
+| Networking         | Sí                      | Media              | Equipamiento avanzado de red         | Reseller y empresa                        |
+| Accesorios         | Sí                      | Baja               | Consumibles y almacenamiento         | Refuerzan ticket                          |
+| Bundles enterprise | Sí (acotado)            | Media              | Bundles configurables por acuerdo    | Visibilidad por segmento                  |
+| SmartPhones        | Sí (añadida 2026-07-27) | Media              | Más gamas y marcas                   | 9ª categoría oficial; alto valor y margen |
 
 > Todas las categorías se incluyen en el MVP de forma **representativa y acotada**;
 > la prioridad indica el foco de surtido y profundidad, no la exclusión.
@@ -190,32 +215,57 @@ Set pequeño y representativo de productos de ejemplo con nombres ficticios. Los
 SKU son **funcionales** (no técnicos) y sirven solo para ilustrar el catálogo;
 este documento **no es una carga de datos definitiva**.
 
-| SKU funcional | Nombre de producto | Categoría | Tipo de producto | Cliente objetivo | Relevancia MVP | Notas funcionales |
-| --- | --- | --- | --- | --- | --- | --- |
-| LVL-CON-001 | LvlUp Console Pro X | Consolas de gaming | Consola sobremesa | Tienda gaming local | Alta | Producto ancla; sensible a stock |
-| LVL-CON-002 | LvlUp Console Go | Consolas de gaming | Consola portátil | Tienda gaming local | Media | Variante portátil |
-| LVL-CON-003 | LvlUp Console Pro X Starter Pack | Consolas de gaming | Pack de consola | Tienda gaming local | Media | Consola + mando + juego |
-| LVL-VGM-001 | Galaxy Raiders (Físico) | Videojuegos | Juego físico | Tienda gaming local | Alta | Lanzamiento popular |
-| LVL-VGM-002 | Galaxy Raiders (Digital) | Videojuegos | Juego digital | Tienda gaming local | Media | Versión digital |
-| LVL-VGM-003 | Speed Legends Bundle | Videojuegos | Bundle de juegos | Tienda gaming local | Baja | Pack de varios títulos |
-| LVL-LAP-001 | LvlUp Gaming Laptop 15 | Portátiles | Gaming laptop | Reseller tecnológico | Alta | Alto valor; margen de reventa |
-| LVL-LAP-002 | LvlUp Business Laptop 14 | Portátiles | Business laptop | Empresa IT | Alta | Equipamiento corporativo |
-| LVL-LAP-003 | LvlUp Workstation 17 | Portátiles | Workstation laptop | Cliente enterprise | Media | Alto rendimiento |
-| LVL-MON-001 | LvlUp 27'' Gaming Monitor | Monitores | Monitor gaming | Tienda gaming local | Alta | Complemento gaming |
-| LVL-MON-002 | LvlUp 24'' Pro Monitor | Monitores | Monitor profesional | Empresa IT | Media | Equipamiento de oficina |
-| LVL-MON-003 | LvlUp 34'' Curved 4K | Monitores | Monitor curvo 4K | Cliente enterprise | Baja | Gama alta |
-| LVL-PER-001 | LvlUp Mechanical Keyboard | Periféricos | Teclado | Tienda gaming local | Alta | Alta recurrencia |
-| LVL-PER-002 | LvlUp Pro Gaming Mouse | Periféricos | Ratón | Tienda gaming local | Media | Recurrente |
-| LVL-PER-003 | LvlUp Wireless Headset | Periféricos | Auriculares | Reseller tecnológico | Media | Transversal |
-| LVL-PER-004 | LvlUp Wireless Controller | Periféricos | Mando | Tienda gaming local | Media | Accesorio de consola |
-| LVL-NET-001 | LvlUp WiFi 6 Router | Networking | Router | Empresa IT | Media | Reseller y oficina |
-| LVL-NET-002 | LvlUp 8-Port Switch | Networking | Switch | Cliente enterprise | Media | Infraestructura de red |
-| LVL-ACC-001 | LvlUp USB-C Cable 2m | Accesorios | Cable | Todos los segmentos | Baja | Consumible |
-| LVL-ACC-002 | LvlUp Monitor Stand | Accesorios | Soporte | Empresa IT | Baja | Complemento de oficina |
-| LVL-ACC-003 | LvlUp 65W USB-C Charger | Accesorios | Cargador | Todos los segmentos | Baja | Reemplazo |
-| LVL-BND-001 | LvlUp Reseller Starter Bundle | Bundles enterprise | Kit tienda gaming | Reseller tecnológico | Media | Pack orientado a reventa |
-| LVL-BND-002 | LvlUp Office Setup Kit | Bundles enterprise | Kit oficina | Empresa IT | Media | Renovación tecnológica |
-| LVL-BND-003 | LvlUp Event Gaming Kit | Bundles enterprise | Kit eventos | Cliente enterprise | Baja | Eventos y activaciones |
+| SKU funcional | Nombre de producto               | Categoría          | Tipo de producto    | Cliente objetivo     | Relevancia MVP | Notas funcionales                           |
+| ------------- | -------------------------------- | ------------------ | ------------------- | -------------------- | -------------- | ------------------------------------------- |
+| LVL-CON-001   | LvlUp Console Pro X              | Consolas de gaming | Consola sobremesa   | Tienda gaming local  | Alta           | Producto ancla; sensible a stock            |
+| LVL-CON-002   | LvlUp Console Go                 | Consolas de gaming | Consola portátil    | Tienda gaming local  | Media          | Variante portátil                           |
+| LVL-CON-003   | LvlUp Console Pro X Starter Pack | Consolas de gaming | Pack de consola     | Tienda gaming local  | Media          | Consola + mando + juego                     |
+| LVL-VGM-001   | Galaxy Raiders (Físico)          | Videojuegos        | Juego físico        | Tienda gaming local  | Alta           | Lanzamiento popular                         |
+| LVL-VGM-002   | Galaxy Raiders (Digital)         | Videojuegos        | Juego digital       | Tienda gaming local  | Media          | Versión digital                             |
+| LVL-VGM-003   | Speed Legends Bundle             | Videojuegos        | Bundle de juegos    | Tienda gaming local  | Baja           | Pack de varios títulos                      |
+| LVL-LAP-001   | LvlUp Gaming Laptop 15           | Portátiles         | Gaming laptop       | Reseller tecnológico | Alta           | Alto valor; margen de reventa               |
+| LVL-LAP-002   | LvlUp Business Laptop 14         | Portátiles         | Business laptop     | Empresa IT           | Alta           | Equipamiento corporativo                    |
+| LVL-LAP-003   | LvlUp Workstation 17             | Portátiles         | Workstation laptop  | Cliente enterprise   | Media          | Alto rendimiento                            |
+| LVL-MON-001   | LvlUp 27'' Gaming Monitor        | Monitores          | Monitor gaming      | Tienda gaming local  | Alta           | Complemento gaming                          |
+| LVL-MON-002   | LvlUp 24'' Pro Monitor           | Monitores          | Monitor profesional | Empresa IT           | Media          | Equipamiento de oficina                     |
+| LVL-MON-003   | LvlUp 34'' Curved 4K             | Monitores          | Monitor curvo 4K    | Cliente enterprise   | Baja           | Gama alta                                   |
+| LVL-PER-001   | LvlUp Mechanical Keyboard        | Periféricos        | Teclado             | Tienda gaming local  | Alta           | Alta recurrencia                            |
+| LVL-PER-002   | LvlUp Pro Gaming Mouse           | Periféricos        | Ratón               | Tienda gaming local  | Media          | Recurrente                                  |
+| LVL-PER-003   | LvlUp Wireless Headset           | Periféricos        | Auriculares         | Reseller tecnológico | Media          | Transversal                                 |
+| LVL-PER-004   | LvlUp Wireless Controller        | Periféricos        | Mando               | Tienda gaming local  | Media          | Accesorio de consola                        |
+| LVL-NET-001   | LvlUp WiFi 6 Router              | Networking         | Router              | Empresa IT           | Media          | Reseller y oficina                          |
+| LVL-NET-002   | LvlUp 8-Port Switch              | Networking         | Switch              | Cliente enterprise   | Media          | Infraestructura de red                      |
+| LVL-ACC-001   | LvlUp USB-C Cable 2m             | Accesorios         | Cable               | Todos los segmentos  | Baja           | Consumible                                  |
+| LVL-ACC-002   | LvlUp Monitor Stand              | Accesorios         | Soporte             | Empresa IT           | Baja           | Complemento de oficina                      |
+| LVL-ACC-003   | LvlUp 65W USB-C Charger          | Accesorios         | Cargador            | Todos los segmentos  | Baja           | Reemplazo                                   |
+| LVL-BND-001   | LvlUp Reseller Starter Bundle    | Bundles enterprise | Kit tienda gaming   | Reseller tecnológico | Media          | Pack orientado a reventa                    |
+| LVL-BND-002   | LvlUp Office Setup Kit           | Bundles enterprise | Kit oficina         | Empresa IT           | Media          | Renovación tecnológica                      |
+| LVL-BND-003   | LvlUp Event Gaming Kit           | Bundles enterprise | Kit eventos         | Cliente enterprise   | Baja           | Eventos y activaciones                      |
+| LVL-CEL-001   | EPhone 17 Plus Ultra             | SmartPhones        | Smartphone flagship | Reseller / empresa   | Media          | Alto valor; 9ª categoría añadida 2026-07-27 |
+
+> La tabla anterior es un set **ilustrativo**. El catálogo real cuenta con **51
+> productos internos activos** repartidos por las 9 categorías (Consolas 7,
+> Videojuegos 8, Portátiles 7, Monitores 6, Periféricos 8, Networking 5, Accesorios
+> 6, Bundles 3, SmartPhones 1), todos con ficha enriquecida (Brand/Garantía/EAN +
+> Description con specs por tipo) tras la fase 3 del enriquecimiento de contenido
+> (2026-07-27). Detalle de la receta y ejecución en
+> `docs/salesforce/product-content-enrichment-runbook.md`.
+
+### 6.1 Modelo de Marca
+
+Aunque LvlUp es un **distribuidor**, en el catálogo del MVP la mayoría del hardware se
+vende bajo la **marca propia `LvlUp`** (coherente con los `Name` "LvlUp …"). Para que
+el facet **Marca** sea útil y realista se introdujeron marcas adicionales donde el tipo
+de producto lo pide:
+
+- **`RetroStation`** y **`CloudPlay`** — las 2 consolas cuyo `Name` no es "LvlUp …".
+- **Editoras de videojuegos** (la "marca" de un juego es su editora): `Nova
+Interactive`, `Blackout Games`, `Redline Studios`, `Mythdale Games`, `Greenfield
+Interactive` (ficticias).
+
+El resto de categorías (monitores, periféricos, networking, accesorios, bundles) se
+mantienen bajo `LvlUp`. Gobernanza y campos técnicos: ver el runbook §9 y
+`adr/0008-product-information-architecture.md`.
 
 ---
 

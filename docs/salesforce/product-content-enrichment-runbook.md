@@ -8,6 +8,13 @@ ejecutó en la fase 1 sobre **Portátiles** (`LVL-LAP-001..007`). La arquitectur
 está decidida en `adr/0008-product-information-architecture.md` (Accepted): no se
 re-diseña; se replica.
 
+> **Estado (2026-07-27, fase 3):** la receta se ha replicado en las **7 categorías
+> internas restantes** (Consolas de gaming, Videojuegos, Monitores, Periféricos,
+> Networking, Accesorios, Bundles enterprise). Los **51 productos internos activos**
+> tienen ya Brand/Warranty/EAN/Description; el único fuera de taxonomía es
+> `Shipping Charge Product`. Ver §9 (modelo de marca) y §10 (lote y límite de Apex
+> anónimo).
+
 La clave de la receta: la configuración de plataforma (campos, mappings del
 Builder, facets, sort, FLS) es **transversal y ya está hecha** (sección 3). Para
 cada categoría nueva solo hay que **curar datos y reindexar** (sección 4).
@@ -20,15 +27,15 @@ justified_, y la separación data vs metadata de
 
 ## 2. Piezas de Referencia
 
-| Pieza                 | Nombre / ruta                                                                      | Rol                                                      |
-| --------------------- | ---------------------------------------------------------------------------------- | -------------------------------------------------------- |
-| Campos de contenido   | `Product2.Brand__c` (picklist "Marca"), `Warranty_Months__c`, `EAN__c`, `Family`   | Datos estructurados de la ficha                          |
-| Plantilla de specs    | `scripts/apex/seed-product-content.apex` (clase `LaptopContent.toDescriptionHtml`) | HTML estructurado de la Description                      |
-| Seed de contenido     | `scripts/apex/seed-product-content.apex`                                           | Family (todos los internos) + contenido por SKU          |
-| LWC de disponibilidad | `lvlupProductAvailability` → `lvlupStockAvailabilityPanel`                         | Stock en la PDP (ya colocado)                            |
-| LWC de card meta      | `lvlupProductPrice` + `LvlupProductPriceController`                                | SKU + badge, marca y precio en la card del Grid (ver §7) |
-| Permission sets       | `LvlUp_Product_Content_Admin` (edición) / `LvlUp_Product_Content_Buyer` (lectura)  | FLS de los campos de contenido                           |
-| Reindex               | `scripts/apex/rebuild-search-index.apex`                                           | Único reindex al final (REGLA-026)                       |
+| Pieza                 | Nombre / ruta                                                                                                                                                  | Rol                                                                     |
+| --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| Campos de contenido   | `Product2.Brand__c` (picklist "Marca"), `Warranty_Months__c`, `EAN__c`, `Family`                                                                               | Datos estructurados de la ficha                                         |
+| Plantilla de specs    | interfaz `ProductContent` + clases por tipo: `LaptopContent`, `PhoneContent` y la genérica `SpecContent` (lista ordenada de specs, para las categorías fase 3) | HTML estructurado de la Description, con atributos propios de cada tipo |
+| Seed de contenido     | `scripts/apex/seed-product-content.apex` (lote 1) + `scripts/apex/seed-product-content-2.apex` (lote 2) — ver §10                                              | Family (todos los internos) + contenido por SKU                         |
+| LWC de disponibilidad | `lvlupProductAvailability` → `lvlupStockAvailabilityPanel`                                                                                                     | Stock en la PDP (ya colocado)                                           |
+| LWC de card meta      | `lvlupProductPrice` + `LvlupProductPriceController`                                                                                                            | SKU + badge, marca y precio en la card del Grid (ver §7)                |
+| Permission sets       | `LvlUp_Product_Content_Admin` (edición) / `LvlUp_Product_Content_Buyer` (lectura)                                                                              | FLS de los campos de contenido                                          |
+| Reindex               | `scripts/apex/rebuild-search-index.apex`                                                                                                                       | Único reindex al final (REGLA-026)                                      |
 
 ---
 
@@ -38,7 +45,11 @@ Se documenta para trazabilidad y para reconstruirla en otra org:
 
 1. **Campos**: `Brand__c` (picklist restringido; ver §6 por qué picklist),
    `Warranty_Months__c` (Number 3,0), `EAN__c` (Text 14) +
-   `Product2Family` standard value set con las 8 categorías internas.
+   `Product2Family` standard value set con las **9** categorías internas
+   (las 8 originales + **SmartPhones**, añadida 2026-07-27). Para adoptar una
+   categoría nueva en la taxonomía: añadir su valor a `Product2Family`
+   (`force-app/main/default/standardValueSets/Product2Family.standardValueSet-meta.xml`)
+   **y** al `Set` `taxonomy` del seed, antes de curar.
 2. **FLS**: permission sets `LvlUp_Product_Content_Admin` (asignado al admin) y
    `LvlUp_Product_Content_Buyer` (asignado a los buyers). Sin la de lectura, el
    canal commerce **no muestra** los campos custom al buyer (validación V6).
@@ -75,26 +86,44 @@ En `scripts/apex/seed-product-content.apex`:
 
 1. Añadir al mapa `contentBySku` una entrada por SKU de la categoría
    (`LVL-MON-001..006` en Monitores) con: marca, garantía (meses), EAN-13 válido
-   y los 7 campos de la plantilla (procesador/panel, RAM/resolución, etc. —
-   adaptar las etiquetas de la plantilla si la categoría lo requiere, manteniendo
-   el orden párrafo comercial + `<ul>`).
+   y un conjunto de specs **coherente con el TIPO de producto** — **no** forzar el
+   esquema de 7 campos del portátil. Elegir solo los atributos que tengan sentido
+   para la categoría y **omitir** los que no apliquen (p. ej. un monitor lleva
+   panel/resolución/tasa de refresco/tiempo de respuesta/conectividad, no "GPU"
+   ni "colores disponibles"; un smartphone sí lleva pantalla/cámara/batería/
+   colores disponibles; un videojuego lleva plataforma/género/PEGI/edición). Es
+   trabajo de curación producto a producto, con el mismo cuidado que en Portátiles:
+   adaptar la plantilla (campos y etiquetas) por categoría, manteniendo el orden
+   párrafo comercial + `<ul>`.
 2. Reglas del contenido (D4): **español**, ficticio pero verosímil, coherente con
-   el `Name` del producto. Los productos Platzi **no se tocan** (fase 4).
-3. MOQ y múltiplo **no se escriben a mano**: la plantilla los renderiza desde
-   `Min_Order_Quantity__c` / `Order_Increment__c` del registro.
+   el `Name` de cada producto. Los productos Platzi **no se tocan** (fase 4).
+3. MOQ y múltiplo **no se escriben a mano**: la plantilla los renderiza desde la
+   `PurchaseQuantityRule` estándar asociada al producto (ADR-0009), no desde los
+   campos deprecados de `Product2`.
 
 > `Family` no requiere trabajo por categoría: el seed ya lo mapea para **todos**
 > los internos activos desde su categoría oficial.
 
 ### Paso 3 - Ejecutar el seed (idempotente)
 
+El contenido está repartido en **dos ficheros** por el límite de tamaño del Apex
+anónimo (~32 KB, ver §10). Ejecutar **ambos** (el orden es indiferente; cada uno es
+idempotente):
+
 ```bash
 sf apex run --file scripts/apex/seed-product-content.apex --target-org commerce-b2b-dev
 ```
 
-Verificar en el log: contadores de actualizados, los `LAPTOP/...` de
-verificación y los `WARN outside taxonomy` esperados (Shipping Charge Product,
-LVL-CEL-001).
+```bash
+sf apex run --file scripts/apex/seed-product-content-2.apex --target-org commerce-b2b-dev
+```
+
+Verificar en el log de cada lote: contadores de actualizados/ya-correctos (una
+re-ejecución debe dar `updated: 0`), los `CONTENT ...` de verificación y —en el
+lote 1— el `WARN outside taxonomy` esperado (solo **Shipping Charge Product**, el
+producto estándar de envío; `LVL-CEL-001` ya está en la taxonomía como
+`SmartPhones`). Añadir una categoría nueva a un lote existente (o crear un lote
+`-3` si se acerca al límite) según el volumen.
 
 ### Paso 4 - Reindexar (una sola vez, al final)
 
@@ -198,3 +227,40 @@ para replicar/mantener:
 - `docs/salesforce/data-loading-strategy.md` — orden general de carga de datos.
 - `docs/ux/plp-pdp-guidelines.md` — comportamiento esperado de PLP/PDP.
 - `docs/salesforce/org-validation-checklist.md` — registro de validaciones.
+
+---
+
+## 9. Modelo de Marca (fase 3)
+
+El facet **Marca** (`Brand__c`, picklist restringido, REGLA-030) solo es útil si hay
+variedad. El modelo adoptado es **multi-marca acotado**, coherente con los `Name` de
+producto y con el negocio (LvlUp es un **distribuidor**, no solo fabricante):
+
+- **`LvlUp`** — marca propia (house brand) de todo el hardware nombrado "LvlUp …":
+  Portátiles, Consolas (salvo 2), Monitores, Periféricos, Networking, Accesorios,
+  Bundles y el SmartPhone. Es la marca dominante del catálogo.
+- **`RetroStation`** / **`CloudPlay`** — sub-marcas de las 2 consolas que el `Name` no
+  prefija con LvlUp (`RetroStation Mini`, `CloudPlay Streaming Box`).
+- **Editoras de videojuegos** — en videojuegos la "marca" es la **editora/estudio**;
+  se usaron 5 editoras ficticias: `Nova Interactive` (saga Galaxy Raiders, 3 títulos),
+  `Blackout Games` (2), `Redline Studios`, `Mythdale Games`, `Greenfield Interactive`.
+
+Regla operativa: **añadir el valor al picklist `Brand__c` ANTES de curar** (si falta,
+el seed falla al asignarlo). Los videojuegos **digitales** llevan `Warranty_Months__c`
+vacío (un digital no tiene garantía de hardware → el heading no muestra garantía).
+
+## 10. Lote del Seed y Límite del Apex Anónimo
+
+El Apex anónimo tiene un **límite de tamaño (~32 KB)**; el catálogo completo de las 9
+categorías (51 productos) lo supera. Por eso el contenido se reparte en **dos ficheros
+idempotentes**:
+
+| Fichero                                    | Categorías                                                         |
+| ------------------------------------------ | ------------------------------------------------------------------ |
+| `scripts/apex/seed-product-content.apex`   | Portátiles, SmartPhones, Consolas de gaming, Videojuegos           |
+| `scripts/apex/seed-product-content-2.apex` | Monitores, Periféricos, Networking, Accesorios, Bundles enterprise |
+
+Cada fichero replica el mismo framework (interface `ProductContent` + `SpecContent`)
+y la misma lógica de Family/regla/loop/report, y solo difiere en su `contentBySku`.
+Ambos son idempotentes por SKU (re-run = 0 cambios). Al añadir productos, vigilar el
+tamaño (`wc -c`) y crear un lote adicional (`-3`) si un fichero se acerca al límite.

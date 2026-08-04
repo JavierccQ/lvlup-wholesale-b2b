@@ -116,26 +116,45 @@ Objetos estándar **esperados**. Los confirmados por el contexto del proyecto
 > documento no enumera ni inventa esos API names**; deben validarse y documentarse
 > aparte.
 
-### 5.1 Campos de Contenido de Product2 (confirmados, fase 1 de enriquecimiento)
+### 5.1 Campos de Contenido de Product2 (confirmados, fases 1-3 de enriquecimiento)
 
 Campos **reales** creados/poblados por la iniciativa de enriquecimiento de
 información de producto (`adr/0008-product-information-architecture.md`,
-Accepted 2026-07-16):
+Accepted 2026-07-16; contenido curado en las 9 categorías internas en fase 3,
+2026-07-27):
 
-| Campo                    | Tipo                                 | Rol                                      | Nota                                                                                |
-| ------------------------ | ------------------------------------ | ---------------------------------------- | ----------------------------------------------------------------------------------- |
-| `Brand__c`               | Picklist restringido (label "Marca") | Marca en heading PDP, cards y facet      | Picklist porque los facets de Commerce solo aceptan tipos enumerables               |
-| `Warranty_Months__c`     | Number (3,0)                         | Garantía en el heading de la PDP         | —                                                                                   |
-| `EAN__c`                 | Text (14)                            | Identificador EAN-13/GTIN para resellers | Sin UI en fase 1 (dato de matching)                                                 |
-| `Family` (estándar)      | Picklist estándar (`Product2Family`) | Familia en heading + facet               | Valores = las 8 categorías internas; se puebla desde la categoría del producto      |
-| `Description` (estándar) | Text Area                            | Especificaciones en la PDP               | HTML estructurado por plantilla fija (párrafo B2B + `<ul>` de specs + MOQ/múltiplo) |
+| Campo                    | Tipo                                 | Rol                                      | Nota                                                                                                                                                               |
+| ------------------------ | ------------------------------------ | ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `Brand__c`               | Picklist restringido (label "Marca") | Marca en heading PDP, cards y facet      | Picklist porque los facets solo aceptan tipos enumerables. 8 valores: `LvlUp` (house brand) + `RetroStation`, `CloudPlay` y 5 editoras de videojuegos (runbook §9) |
+| `Warranty_Months__c`     | Number (3,0)                         | Garantía en el heading de la PDP         | —                                                                                                                                                                  |
+| `EAN__c`                 | Text (14)                            | Identificador EAN-13/GTIN para resellers | Sin UI en fase 1 (dato de matching)                                                                                                                                |
+| `Family` (estándar)      | Picklist estándar (`Product2Family`) | Familia en heading + facet               | Valores = las 9 categorías internas (8 + `SmartPhones`, 2026-07-27); se puebla desde la categoría del producto                                                     |
+| `Description` (estándar) | Text Area                            | Especificaciones en la PDP               | HTML estructurado por plantilla fija (párrafo B2B + `<ul>` de specs + MOQ/múltiplo)                                                                                |
 
 La FLS de estos campos se gestiona con los permission sets
 `LvlUp_Product_Content_Admin` (edición) y `LvlUp_Product_Content_Buyer`
-(lectura del buyer; el canal commerce exige FLS en campos custom). Los campos de
-inventario/reglas de compra (`Inventory_Quantity__c`, `Min_Order_Quantity__c`,
-`Order_Increment__c`, `Max_Order_Quantity__c`) están documentados en
-`docs/salesforce/manual-inventory-setup-runbook.md`.
+(lectura del buyer; el canal commerce exige FLS en campos custom). El buyer lee
+`Brand__c` y `Warranty_Months__c` (los mostrados en UI); `EAN__c` no se muestra.
+
+**Cobertura de contenido:** los **51 productos internos activos** de las 9
+categorías tienen ficha completa (Brand/Warranty/EAN/Description). El contenido es
+DATA, sembrado idempotentemente por `scripts/apex/seed-product-content.apex` (+
+`-2.apex`), con una clase por tipo (`LaptopContent`, `PhoneContent`, `SpecContent`)
+que implementa la interfaz `ProductContent`. MOQ/múltiplo de la Description salen de
+la `PurchaseQuantityRule` estándar (§5.2), no de campos custom.
+
+### 5.2 Stock y reglas de compra
+
+- **Stock**: campo custom `Inventory_Quantity__c` en `Product2` (inventario
+  simulado; ver `docs/salesforce/manual-inventory-setup-runbook.md`).
+- **Reglas de compra** (MOQ / múltiplo / máximo): objeto **estándar**
+  `PurchaseQuantityRule` (`Minimum` / `Increment` / `Maximum`), asociado a cada
+  producto por el junction estándar `ProductQuantityRule` (`ProductId` +
+  `PurchaseQuantityRuleId`). Es la **fuente de verdad única**, leída por el Quick
+  Buy y por el componente estándar de la PDP
+  (`adr/0009-purchase-quantity-rule-migration.md`, Accepted 2026-07-22).
+- **DEPRECADOS (ADR-0009)**: `Min_Order_Quantity__c`, `Order_Increment__c`,
+  `Max_Order_Quantity__c`. Se conservan read-only; el storefront ya no los lee.
 
 ---
 

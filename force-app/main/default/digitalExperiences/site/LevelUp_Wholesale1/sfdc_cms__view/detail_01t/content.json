@@ -409,23 +409,7 @@
                 "showAddToSecondaryCartMenu" : false
               },
               "children" : [ {
-                "children" : [ {
-                  "attributes" : {
-                    "backgroundColor" : "",
-                    "dxpStyle" : { },
-                    "isLinkable" : false,
-                    "linkAssistiveText" : "",
-                    "paddingHorizontal" : "none",
-                    "paddingVertical" : "none",
-                    "text" : "Minimum Quantity is {!Product.Details.purchaseQuantityRule.minimum} • Maximum Quantity is {!Product.Details.purchaseQuantityRule.maximum} • Sold in increments of {!Product.Details.purchaseQuantityRule.increment}",
-                    "textAlign" : "left",
-                    "textDecoration" : "{}",
-                    "textDisplayInfo" : "{\"headingTag\": \"h3\", \"textStyle\": \"heading-small\"}"
-                  },
-                  "definition" : "dxp_base:textBlock",
-                  "id" : "b734901a-76e4-43e3-b0b8-cde8b13d1a21",
-                  "type" : "component"
-                } ],
+                "children" : [ ],
                 "id" : "a8731c53-a028-4992-9473-9bcd41316ed4",
                 "name" : "combinedPurchaseQuantityRuleInfo",
                 "title" : "combinedPurchaseQuantityRuleInfo",
